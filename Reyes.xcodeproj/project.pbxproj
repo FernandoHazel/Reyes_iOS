@@ -39,6 +39,7 @@
 		033DC5392B7B243E00D591D7 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 033DC5382B7B243E00D591D7 /* FirebaseRemoteConfigSwift */; };
 		033DC53B2B7B243F00D591D7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 033DC53A2B7B243F00D591D7 /* FirebaseStorage */; };
 		033DC53D2B7B243F00D591D7 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 033DC53C2B7B243F00D591D7 /* FirebaseStorageCombine-Community */; };
+		0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0353438B2B7BC7D00015AF1F /* TestButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		033DC4FB2B7B05E200D591D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		033DC4FE2B7B05E200D591D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		033DC5052B7B0A8000D591D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0353438B2B7BC7D00015AF1F /* TestButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestButtons.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		033DC4F62B7B05E000D591D7 /* Reyes */ = {
 			isa = PBXGroup;
 			children = (
+				0353438A2B7BC75C0015AF1F /* Views */,
 				033DC4F72B7B05E000D591D7 /* ReyesApp.swift */,
 				033DC4F92B7B05E000D591D7 /* ContentView.swift */,
 				033DC4FB2B7B05E200D591D7 /* Assets.xcassets */,
@@ -124,6 +127,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		0353438A2B7BC75C0015AF1F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0353438B2B7BC7D00015AF1F /* TestButtons.swift */,
+			);
+			name = Views;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +146,7 @@
 				033DC4F02B7B05E000D591D7 /* Sources */,
 				033DC4F12B7B05E000D591D7 /* Frameworks */,
 				033DC4F22B7B05E000D591D7 /* Resources */,
+				0353438D2B7C129A0015AF1F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -222,6 +235,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0353438D2B7C129A0015AF1F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		033DC4F02B7B05E000D591D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -229,6 +267,7 @@
 			files = (
 				033DC4FA2B7B05E000D591D7 /* ContentView.swift in Sources */,
 				033DC4F82B7B05E000D591D7 /* ReyesApp.swift in Sources */,
+				0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +400,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Reyes/Preview Content\"";
 				DEVELOPMENT_TEAM = 9AGHP648CH;
 				ENABLE_PREVIEWS = YES;
@@ -391,6 +431,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Reyes/Preview Content\"";
 				DEVELOPMENT_TEAM = 9AGHP648CH;
 				ENABLE_PREVIEWS = YES;
