@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Reyes
-//
-//  Created by Fernando Ascencio on 12/02/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
