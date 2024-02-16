@@ -1,6 +1,7 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseAnalytics
+import FirebaseAuth
 
 
 struct TestButtons: View {
@@ -23,7 +24,7 @@ struct TestButtons: View {
                     .padding()
                     .padding(.horizontal, 20)
                     .background(
-                        Color.blue
+                        Color.yellow
                             .cornerRadius(10)
                             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                     )
@@ -65,6 +66,24 @@ struct TestButtons: View {
                     .task {
                         await notificationManager.getAuthStatus()
                     }
+            })
+            Button(action: {
+                // Create a mock user
+                //...
+                
+            }, label: {
+                Text("Create account")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding()
+                    .padding(.horizontal, 5)
+                    .background(
+                        Color.yellow
+                            .cornerRadius(10)
+                            .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                    )
+                    
             })
         }
         

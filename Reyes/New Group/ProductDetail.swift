@@ -1,54 +1,91 @@
 import SwiftUI
 
-struct ProductDetail: View {
-    @Environment(ModelData.self) var modelData
-    var landmark: Landmark
-
-    var landmarkIndex: Int {
-        modelData.landmarks.firstIndex(where: { $0.id == landmark.id })!
-    }
-
+struct ProductView: View {
     var body: some View {
-        @Bindable var modelData = modelData
         
-        ScrollView {
-            MapView(coordinate: landmark.locationCoordinate)
-                .frame(height: 300)
-
-            CircleImage(image: landmark.image)
-                .offset(y: -130)
-                .padding(.bottom, -130)
-
-            VStack(alignment: .leading) {
+        VStack {
+            
+            CircleImage()
+            
+            VStack(alignment: .leading){
+                
                 HStack {
-                    Text(landmark.name)
+                    
+                    Text("Producto")
                         .font(.title)
-                    FavoriteButton(isSet: $modelData.landmarks[landmarkIndex].isFavorite)
-                }
-
-                HStack {
-                    Text(landmark.park)
+                    
                     Spacer()
-                    Text(landmark.state)
+                    
+                    Text("$150")
+                        .font(.title)
                 }
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-
+                Text("Talla L")
+                    .font(.subheadline)
+                
                 Divider()
-
-                Text("About \(landmark.name)")
+                
+                Text("Acerca de este producto")
                     .font(.title2)
-                Text(landmark.description)
+                
+                ScrollView{
+                    Text("Este es el texto que describe las características del producto")
+                }
+                
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    VStack (alignment: .center) {
+                        Button(action: {
+                            //Añadir al carrito
+                            //..
+                            
+                        }, label: {
+                            Text("Añadir al carrito")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .padding()
+                                .padding(.horizontal, 5)
+                                .background(
+                                    Color.yellow
+                                        .cornerRadius(10)
+                                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                )
+                                
+                    })
+                        Button(action: {
+                            //Comprar
+                            //..
+                            
+                        }, label: {
+                            Text("Comprar")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                                .padding()
+                                .padding(.horizontal, 33)
+                                .background(
+                                    Color.yellow
+                                        .cornerRadius(10)
+                                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                )
+                                
+                        })
+                    }
+                    Spacer()
+                }
+                
+                
+                
             }
             .padding()
+            
+            Spacer()
         }
-        .navigationTitle(landmark.name)
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    let modelData = ModelData()
-    return LandmarkDetail(landmark: modelData.landmarks[0])
-        .environment(modelData)
+    ProductView()
 }

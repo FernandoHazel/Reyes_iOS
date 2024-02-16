@@ -1,15 +1,20 @@
-//
-//  CircleImage.swift
-//  Reyes
-//
-//  Created by Fernando Ascencio on 16/02/24.
-//
-
 import SwiftUI
 
 struct CircleImage: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack {
+            Image("gorra-azul")
+                .resizable() // Make the image resizable
+                .scaledToFit() // Scale the image to fit within its frame
+                .frame(width: 200, height: 200)
+                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                .overlay {
+                    Circle().stroke(.yellow, lineWidth: 4)
+                }
+                .shadow(radius: 7)
+        }
+        
     }
 }
 
