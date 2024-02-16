@@ -4,6 +4,8 @@ import FirebaseAnalytics
 
 
 struct TestButtons: View {
+    @StateObject var notificationManager = NotificationManager()
+    
     var body: some View {
         VStack{
             
@@ -41,6 +43,28 @@ struct TestButtons: View {
                             .cornerRadius(10)
                             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                     )
+            })
+            Button(action: {
+                Task{
+                    await notificationManager.request()
+                }
+                
+            }, label: {
+                Text("Request Notification")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding()
+                    .padding(.horizontal, 5)
+                    .background(
+                        Color.yellow
+                            .cornerRadius(10)
+                            .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                    )
+                    .disabled(notificationManager.hasPermission)
+                    .task {
+                        await notificationManager.getAuthStatus()
+                    }
             })
         }
         

@@ -40,6 +40,7 @@
 		033DC53B2B7B243F00D591D7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 033DC53A2B7B243F00D591D7 /* FirebaseStorage */; };
 		033DC53D2B7B243F00D591D7 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 033DC53C2B7B243F00D591D7 /* FirebaseStorageCombine-Community */; };
 		0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0353438B2B7BC7D00015AF1F /* TestButtons.swift */; };
+		037A4F7F2B7EDAE80056EB6D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A4F7E2B7EDAE80056EB6D /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,9 @@
 		033DC4FE2B7B05E200D591D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		033DC5052B7B0A8000D591D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0353438B2B7BC7D00015AF1F /* TestButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestButtons.swift; sourceTree = SOURCE_ROOT; };
+		037A4F7C2B7EC4A80056EB6D /* Reyes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reyes.entitlements; sourceTree = "<group>"; };
+		037A4F7D2B7EC51E0056EB6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		037A4F7E2B7EDAE80056EB6D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,12 +113,15 @@
 		033DC4F62B7B05E000D591D7 /* Reyes */ = {
 			isa = PBXGroup;
 			children = (
+				037A4F7D2B7EC51E0056EB6D /* Info.plist */,
+				037A4F7C2B7EC4A80056EB6D /* Reyes.entitlements */,
 				0353438A2B7BC75C0015AF1F /* Views */,
 				033DC4F72B7B05E000D591D7 /* ReyesApp.swift */,
 				033DC4F92B7B05E000D591D7 /* ContentView.swift */,
 				033DC4FB2B7B05E200D591D7 /* Assets.xcassets */,
 				033DC5052B7B0A8000D591D7 /* GoogleService-Info.plist */,
 				033DC4FD2B7B05E200D591D7 /* Preview Content */,
+				037A4F7E2B7EDAE80056EB6D /* NotificationManager.swift */,
 			);
 			path = Reyes;
 			sourceTree = "<group>";
@@ -267,6 +274,7 @@
 			files = (
 				033DC4FA2B7B05E000D591D7 /* ContentView.swift in Sources */,
 				033DC4F82B7B05E000D591D7 /* ReyesApp.swift in Sources */,
+				037A4F7F2B7EDAE80056EB6D /* NotificationManager.swift in Sources */,
 				0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +406,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Reyes/Reyes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -405,6 +414,7 @@
 				DEVELOPMENT_TEAM = 9AGHP648CH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Reyes/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Reyes;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -429,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Reyes/Reyes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -436,6 +447,7 @@
 				DEVELOPMENT_TEAM = 9AGHP648CH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Reyes/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Reyes;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
