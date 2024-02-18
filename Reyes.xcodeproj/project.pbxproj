@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		032A68682B800D2900E67771 /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A68672B800D2900E67771 /* ProductDetail.swift */; };
 		032A686A2B80118200E67771 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A68692B80118200E67771 /* CircleImage.swift */; };
+		033AA5492B81596C0023FC54 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AA5482B81596C0023FC54 /* Product.swift */; };
+		033AA54B2B8169C20023FC54 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AA54A2B8169C20023FC54 /* ModelData.swift */; };
+		033AA54E2B816E8E0023FC54 /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AA54D2B816E8E0023FC54 /* ProductRow.swift */; };
+		033AA5502B8174E30023FC54 /* Products.json in Resources */ = {isa = PBXBuildFile; fileRef = 033AA54F2B8174E30023FC54 /* Products.json */; };
+		033AA5522B817DE00023FC54 /* ProductsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AA5512B817DE00023FC54 /* ProductsList.swift */; };
 		033DC4F82B7B05E000D591D7 /* ReyesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC4F72B7B05E000D591D7 /* ReyesApp.swift */; };
 		033DC4FA2B7B05E000D591D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC4F92B7B05E000D591D7 /* ContentView.swift */; };
 		033DC4FC2B7B05E200D591D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 033DC4FB2B7B05E200D591D7 /* Assets.xcassets */; };
@@ -39,6 +44,11 @@
 /* Begin PBXFileReference section */
 		032A68672B800D2900E67771 /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
 		032A68692B80118200E67771 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		033AA5482B81596C0023FC54 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		033AA54A2B8169C20023FC54 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		033AA54D2B816E8E0023FC54 /* ProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
+		033AA54F2B8174E30023FC54 /* Products.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Products.json; sourceTree = "<group>"; };
+		033AA5512B817DE00023FC54 /* ProductsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsList.swift; sourceTree = "<group>"; };
 		033DC4F42B7B05E000D591D7 /* Reyes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reyes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		033DC4F72B7B05E000D591D7 /* ReyesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReyesApp.swift; sourceTree = "<group>"; };
 		033DC4F92B7B05E000D591D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +90,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		033AA5462B8156550023FC54 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				033AA54F2B8174E30023FC54 /* Products.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		033AA54C2B816C1D0023FC54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				033AA5482B81596C0023FC54 /* Product.swift */,
+				033AA54A2B8169C20023FC54 /* ModelData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		033DC4EB2B7B05DF00D591D7 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +126,7 @@
 		033DC4F62B7B05E000D591D7 /* Reyes */ = {
 			isa = PBXGroup;
 			children = (
+				033AA5462B8156550023FC54 /* Resources */,
 				037A4F7D2B7EC51E0056EB6D /* Info.plist */,
 				037A4F7C2B7EC4A80056EB6D /* Reyes.entitlements */,
 				0353438A2B7BC75C0015AF1F /* Views */,
@@ -108,6 +136,7 @@
 				033DC5052B7B0A8000D591D7 /* GoogleService-Info.plist */,
 				033DC4FD2B7B05E200D591D7 /* Preview Content */,
 				037A4F7E2B7EDAE80056EB6D /* NotificationManager.swift */,
+				033AA54C2B816C1D0023FC54 /* Model */,
 			);
 			path = Reyes;
 			sourceTree = "<group>";
@@ -126,6 +155,8 @@
 				0353438B2B7BC7D00015AF1F /* TestButtons.swift */,
 				032A68672B800D2900E67771 /* ProductDetail.swift */,
 				032A68692B80118200E67771 /* CircleImage.swift */,
+				033AA54D2B816E8E0023FC54 /* ProductRow.swift */,
+				033AA5512B817DE00023FC54 /* ProductsList.swift */,
 			);
 			name = Views;
 			path = "New Group";
@@ -214,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				033DC4FF2B7B05E200D591D7 /* Preview Assets.xcassets in Resources */,
+				033AA5502B8174E30023FC54 /* Products.json in Resources */,
 				033DC4FC2B7B05E200D591D7 /* Assets.xcassets in Resources */,
 				033DC5062B7B0A8000D591D7 /* GoogleService-Info.plist in Resources */,
 			);
@@ -256,7 +288,11 @@
 				033DC4F82B7B05E000D591D7 /* ReyesApp.swift in Sources */,
 				037A4F7F2B7EDAE80056EB6D /* NotificationManager.swift in Sources */,
 				0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */,
+				033AA54B2B8169C20023FC54 /* ModelData.swift in Sources */,
 				032A686A2B80118200E67771 /* CircleImage.swift in Sources */,
+				033AA5522B817DE00023FC54 /* ProductsList.swift in Sources */,
+				033AA5492B81596C0023FC54 /* Product.swift in Sources */,
+				033AA54E2B816E8E0023FC54 /* ProductRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

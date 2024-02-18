@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1001,
+        "name": "Gorra Azul",
+        "price": 150,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["gorra-azul","gorra-amarilla"]
+    },
+    {
+        "id": 1002,
+        "name": "Sudadera Azul",
+        "price": 350,
+        "size": "M",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["sudadera-azul"]
+    },
+    {
+        "id": 1003,
+        "name": "Playera Azul",
+        "price": 80,
+        "size": "S",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["playera-azul"]
+    },
+    {
+        "id": 1004,
+        "name": "Gorra Amarilla",
+        "price": 150,
+        "size": "M",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["gorra-amarilla"]
+    },
+    {
+        "id": 1005,
+        "name": "Sudadera Amarilla",
+        "price": 80,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["sudadera-amarilla"]
+    }
+]

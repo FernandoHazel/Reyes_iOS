@@ -1,25 +1,27 @@
 import SwiftUI
 
-struct ProductView: View {
+struct ProductDetail: View {
+    var product: Product
+    
     var body: some View {
         
         VStack {
             
-            CircleImage()
+            CircleImage(image: product.images[0])
             
             VStack(alignment: .leading){
                 
                 HStack {
                     
-                    Text("Producto")
+                    Text(product.name)
                         .font(.title)
                     
                     Spacer()
                     
-                    Text("$150")
+                    Text(String(product.price))
                         .font(.title)
                 }
-                Text("Talla L")
+                Text("Talla: " + product.size)
                     .font(.subheadline)
                 
                 Divider()
@@ -28,7 +30,7 @@ struct ProductView: View {
                     .font(.title2)
                 
                 ScrollView{
-                    Text("Este es el texto que describe las características del producto")
+                    Text(product.description)
                 }
                 
                 Spacer()
@@ -83,9 +85,11 @@ struct ProductView: View {
             
             Spacer()
         }
+        .navigationTitle(product.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    ProductView()
+    ProductDetail(product: products[3])
 }

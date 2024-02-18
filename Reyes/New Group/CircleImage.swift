@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct CircleImage: View {
+    var image: Image
+    
     var body: some View {
         
         VStack {
-            Image("gorra-azul")
+            image
                 .resizable() // Make the image resizable
                 .scaledToFit() // Scale the image to fit within its frame
                 .frame(width: 200, height: 200)
@@ -19,5 +21,5 @@ struct CircleImage: View {
 }
 
 #Preview {
-    CircleImage()
+    CircleImage(image: Image("sudadera-amarilla"))
 }
