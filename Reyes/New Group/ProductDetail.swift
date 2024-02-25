@@ -7,7 +7,9 @@ struct ProductDetail: View {
         
         VStack {
             
-            CircleImage(image: product.images[0])
+            Carousel(photosNames: product.imgNames)
+                .frame(maxHeight: .infinity)
+                .frame(height: UIScreen.main.bounds.height / 3)
             
             VStack(alignment: .leading){
                 
@@ -18,7 +20,7 @@ struct ProductDetail: View {
                     
                     Spacer()
                     
-                    Text(String(product.price))
+                    Text("$"+String(product.price))
                         .font(.title)
                 }
                 Text("Talla: " + product.size)
@@ -36,8 +38,9 @@ struct ProductDetail: View {
                 Spacer()
                 
                 HStack {
-                    Spacer()
-                    VStack (alignment: .center) {
+                    
+                    
+                    
                         Button(action: {
                             //Añadir al carrito
                             //..
@@ -48,14 +51,21 @@ struct ProductDetail: View {
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
                                 .padding()
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
                                 .padding(.horizontal, 5)
                                 .background(
                                     Color.yellow
                                         .cornerRadius(10)
                                         .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                        .frame(width: UIScreen.main.bounds.width / 2.5)
                                 )
                                 
                     })
+                        
+                    
+                    Spacer()
+                    
                         Button(action: {
                             //Comprar
                             //..
@@ -66,16 +76,20 @@ struct ProductDetail: View {
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
                                 .padding()
-                                .padding(.horizontal, 33)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                                .padding(.horizontal, 5)
                                 .background(
                                     Color.yellow
                                         .cornerRadius(10)
                                         .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                        .frame(width: UIScreen.main.bounds.width / 2.5)
                                 )
                                 
                         })
-                    }
+                        
                     Spacer()
+                    
                 }
                 
                 
@@ -91,5 +105,5 @@ struct ProductDetail: View {
 }
 
 #Preview {
-    ProductDetail(product: products[3])
+    ProductDetail(product: products[1])
 }

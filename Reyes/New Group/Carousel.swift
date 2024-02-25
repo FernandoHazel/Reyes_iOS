@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct Carousel: View {
+    let photosNames: [String]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            ForEach(photosNames, id: \.self) { photo in
+                Image(photo)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding(.horizontal)
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .always))
     }
 }
 
 #Preview {
-    Carousel()
+    Carousel(photosNames: ["gorra-azul", "playera-azul", "sudadera-azul"])
 }

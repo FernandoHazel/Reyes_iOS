@@ -5,7 +5,7 @@
         "price": 150,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["gorra-azul","gorra-amarilla"]
+        "imgNames": ["gorra-azul","gorra-azul", "gorra-azul"]
     },
     {
         "id": 1002,
@@ -13,7 +13,7 @@
         "price": 350,
         "size": "M",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["sudadera-azul"]
+        "imgNames": ["sudadera-azul", "sudadera-azul", "sudadera-azul"]
     },
     {
         "id": 1003,
@@ -21,7 +21,7 @@
         "price": 80,
         "size": "S",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["playera-azul"]
+        "imgNames": ["playera-azul", "playera-azul", "playera-azul"]
     },
     {
         "id": 1004,
@@ -29,7 +29,7 @@
         "price": 150,
         "size": "M",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["gorra-amarilla"]
+        "imgNames": ["gorra-amarilla", "gorra-amarilla", "gorra-amarilla"]
     },
     {
         "id": 1005,
@@ -37,6 +37,6 @@
         "price": 80,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["sudadera-amarilla"]
+        "imgNames": ["sudadera-amarilla", "sudadera-amarilla", "sudadera-amarilla"]
     }
 ]

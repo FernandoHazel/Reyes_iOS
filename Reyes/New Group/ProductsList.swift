@@ -12,7 +12,7 @@ struct ProductsList: View {
                     ProductRow(product: product)
                 }
             }
-            .navigationTitle("Productos")
+            .navigationTitle("Tienda")
         } detail: {
             Text("Selecciona un producto")
         }
