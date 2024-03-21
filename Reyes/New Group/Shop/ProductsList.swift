@@ -4,7 +4,7 @@ struct ProductsList: View {
     var body: some View {
         
         
-        NavigationSplitView {
+        NavigationView {
             List(products) { product in
                 NavigationLink {
                     ProductDetail(product: product)
@@ -13,8 +13,6 @@ struct ProductsList: View {
                 }
             }
             .navigationTitle("Tienda")
-        } detail: {
-            Text("Selecciona un producto")
         }
         
         Group {
