@@ -12,6 +12,7 @@ struct ProductRow: View {
                 Caption(text: product.name, price: product.price)
             }
             .padding()
+            .background(Color.gray.opacity(0.3))
         
     }
 }

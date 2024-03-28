@@ -110,26 +110,19 @@ struct SignUp: View {
              .frame(maxWidth: .infinity)
              .buttonStyle(.borderedProminent)*/
             
-            Group {
-                NavigationView {
-                    HStack {
-                        Text("¿Ya tienes una cuenta?")
-                        NavigationLink(
-                            destination: SingIn(),
-                            label: {
-                                Text("Ingresar")
-                            })
-                        }
-                        .listStyle(.plain)
-                        .padding()
-                        //.analyticsScreen(name: "\(Self.self)")
+            HStack {
+                Text("¿Ya tienes una cuenta?")
+                NavigationLink(
+                    destination: SingIn(),
+                    label: {
+                        Text("Ingresar")
+                    })
                 }
-            }
-            .frame(height: 20)
-            }
-        
+                .listStyle(.plain)
+                .padding()
+                //.analyticsScreen(name: "\(Self.self)")
+        }
     }
-    
 }
 
 struct SignupView_Previews: PreviewProvider {

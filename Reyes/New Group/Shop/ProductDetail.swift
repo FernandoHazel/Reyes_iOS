@@ -5,16 +5,14 @@ struct ProductDetail: View {
     
     var body: some View {
         
-        VStack {
-            
-            Carousel(photosNames: product.imgNames)
-                .frame(maxHeight: .infinity)
-                .frame(height: UIScreen.main.bounds.height / 3)
-            
-            VStack(alignment: .leading){
+        VStack(alignment: .leading){
+            ScrollView {
+                Carousel(photosNames: product.imgNames)
+                    .frame(maxHeight: .infinity)
+                    .frame(height: UIScreen.main.bounds.height / 3)
+                    .background(Color.gray.opacity(0.3))
                 
                 HStack {
-                    
                     Text(product.name)
                         .font(.title)
                     
@@ -25,82 +23,62 @@ struct ProductDetail: View {
                 }
                 Text("Talla: " + product.size)
                     .font(.subheadline)
-                
                 Divider()
-                
                 Text("Acerca de este producto")
                     .font(.title2)
-                
-                ScrollView{
-                    Text(product.description)
-                }
+                Text(product.description)
+            }
+            
+            Spacer()
+            
+            HStack {
+                Button(action: {
+                    //Añadir al carrito
+                    //..
+                }, label: {
+                    Text("Añadir al carrito")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding()
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .padding(.horizontal, 5)
+                        .background(
+                            Color.yellow
+                                .cornerRadius(10)
+                                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                .frame(width: UIScreen.main.bounds.width / 2.5))
+                })
                 
                 Spacer()
                 
-                HStack {
+                Button(action: {
+                    //Comprar
+                    //..
                     
-                    
-                    
-                        Button(action: {
-                            //Añadir al carrito
-                            //..
-                            
-                        }, label: {
-                            Text("Añadir al carrito")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .padding()
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
-                                .padding(.horizontal, 5)
-                                .background(
-                                    Color.yellow
-                                        .cornerRadius(10)
-                                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                        .frame(width: UIScreen.main.bounds.width / 2.5)
-                                )
-                                
-                    })
-                        
-                    
-                    Spacer()
-                    
-                        Button(action: {
-                            //Comprar
-                            //..
-                            
-                        }, label: {
-                            Text("Comprar")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .padding()
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
-                                .padding(.horizontal, 5)
-                                .background(
-                                    Color.yellow
-                                        .cornerRadius(10)
-                                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                        .frame(width: UIScreen.main.bounds.width / 2.5)
-                                )
-                                
-                        })
-                        
-                    Spacer()
-                    
-                }
-                
-                
-                
+                }, label: {
+                    Text("Comprar")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding()
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .padding(.horizontal, 5)
+                        .background(
+                            Color.yellow
+                                .cornerRadius(10)
+                                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                .frame(width: UIScreen.main.bounds.width / 2.5))
+                })
+                Spacer()
             }
-            .padding()
-            
-            Spacer()
         }
-        .navigationTitle(product.name)
-        .navigationBarTitleDisplayMode(.inline)
+        .padding()
+        Spacer()
+            .navigationTitle(product.name)
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -10,9 +10,11 @@ struct ProductsList: View {
                     ProductDetail(product: product)
                 } label: {
                     ProductRow(product: product)
+                        .cornerRadius(10)
                 }
             }
             .navigationTitle("Tienda")
+            .listStyle(.inset)
         }
     }
 }

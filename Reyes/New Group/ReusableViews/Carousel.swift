@@ -18,6 +18,7 @@ struct Carousel: View {
                     .aspectRatio(contentMode: .fit)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .padding(.horizontal)
+                    
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
