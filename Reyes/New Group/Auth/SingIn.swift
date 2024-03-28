@@ -28,11 +28,12 @@ struct SingIn: View {
             Image("Reyes_icon")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(minHeight: 300, maxHeight: 400)
+                .frame(minHeight: 200, maxHeight: 300)
             Text("Login")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading)
             
             HStack {
                 Image(systemName: "at")
@@ -48,6 +49,7 @@ struct SingIn: View {
             .padding(.vertical, 6)
             .background(Divider(), alignment: .bottom)
             .padding(.bottom, 4)
+            .padding(.leading)
             
             HStack {
                 Image(systemName: "lock")
@@ -61,6 +63,7 @@ struct SingIn: View {
             .padding(.vertical, 6)
             .background(Divider(), alignment: .bottom)
             .padding(.bottom, 8)
+            .padding(.leading)
             
             /*if !viewModel.errorMessage.isEmpty {
              VStack {
