@@ -5,7 +5,7 @@ struct Calendar: View {
         NavigationView {
             List(games) { game in
                 NavigationLink {
-                    Text("Detalle del partido")
+                    GameDetail(game: game)
                 } label: {
                     GameView(game: game)
                 }
