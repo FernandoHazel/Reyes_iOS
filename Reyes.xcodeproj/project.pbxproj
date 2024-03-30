@@ -12,6 +12,11 @@
 		0307C0C82B8BCEE3004E5D17 /* SingUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0307C0C72B8BCEE3004E5D17 /* SingUp.swift */; };
 		030CEE1E2BB5EDAC00D2E0D7 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CEE1D2BB5EDAC00D2E0D7 /* Main.swift */; };
 		030CEE202BB5F0EA00D2E0D7 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CEE1F2BB5F0EA00D2E0D7 /* CustomTabBar.swift */; };
+		0329A7CA2BB8848200B8D730 /* RosterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329A7C92BB8848200B8D730 /* RosterList.swift */; };
+		0329A7CC2BB884A900B8D730 /* RosterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329A7CB2BB884A900B8D730 /* RosterRow.swift */; };
+		0329A7CE2BB884B900B8D730 /* RosterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329A7CD2BB884B900B8D730 /* RosterDetail.swift */; };
+		0329A7D02BB8894600B8D730 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329A7CF2BB8894600B8D730 /* Player.swift */; };
+		0329A7D22BB88E0600B8D730 /* Players.json in Resources */ = {isa = PBXBuildFile; fileRef = 0329A7D12BB88E0600B8D730 /* Players.json */; };
 		032A68682B800D2900E67771 /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A68672B800D2900E67771 /* ProductDetail.swift */; };
 		032A686A2B80118200E67771 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A68692B80118200E67771 /* CircleImage.swift */; };
 		033AA5492B81596C0023FC54 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033AA5482B81596C0023FC54 /* Product.swift */; };
@@ -57,6 +62,11 @@
 		0307C0C72B8BCEE3004E5D17 /* SingUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUp.swift; sourceTree = "<group>"; };
 		030CEE1D2BB5EDAC00D2E0D7 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		030CEE1F2BB5F0EA00D2E0D7 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		0329A7C92BB8848200B8D730 /* RosterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterList.swift; sourceTree = "<group>"; };
+		0329A7CB2BB884A900B8D730 /* RosterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterRow.swift; sourceTree = "<group>"; };
+		0329A7CD2BB884B900B8D730 /* RosterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterDetail.swift; sourceTree = "<group>"; };
+		0329A7CF2BB8894600B8D730 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		0329A7D12BB88E0600B8D730 /* Players.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Players.json; sourceTree = "<group>"; };
 		032A68672B800D2900E67771 /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
 		032A68692B80118200E67771 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		033AA5482B81596C0023FC54 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -149,6 +159,7 @@
 		033AA5462B8156550023FC54 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0329A7D12BB88E0600B8D730 /* Players.json */,
 				03E5151D2BB7CD7E00F16898 /* Games.json */,
 				033AA54F2B8174E30023FC54 /* Products.json */,
 			);
@@ -161,6 +172,7 @@
 				033AA5482B81596C0023FC54 /* Product.swift */,
 				033AA54A2B8169C20023FC54 /* ModelData.swift */,
 				03E515162BB7BBF000F16898 /* Game.swift */,
+				0329A7CF2BB8894600B8D730 /* Player.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,7 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				03E515202BB7DA8D00F16898 /* Main */,
-				03E5151F2BB7D78300F16898 /* Rooster */,
+				03E5151F2BB7D78300F16898 /* Roster */,
 				03E515112BB7B7C800F16898 /* Calendar */,
 				0307C0CC2B8BCF6D004E5D17 /* Auth */,
 				0307C0CB2B8BCF4C004E5D17 /* ReusableViews */,
@@ -231,11 +243,14 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		03E5151F2BB7D78300F16898 /* Rooster */ = {
+		03E5151F2BB7D78300F16898 /* Roster */ = {
 			isa = PBXGroup;
 			children = (
+				0329A7C92BB8848200B8D730 /* RosterList.swift */,
+				0329A7CB2BB884A900B8D730 /* RosterRow.swift */,
+				0329A7CD2BB884B900B8D730 /* RosterDetail.swift */,
 			);
-			path = Rooster;
+			path = Roster;
 			sourceTree = "<group>";
 		};
 		03E515202BB7DA8D00F16898 /* Main */ = {
@@ -332,6 +347,7 @@
 			files = (
 				033DC4FF2B7B05E200D591D7 /* Preview Assets.xcassets in Resources */,
 				03E5151E2BB7CD7E00F16898 /* Games.json in Resources */,
+				0329A7D22BB88E0600B8D730 /* Players.json in Resources */,
 				033AA5502B8174E30023FC54 /* Products.json in Resources */,
 				033DC4FC2B7B05E200D591D7 /* Assets.xcassets in Resources */,
 				033DC5062B7B0A8000D591D7 /* GoogleService-Info.plist in Resources */,
@@ -370,8 +386,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0329A7CC2BB884A900B8D730 /* RosterRow.swift in Sources */,
+				0329A7CE2BB884B900B8D730 /* RosterDetail.swift in Sources */,
 				032A68682B800D2900E67771 /* ProductDetail.swift in Sources */,
 				03E515172BB7BBF000F16898 /* Game.swift in Sources */,
+				0329A7D02BB8894600B8D730 /* Player.swift in Sources */,
 				030CEE202BB5F0EA00D2E0D7 /* CustomTabBar.swift in Sources */,
 				033DC4FA2B7B05E000D591D7 /* ContentView.swift in Sources */,
 				033DC4F82B7B05E000D591D7 /* ReyesApp.swift in Sources */,
@@ -380,6 +399,7 @@
 				0307C0C82B8BCEE3004E5D17 /* SingUp.swift in Sources */,
 				030CEE1E2BB5EDAC00D2E0D7 /* Main.swift in Sources */,
 				0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */,
+				0329A7CA2BB8848200B8D730 /* RosterList.swift in Sources */,
 				033AA54B2B8169C20023FC54 /* ModelData.swift in Sources */,
 				032A686A2B80118200E67771 /* CircleImage.swift in Sources */,
 				0307C0C42B8BADC4004E5D17 /* Carousel.swift in Sources */,

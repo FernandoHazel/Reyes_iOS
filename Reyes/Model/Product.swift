@@ -11,7 +11,6 @@ struct Product: Hashable, Codable, Identifiable {
     
     var images: [Image] {
         imgNames.map{Image($0)}
-        //Image(imgName)
     }
 }
 

@@ -21,13 +21,21 @@ struct Main: View {
                         HStack {
                             switch tab {
                                 case .house:
+                                VStack {
                                     Text("Home")
+                                }
                                 case .storefront:
+                                VStack {
                                     ProductsList()
+                                }
                                 case .calendar:
+                                VStack {
                                     Calendar()
+                                }
                                 case .person:
-                                    Text("Rooster")
+                                VStack {
+                                    RosterList()
+                                }
                             }
                             
                         }

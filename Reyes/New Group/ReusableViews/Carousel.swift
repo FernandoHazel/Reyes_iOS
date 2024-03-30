@@ -16,7 +16,6 @@ struct Carousel: View {
                 Image(photo)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     .padding(.horizontal)
                     
             }

@@ -116,13 +116,3 @@ struct SingIn: View {
     
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SingIn()
-            SingIn()
-                .preferredColorScheme(.dark)
-        }
-        //.environmentObject(AuthenticationViewModel())
-    }
-}

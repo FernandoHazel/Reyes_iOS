@@ -124,14 +124,3 @@ struct SignUp: View {
         }
     }
 }
-
-struct SignupView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SignUp()
-            SignUp()
-                .preferredColorScheme(.dark)
-        }
-        //.environmentObject(AuthenticationViewModel())
-    }
-}

@@ -52,9 +52,5 @@ struct Caption: View {
 }
 
 #Preview {
-    Group{
-        ProductRow(product: products[0])
-        ProductRow(product: products[4])
-    }
-    
+    ProductRow(product: products[0])
 }
