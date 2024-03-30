@@ -2,8 +2,6 @@ import SwiftUI
 
 struct ProductsList: View {
     var body: some View {
-        
-        
         NavigationView {
             List(products) { product in
                 NavigationLink {

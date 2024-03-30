@@ -10,7 +10,7 @@
 		0307C0C42B8BADC4004E5D17 /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0307C0C32B8BADC4004E5D17 /* Carousel.swift */; };
 		0307C0C62B8BCECB004E5D17 /* SingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0307C0C52B8BCECB004E5D17 /* SingIn.swift */; };
 		0307C0C82B8BCEE3004E5D17 /* SingUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0307C0C72B8BCEE3004E5D17 /* SingUp.swift */; };
-		030CEE1E2BB5EDAC00D2E0D7 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CEE1D2BB5EDAC00D2E0D7 /* Home.swift */; };
+		030CEE1E2BB5EDAC00D2E0D7 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CEE1D2BB5EDAC00D2E0D7 /* Main.swift */; };
 		030CEE202BB5F0EA00D2E0D7 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CEE1F2BB5F0EA00D2E0D7 /* CustomTabBar.swift */; };
 		032A68682B800D2900E67771 /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A68672B800D2900E67771 /* ProductDetail.swift */; };
 		032A686A2B80118200E67771 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A68692B80118200E67771 /* CircleImage.swift */; };
@@ -44,14 +44,18 @@
 		033DC53D2B7B243F00D591D7 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 033DC53C2B7B243F00D591D7 /* FirebaseStorageCombine-Community */; };
 		0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0353438B2B7BC7D00015AF1F /* TestButtons.swift */; };
 		037A4F7F2B7EDAE80056EB6D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A4F7E2B7EDAE80056EB6D /* NotificationManager.swift */; };
-		038DE6712BB5F6B0004E38D6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038DE6702BB5F6B0004E38D6 /* Settings.swift */; };
+		03E515132BB7B7E700F16898 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E515122BB7B7E700F16898 /* GameView.swift */; };
+		03E515152BB7BB5800F16898 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E515142BB7BB5800F16898 /* Calendar.swift */; };
+		03E515172BB7BBF000F16898 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E515162BB7BBF000F16898 /* Game.swift */; };
+		03E5151E2BB7CD7E00F16898 /* Games.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E5151D2BB7CD7E00F16898 /* Games.json */; };
+		03E515222BB7DABF00F16898 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E515212BB7DABF00F16898 /* TopBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0307C0C32B8BADC4004E5D17 /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
 		0307C0C52B8BCECB004E5D17 /* SingIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingIn.swift; sourceTree = "<group>"; };
 		0307C0C72B8BCEE3004E5D17 /* SingUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUp.swift; sourceTree = "<group>"; };
-		030CEE1D2BB5EDAC00D2E0D7 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		030CEE1D2BB5EDAC00D2E0D7 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		030CEE1F2BB5F0EA00D2E0D7 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		032A68672B800D2900E67771 /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
 		032A68692B80118200E67771 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
@@ -70,7 +74,11 @@
 		037A4F7C2B7EC4A80056EB6D /* Reyes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reyes.entitlements; sourceTree = "<group>"; };
 		037A4F7D2B7EC51E0056EB6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		037A4F7E2B7EDAE80056EB6D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		038DE6702BB5F6B0004E38D6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		03E515122BB7B7E700F16898 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		03E515142BB7BB5800F16898 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		03E515162BB7BBF000F16898 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		03E5151D2BB7CD7E00F16898 /* Games.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Games.json; sourceTree = "<group>"; };
+		03E515212BB7DABF00F16898 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,7 @@
 		033AA5462B8156550023FC54 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03E5151D2BB7CD7E00F16898 /* Games.json */,
 				033AA54F2B8174E30023FC54 /* Products.json */,
 			);
 			path = Resources;
@@ -151,6 +160,7 @@
 			children = (
 				033AA5482B81596C0023FC54 /* Product.swift */,
 				033AA54A2B8169C20023FC54 /* ModelData.swift */,
+				03E515162BB7BBF000F16898 /* Game.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,7 +184,6 @@
 		033DC4F62B7B05E000D591D7 /* Reyes */ = {
 			isa = PBXGroup;
 			children = (
-				038DE66F2BB5F67F004E38D6 /* Settings */,
 				033AA5462B8156550023FC54 /* Resources */,
 				037A4F7D2B7EC51E0056EB6D /* Info.plist */,
 				037A4F7C2B7EC4A80056EB6D /* Reyes.entitlements */,
@@ -201,23 +210,42 @@
 		0353438A2B7BC75C0015AF1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				03E515202BB7DA8D00F16898 /* Main */,
+				03E5151F2BB7D78300F16898 /* Rooster */,
+				03E515112BB7B7C800F16898 /* Calendar */,
 				0307C0CC2B8BCF6D004E5D17 /* Auth */,
 				0307C0CB2B8BCF4C004E5D17 /* ReusableViews */,
 				0307C0CA2B8BCF0B004E5D17 /* Shop */,
 				0307C0C92B8BCEF0004E5D17 /* Test */,
-				030CEE1D2BB5EDAC00D2E0D7 /* Home.swift */,
-				030CEE1F2BB5F0EA00D2E0D7 /* CustomTabBar.swift */,
 			);
 			name = Views;
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		038DE66F2BB5F67F004E38D6 /* Settings */ = {
+		03E515112BB7B7C800F16898 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				038DE6702BB5F6B0004E38D6 /* Settings.swift */,
+				03E515122BB7B7E700F16898 /* GameView.swift */,
+				03E515142BB7BB5800F16898 /* Calendar.swift */,
 			);
-			path = Settings;
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		03E5151F2BB7D78300F16898 /* Rooster */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Rooster;
+			sourceTree = "<group>";
+		};
+		03E515202BB7DA8D00F16898 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				030CEE1D2BB5EDAC00D2E0D7 /* Main.swift */,
+				030CEE1F2BB5F0EA00D2E0D7 /* CustomTabBar.swift */,
+				03E515212BB7DABF00F16898 /* TopBar.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				033DC4FF2B7B05E200D591D7 /* Preview Assets.xcassets in Resources */,
+				03E5151E2BB7CD7E00F16898 /* Games.json in Resources */,
 				033AA5502B8174E30023FC54 /* Products.json in Resources */,
 				033DC4FC2B7B05E200D591D7 /* Assets.xcassets in Resources */,
 				033DC5062B7B0A8000D591D7 /* GoogleService-Info.plist in Resources */,
@@ -342,20 +371,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				032A68682B800D2900E67771 /* ProductDetail.swift in Sources */,
-				038DE6712BB5F6B0004E38D6 /* Settings.swift in Sources */,
+				03E515172BB7BBF000F16898 /* Game.swift in Sources */,
 				030CEE202BB5F0EA00D2E0D7 /* CustomTabBar.swift in Sources */,
 				033DC4FA2B7B05E000D591D7 /* ContentView.swift in Sources */,
 				033DC4F82B7B05E000D591D7 /* ReyesApp.swift in Sources */,
 				0307C0C62B8BCECB004E5D17 /* SingIn.swift in Sources */,
 				037A4F7F2B7EDAE80056EB6D /* NotificationManager.swift in Sources */,
 				0307C0C82B8BCEE3004E5D17 /* SingUp.swift in Sources */,
-				030CEE1E2BB5EDAC00D2E0D7 /* Home.swift in Sources */,
+				030CEE1E2BB5EDAC00D2E0D7 /* Main.swift in Sources */,
 				0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */,
 				033AA54B2B8169C20023FC54 /* ModelData.swift in Sources */,
 				032A686A2B80118200E67771 /* CircleImage.swift in Sources */,
 				0307C0C42B8BADC4004E5D17 /* Carousel.swift in Sources */,
 				033AA5522B817DE00023FC54 /* ProductsList.swift in Sources */,
 				033AA5492B81596C0023FC54 /* Product.swift in Sources */,
+				03E515222BB7DABF00F16898 /* TopBar.swift in Sources */,
+				03E515152BB7BB5800F16898 /* Calendar.swift in Sources */,
+				03E515132BB7B7E700F16898 /* GameView.swift in Sources */,
 				033AA54E2B816E8E0023FC54 /* ProductRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,83 @@
+[
+    {
+        "id": 1,
+        "date": "1 de Marzo 2024",
+        "team": "GALLOS",
+        "hour": "7:00 PM",
+        "location": "Estadio Olímpico de Qro",
+        "reyesRecord": "0 - 0",
+        "teamRecord": "0 - 0",
+        "teamImageName": "gallos-sf"
+    },
+    {
+        "id": 2,
+        "date": "10 de Marzo 2024",
+        "team": "RAPTORS",
+        "hour": "12:00 PM",
+        "location": "Estadio Reyes Comude",
+        "reyesRecord": "0 - 1",
+        "teamRecord": "1 - 0",
+        "teamImageName": "raptors-sf"
+    },
+    {
+        "id": 3,
+        "date": "16 de Marzo 2024",
+        "team": "MEXICAS",
+        "hour": "7:00 PM",
+        "location": "Estadio Redskins",
+        "reyesRecord": "1 - 1",
+        "teamRecord": "2 - 0",
+        "teamImageName": "mexicas-sf"
+    },
+    {
+        "id": 4,
+        "date": "24 de Marzo 2024",
+        "team": "FUNDIDORES",
+        "hour": "12:00 PM",
+        "location": "Estadio Reyes Comude",
+        "reyesRecord": "1 - 2",
+        "teamRecord": "3 - 0",
+        "teamImageName": "fundidores-sf"
+    },
+    {
+        "id": 5,
+        "date": "7 de Abril 2024",
+        "team": "CAUDILLOS",
+        "hour": "12:00 PM",
+        "location": "Estadio Reyes Comude",
+        "reyesRecord": "1 - 3",
+        "teamRecord": "4 - 0",
+        "teamImageName": "caudillos-sf"
+    },
+    {
+        "id": 6,
+        "date": "11 de Abril 2024",
+        "team": "GALGOS",
+        "hour": "8:00 PM",
+        "location": "Estadio Reyes Comude",
+        "reyesRecord": "0 - 0",
+        "teamRecord": "0 - 0",
+        "teamImageName": "galgos-sf"
+    },
+    {
+        "id": 7,
+        "date": "21 de Abril 2024",
+        "team": "JEFES",
+        "hour": "2:00 PM",
+        "location": "Estadio Municipal 20 de Noviembre",
+        "reyesRecord": "0 - 0",
+        "teamRecord": "0 - 0",
+        "teamImageName": "jefes-sf"
+    },
+    {
+        "id": 8,
+        "date": "27 de Marzo 2024",
+        "team": "DINOS",
+        "hour": "8:00 PM",
+        "location": "Estadio Francisco I. Madero",
+        "reyesRecord": "0 - 0",
+        "teamRecord": "0 - 0",
+        "teamImageName": "dinos-sf"
+    }
+]
+
