@@ -60,22 +60,43 @@ struct GameDetail: View {
                     .font(.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top)
-                VideoView(videoURL: URL(string: game.resumeVideoLink)!)
-                    .frame(width: 350, height: 250)
+                
+                if (game.resumeVideoLink != "") {
+                    VideoView(videoURL: URL(string: game.resumeVideoLink)!)
+                        .frame(width: 350, height: 250)
+                } else {
+                    Text("Video no disponible")
+                        .padding(20)
+                }
+                
                 Text("Partido completo")
                     .bold()
                     .font(.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top)
-                VideoView(videoURL: URL(string: game.gameVideoLink)!)
-                    .frame(width: 350, height: 250)
+                
+                if (game.gameVideoLink != "") {
+                    VideoView(videoURL: URL(string: game.gameVideoLink)!)
+                        .frame(width: 350, height: 250)
+                } else {
+                    Text("Video no disponible")
+                        .padding(20)
+                }
+                
                 Text("Conferencia de prensa")
                     .bold()
                     .font(.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top)
-                VideoView(videoURL: URL(string: game.interviewVideoLink)!)
-                    .frame(width: 350, height: 250)
+                
+                if (game.interviewVideoLink != "") {
+                    VideoView(videoURL: URL(string: game.interviewVideoLink)!)
+                        .frame(width: 350, height: 250)
+                } else {
+                    Text("Video no disponible")
+                        .padding(20)
+                }
+                
             }
             .padding()
         }
