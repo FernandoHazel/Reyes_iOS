@@ -17,6 +17,7 @@ struct NewDetail: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(new.by)
             }
+            .padding()
             Text(new.description)
                 .padding(.horizontal)
         }

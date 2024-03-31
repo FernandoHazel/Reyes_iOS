@@ -6,14 +6,16 @@ struct NextGameView: View {
             .bold()
             .font(.title)
         GameView(game: games[4])
-        Button("Comprar boleto"){
+            .padding(.horizontal)
+        Button("COMPRAR BOLETO"){
             
         }
+        .frame(maxWidth: .infinity)
         .padding()
-        .frame(width: 300)
         .foregroundColor(Color.white)
-        .background(Color.yellow)
+        .background(Color(hex: 014791))
         .cornerRadius(20)
+        .padding(.horizontal)
     }
 }
 

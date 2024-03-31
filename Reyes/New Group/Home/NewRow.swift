@@ -7,31 +7,43 @@ struct NewRow: View {
         
         Image(new.mainImageName)
             .resizable()
-            .scaledToFit()
+            .scaledToFill()
             .overlay(alignment: .bottom){
-                NewCaption(text: new.title)
+                NewCaption(new: new)
             }
+            .cornerRadius(10)
+            .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.gray.opacity(0.3))
         
     }
 }
 
 struct NewCaption: View {
-    let text: String
+    let new: Noticia
     
     var body: some View {
-        HStack{
-            Text(text)
-                .font(.title)
+        VStack{
+            Text(new.title)
+                .bold()
+                .font(.title2)
                 .foregroundColor(.white)
                 .lineLimit(2)
                 .minimumScaleFactor(0.2)
+                .offset(y: -20)
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text(new.subTitle)
+                .font(.title3)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .offset(y: -20)
+                .padding(.horizontal)
+                .padding(.bottom)
                 
         }
         .background(
             Color.blue.opacity(0.3)
-                .frame(width: 500, height: 100)
+                .frame(width: 500, height: 200)
             
         )
         .padding(0)
