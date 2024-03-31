@@ -22,7 +22,7 @@ struct Main: View {
                             switch tab {
                                 case .house:
                                 VStack {
-                                    Text("Home")
+                                    HomeView()
                                 }
                                 case .storefront:
                                 VStack {

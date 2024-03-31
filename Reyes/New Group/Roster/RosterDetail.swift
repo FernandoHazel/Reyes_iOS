@@ -92,7 +92,7 @@ struct RosterDetail: View {
             Text("Sobre mí")
                 .bold()
                 .font(.title2)
-                .padding(.leading)
+                .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text(player.about)
                 .padding(.horizontal)

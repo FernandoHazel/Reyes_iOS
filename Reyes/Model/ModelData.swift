@@ -3,6 +3,7 @@ import Foundation
 var products: [Product] = load("Products.json")
 var games: [Game] = load("Games.json")
 var players: [Player] = load("Players.json")
+var noticias: [Noticia] = load("News.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
