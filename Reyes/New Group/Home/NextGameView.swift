@@ -7,15 +7,9 @@ struct NextGameView: View {
             .font(.title)
         GameView(game: games[4])
             .padding(.horizontal)
-        Button("COMPRAR BOLETO"){
-            
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .foregroundColor(Color.white)
-        .background(Color(hex: 014791))
-        .cornerRadius(20)
-        .padding(.horizontal)
+        
+        //If tikets are available show button
+        //...
     }
 }
 

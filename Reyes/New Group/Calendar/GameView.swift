@@ -11,28 +11,25 @@ struct GameView: View {
                 VStack {
                     Image("Reyes_icon")
                         .resizable()
-                        .frame(width: 100, height: 100)
-                    //Text(game.reyesRecord)
-                        //.bold()
+                        .frame(width: 80, height: 80)
                 }
-                
+                Spacer()
                 VStack {
-                    Text("REYES @ " + game.team)
+                    Text((game.team != "") ? "REYES @ " + game.team : "")
+                        .font(.system(size: 12))
                         .bold()
-                    Text(game.hour)
+                    Text((game.hour != "") ? game.hour : "BYE WEEK")
                         .bold()
                     Text(game.location)
                         .bold()
                         .multilineTextAlignment(.center)
                         .font(.caption)
                 }
-                
+                Spacer()
                 VStack {
-                    Image(game.teamImageName)
+                    Image((game.teamImageName != "") ? game.teamImageName : "Reyes_icon")
                         .resizable()
-                        .frame(width: 100, height: 100)
-                    //Text(game.teamRecord)
-                        //.bold()
+                        .frame(width: 80, height: 80)
                 }
             }
         }
@@ -42,5 +39,5 @@ struct GameView: View {
 
 
 #Preview {
-    GameView(game: games[0])
+    GameView(game: games[8])
 }
