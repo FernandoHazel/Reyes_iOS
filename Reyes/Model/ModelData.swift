@@ -5,6 +5,7 @@ var games: [Game] = load("Games.json")
 var players: [Player] = load("Players.json")
 var noticias: [Noticia] = load("News.json")
 var actualGames: [ActualGame] = load("ActualGame.json")
+var rewardsInstructions: [RewardInstruction] = load("RewardsOnboarding.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

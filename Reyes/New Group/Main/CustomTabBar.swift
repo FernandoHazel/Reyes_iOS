@@ -10,6 +10,7 @@ import SwiftUI
 // Here I have my tab bar cases (should be the same name as the SF Symbols)
 enum Tab: String, CaseIterable {
     case house
+    case newspaper
     case storefront
     case calendar
     case person

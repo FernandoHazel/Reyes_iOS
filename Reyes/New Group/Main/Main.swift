@@ -4,6 +4,7 @@ struct Main: View {
     @State private var selectedTab: Tab = .house
     @State private var showingProfile = false
     
+    
     init() {
         // This is to eliminate an extra space wich is automatically created
         UITabBar.appearance().isHidden = true
@@ -24,6 +25,10 @@ struct Main: View {
                                 VStack {
                                     HomeView()
                                 }
+                                case .newspaper:
+                                VStack {
+                                    NewsList()
+                                }
                                 case .storefront:
                                 VStack {
                                     ProductsList()
@@ -43,6 +48,7 @@ struct Main: View {
                         .sheet(isPresented: $showingProfile) {
                             SingIn()
                         }
+                        
                     }
                     
                 }

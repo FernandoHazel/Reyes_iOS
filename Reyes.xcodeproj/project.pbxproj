@@ -12,6 +12,9 @@
 		0307C0C82B8BCEE3004E5D17 /* SingUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0307C0C72B8BCEE3004E5D17 /* SingUp.swift */; };
 		030CEE1E2BB5EDAC00D2E0D7 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CEE1D2BB5EDAC00D2E0D7 /* Main.swift */; };
 		030CEE202BB5F0EA00D2E0D7 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CEE1F2BB5F0EA00D2E0D7 /* CustomTabBar.swift */; };
+		030F87132C0CEF5F0082BD59 /* RewardsOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F87122C0CEF5F0082BD59 /* RewardsOnboarding.swift */; };
+		030F87152C0CF29D0082BD59 /* RewardsOnboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = 030F87142C0CF29D0082BD59 /* RewardsOnboarding.json */; };
+		030F87172C0CF5070082BD59 /* RewardInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030F87162C0CF5070082BD59 /* RewardInstruction.swift */; };
 		0329A7CA2BB8848200B8D730 /* RosterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329A7C92BB8848200B8D730 /* RosterList.swift */; };
 		0329A7CC2BB884A900B8D730 /* RosterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329A7CB2BB884A900B8D730 /* RosterRow.swift */; };
 		0329A7CE2BB884B900B8D730 /* RosterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329A7CD2BB884B900B8D730 /* RosterDetail.swift */; };
@@ -49,6 +52,8 @@
 		033DC5352B7B243E00D591D7 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 033DC5342B7B243E00D591D7 /* FirebasePerformance */; };
 		033DC53B2B7B243F00D591D7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 033DC53A2B7B243F00D591D7 /* FirebaseStorage */; };
 		033DC53D2B7B243F00D591D7 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 033DC53C2B7B243F00D591D7 /* FirebaseStorageCombine-Community */; };
+		034FF5C62C0CE52F0036DDC5 /* Rewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FF5C52C0CE52E0036DDC5 /* Rewards.swift */; };
+		034FF5C82C0CE5600036DDC5 /* Promos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FF5C72C0CE5600036DDC5 /* Promos.swift */; };
 		0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0353438B2B7BC7D00015AF1F /* TestButtons.swift */; };
 		037A4F7F2B7EDAE80056EB6D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A4F7E2B7EDAE80056EB6D /* NotificationManager.swift */; };
 		03A8D0E72C0BE2990092E05A /* ActualGame.json in Resources */ = {isa = PBXBuildFile; fileRef = 03A8D0E62C0BE2990092E05A /* ActualGame.json */; };
@@ -73,6 +78,9 @@
 		0307C0C72B8BCEE3004E5D17 /* SingUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUp.swift; sourceTree = "<group>"; };
 		030CEE1D2BB5EDAC00D2E0D7 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		030CEE1F2BB5F0EA00D2E0D7 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		030F87122C0CEF5F0082BD59 /* RewardsOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsOnboarding.swift; sourceTree = "<group>"; };
+		030F87142C0CF29D0082BD59 /* RewardsOnboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RewardsOnboarding.json; sourceTree = "<group>"; };
+		030F87162C0CF5070082BD59 /* RewardInstruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardInstruction.swift; sourceTree = "<group>"; };
 		0329A7C92BB8848200B8D730 /* RosterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterList.swift; sourceTree = "<group>"; };
 		0329A7CB2BB884A900B8D730 /* RosterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterRow.swift; sourceTree = "<group>"; };
 		0329A7CD2BB884B900B8D730 /* RosterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterDetail.swift; sourceTree = "<group>"; };
@@ -93,6 +101,8 @@
 		033DC4FB2B7B05E200D591D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		033DC4FE2B7B05E200D591D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		033DC5052B7B0A8000D591D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		034FF5C52C0CE52E0036DDC5 /* Rewards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewards.swift; sourceTree = "<group>"; };
+		034FF5C72C0CE5600036DDC5 /* Promos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promos.swift; sourceTree = "<group>"; };
 		0353438B2B7BC7D00015AF1F /* TestButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestButtons.swift; path = "Reyes/New Group/Test/TestButtons.swift"; sourceTree = SOURCE_ROOT; };
 		037A4F7C2B7EC4A80056EB6D /* Reyes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reyes.entitlements; sourceTree = "<group>"; };
 		037A4F7D2B7EC51E0056EB6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -182,6 +192,7 @@
 		033AA5462B8156550023FC54 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				030F87142C0CF29D0082BD59 /* RewardsOnboarding.json */,
 				03A8D0E62C0BE2990092E05A /* ActualGame.json */,
 				03F92FA42BB8EA9700B997F0 /* News.json */,
 				0329A7D12BB88E0600B8D730 /* Players.json */,
@@ -200,6 +211,7 @@
 				0329A7CF2BB8894600B8D730 /* Player.swift */,
 				03F92FA62BB8EAB100B997F0 /* Noticia.swift */,
 				03A8D0E82C0BE31A0092E05A /* ActualGame.swift */,
+				030F87162C0CF5070082BD59 /* RewardInstruction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,9 +258,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		034FF5C42C0CE29A0036DDC5 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				03F92F9E2BB8E51200B997F0 /* NewsList.swift */,
+				03F92FA22BB8E8EA00B997F0 /* NewRow.swift */,
+				03F92FA82BB8EF4100B997F0 /* NewDetail.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		0353438A2B7BC75C0015AF1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				034FF5C42C0CE29A0036DDC5 /* News */,
 				03F92F9B2BB8E31800B997F0 /* Home */,
 				03E515202BB7DA8D00F16898 /* Main */,
 				03E5151F2BB7D78300F16898 /* Roster */,
@@ -296,10 +319,10 @@
 			isa = PBXGroup;
 			children = (
 				03F92F9C2BB8E33300B997F0 /* HomeView.swift */,
-				03F92F9E2BB8E51200B997F0 /* NewsList.swift */,
 				03F92FA02BB8E5D900B997F0 /* NextGameView.swift */,
-				03F92FA22BB8E8EA00B997F0 /* NewRow.swift */,
-				03F92FA82BB8EF4100B997F0 /* NewDetail.swift */,
+				034FF5C52C0CE52E0036DDC5 /* Rewards.swift */,
+				034FF5C72C0CE5600036DDC5 /* Promos.swift */,
+				030F87122C0CEF5F0082BD59 /* RewardsOnboarding.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -386,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				030F87152C0CF29D0082BD59 /* RewardsOnboarding.json in Resources */,
 				033DC4FF2B7B05E200D591D7 /* Preview Assets.xcassets in Resources */,
 				03E5151E2BB7CD7E00F16898 /* Games.json in Resources */,
 				03A8D0E72C0BE2990092E05A /* ActualGame.json in Resources */,
@@ -452,15 +476,19 @@
 				03F92F9D2BB8E33300B997F0 /* HomeView.swift in Sources */,
 				032A686A2B80118200E67771 /* CircleImage.swift in Sources */,
 				0329A7D42BB8B65A00B8D730 /* GameDetail.swift in Sources */,
+				034FF5C82C0CE5600036DDC5 /* Promos.swift in Sources */,
 				0307C0C42B8BADC4004E5D17 /* Carousel.swift in Sources */,
 				033AA5522B817DE00023FC54 /* ProductsList.swift in Sources */,
 				033AA5492B81596C0023FC54 /* Product.swift in Sources */,
 				03E515222BB7DABF00F16898 /* TopBar.swift in Sources */,
+				030F87132C0CEF5F0082BD59 /* RewardsOnboarding.swift in Sources */,
 				0329A7D62BB8BA5800B8D730 /* VideoView.swift in Sources */,
 				03E515152BB7BB5800F16898 /* Calendar.swift in Sources */,
 				03E515132BB7B7E700F16898 /* GameView.swift in Sources */,
 				033AA54E2B816E8E0023FC54 /* ProductRow.swift in Sources */,
+				030F87172C0CF5070082BD59 /* RewardInstruction.swift in Sources */,
 				03A8D0E92C0BE31A0092E05A /* ActualGame.swift in Sources */,
+				034FF5C62C0CE52F0036DDC5 /* Rewards.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
