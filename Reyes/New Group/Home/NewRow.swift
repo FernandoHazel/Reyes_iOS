@@ -42,7 +42,7 @@ struct NewCaption: View {
                 
         }
         .background(
-            Color.blue.opacity(0.3)
+            Color.blue.opacity(0.6)
                 .frame(width: 500, height: 200)
             
         )

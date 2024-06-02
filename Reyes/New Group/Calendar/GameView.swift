@@ -12,6 +12,7 @@ struct GameView: View {
                     Image("Reyes_icon")
                         .resizable()
                         .frame(width: 80, height: 80)
+                    Text(String(game.qrt_4_reyes))
                 }
                 Spacer()
                 VStack {
@@ -30,6 +31,7 @@ struct GameView: View {
                     Image((game.teamImageName != "") ? game.teamImageName : "Reyes_icon")
                         .resizable()
                         .frame(width: 80, height: 80)
+                    Text(String(game.qrt_4_team))
                 }
             }
         }
@@ -39,5 +41,5 @@ struct GameView: View {
 
 
 #Preview {
-    GameView(game: games[8])
+    GameView(game: games[4])
 }

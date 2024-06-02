@@ -10,20 +10,22 @@ struct NewDetail: View {
                 .scaledToFit()
             
             HStack {
-                Text("Por: ")
-                    .bold()
-                    .font(.title2)
-                    .padding(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 Text(new.by)
+                    .bold()
+                Spacer()
+                Text(new.date)
             }
             .padding()
-            Text(new.description)
-                .padding(.horizontal)
+            VStack {
+                ForEach(new.paragraphs, id: \.self) { paragraph in
+                    Text(paragraph)
+                        .padding()
+                }
+            }
         }
     }
 }
 
 #Preview {
-    RosterDetail(player: players[0])
+    NewDetail(new: noticias[1])
 }

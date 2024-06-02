@@ -7,10 +7,6 @@ struct Noticia: Hashable, Codable, Identifiable {
     var subTitle: String
     var mainImageName: String
     var by: String
-    var description: String
-    var imgNames: [String]
-    
-    var images: [Image] {
-        imgNames.map{Image($0)}
-    }
+    var date: String
+    var paragraphs: [String]
 }
