@@ -6,5 +6,285 @@
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
         "imgNames": ["Gorra_Azul"]
-    }
+    },
+    {
+        "id": 2,
+        "name": "Gorra Azul y Blanco",
+        "price": 250,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Gorra_AzulyBlanco"]
+    },
+    {
+        "id": 3,
+        "name": "Gorra Blanca",
+        "price": 250,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Gorra_Blanca"]
+    },
+    {
+        "id": 4,
+        "name": "Gorra de Colores",
+        "price": 250,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Gorra_Colores"]
+    },
+    {
+        "id": 5,
+        "name": "Gorra Negra",
+        "price": 250,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Gorra_Negra"]
+    },
+    {
+        "id": 6,
+        "name": "Gorra Plana Azul",
+        "price": 250,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Gorra_Plana_Azul"]
+    },
+    {
+        "id": 7,
+        "name": "Gorra Plana Blanca",
+        "price": 250,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Gorra_Plana_Blanca"]
+    },
+    {
+        "id": 7,
+        "name": "Jersey Azul",
+        "price": 250,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Jersey_Azul"]
+    },
+    {
+        "id": 8,
+        "name": "Jersey Blanco",
+        "price": 750,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Jersey_Blanco", "Jersey_Blanco_B"]
+    },
+    {
+        "id": 9,
+        "name": "Playera Reyes Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Blusa_R_Blanca"]
+    },
+    {
+        "id": 10,
+        "name": "Playera Azul",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Ghost_Azul"]
+    },
+    {
+        "id": 11,
+        "name": "Playera Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Ghost_Blanca"]
+    },
+    {
+        "id": 12,
+        "name": "Playera Amarilla",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_J_Amarilla"]
+    },
+    {
+        "id": 13,
+        "name": "Playera Azul",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_J_Azul"]
+    },
+    {
+        "id": 14,
+        "name": "Playera Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_J_Blanca"]
+    },
+    {
+        "id": 14,
+        "name": "Playera Jalisco Amarilla",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Jal_Amarilla_F", "Playera_Jal_Amarilla_B"]
+    },
+    {
+        "id": 15,
+        "name": "Playera Jalisco Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Jal_Blanca_F", "Playera_Jal_Blanca_B"]
+    },
+    {
+        "id": 16,
+        "name": "Playera Jalisco Azul",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Jalis_Azul"]
+    },
+    {
+        "id": 17,
+        "name": "Playera Jalisco Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Jalis_Blanca"]
+    },
+    {
+        "id": 18,
+        "name": "Playera Jalisco Azul",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Jalr_Azul"]
+    },
+    {
+        "id": 19,
+        "name": "Playera Jalisco Azul",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Jr_Azul"]
+    },
+    {
+        "id": 20,
+        "name": "Playera Jalisco Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Jr_Blanca"]
+    },
+    {
+        "id": 22,
+        "name": "Playera King Azul",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_K_Azul"]
+    },
+    {
+        "id": 23,
+        "name": "Playera King Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_K_Blanca"]
+    },
+    {
+        "id": 24,
+        "name": "Playera King Negra",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_K_Negra"]
+    },
+    {
+        "id": 25,
+        "name": "Playera Larga Vida Al Rey Azul",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_LVAR_Azul"]
+    },
+    {
+        "id": 26,
+        "name": "Playera Larga Vida Al Rey Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_LVAR_Blanca"]
+    },
+    {
+        "id": 27,
+        "name": "Playera Reyes Amarilla",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_R_Amarilla"]
+    },
+    {
+        "id": 28,
+        "name": "Playera Reyes Amarilla",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_R_Amarillo"]
+    },
+    {
+        "id": 29,
+        "name": "Playera Reyes Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_R_Blanca"]
+    },
+    {
+        "id": 30,
+        "name": "Playera Reyes Amarilla",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Reyes_Amarilla"]
+    },
+    {
+        "id": 31,
+        "name": "Playera Reyes Blanca",
+        "price": 350,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Playera_Reyes_Blanca"]
+    },
+    {
+        "id": 32,
+        "name": "Sudadera",
+        "price": 550,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Sudadera"]
+    },
+    {
+        "id": 33,
+        "name": "Vaso Jal",
+        "price": 300,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Vaso_Jal"]
+    },
+    {
+        "id": 35,
+        "name": "Vaso Reyes",
+        "price": 300,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Vaso_Reyes"]
+    },
+    {
+        "id": 36,
+        "name": "Vaso Shippy",
+        "price": 300,
+        "size": "L",
+        "description": "Esta es una descripción de prueba de este artículo",
+        "imgNames": ["Vaso_Shippy"]
+    },
 ]
