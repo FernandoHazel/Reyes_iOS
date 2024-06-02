@@ -29,7 +29,9 @@ struct Rewards: View {
             .padding()
             
             Image("barra de progreso-sf")
-                .padding()
+                .resizable()
+                .frame(width: 350, height: 50)
+                .padding(.vertical)
             
             Button(action: {
                 showRewardOnboarding.toggle()

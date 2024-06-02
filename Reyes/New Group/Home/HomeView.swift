@@ -4,7 +4,7 @@ struct HomeView: View {
     @State private var showRewardOnboarding = false
     
     var body: some View {
-        NavigationView {
+    NavigationView {
             ScrollView {
                 NextGameView()
                 Rewards(showRewardOnboarding: $showRewardOnboarding)
@@ -12,8 +12,10 @@ struct HomeView: View {
                         RewardsOnboarding()
                     }
                 Promos()
+                    .padding(.horizontal)
             }
         }
+        
     }
 }
 
