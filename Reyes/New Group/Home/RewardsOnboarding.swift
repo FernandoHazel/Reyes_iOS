@@ -13,13 +13,12 @@ struct RewardsOnboarding: View {
             VStack {
                 Image(rewardInstruction.image)
                     .resizable()
-                    .frame(width: 200, height: 200)
-                    .padding()
+                    .frame(width: 150, height: 100)
                 Text(rewardInstruction.title)
                     .bold()
+                    .padding()
                 Text(rewardInstruction.text)
                     .multilineTextAlignment(.center)
-                    .padding()
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
