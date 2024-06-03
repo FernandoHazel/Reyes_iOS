@@ -94,10 +94,28 @@ struct RosterDetail: View {
                 .font(.title2)
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(player.about)
-                .padding(.horizontal)
-            Carousel(photosNames: player.imgNames)
-                .frame(width: 400, height: 300)
+            
+            VStack {
+                if(player.about != []){
+                    ForEach(player.about, id: \.self) { paragraph in
+                        Text(paragraph)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                    }
+                }else{
+                    Text("No hay información disponible")
+                }
+            }
+
+            
+            if(player.imgNames != []){
+                Carousel(photosNames: player.imgNames)
+                    .frame(width: 400, height: 300)
+            } else {
+                Text("No hay fotos disponibles")
+                    .padding(20)
+            }
+            
         }
     }
 }

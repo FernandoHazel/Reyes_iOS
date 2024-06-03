@@ -2,20 +2,20 @@ import Foundation
 import SwiftUI
 
 struct Player: Hashable, Codable, Identifiable {
-    var id: Int
-    var number: Int
-    var profileImageName: String
-    var name: String
-    var pos: String
-    var weight: Double
-    var height: Double
-    var age: Int
-    var procedence: String
-    var lfa: Int
-    var status: String
-    var group: String
-    var about: String
-    var imgNames: [String]
+    let id: Int
+    let number: Int
+    let profileImageName: String
+    let name: String
+    let pos: String
+    let weight: Double
+    let height: Double
+    let age: Int
+    let procedence: String
+    let lfa: Int
+    let status: String
+    let group: String
+    let about: [String]
+    let imgNames: [String]
     
     var images: [Image] {
         imgNames.map{Image($0)}

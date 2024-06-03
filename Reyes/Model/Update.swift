@@ -9,6 +9,13 @@ import Foundation
 import SwiftUI
 
 struct Update: Hashable, Codable, Identifiable {
-    var id: Int
-    var image: String
+    let id: Int
+    let image: String
+    
+    /*
+    init(id: UUID = UUID(), image: String) {
+            self.id = id
+            self.image = image
+        }
+     */
 }

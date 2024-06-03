@@ -7,7 +7,7 @@ struct RosterRow: View {
         HStack {
             Text(String(player.number))
                 .bold()
-                .font(.title)
+                .font(.system(size: 20))
             
             Image(player.profileImageName)
                 .resizable()
@@ -17,18 +17,24 @@ struct RosterRow: View {
             VStack {
                 Text(player.name)
                     .bold()
+                    .font(.system(size: 14))
+                
                 HStack {
                     Text(String(player.height) + "mts")
                         .font(.caption)
+                    
                     Text(String(player.weight) + "Kgs")
                         .font(.caption)
                 }
-                .offset(x: -10)
+                .padding(.top)
+                
             }
+            
+            Spacer()
             
             Text(player.pos)
                 .bold()
-                .font(.title)
+                .font(.system(size: 20))
         }
         Divider()
     }
