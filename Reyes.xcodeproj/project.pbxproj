@@ -60,6 +60,10 @@
 		038CF9A42C0D3318001FD798 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038CF9A32C0D3318001FD798 /* Update.swift */; };
 		03A8D0E72C0BE2990092E05A /* ActualGame.json in Resources */ = {isa = PBXBuildFile; fileRef = 03A8D0E62C0BE2990092E05A /* ActualGame.json */; };
 		03A8D0E92C0BE31A0092E05A /* ActualGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8D0E82C0BE31A0092E05A /* ActualGame.swift */; };
+		03C792322C114CD7004B8BAF /* Staff.json in Resources */ = {isa = PBXBuildFile; fileRef = 03C792312C114CD6004B8BAF /* Staff.json */; };
+		03C792342C114DB5004B8BAF /* StaffMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C792332C114DB5004B8BAF /* StaffMember.swift */; };
+		03C792362C114E5F004B8BAF /* StaffMemberDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C792352C114E5F004B8BAF /* StaffMemberDetail.swift */; };
+		03C792382C114FB5004B8BAF /* StaffMemberRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C792372C114FB5004B8BAF /* StaffMemberRow.swift */; };
 		03E515132BB7B7E700F16898 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E515122BB7B7E700F16898 /* GameView.swift */; };
 		03E515152BB7BB5800F16898 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E515142BB7BB5800F16898 /* Calendar.swift */; };
 		03E515172BB7BBF000F16898 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E515162BB7BBF000F16898 /* Game.swift */; };
@@ -113,6 +117,10 @@
 		038CF9A32C0D3318001FD798 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
 		03A8D0E62C0BE2990092E05A /* ActualGame.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ActualGame.json; sourceTree = "<group>"; };
 		03A8D0E82C0BE31A0092E05A /* ActualGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualGame.swift; sourceTree = "<group>"; };
+		03C792312C114CD6004B8BAF /* Staff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Staff.json; sourceTree = "<group>"; };
+		03C792332C114DB5004B8BAF /* StaffMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffMember.swift; sourceTree = "<group>"; };
+		03C792352C114E5F004B8BAF /* StaffMemberDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffMemberDetail.swift; sourceTree = "<group>"; };
+		03C792372C114FB5004B8BAF /* StaffMemberRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffMemberRow.swift; sourceTree = "<group>"; };
 		03E515122BB7B7E700F16898 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		03E515142BB7BB5800F16898 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		03E515162BB7BBF000F16898 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -196,6 +204,7 @@
 		033AA5462B8156550023FC54 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03C792312C114CD6004B8BAF /* Staff.json */,
 				030F87142C0CF29D0082BD59 /* RewardsOnboarding.json */,
 				03A8D0E62C0BE2990092E05A /* ActualGame.json */,
 				038CF9A12C0D32DE001FD798 /* Updates.json */,
@@ -218,6 +227,7 @@
 				0329A7CF2BB8894600B8D730 /* Player.swift */,
 				030F87162C0CF5070082BD59 /* RewardInstruction.swift */,
 				038CF9A32C0D3318001FD798 /* Update.swift */,
+				03C792332C114DB5004B8BAF /* StaffMember.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,6 +317,8 @@
 				0329A7C92BB8848200B8D730 /* RosterList.swift */,
 				0329A7CB2BB884A900B8D730 /* RosterRow.swift */,
 				0329A7CD2BB884B900B8D730 /* RosterDetail.swift */,
+				03C792352C114E5F004B8BAF /* StaffMemberDetail.swift */,
+				03C792372C114FB5004B8BAF /* StaffMemberRow.swift */,
 			);
 			path = Roster;
 			sourceTree = "<group>";
@@ -417,6 +429,7 @@
 			files = (
 				030F87152C0CF29D0082BD59 /* RewardsOnboarding.json in Resources */,
 				033DC4FF2B7B05E200D591D7 /* Preview Assets.xcassets in Resources */,
+				03C792322C114CD7004B8BAF /* Staff.json in Resources */,
 				03E5151E2BB7CD7E00F16898 /* Games.json in Resources */,
 				03A8D0E72C0BE2990092E05A /* ActualGame.json in Resources */,
 				038CF9A22C0D32DE001FD798 /* Updates.json in Resources */,
@@ -463,6 +476,7 @@
 				0329A7CC2BB884A900B8D730 /* RosterRow.swift in Sources */,
 				0329A7CE2BB884B900B8D730 /* RosterDetail.swift in Sources */,
 				032A68682B800D2900E67771 /* ProductDetail.swift in Sources */,
+				03C792382C114FB5004B8BAF /* StaffMemberRow.swift in Sources */,
 				03E515172BB7BBF000F16898 /* Game.swift in Sources */,
 				0329A7D02BB8894600B8D730 /* Player.swift in Sources */,
 				038CF9A42C0D3318001FD798 /* Update.swift in Sources */,
@@ -475,6 +489,7 @@
 				0307C0C62B8BCECB004E5D17 /* SingIn.swift in Sources */,
 				037A4F7F2B7EDAE80056EB6D /* NotificationManager.swift in Sources */,
 				0307C0C82B8BCEE3004E5D17 /* SingUp.swift in Sources */,
+				03C792362C114E5F004B8BAF /* StaffMemberDetail.swift in Sources */,
 				030CEE1E2BB5EDAC00D2E0D7 /* Main.swift in Sources */,
 				0353438C2B7BC7D00015AF1F /* TestButtons.swift in Sources */,
 				0329A7CA2BB8848200B8D730 /* RosterList.swift in Sources */,
@@ -494,6 +509,7 @@
 				03E515152BB7BB5800F16898 /* Calendar.swift in Sources */,
 				03E515132BB7B7E700F16898 /* GameView.swift in Sources */,
 				033AA54E2B816E8E0023FC54 /* ProductRow.swift in Sources */,
+				03C792342C114DB5004B8BAF /* StaffMember.swift in Sources */,
 				030F87172C0CF5070082BD59 /* RewardInstruction.swift in Sources */,
 				03A8D0E92C0BE31A0092E05A /* ActualGame.swift in Sources */,
 				034FF5C62C0CE52F0036DDC5 /* Rewards.swift in Sources */,

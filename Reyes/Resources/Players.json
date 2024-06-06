@@ -1,5 +1,21 @@
 [
     {
+        "id": 0,
+        "number": 0,
+        "profileImageName": "mvp",
+        "name": "Tavares Martin Jr",
+        "pos": "WR",
+        "weight": 97,
+        "height": 1.98,
+        "age": 27,
+        "procedence": "Utha State",
+        "lfa": 2,
+        "status": "Activo",
+        "group": "Ofensiva",
+        "about": [],
+        "imgNames": []
+    },
+    {
         "id": 1,
         "number": 1,
         "profileImageName": "mvp",
@@ -44,22 +60,6 @@
         "lfa": 3,
         "status": "Activo",
         "group": "Defensiva",
-        "about": [],
-        "imgNames": []
-    },
-    {
-        "id": 4,
-        "number": 4,
-        "profileImageName": "mvp",
-        "name": "Majid Alejando Esparza De La Torre",
-        "pos": "RB",
-        "weight": 88,
-        "height": 1.75,
-        "age": 25,
-        "procedence": "Borregos GDL",
-        "lfa": 3,
-        "status": "Activo",
-        "group": "Ofensiva",
         "about": [],
         "imgNames": []
     },

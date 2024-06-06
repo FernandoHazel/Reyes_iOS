@@ -1,12 +1,13 @@
 import Foundation
 
-var products: [Product] = load("Products.json")
-var games: [Game] = load("Games.json")
-var players: [Player] = load("Players.json")
-var noticias: [Noticia] = load("News.json")
-var actualGames: [ActualGame] = load("ActualGame.json")
-var rewardsInstructions: [RewardInstruction] = load("RewardsOnboarding.json")
+let products: [Product] = load("Products.json")
+let games: [Game] = load("Games.json")
+let players: [Player] = load("Players.json")
+let noticias: [Noticia] = load("News.json")
+let actualGames: [ActualGame] = load("ActualGame.json")
+let rewardsInstructions: [RewardInstruction] = load("RewardsOnboarding.json")
 var updates: [Update] = load("Updates.json")
+var staff: [StaffMember] = load("Staff.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
