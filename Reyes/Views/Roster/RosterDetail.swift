@@ -63,6 +63,7 @@ struct RosterDetail: View {
                             .bold()
                         Text(player.procedence)
                             .frame(width: 100)
+                            .lineLimit(1)
                             .multilineTextAlignment(.center)
                     }
                     Spacer()
@@ -120,5 +121,5 @@ struct RosterDetail: View {
 }
 
 #Preview {
-    RosterDetail(player: players[0])
+    RosterDetail(player: players[22])
 }

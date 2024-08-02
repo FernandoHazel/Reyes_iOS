@@ -11,17 +11,24 @@ struct StaffMemberRow: View {
                 .cornerRadius(10)
             
             VStack {
-                Text(staffMember.name)
-                    .bold()
-                    .font(.system(size: 14))
+                Spacer()
+                HStack {
+                    Text(staffMember.name)
+                        .bold()
+                        .font(.system(size: 20))
+                    Spacer()
+                }
+                Spacer()
+                HStack {
+                    Text(staffMember.rol)
+                        .bold()
+                        .font(.system(size: 14))
+                    Spacer()
+                }
                 
+                Spacer()
             }
-            
             Spacer()
-            
-            Text(staffMember.rol)
-                .bold()
-                .font(.system(size: 20))
         }
         Divider()
     }
