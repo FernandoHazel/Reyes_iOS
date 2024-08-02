@@ -1,21 +1,11 @@
-//
-//  ContentView.swift
-//  Reyes
-//
-//  Created by Fernando Hazel Ascencio Baumgarten on 01/08/24.
-//
-
 import SwiftUI
+
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        HStack{
+            Main()
         }
-        .padding()
     }
 }
 
