@@ -1,18 +1,14 @@
 [
     {
         "id": 0,
-        "image": "Academia"
+        "image": "Updates/Academia.png"
     },
     {
         "id": 1,
-        "image": "miniA"
+        "image": "Updates/miniA"
     },
     {
         "id": 2,
-        "image": "psic"
-    },
-    {
-        "id": 3,
-        "image": "svM"
+        "image": "Updates/psic"
     }
 ]

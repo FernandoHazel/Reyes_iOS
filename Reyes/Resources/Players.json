@@ -2,7 +2,7 @@
     {
         "id": 0,
         "number": 0,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/00.png",
         "name": "Tavares Martin Jr",
         "pos": "WR",
         "weight": 97,
@@ -18,7 +18,7 @@
     {
         "id": 1,
         "number": 1,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/01.png",
         "name": "Devin Brian Heckstall",
         "pos": "WR",
         "weight": 97,
@@ -34,7 +34,7 @@
     {
         "id": 2,
         "number": 2,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/02.png",
         "name": "Rodnell Jamal Cruell",
         "pos": "WR",
         "weight": 82,
@@ -50,7 +50,7 @@
     {
         "id": 3,
         "number": 3,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/03.png",
         "name": "Devonni Ke Shawn Reed",
         "pos": "DB",
         "weight": 88,
@@ -66,7 +66,7 @@
     {
         "id": 4,
         "number": 4,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/04.png",
         "name": "Majid Alejando Esparza De La Torre",
         "pos": "RB",
         "weight": 88,
@@ -82,7 +82,7 @@
     {
         "id": 5,
         "number": 5,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/05.png",
         "name": "Shaq Bond",
         "pos": "DB",
         "weight": 83,
@@ -98,7 +98,7 @@
     {
         "id": 6,
         "number": 6,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/06.png",
         "name": "Salvador Cabrera Minutti",
         "pos": "DB",
         "weight": 93,
@@ -114,7 +114,7 @@
     {
         "id": 7,
         "number": 7,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/07.png",
         "name": "Denzel Laron Washington",
         "pos": "DB",
         "weight": 92,
@@ -130,7 +130,7 @@
     {
         "id": 8,
         "number": 8,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/08.png",
         "name": "Raúl Reyes Nuncio",
         "pos": "QB",
         "weight": 82,
@@ -146,7 +146,7 @@
     {
         "id": 9,
         "number": 9,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/09.png",
         "name": "Caleb Guillermo Manuel Becerra Espinoza",
         "pos": "LB",
         "weight": 90,
@@ -162,7 +162,7 @@
     {
         "id": 10,
         "number": 10,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/10.png",
         "name": "Miguel Angel Aguilar Pasten",
         "pos": "LB",
         "weight": 102,
@@ -178,7 +178,7 @@
     {
         "id": 11,
         "number": 11,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/11.png",
         "name": "Jorge Licea Jiménez",
         "pos": "DL",
         "weight": 103,
@@ -194,7 +194,7 @@
     {
         "id": 12,
         "number": 12,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/12.png",
         "name": "Carlos Enrique Cuenca García",
         "pos": "WR",
         "weight": 88,
@@ -210,7 +210,7 @@
     {
         "id": 13,
         "number": 13,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/13.png",
         "name": "Enrique Gerardo Jenny Romero",
         "pos": "K",
         "weight": 111,
@@ -226,7 +226,7 @@
     {
         "id": 14,
         "number": 14,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/14.png",
         "name": "Antonio Hernández Silva",
         "pos": "WR",
         "weight": 91,
@@ -242,7 +242,7 @@
     {
         "id": 15,
         "number": 15,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/15.png",
         "name": "Esequiel Morales Espinoza",
         "pos": "RB",
         "weight": 96,
@@ -258,7 +258,7 @@
     {
         "id": 16,
         "number": 16,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/16.png",
         "name": "Victor Manuel De Luna Woo",
         "pos": "WR",
         "weight": 80,
@@ -274,7 +274,7 @@
     {
         "id": 17,
         "number": 17,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/17.png",
         "name": "José Luis Leal Díaz",
         "pos": "WR",
         "weight": 84,
@@ -290,7 +290,7 @@
     {
         "id": 18,
         "number": 18,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/18.png",
         "name": "Matthew Nicholas Vitale",
         "pos": "QB",
         "weight": 74,
@@ -306,7 +306,7 @@
     {
         "id": 19,
         "number": 19,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/19.png",
         "name": "Christopher Alejandro Reyes García",
         "pos": "QB",
         "weight": 83,
@@ -322,7 +322,7 @@
     {
         "id": 21,
         "number": 21,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/21.png",
         "name": "Daniel Eduardo Islas Alvarado",
         "pos": "DB",
         "weight": 80,
@@ -338,7 +338,7 @@
     {
         "id": 22,
         "number": 22,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/22.png",
         "name": "Deandre Chris Elliot",
         "pos": "DB",
         "weight": 77,
@@ -354,7 +354,7 @@
     {
         "id": 23,
         "number": 23,
-        "profileImageName": "mvp",
+        "profileImageName": "23",
         "name": "Keantos Levonte Bates",
         "pos": "DB",
         "weight": 86,
@@ -370,7 +370,7 @@
     {
         "id": 24,
         "number": 24,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/24.png",
         "name": "Juan Francisco Pérez García",
         "pos": "LB",
         "weight": 95,
@@ -386,7 +386,7 @@
     {
         "id": 26,
         "number": 26,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/26.png",
         "name": "Luis Daniel Rivera Guzmán",
         "pos": "DB",
         "weight": 80,
@@ -402,7 +402,7 @@
     {
         "id": 28,
         "number": 28,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/28.png",
         "name": "Aldair López Ibarra",
         "pos": "RB",
         "weight": 80,
@@ -418,7 +418,7 @@
     {
         "id": 30,
         "number": 30,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/30.png",
         "name": "Saúl Sánchez Paz",
         "pos": "DL",
         "weight": 101,
@@ -434,7 +434,7 @@
     {
         "id": 34,
         "number": 34,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/34.png",
         "name": "Jorge Alejandro Romero Rodríguez",
         "pos": "LB",
         "weight": 96,
@@ -450,7 +450,7 @@
     {
         "id": 38,
         "number": 38,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/38.png",
         "name": "Jordon Montreal Shippy",
         "pos": "RB",
         "weight": 88,
@@ -466,7 +466,7 @@
     {
         "id": 39,
         "number": 39,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/39.png",
         "name": "Brandon Alejandro Cervantes Beristain",
         "pos": "K",
         "weight": 74,
@@ -482,7 +482,7 @@
     {
         "id": 40,
         "number": 40,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/40.png",
         "name": "Victor Gibrán Camacho Rodríguez",
         "pos": "LB",
         "weight": 100,
@@ -498,7 +498,7 @@
     {
         "id": 44,
         "number": 44,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/44.png",
         "name": "Damien Starling Williams",
         "pos": "LB",
         "weight": 98,
@@ -514,7 +514,7 @@
     {
         "id": 52,
         "number": 52,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/52.png",
         "name": "Gabriel Sánchez Paz",
         "pos": "OL",
         "weight": 151,
@@ -530,7 +530,7 @@
     {
         "id": 53,
         "number": 53,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/53.png",
         "name": "Edgar Ramírez Torres",
         "pos": "DL",
         "weight": 100,
@@ -546,7 +546,7 @@
     {
         "id": 55,
         "number": 55,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/55.png",
         "name": "Emmit De Wayne Gooden Jr",
         "pos": "DL",
         "weight": 115,
@@ -562,7 +562,7 @@
     {
         "id": 56,
         "number": 56,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/56.png",
         "name": "Luis Daniel Ceniceros Gutiérrez",
         "pos": "DL",
         "weight": 110,
@@ -578,7 +578,7 @@
     {
         "id": 58,
         "number": 58,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/58.png",
         "name": "Johan Aldair Vázquez Torres",
         "pos": "OL",
         "weight": 134,
@@ -594,7 +594,7 @@
     {
         "id": 59,
         "number": 59,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/59.png",
         "name": "Narciso Jesús Corona Dueñas",
         "pos": "OL",
         "weight": 150,
@@ -610,7 +610,7 @@
     {
         "id": 62,
         "number": 62,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/62.png",
         "name": "Pablo Andrés Gonzáles Valdez",
         "pos": "OL",
         "weight": 125,
@@ -626,7 +626,7 @@
     {
         "id": 70,
         "number": 70,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/70.png",
         "name": "Armando Macías Barajas",
         "pos": "OL",
         "weight": 132,
@@ -642,7 +642,7 @@
     {
         "id": 71,
         "number": 71,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/71.png",
         "name": "Sergio Miguel Trujillo Alrtuzar",
         "pos": "DL",
         "weight": 118,
@@ -658,7 +658,7 @@
     {
         "id": 72,
         "number": 72,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/72.png",
         "name": "Fernando Espinoza Castellanos",
         "pos": "OL",
         "weight": 124,
@@ -674,7 +674,7 @@
     {
         "id": 77,
         "number": 77,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/77.png",
         "name": "Rodrigo Jurado Barbara",
         "pos": "OL",
         "weight": 150,
@@ -690,7 +690,7 @@
     {
         "id": 78,
         "number": 78,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/78.png",
         "name": "Raúl Espinoza Recinos",
         "pos": "OL",
         "weight": 162,
@@ -706,7 +706,7 @@
     {
         "id": 79,
         "number": 79,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/79.png",
         "name": "Alberto Aristides García Medellín",
         "pos": "OL",
         "weight": 130,
@@ -722,7 +722,7 @@
     {
         "id": 81,
         "number": 81,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/81.png",
         "name": "Marco Antonio Caña Cuero",
         "pos": "WR",
         "weight": 81,
@@ -738,7 +738,7 @@
     {
         "id": 86,
         "number": 86,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/86.png",
         "name": "Myles Amron Wright",
         "pos": "TE",
         "weight": 113,
@@ -754,7 +754,7 @@
     {
         "id": 90,
         "number": 90,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/90.png",
         "name": "Manuel Alejandro Mendoza Hernández",
         "pos": "DL",
         "weight": 100,
@@ -770,7 +770,7 @@
     {
         "id": 92,
         "number": 92,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/92.png",
         "name": "Fernando Hazel Ascencio Baumgarten",
         "pos": "DL",
         "weight": 100,
@@ -786,7 +786,7 @@
     {
         "id": 98,
         "number": 98,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/98.png",
         "name": "Weslee Latanoa Moeai",
         "pos": "DL",
         "weight": 136,
@@ -802,7 +802,7 @@
     {
         "id": 99,
         "number": 99,
-        "profileImageName": "mvp",
+        "profileImageName": "Players/99.png",
         "name": "Eishuan Khalil Funnye",
         "pos": "DL",
         "weight": 112,

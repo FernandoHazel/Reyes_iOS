@@ -30,11 +30,11 @@ struct DownloadedImage: View {
         }
     }
     
-    //Fetch the image with a maximum size of 1024 * 1024
+    //Fetch the image with a maximum size
     private func fetchImage() {
         isLoading = true
         let storageRef = Storage.storage().reference(withPath: imagePath)
-        let taskRef = storageRef.getData(maxSize: Int64(1024 * 1024)) { data, error in
+        let taskRef = storageRef.getData(maxSize: Int64(2 * 1024 * 1024)) { data, error in
             if let error = error {
                 print("Error fetching image: \(error.localizedDescription)")
                 return

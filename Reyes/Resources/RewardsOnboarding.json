@@ -1,19 +1,19 @@
 [
     {
         "id": 1,
-        "image": "Corona",
+        "image": "RewardsOnboarding/Corona.png",
         "title": "Acumula coronas",
         "text": "Cada vez que compres algún producto o vengas a alguno de nuestros partidos acumularás 1 corona por cada $10 de consumo. Mientras más coronas acumules mejores serán tus recompensas."
     },
     {
         "id": 2,
-        "image": "medalla",
+        "image": "RewardsOnboarding/medalla.png",
         "title": "Redime Recompensas",
         "text": "Asegurate de que la app se entere de que hiciste una compra, ya sea porque compraste desde la app o si fué una compra en físico escanea el código que te proporcionemos, todo esto mientras estás logueado en tu cuenta."
     },
     {
         "id": 3,
-        "image": "monedasDeOro",
+        "image": "RewardsOnboarding/monedasDeOro.png",
         "title": "Alcanza Nivel Oro",
         "text": "Cuando alcances las 100 coronas obtendrás un artículo gratis de la tienda y cuando alcances las 200 te daremos un boleto gratis. A partir de ahí cada 100 coronas obtendrás una recompensa. Recuerda mencionarle esto a quien te esté atendiendo."
     }

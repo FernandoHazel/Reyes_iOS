@@ -5,7 +5,7 @@
         "price": 250,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Gorra_Azul"]
+        "imgNames": ["Merch/Gorra_Azul.png"]
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "price": 250,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Gorra_AzulyBlanco"]
+        "imgNames": ["Merch/Gorra_AzulyBlanco.png"]
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "price": 250,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Gorra_Blanca"]
+        "imgNames": ["Merch/Gorra_Blanca.png"]
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "price": 250,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Gorra_Colores"]
+        "imgNames": ["Merch/Gorra_Colores.png"]
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "price": 250,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Gorra_Negra"]
+        "imgNames": ["Merch/Gorra_Negra.png"]
     },
     {
         "id": 6,
@@ -45,7 +45,7 @@
         "price": 250,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Gorra_Plana_Azul"]
+        "imgNames": ["Merch/Gorra_Plana_Azul.png"]
     },
     {
         "id": 7,
@@ -53,7 +53,7 @@
         "price": 250,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Gorra_Plana_Blanca"]
+        "imgNames": ["Merch/Gorra_Plana_Blanca.png"]
     },
     {
         "id": 8,
@@ -61,7 +61,7 @@
         "price": 250,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Jersey_Azul"]
+        "imgNames": ["Merch/Jersey_Azul.png"]
     },
     {
         "id": 9,
@@ -69,7 +69,7 @@
         "price": 750,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Jersey_Blanco", "Jersey_Blanco_B"]
+        "imgNames": ["Merch/Jersey_Blanco.png", "Merch/Jersey_Blanco_B.png"]
     },
     {
         "id": 10,
@@ -77,7 +77,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Blusa_R_Blanca"]
+        "imgNames": ["Merch/Blusa_R_Blanca.png"]
     },
     {
         "id": 11,
@@ -85,7 +85,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Ghost_Azul"]
+        "imgNames": ["Merch/Playera_Ghost_Azul.png"]
     },
     {
         "id": 12,
@@ -93,7 +93,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Ghost_Blanca"]
+        "imgNames": ["Merch/Playera_Ghost_Blanca.png"]
     },
     {
         "id": 13,
@@ -101,7 +101,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_J_Amarilla"]
+        "imgNames": ["Merch/Playera_J_Amarilla.png"]
     },
     {
         "id": 14,
@@ -109,7 +109,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_J_Azul"]
+        "imgNames": ["Merch/Playera_J_Azul.png"]
     },
     {
         "id": 15,
@@ -117,7 +117,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_J_Blanca"]
+        "imgNames": ["Merch/Playera_J_Blanca.png"]
     },
     {
         "id": 16,
@@ -125,7 +125,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Jal_Amarilla_F", "Playera_Jal_Amarilla_B"]
+        "imgNames": ["Merch/Playera_Jal_Amarilla_F.png", "Merch/Playera_Jal_Amarilla_B.png"]
     },
     {
         "id": 17,
@@ -133,7 +133,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Jal_Blanca_F", "Playera_Jal_Blanca_B"]
+        "imgNames": ["Merch/Playera_Jal_Blanca_F.png", "Merch/Playera_Jal_Blanca_B.png"]
     },
     {
         "id": 18,
@@ -141,7 +141,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Jalis_Azul"]
+        "imgNames": ["Merch/Playera_Jalis_Azul.png"]
     },
     {
         "id": 19,
@@ -149,7 +149,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Jalis_Blanca"]
+        "imgNames": ["Merch/Playera_Jalis_Blanca.png"]
     },
     {
         "id": 20,
@@ -157,7 +157,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Jalr_Azul"]
+        "imgNames": ["Merch/Playera_Jalr_Azul.png"]
     },
     {
         "id": 21,
@@ -165,7 +165,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Jr_Azul"]
+        "imgNames": ["Merch/Playera_Jr_Azul.png"]
     },
     {
         "id": 22,
@@ -173,7 +173,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Jr_Blanca"]
+        "imgNames": ["Merch/Playera_Jr_Blanca.png"]
     },
     {
         "id": 23,
@@ -181,7 +181,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_K_Azul"]
+        "imgNames": ["Merch/Playera_K_Azul.png"]
     },
     {
         "id": 24,
@@ -189,7 +189,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_K_Blanca"]
+        "imgNames": ["Merch/Playera_K_Blanca.png"]
     },
     {
         "id": 25,
@@ -197,7 +197,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_K_Negra"]
+        "imgNames": ["Merch/Playera_K_Negra.png"]
     },
     {
         "id": 26,
@@ -205,7 +205,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_LVAR_Azul"]
+        "imgNames": ["Merch/Playera_LVAR_Azul.png"]
     },
     {
         "id": 27,
@@ -213,7 +213,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_LVAR_Blanca"]
+        "imgNames": ["Merch/Playera_LVAR_Blanca.png"]
     },
     {
         "id": 28,
@@ -221,7 +221,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_R_Amarilla"]
+        "imgNames": ["Merch/Playera_R_Amarilla.png"]
     },
     {
         "id": 29,
@@ -229,7 +229,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_R_Amarillo"]
+        "imgNames": ["Merch/Playera_R_Amarillo.png"]
     },
     {
         "id": 30,
@@ -237,7 +237,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_R_Blanca"]
+        "imgNames": ["Merch/Playera_R_Blanca.png"]
     },
     {
         "id": 31,
@@ -245,7 +245,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Reyes_Amarilla"]
+        "imgNames": ["Merch/Playera_Reyes_Amarilla.png"]
     },
     {
         "id": 32,
@@ -253,7 +253,7 @@
         "price": 350,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Playera_Reyes_Blanca"]
+        "imgNames": ["Merch/Playera_Reyes_Blanca.png"]
     },
     {
         "id": 33,
@@ -261,7 +261,7 @@
         "price": 550,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Sudadera"]
+        "imgNames": ["Merch/Sudadera.png"]
     },
     {
         "id": 34,
@@ -269,7 +269,7 @@
         "price": 300,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Vaso_Jal"]
+        "imgNames": ["Merch/Vaso_Jal.png"]
     },
     {
         "id": 35,
@@ -277,7 +277,7 @@
         "price": 300,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Vaso_Reyes"]
+        "imgNames": ["Merch/Vaso_Reyes.png"]
     },
     {
         "id": 36,
@@ -285,6 +285,6 @@
         "price": 300,
         "size": "L",
         "description": "Esta es una descripción de prueba de este artículo",
-        "imgNames": ["Vaso_Shippy"]
+        "imgNames": ["Merch/Vaso_Shippy.png"]
     },
 ]
