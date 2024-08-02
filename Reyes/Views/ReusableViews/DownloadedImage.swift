@@ -2,7 +2,7 @@ import SwiftUI
 import FirebaseStorage
 
 struct DownloadedImage: View {
-    @Binding var imagePath: String
+    var imagePath: String
     @State private var image: UIImage? = nil
     @State private var isLoading = false
     @State private var progress: Float = 0.0
@@ -37,6 +37,8 @@ struct DownloadedImage: View {
         let taskRef = storageRef.getData(maxSize: Int64(2 * 1024 * 1024)) { data, error in
             if let error = error {
                 print("Error fetching image: \(error.localizedDescription)")
+                image = UIImage(named: "defoultImage")
+                isLoading = false
                 return
             }
             
@@ -63,10 +65,10 @@ struct DownloadedImage_Previews: PreviewProvider {
     }
 
     struct PreviewWrapper: View {
-        @State private var imagePath: String = "Players/01.png"
+        private var imagePath: String = "Players/02.png"
 
         var body: some View {
-            DownloadedImage(imagePath: $imagePath)
+            DownloadedImage(imagePath: imagePath)
         }
     }
 }

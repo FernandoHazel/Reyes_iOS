@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct GameView: View {
-    let game: Game
+    var reyesLogo: String = "TeamLogos/Reyes_icon.png"
+    @State private var teamImage: String = ""
+    var game: Game
     
     var body: some View {
         VStack {
@@ -9,8 +11,7 @@ struct GameView: View {
                 .bold()
             HStack {
                 VStack {
-                    Image("Reyes_icon")
-                        .resizable()
+                    DownloadedImage(imagePath: reyesLogo)
                         .frame(width: 80, height: 80)
                     Text(String(game.qrt_4_reyes))
                 }
@@ -28,8 +29,11 @@ struct GameView: View {
                 }
                 Spacer()
                 VStack {
-                    Image((game.teamImageName != "") ? game.teamImageName : "Reyes_icon")
-                        .resizable()
+                    
+                    /*
+                    teamImage = (game.teamImageName != "") ? game.teamImageName : $reyesLogo
+                    */
+                    DownloadedImage(imagePath: game.teamImageName)
                         .frame(width: 80, height: 80)
                     Text(String(game.qrt_4_team))
                 }
@@ -39,7 +43,17 @@ struct GameView: View {
     }
 }
 
+struct GameView_Previews: PreviewProvider {
+    static var previews: some View {
+        // Contenedor para el preview
+        PreviewWrapper()
+    }
 
-#Preview {
-    GameView(game: games[4])
+    struct PreviewWrapper: View {
+        var game: Game = games[4]
+
+        var body: some View {
+            GameView(game: game)
+        }
+    }
 }
