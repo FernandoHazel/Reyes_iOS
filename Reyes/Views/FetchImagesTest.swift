@@ -58,9 +58,9 @@ struct FetchImagesTest: View {
             //Download functionality
             Button(action: {
                 //Define the storage reference path
-                let storageRef = Storage.storage().reference(withPath: "Players/99.png")
+                let storageRef = Storage.storage().reference(withPath: "Players/02.png")
                 //Set a maximum size to reject very large files, we can also observe the task
-                let taskRef = storageRef.getData(maxSize: 20 * 1024 * 1024) { (data, error) in
+                let taskRef = storageRef.getData(maxSize: 4 * 1024 * 1024) { (data, error) in
                     if let error = error {
                         print("Error fetching image: \(error.localizedDescription)")
                         return

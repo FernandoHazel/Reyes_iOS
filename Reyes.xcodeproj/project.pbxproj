@@ -19,7 +19,6 @@
 		0531F1312C5C6B9F00E11C1C /* FetchImagesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1302C5C6B9F00E11C1C /* FetchImagesTest.swift */; };
 		0531F13D2C5C6E2600E11C1C /* ActualGame.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1322C5C6E2500E11C1C /* ActualGame.json */; };
 		0531F13E2C5C6E2600E11C1C /* Games.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1332C5C6E2500E11C1C /* Games.json */; };
-		0531F13F2C5C6E2600E11C1C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1342C5C6E2500E11C1C /* Model.xcdatamodeld */; };
 		0531F1402C5C6E2600E11C1C /* News.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1352C5C6E2500E11C1C /* News.json */; };
 		0531F1412C5C6E2600E11C1C /* Players.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1362C5C6E2500E11C1C /* Players.json */; };
 		0531F1422C5C6E2600E11C1C /* Products.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1372C5C6E2500E11C1C /* Products.json */; };
@@ -60,6 +59,7 @@
 		0531F18F2C5C6E5200E11C1C /* NewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1752C5C6E5200E11C1C /* NewDetail.swift */; };
 		0531F1902C5C6E5200E11C1C /* NewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1762C5C6E5200E11C1C /* NewRow.swift */; };
 		0531F1912C5C6E5200E11C1C /* NewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1772C5C6E5200E11C1C /* NewsList.swift */; };
+		059F24A32C5D2C3500B0EC85 /* DownloadedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F24A22C5D2C3500B0EC85 /* DownloadedImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +100,6 @@
 		0531F1382C5C6E2500E11C1C /* RewardsOnboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RewardsOnboarding.json; sourceTree = "<group>"; };
 		0531F1392C5C6E2500E11C1C /* Staff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Staff.json; sourceTree = "<group>"; };
 		0531F13A2C5C6E2500E11C1C /* Updates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Updates.json; sourceTree = "<group>"; };
-		0531F13C2C5C6E2500E11C1C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0531F1462C5C6E3A00E11C1C /* ActualGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActualGame.swift; sourceTree = "<group>"; };
 		0531F1472C5C6E3A00E11C1C /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		0531F1482C5C6E3A00E11C1C /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -135,6 +134,7 @@
 		0531F1752C5C6E5200E11C1C /* NewDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDetail.swift; sourceTree = "<group>"; };
 		0531F1762C5C6E5200E11C1C /* NewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRow.swift; sourceTree = "<group>"; };
 		0531F1772C5C6E5200E11C1C /* NewsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsList.swift; sourceTree = "<group>"; };
+		059F24A22C5D2C3500B0EC85 /* DownloadedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,7 +251,6 @@
 			children = (
 				0531F1322C5C6E2500E11C1C /* ActualGame.json */,
 				0531F1332C5C6E2500E11C1C /* Games.json */,
-				0531F1342C5C6E2500E11C1C /* Model.xcdatamodeld */,
 				0531F1352C5C6E2500E11C1C /* News.json */,
 				0531F1362C5C6E2500E11C1C /* Players.json */,
 				0531F1372C5C6E2500E11C1C /* Products.json */,
@@ -306,6 +305,7 @@
 				0531F1632C5C6E5200E11C1C /* Carousel.swift */,
 				0531F1642C5C6E5200E11C1C /* CircleImage.swift */,
 				0531F1652C5C6E5200E11C1C /* VideoView.swift */,
+				059F24A22C5D2C3500B0EC85 /* DownloadedImage.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -519,8 +519,8 @@
 				0531F1852C5C6E5200E11C1C /* RosterList.swift in Sources */,
 				0531F1312C5C6B9F00E11C1C /* FetchImagesTest.swift in Sources */,
 				0531F17F2C5C6E5200E11C1C /* Main.swift in Sources */,
+				059F24A32C5D2C3500B0EC85 /* DownloadedImage.swift in Sources */,
 				0531F1912C5C6E5200E11C1C /* NewsList.swift in Sources */,
-				0531F13F2C5C6E2600E11C1C /* Model.xcdatamodeld in Sources */,
 				0531F18A2C5C6E5200E11C1C /* ProductRow.swift in Sources */,
 				0531F18C2C5C6E5200E11C1C /* Calendar.swift in Sources */,
 				0531F1522C5C6E3A00E11C1C /* ModelData.swift in Sources */,
@@ -885,20 +885,6 @@
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		0531F1342C5C6E2500E11C1C /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0531F13C2C5C6E2500E11C1C /* Model.xcdatamodel */,
-			);
-			currentVersion = 0531F13C2C5C6E2500E11C1C /* Model.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = /Users/mx49983/Desktop/DebugProjectReyes/Reyes/Reyes/Resources/Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0531F0F42C5C0BDC00E11C1C /* Project object */;
 }
