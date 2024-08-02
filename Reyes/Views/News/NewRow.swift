@@ -5,8 +5,7 @@ struct NewRow: View {
     
     var body: some View {
         
-        Image(new.mainImageName)
-            .resizable()
+        DownloadedImage(imagePath: new.mainImageName)
             .scaledToFill()
             .overlay(alignment: .bottom){
                 NewCaption(new: new)

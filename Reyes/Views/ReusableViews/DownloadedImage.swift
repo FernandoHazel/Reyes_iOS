@@ -14,7 +14,7 @@ struct DownloadedImage: View {
             if isLoading {
                 ProgressView(value: progress)
                     .progressViewStyle(CircularProgressViewStyle())
-                    .frame(width: 100, height: 100)
+                    .scaledToFit()
             } else if let image = image {
                 Image(uiImage: image)
                     .resizable()

@@ -6,8 +6,7 @@ struct StaffMemberRow: View {
     var body: some View {
         HStack {
             
-            Image(staffMember.profileImageName)
-                .resizable()
+            DownloadedImage(imagePath: staffMember.profileImageName)
                 .frame(width: 100, height: 100)
                 .cornerRadius(10)
             

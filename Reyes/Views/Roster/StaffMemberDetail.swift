@@ -5,8 +5,7 @@ struct StaffMemberDetail: View {
     
     var body: some View {
         ScrollView {
-            Image(staffMember.profileImageName)
-                .resizable()
+            DownloadedImage(imagePath: staffMember.profileImageName)
                 .scaledToFit()
             
             HStack {

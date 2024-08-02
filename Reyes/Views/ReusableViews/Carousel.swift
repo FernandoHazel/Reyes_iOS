@@ -13,8 +13,7 @@ struct Carousel: View {
     var body: some View {
         TabView {
             ForEach(photosNames, id: \.self) { photo in
-                Image(photo)
-                    .resizable()
+                DownloadedImage(imagePath: photo)
                     .aspectRatio(contentMode: .fit)
                     .padding(.horizontal)
                     
@@ -25,5 +24,5 @@ struct Carousel: View {
 }
 
 #Preview {
-    Carousel(photosNames: ["gorra-azul", "playera-azul", "sudadera-azul"])
+    Carousel(photosNames: ["Merch/Playera_Ghost_Azul.png", "Merch/Playera_Ghost_Blanca.png", "Merch/Playera_J_Amarilla.png"])
 }

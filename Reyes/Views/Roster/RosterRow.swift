@@ -9,8 +9,7 @@ struct RosterRow: View {
                 .bold()
                 .font(.system(size: 20))
             
-            Image(player.profileImageName)
-                .resizable()
+            DownloadedImage(imagePath: player.profileImageName)
                 .frame(width: 100, height: 100)
                 .cornerRadius(10)
             

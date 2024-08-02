@@ -5,8 +5,7 @@ struct NewDetail: View {
     
     var body: some View {
         ScrollView {
-            Image(new.mainImageName)
-                .resizable()
+            DownloadedImage(imagePath: new.mainImageName)
                 .scaledToFit()
             
             HStack {

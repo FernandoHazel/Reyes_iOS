@@ -5,8 +5,7 @@ struct RosterDetail: View {
     
     var body: some View {
         ScrollView {
-            Image(player.profileImageName)
-                .resizable()
+            DownloadedImage(imagePath: player.profileImageName)
                 .scaledToFit()
             
             HStack {

@@ -13,13 +13,11 @@ struct Updates: View {
         
         ForEach(updates) { update in
             NavigationLink {
-                Image(update.image)
-                    .resizable()
+                DownloadedImage(imagePath: update.image)
                     .frame(maxWidth: .infinity)
                     .aspectRatio(contentMode: .fit)
             } label: {
-                Image(update.image)
-                    .resizable()
+                DownloadedImage(imagePath: update.image)
                     .scaledToFill()
                     .cornerRadius(10)
                     .frame(maxWidth: .infinity)

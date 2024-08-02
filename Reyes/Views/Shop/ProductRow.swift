@@ -5,8 +5,7 @@ struct ProductRow: View {
     
     var body: some View {
         
-        Image(product.imgNames[0])
-            .resizable()
+        DownloadedImage(imagePath: product.imgNames[0])
             .scaledToFit()
             .overlay(alignment: .bottom){
                 Caption(text: product.name, price: product.price)
