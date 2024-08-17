@@ -6,6 +6,7 @@ struct DownloadedImage: View {
     @State private var image: UIImage? = nil
     @State private var isLoading = false
     @State private var progress: Float = 0.0
+    @State private var alreadyDownloaded = false
     
     var body: some View {
         
@@ -26,7 +27,9 @@ struct DownloadedImage: View {
             }
         }
         .onAppear {
-            fetchImage()
+            if (!alreadyDownloaded){
+                fetchImage()
+            }
         }
     }
     
@@ -45,8 +48,8 @@ struct DownloadedImage: View {
             if let data = data {
                 image = UIImage(data: data)
                 isLoading = false
+                alreadyDownloaded = true
             }
-            
         }
         
         //Console log

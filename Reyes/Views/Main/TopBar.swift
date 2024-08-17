@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TopBar: View {
+    var reyesLogo: String = "TeamLogos/Reyes_icon.png"
     @Binding var showingProfile: Bool
     
     var body: some View {
@@ -15,8 +16,7 @@ struct TopBar: View {
                 }
 
             Spacer()
-            Image("Reyes_icon")
-                .resizable()
+            DownloadedImage(imagePath: reyesLogo)
                 .frame(width: 60, height: 60)
                 .offset(x: -30)
 
@@ -24,6 +24,20 @@ struct TopBar: View {
         }
         .padding(.bottom)
         .background(Color(hex: 014791))
+    }
+}
+
+struct TopBar_Preview: PreviewProvider {
+    static var previews: some View{
+        PreviewWrapper()
+    }
+    
+    struct PreviewWrapper: View {
+        @State var showingProfile = false
+        
+        var body: some View {
+            TopBar(showingProfile: $showingProfile)
+        }
     }
 }
 

@@ -35,7 +35,7 @@ struct RosterList: View {
                         }
                     }
                 }
-                .navigationTitle("Equipo")
+
                 .listStyle(.inset)
 
                 
