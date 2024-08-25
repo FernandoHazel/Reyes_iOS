@@ -17,14 +17,6 @@
 		0531F12A2C5C0C2500E11C1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1292C5C0C2500E11C1C /* GoogleService-Info.plist */; };
 		0531F12E2C5C0ED500E11C1C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0531F12D2C5C0ED500E11C1C /* FirebaseStorage */; };
 		0531F1312C5C6B9F00E11C1C /* FetchImagesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1302C5C6B9F00E11C1C /* FetchImagesTest.swift */; };
-		0531F13D2C5C6E2600E11C1C /* ActualGame.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1322C5C6E2500E11C1C /* ActualGame.json */; };
-		0531F13E2C5C6E2600E11C1C /* Games.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1332C5C6E2500E11C1C /* Games.json */; };
-		0531F1402C5C6E2600E11C1C /* News.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1352C5C6E2500E11C1C /* News.json */; };
-		0531F1412C5C6E2600E11C1C /* Players.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1362C5C6E2500E11C1C /* Players.json */; };
-		0531F1422C5C6E2600E11C1C /* Products.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1372C5C6E2500E11C1C /* Products.json */; };
-		0531F1432C5C6E2600E11C1C /* RewardsOnboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1382C5C6E2500E11C1C /* RewardsOnboarding.json */; };
-		0531F1442C5C6E2600E11C1C /* Staff.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1392C5C6E2500E11C1C /* Staff.json */; };
-		0531F1452C5C6E2600E11C1C /* Updates.json in Resources */ = {isa = PBXBuildFile; fileRef = 0531F13A2C5C6E2500E11C1C /* Updates.json */; };
 		0531F1502C5C6E3A00E11C1C /* ActualGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1462C5C6E3A00E11C1C /* ActualGame.swift */; };
 		0531F1512C5C6E3A00E11C1C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1472C5C6E3A00E11C1C /* Game.swift */; };
 		0531F1522C5C6E3A00E11C1C /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1482C5C6E3A00E11C1C /* ModelData.swift */; };
@@ -96,14 +88,6 @@
 		0531F11C2C5C0BDE00E11C1C /* ReyesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReyesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0531F1292C5C0C2500E11C1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0531F1302C5C6B9F00E11C1C /* FetchImagesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImagesTest.swift; sourceTree = "<group>"; };
-		0531F1322C5C6E2500E11C1C /* ActualGame.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ActualGame.json; sourceTree = "<group>"; };
-		0531F1332C5C6E2500E11C1C /* Games.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Games.json; sourceTree = "<group>"; };
-		0531F1352C5C6E2500E11C1C /* News.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = News.json; sourceTree = "<group>"; };
-		0531F1362C5C6E2500E11C1C /* Players.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Players.json; sourceTree = "<group>"; };
-		0531F1372C5C6E2500E11C1C /* Products.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Products.json; sourceTree = "<group>"; };
-		0531F1382C5C6E2500E11C1C /* RewardsOnboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RewardsOnboarding.json; sourceTree = "<group>"; };
-		0531F1392C5C6E2500E11C1C /* Staff.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Staff.json; sourceTree = "<group>"; };
-		0531F13A2C5C6E2500E11C1C /* Updates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Updates.json; sourceTree = "<group>"; };
 		0531F1462C5C6E3A00E11C1C /* ActualGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActualGame.swift; sourceTree = "<group>"; };
 		0531F1472C5C6E3A00E11C1C /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		0531F1482C5C6E3A00E11C1C /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -259,14 +243,6 @@
 		0531F13B2C5C6E2500E11C1C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0531F1322C5C6E2500E11C1C /* ActualGame.json */,
-				0531F1332C5C6E2500E11C1C /* Games.json */,
-				0531F1352C5C6E2500E11C1C /* News.json */,
-				0531F1362C5C6E2500E11C1C /* Players.json */,
-				0531F1372C5C6E2500E11C1C /* Products.json */,
-				0531F1382C5C6E2500E11C1C /* RewardsOnboarding.json */,
-				0531F1392C5C6E2500E11C1C /* Staff.json */,
-				0531F13A2C5C6E2500E11C1C /* Updates.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -490,17 +466,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0531F1432C5C6E2600E11C1C /* RewardsOnboarding.json in Resources */,
-				0531F1452C5C6E2600E11C1C /* Updates.json in Resources */,
 				0531F1072C5C0BDE00E11C1C /* Preview Assets.xcassets in Resources */,
-				0531F1422C5C6E2600E11C1C /* Products.json in Resources */,
-				0531F1412C5C6E2600E11C1C /* Players.json in Resources */,
-				0531F13E2C5C6E2600E11C1C /* Games.json in Resources */,
 				0531F1042C5C0BDE00E11C1C /* Assets.xcassets in Resources */,
 				0531F12A2C5C0C2500E11C1C /* GoogleService-Info.plist in Resources */,
-				0531F1402C5C6E2600E11C1C /* News.json in Resources */,
-				0531F1442C5C6E2600E11C1C /* Staff.json in Resources */,
-				0531F13D2C5C6E2600E11C1C /* ActualGame.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

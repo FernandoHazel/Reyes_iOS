@@ -31,7 +31,7 @@ func getData<T: Decodable>(collection: String, as type: T.Type) async throws -> 
 
 //----------------------------------------------------------------------------------------------------------------
 //
-//This code below is not used any more but I decided to keep it in case I want to read and upload a json to the db
+//This code below is not used any more but I decided to keep it in case I want to upload a local json to the db
 //
 //----------------------------------------------------------------------------------------------------------------
 
