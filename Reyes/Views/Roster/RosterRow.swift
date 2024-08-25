@@ -39,6 +39,21 @@ struct RosterRow: View {
     }
 }
 
-#Preview {
-    RosterRow(player: players[0])
+struct RosterRow_Previews: PreviewProvider {
+    static var previews: some View {
+        // Contenedor para el preview
+        PreviewWrapper()
+    }
+
+    struct PreviewWrapper: View {
+        @StateObject var vm = AppViewModel()
+
+        var body: some View {
+            RosterRow(player: vm.players[0])
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
+        }
+    }
 }

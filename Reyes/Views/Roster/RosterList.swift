@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct RosterList: View {
+    @EnvironmentObject var vm: AppViewModel
     @State private var selection = "Jugadores"
     
     var body: some View {
@@ -16,35 +17,39 @@ struct RosterList: View {
                 
                 List {
                     if selection == "Jugadores" {
-                        ForEach(players) { player in
-                            NavigationLink {
-                                RosterDetail(player: player)
-                            } label: {
-                                RosterRow(player: player)
-                                    .cornerRadius(10)
+                        if(!vm.players.isEmpty){
+                            ForEach(vm.players) { player in
+                                NavigationLink {
+                                    RosterDetail(player: player)
+                                } label: {
+                                    RosterRow(player: player)
+                                        .cornerRadius(10)
+                                }
                             }
+                        }else{
+                            FetchingView()
                         }
+                        
                     } else {
-                        ForEach(staff) { staffMember in
-                            NavigationLink {
-                                StaffMemberDetail(staffMember: staffMember)
-                            } label: {
-                                StaffMemberRow(staffMember: staffMember)
-                                    .cornerRadius(10)
+                        if(!vm.staff.isEmpty){
+                            ForEach(vm.staff) { staffMember in
+                                NavigationLink {
+                                    StaffMemberDetail(staffMember: staffMember)
+                                } label: {
+                                    StaffMemberRow(staffMember: staffMember)
+                                        .cornerRadius(10)
+                                }
                             }
+                        } else {
+                            FetchingView()
                         }
                     }
                 }
-
                 .listStyle(.inset)
-
-                
             }
         }
     }
 }
-
-
 
 struct Roster_Previews: PreviewProvider {
     static var previews: some View {
@@ -53,10 +58,15 @@ struct Roster_Previews: PreviewProvider {
     }
     
     struct PreviewWrapper: View {
+        @StateObject var vm = AppViewModel()
         @State private var selection = "Jugadores"
         
         var body: some View {
             RosterList()
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
         }
     }
 }

@@ -120,6 +120,22 @@ struct RosterDetail: View {
     }
 }
 
-#Preview {
-    RosterDetail(player: players[22])
+
+struct RosterDetail_Previews: PreviewProvider {
+    static var previews: some View {
+        // Contenedor para el preview
+        PreviewWrapper()
+    }
+
+    struct PreviewWrapper: View {
+        @StateObject var vm = AppViewModel()
+
+        var body: some View {
+            RosterDetail(player: vm.players[22])
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
+        }
+    }
 }

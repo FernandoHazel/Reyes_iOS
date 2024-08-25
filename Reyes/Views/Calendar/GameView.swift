@@ -50,10 +50,14 @@ struct GameView_Previews: PreviewProvider {
     }
 
     struct PreviewWrapper: View {
-        var game: Game = games[4]
+        @StateObject var vm = AppViewModel()
 
         var body: some View {
-            GameView(game: game)
+            GameView(game: vm.games[4])
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
         }
     }
 }

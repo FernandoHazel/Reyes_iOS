@@ -54,7 +54,24 @@ struct StaffMemberDetail: View {
     }
 }
 
-#Preview {
-    StaffMemberDetail(staffMember: staff[0])
+struct StaffMemberDetail_Previews: PreviewProvider {
+    static var previews: some View {
+        // Contenedor para el preview
+        PreviewWrapper()
+    }
+
+    struct PreviewWrapper: View {
+        @StateObject var vm = AppViewModel()
+
+        var body: some View {
+            StaffMemberDetail(staffMember: vm.staff[0])
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
+        }
+    }
 }
+
+
 

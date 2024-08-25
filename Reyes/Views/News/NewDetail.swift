@@ -25,6 +25,21 @@ struct NewDetail: View {
     }
 }
 
-#Preview {
-    NewDetail(new: noticias[1])
+struct NewDetail_Previews: PreviewProvider {
+    static var previews: some View {
+        // Contenedor para el preview
+        PreviewWrapper()
+    }
+
+    struct PreviewWrapper: View {
+        @StateObject var vm = AppViewModel()
+
+        var body: some View {
+            NewDetail(new: vm.noticias[0])
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
+        }
+    }
 }

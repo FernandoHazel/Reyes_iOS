@@ -104,6 +104,21 @@ struct GameDetail: View {
     }
 }
 
-#Preview {
-    GameDetail(game: games[0])
+struct GameDetail_Previews: PreviewProvider {
+    static var previews: some View {
+        // Contenedor para el preview
+        PreviewWrapper()
+    }
+
+    struct PreviewWrapper: View {
+        @StateObject var vm = AppViewModel()
+
+        var body: some View {
+            GameDetail(game: vm.games[0])
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
+        }
+    }
 }

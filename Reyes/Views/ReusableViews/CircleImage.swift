@@ -21,5 +21,5 @@ struct CircleImage: View {
 }
 
 #Preview {
-    CircleImage(image: Image("sudadera-amarilla"))
+    CircleImage(image: Image("Merch/sudadera-amarilla"))
 }

@@ -1,10 +1,3 @@
-//
-//  CustomTabBar.swift
-//  Reyes
-//
-//  Created by Fernando Ascencio on 28/03/24.
-//
-
 import SwiftUI
 
 // Here I have my tab bar cases (should be the same name as the SF Symbols)

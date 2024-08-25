@@ -59,6 +59,10 @@
 		0531F18F2C5C6E5200E11C1C /* NewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1752C5C6E5200E11C1C /* NewDetail.swift */; };
 		0531F1902C5C6E5200E11C1C /* NewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1762C5C6E5200E11C1C /* NewRow.swift */; };
 		0531F1912C5C6E5200E11C1C /* NewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1772C5C6E5200E11C1C /* NewsList.swift */; };
+		059E77712C7B894D00C11C00 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 059E77702C7B894D00C11C00 /* FirebaseFirestore */; };
+		059E77752C7BABF500C11C00 /* UploadButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E77742C7BABF500C11C00 /* UploadButtons.swift */; };
+		059E77782C7BC08E00C11C00 /* FetchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E77772C7BC08E00C11C00 /* FetchingView.swift */; };
+		059E777B2C7BC5B000C11C00 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E777A2C7BC5B000C11C00 /* AppViewModel.swift */; };
 		059F24A32C5D2C3500B0EC85 /* DownloadedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F24A22C5D2C3500B0EC85 /* DownloadedImage.swift */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +138,9 @@
 		0531F1752C5C6E5200E11C1C /* NewDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDetail.swift; sourceTree = "<group>"; };
 		0531F1762C5C6E5200E11C1C /* NewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRow.swift; sourceTree = "<group>"; };
 		0531F1772C5C6E5200E11C1C /* NewsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsList.swift; sourceTree = "<group>"; };
+		059E77742C7BABF500C11C00 /* UploadButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtons.swift; sourceTree = "<group>"; };
+		059E77772C7BC08E00C11C00 /* FetchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingView.swift; sourceTree = "<group>"; };
+		059E777A2C7BC5B000C11C00 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		059F24A22C5D2C3500B0EC85 /* DownloadedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0531F12E2C5C0ED500E11C1C /* FirebaseStorage in Frameworks */,
+				059E77712C7B894D00C11C00 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +195,7 @@
 		0531F0FE2C5C0BDC00E11C1C /* Reyes */ = {
 			isa = PBXGroup;
 			children = (
+				059E77792C7BC59F00C11C00 /* ViewModel */,
 				0531F14F2C5C6E3A00E11C1C /* Model */,
 				0531F13B2C5C6E2500E11C1C /* Resources */,
 				0531F12F2C5C6B7800E11C1C /* Views */,
@@ -234,6 +243,7 @@
 		0531F12F2C5C6B7800E11C1C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				059E77762C7BC07500C11C00 /* Errors */,
 				0531F1742C5C6E5200E11C1C /* Calendar */,
 				0531F15E2C5C6E5100E11C1C /* Home */,
 				0531F1622C5C6E5200E11C1C /* Main */,
@@ -285,6 +295,7 @@
 				0531F15B2C5C6E5100E11C1C /* Rewards.swift */,
 				0531F15C2C5C6E5100E11C1C /* RewardsOnboarding.swift */,
 				0531F15D2C5C6E5100E11C1C /* Updates.swift */,
+				059E77742C7BABF500C11C00 /* UploadButtons.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -352,6 +363,22 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		059E77762C7BC07500C11C00 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				059E77772C7BC08E00C11C00 /* FetchingView.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		059E77792C7BC59F00C11C00 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				059E777A2C7BC5B000C11C00 /* AppViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -370,6 +397,7 @@
 			name = Reyes;
 			packageProductDependencies = (
 				0531F12D2C5C0ED500E11C1C /* FirebaseStorage */,
+				059E77702C7B894D00C11C00 /* FirebaseFirestore */,
 			);
 			productName = Reyes;
 			productReference = 0531F0FC2C5C0BDC00E11C1C /* Reyes.app */;
@@ -501,6 +529,7 @@
 				0531F1502C5C6E3A00E11C1C /* ActualGame.swift in Sources */,
 				0531F1882C5C6E5200E11C1C /* StaffMemberRow.swift in Sources */,
 				0531F17E2C5C6E5200E11C1C /* CustomTabBar.swift in Sources */,
+				059E77752C7BABF500C11C00 /* UploadButtons.swift in Sources */,
 				0531F1862C5C6E5200E11C1C /* RosterRow.swift in Sources */,
 				0531F17C2C5C6E5200E11C1C /* RewardsOnboarding.swift in Sources */,
 				0531F1792C5C6E5200E11C1C /* HomeView.swift in Sources */,
@@ -524,9 +553,11 @@
 				0531F18A2C5C6E5200E11C1C /* ProductRow.swift in Sources */,
 				0531F18C2C5C6E5200E11C1C /* Calendar.swift in Sources */,
 				0531F1522C5C6E3A00E11C1C /* ModelData.swift in Sources */,
+				059E777B2C7BC5B000C11C00 /* AppViewModel.swift in Sources */,
 				0531F1902C5C6E5200E11C1C /* NewRow.swift in Sources */,
 				0531F1582C5C6E3A00E11C1C /* Update.swift in Sources */,
 				0531F1552C5C6E3A00E11C1C /* Product.swift in Sources */,
+				059E77782C7BC08E00C11C00 /* FetchingView.swift in Sources */,
 				0531F1542C5C6E3A00E11C1C /* Player.swift in Sources */,
 				0531F17D2C5C6E5200E11C1C /* Updates.swift in Sources */,
 				0531F1892C5C6E5200E11C1C /* ProductDetail.swift in Sources */,
@@ -883,6 +914,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0531F12B2C5C0DF200E11C1C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		059E77702C7B894D00C11C00 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0531F12B2C5C0DF200E11C1C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -63,6 +63,21 @@ struct Caption: View {
     }
 }
 
-#Preview {
-    ProductRow(product: products[0])
+struct ProductRow_Previews: PreviewProvider {
+    static var previews: some View {
+        // Contenedor para el preview
+        PreviewWrapper()
+    }
+
+    struct PreviewWrapper: View {
+        @StateObject var vm = AppViewModel()
+
+        var body: some View {
+            ProductRow(product: vm.products[0])
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
+        }
+    }
 }

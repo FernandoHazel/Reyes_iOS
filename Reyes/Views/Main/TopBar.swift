@@ -41,6 +41,3 @@ struct TopBar_Preview: PreviewProvider {
     }
 }
 
-/*#Preview {
-    TopBar(showingProfile: false)
-}*/

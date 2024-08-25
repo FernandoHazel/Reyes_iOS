@@ -49,6 +49,21 @@ struct NewCaption: View {
     }
 }
 
-#Preview {
-    NewRow(new: noticias[0])
+struct NewRow_Previews: PreviewProvider {
+    static var previews: some View {
+        // Contenedor para el preview
+        PreviewWrapper()
+    }
+
+    struct PreviewWrapper: View {
+        @StateObject var vm = AppViewModel()
+
+        var body: some View {
+            NewRow(new: vm.noticias[0])
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
+        }
+    }
 }

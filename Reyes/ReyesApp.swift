@@ -12,13 +12,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct ReyesApp: App {
-    
     //Register the app delegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var vm = AppViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
         }
     }
 }
