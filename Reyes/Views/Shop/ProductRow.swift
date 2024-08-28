@@ -34,20 +34,17 @@ struct Caption: View {
                         .foregroundColor(.red)
                     Text("Regular: $"+String(price))
                         .font(.caption)
-                        .foregroundColor(.black)
-                        .strikethrough(true, color: .black)
+                        .strikethrough(true)
                 } else {
                     Text("$"+String(price))
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
                 }
                 
             }
             Spacer()
             Text(text)
                 .font(.subheadline)
-                .foregroundColor(.black)
             Spacer()
 
         }
