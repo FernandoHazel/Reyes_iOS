@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct GameDetail: View {
+    var reyesLogo: String = "TeamLogos/Reyes_icon.png"
     var game: Game
     
     var body: some View {
@@ -11,13 +12,11 @@ struct GameDetail: View {
                         .bold()
                         .font(.title)
                     Spacer()
-                    Image("Reyes_icon")
-                        .resizable()
-                        .frame(width: 70, height: 70)
+                    DownloadedImage(imagePath: reyesLogo)
+                        .frame(width: 50, height: 70)
                     Spacer()
-                    Image(game.teamImageName)
-                        .resizable()
-                        .frame(width: 70, height: 70)
+                    DownloadedImage(imagePath: game.teamImageName)
+                        .frame(width: 50, height: 70)
                 }
                 Divider()
                 HStack {
@@ -112,9 +111,30 @@ struct GameDetail_Previews: PreviewProvider {
 
     struct PreviewWrapper: View {
         @StateObject var vm = AppViewModel()
+        
+        let game = Game(
+            id: 2,
+            date: "10 de Marzo 2024",
+            team: "RAPTORS",
+            hour: "12:00 PM",
+            location: "Estadio Reyes Comude",
+            reyesRecord: "0 - 1",
+            teamRecord: "1 - 0",
+            teamImageName: "TeamLogos/raptors-sf.png",
+            qrt_1_reyes: 19,
+            qrt_1_team: 3,
+            qrt_2_reyes: 19,
+            qrt_2_team: 9,
+            qrt_3_reyes: 27,
+            qrt_3_team: 9,
+            qrt_4_reyes: 33,
+            qrt_4_team: 17,
+            resumeVideoLink: "https://www.youtube.com/embed/iw5fZLcq3Oo?si=PNokWOLC20ZB6GWV",
+            gameVideoLink: "https://www.youtube.com/embed/BOwH3UyZdaE?si=LS6mKSjkh_ccns_T",
+            interviewVideoLink: "https://www.youtube.com/embed/KwUt1keGvyQ?si=KXUAWpkjRnQrXqCG")
 
         var body: some View {
-            GameDetail(game: vm.games[0])
+            GameDetail(game: game)
                 .environmentObject(vm)
                 .task {
                     await vm.loadAllData()
