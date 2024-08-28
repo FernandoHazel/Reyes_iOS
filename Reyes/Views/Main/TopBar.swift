@@ -23,7 +23,8 @@ struct TopBar: View {
             Spacer()
         }
         .padding(.bottom)
-        .background(Color(hex: 014791))
+        //.background(Color(hex: 014791))
+        .background(Color(red: 0.0, green: 0.30, blue: 0.90))
     }
 }
 

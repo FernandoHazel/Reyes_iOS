@@ -14,8 +14,6 @@ struct ProductRow: View {
             Caption(text: product.name, price: product.price, discount: product.discount)
                 .frame(width: 250, height: 100)
         }
-        
-        
     }
 }
 

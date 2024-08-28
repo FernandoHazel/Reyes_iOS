@@ -4,10 +4,6 @@ import FirebaseFirestore
 
 let db = Firestore.firestore()
 
-func getProducts() async throws -> [Product]{
-    return try await getData(collection: "Products", as: Product.self)
-}
-
 //Retrieve from Database
 func getData<T: Decodable>(collection: String, as type: T.Type) async throws -> [T] {
     

@@ -5,15 +5,10 @@ struct NewRow: View {
     
     var body: some View {
         
-        DownloadedImage(imagePath: new.mainImageName)
-            .scaledToFill()
-            .overlay(alignment: .bottom){
-                NewCaption(new: new)
-            }
-            .cornerRadius(10)
-            .frame(maxWidth: .infinity)
-            .padding()
-        
+        VStack{
+            DownloadedImage(imagePath: new.mainImageName)
+            NewCaption(new: new)
+        }
     }
 }
 
@@ -22,30 +17,20 @@ struct NewCaption: View {
     
     var body: some View {
         VStack{
-            Text(new.title)
-                .bold()
-                .font(.title2)
-                .foregroundColor(.white)
-                .lineLimit(2)
-                .minimumScaleFactor(0.2)
-                .offset(y: -20)
-                .padding(.horizontal)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text(new.subTitle)
-                .font(.title3)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .offset(y: -20)
-                .padding(.horizontal)
-                .padding(.bottom)
-                
+            VStack{
+                Text(new.title)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(.white)
+            }
+            .padding()
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(
-            Color.blue.opacity(0.6)
-                .frame(width: 500, height: 200)
+            Color(red: 0.0, green: 0.30, blue: 0.90)
             
         )
-        .padding(0)
     }
 }
 
@@ -57,9 +42,17 @@ struct NewRow_Previews: PreviewProvider {
 
     struct PreviewWrapper: View {
         @StateObject var vm = AppViewModel()
+        
+        let noticia = Noticia(
+            id: 1, title: "Hola título",
+            subTitle: "Hola subtítulo",
+            mainImageName: "News/Dinos_Reyes.png",
+            by: "Fhazel",
+            date: "29 de Abril 2024",
+            paragraphs: ["Hola", "mundo"])
 
         var body: some View {
-            NewRow(new: vm.noticias[0])
+            NewRow(new: noticia)
                 .environmentObject(vm)
                 .task {
                     await vm.loadAllData()
