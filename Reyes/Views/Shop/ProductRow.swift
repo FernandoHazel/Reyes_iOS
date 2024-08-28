@@ -5,16 +5,14 @@ struct ProductRow: View {
     
     var body: some View {
         
-        HStack {
+        VStack {
             DownloadedImage(imagePath: product.imgNames[0])
-                .frame(width: 100, height: 100)
-                /*.overlay(alignment: .bottom){
-                    Caption(text: product.name, price: product.price)
-                }*/
+                .frame(width: 250, height: 250)
+                .cornerRadius(10)
                 .padding()
-                //.background(Color.gray.opacity(0.3))
             
-            Caption(text: product.name, price: product.price)
+            Caption(text: product.name, price: product.price, discount: product.discount)
+                .frame(width: 250, height: 100)
         }
         
         
@@ -23,39 +21,38 @@ struct ProductRow: View {
 
 struct Caption: View {
     let text: String
-    let price: Double
+    var price: Double
+    let discount: Double
     
     var body: some View {
         
         VStack{
-            Spacer()
             HStack {
-                Text(text)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .lineLimit(1)
-                    .foregroundColor(.blue)
-                Spacer()
+                
+                if(discount > 0){
+                    Text("$"+String(price - price * discount/100))
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.red)
+                    Text("Regular: $"+String(price))
+                        .font(.caption)
+                        .foregroundColor(.black)
+                        .strikethrough(true, color: .black)
+                } else {
+                    Text("$"+String(price))
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                }
+                
             }
-            
             Spacer()
-            
-            HStack {
-                Text("$"+String(price))
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .lineLimit(1)
-                    .foregroundColor(.red)
-                Spacer()
-            }
+            Text(text)
+                .font(.subheadline)
+                .foregroundColor(.black)
             Spacer()
+
         }
-        /*
-        .background(
-            Color.blue.opacity(0.3)
-                .frame(width: 500, height: 100)
-            
-        )*/
         .padding(0)
         
             
@@ -71,9 +68,19 @@ struct ProductRow_Previews: PreviewProvider {
 
     struct PreviewWrapper: View {
         @StateObject var vm = AppViewModel()
+        
+        let product = Product(
+            id: 1,
+            name: "Gorra Azul",
+            price: 250,
+            size: "L",
+            description: "Esta es una descripción de prueba de este artículo",
+            imgNames: ["Merch/Gorra_Azul.png"],
+            discount: 20
+        )
 
         var body: some View {
-            ProductRow(product: vm.products[0])
+            ProductRow(product: product)
                 .environmentObject(vm)
                 .task {
                     await vm.loadAllData()

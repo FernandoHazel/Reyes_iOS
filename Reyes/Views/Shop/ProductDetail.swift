@@ -20,7 +20,7 @@ struct ProductDetail: View {
                     
                     Spacer()
                     
-                    Text("$"+String(product.price))
+                    Text("$"+String(product.price - product.price * product.discount/100))
                         .font(.title)
                 }
                 .padding()
@@ -84,9 +84,19 @@ struct ProductDetail_Previews: PreviewProvider {
 
     struct PreviewWrapper: View {
         @StateObject var vm = AppViewModel()
+        
+        let product = Product(
+            id: 1,
+            name: "Gorra Azul",
+            price: 250,
+            size: "L",
+            description: "Esta es una descripción de prueba de este artículo",
+            imgNames: ["Merch/Gorra_Azul.png"],
+            discount: 20
+        )
 
         var body: some View {
-            ProductDetail(product: vm.products[0])
+            ProductDetail(product: product)
                 .environmentObject(vm)
                 .task {
                     await vm.loadAllData()

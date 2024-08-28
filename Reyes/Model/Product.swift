@@ -8,6 +8,7 @@ struct Product: Hashable, Codable, Identifiable {
     var size: String
     var description: String
     var imgNames: [String]
+    var discount: Double
     
     var images: [Image] {
         imgNames.map{Image($0)}
