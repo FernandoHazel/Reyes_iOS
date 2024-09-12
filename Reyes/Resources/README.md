@@ -11,7 +11,6 @@ El propósito de este README es ayudarte a entender cómo está construido el pr
 - [**Para empezar**](#para-empezar)
   - [**Prerrequisitos**](#prerrequisitos)
   - [**Clonar el repositorio**](#clonar-el-repositorio)
-  - [**Instalar el proyecto**](#instalar-el-proyecto)
   - [**Arquitectura de la app**](#targets)
   - [**Correr la aplicación localmente**](#correr-la-aplicación-localmente)
 - [**Pruebas unitarias**](#pruebas-unitarias)
@@ -58,11 +57,22 @@ Para clonar el repositorio:
   
   5. Escribe `yes` cuando te avise "Are you sure you want to continue connecting (yes/no)?".
 ------------------------
-### **Instalar el proyecto**
-------------------------
 ### **Arquitectura de la app**
 
-La app utiliza el patrón MVVM por lo que
+- Entidades:
+
+    - Players
+    - News
+    - Products
+    - Staff
+    - Games
+
+- Firebase:
+
+    - Storage (Aquí se almacenan las imagenes)
+    - Firestore (Aquí se almacenan los datos)
+    - Crashlytics
+    - Messaging
 
 ------------------------
 ### **Instalar el proyecto**
@@ -82,5 +92,17 @@ Para instalar el proyecto:
 ------------------------
 ------------------------
 ### **Tamaños de las imagenes**
+
+La aplicación consume una serie de imagenes desde la sección de storage de firebase.
+la app tiene un límite que no le permite descargar imagenes mayores a 2048 * 2048 px esto para evitar hacer llamadas de archivos muy pesados que puedan afectar el tiempo de descarga o incluso hacer que se revase el límite de transmisión de datos del plan gratuiri de firebase, además es necesario que todas las imagenes sigan estos lineamientos para que no veamos deformaciones en la interfaz.
+
+Las medidas que deben tener las imagenes de cada entidad son las siguientes:
+
+- Players: 512*512
+- Staff: 512*512
+- Products: 512*512
+- News: 1280*720
+- Rewards Onboarding: 512*512
+- Upates: 1024*1024 (Es probable que quitemos esta entidad para homologarla con noticias)
 
 ------------------------
