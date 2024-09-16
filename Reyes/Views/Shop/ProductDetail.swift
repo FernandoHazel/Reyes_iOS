@@ -5,7 +5,8 @@ struct ProductDetail: View {
     
     @State private var showAlert = false
     @State private var selectedSize: String? = nil
-    @State private var quantitySelected: Int = 1
+    @State private var quantitySelected: Int = 0
+    @State private var itemAvailability: Int = 1
     
     var body: some View {
         
@@ -55,6 +56,10 @@ struct ProductDetail: View {
                                 VStack {
                                     Button(action: {
                                         selectedSize = talla
+                                        itemAvailability = product.availability[selectedSize!] ?? 1
+                                        if(quantitySelected > itemAvailability){
+                                            quantitySelected = itemAvailability
+                                        }
                                     }, label: {
                                         Text("\(talla)")
                                             .frame(minWidth: 50, minHeight: 50)
@@ -72,9 +77,8 @@ struct ProductDetail: View {
                         
                         // Display a warning if we have few items left
                         if(selectedSize != nil){
-                            var itemAvailability = product.availability[selectedSize!]
-                            if (itemAvailability ?? 1 <= 5){
-                                Text("Ya solo quedan \(itemAvailability!) unidades")
+                            if (itemAvailability <= 5){
+                                Text("Ya solo quedan \(itemAvailability) unidades")
                                     .padding()
                                     .foregroundColor(.red)
                                     .cornerRadius(10)
@@ -91,8 +95,9 @@ struct ProductDetail: View {
                         .font(.title2)
                         .bold()
                         .padding()
-                    
                     // Do not let to buy more than the available
+                    Stepper("\(quantitySelected)", value: $quantitySelected, in: 0...itemAvailability)
+                                    .padding()
                     
                 }
             }
@@ -102,9 +107,14 @@ struct ProductDetail: View {
             HStack {
                 Spacer()
                 Button(action: {
+                    // if the user hasn't choosed a size and quantity for a sized item display an alert
+                    if product.availability.keys.first != "standard" && selectedSize == nil || quantitySelected <= 0 {
+                        showAlert = true
+                        return
+                    }
+                    
                     // Add to cart
                     //..
-                    showAlert = true
                     
                 }, label: {
                     Text("Añadir al carrito")
@@ -122,12 +132,19 @@ struct ProductDetail: View {
             })
                 .alert(isPresented: $showAlert, content: {
                     Alert(
-                        title: Text("La función de compra sigue en desarrollo"),
-                        message: Text("Pulsa 'OK' para continuar"),
+                        title: Text("Selecciona la talla y la cantidad"),
+                        message: Text("Debes seleccionar al menos una talla y una cantidad para continuar"),
                         dismissButton: .default(Text("OK"))
                     )
                 })
                 Spacer()
+            }
+        }
+        .onAppear {
+            
+            // If this is a standard product take the availability
+            if product.availability.keys.first == "standard" {
+                itemAvailability = product.availability["standard"] ?? 1
             }
         }
         .padding()
@@ -153,8 +170,8 @@ struct ProductDetail_Previews: PreviewProvider {
             description: "Esta es una descripción de prueba de este artículo",
             imgNames: ["Merch/Gorra_Azul.png"],
             discount: 20,
-            //availability: ["standard": 10],
-            availability: ["S": 3,"M": 7,"L": 13,"XL": 5,"XXL": 12],
+            availability: ["standard": 10],
+            //availability: ["S": 3,"M": 7,"L": 13,"XL": 5,"XXL": 12],
             reward: 10
         )
 
