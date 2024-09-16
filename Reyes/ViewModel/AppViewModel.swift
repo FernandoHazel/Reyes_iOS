@@ -12,6 +12,11 @@ class AppViewModel: ObservableObject {
     @Published var staff: [StaffMember] = []
     @Published var versionUpdateManager = VersionUpdateManager()
     @Published var updateNeeded: Bool = false
+    @Published var versionUpdateAlertConfig: VersionUpdateAlertConfig = VersionUpdateAlertConfig(title: "title",
+                                                                                                 message: "message",
+                                                                                                 forcedButton: "versionModel?.forcedButton",
+                                                                                                 optionalButton: "versionModel?.optionalButton",
+                                                                                                 type: .forced)
     
     //Try to fetch all the data to optimize db calls
     func loadAllData() async {
@@ -28,6 +33,12 @@ class AppViewModel: ObservableObject {
             //Print the actual app version
             versionUpdateManager.setDefaultsConfigValues()
             versionUpdateManager.fetchRemoteConfigValues()
+            
+            // If update is needed change the defaoult alert config
+            if(versionUpdateManager.isUpdateNeeded().0){
+                updateNeeded = true
+                versionUpdateAlertConfig = versionUpdateManager.isUpdateNeeded().1!
+            }
         } catch {
             print("Failed to load data: \(error)")
         }

@@ -28,11 +28,12 @@ class VersionUpdateManager {
     func setDefaultsConfigValues(){
         let defaultValues = firebase.setDefaults(fromPlist: "remote_config_defaults")
         
-        // Debug only code (erase in production)
+        // Debug only code (erase or comment in production)
+        /*
         let settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 0 // Para asegurarte de que se traigan los valores cada vez
+        settings.minimumFetchInterval = 0
         firebase.configSettings = settings
-
+        */
     }
     
     func fetchRemoteConfigValues(){
@@ -141,40 +142,5 @@ class VersionUpdateManager {
                                         optionalButton: versionModel?.optionalButton,
                                         type: type)
     }
-    
-    // We need to adapt and implement this in the main view or in the process of app initialization
-    /*
-    func showVersionalert(with config: VersionUpdateAlertConfig?) {
-        guard let config else { return }
-
-        let isForced: Bool = config.type == .forced
-        var actionTitles: [String] = []
-        var actions: [((UIAlertAction) -> Void)] = []
-
-        let optionalAction: (UIAlertAction) -> Void = { [weak self] _ in
-            guard let self else { return }
-            self.presenter.getTokenAndRSAKey()
-        }
-
-        let forcedAction: (UIAlertAction) -> Void = { _ in
-            VersionUpdateManager.appstoreId.openAppStore()
-        }
-
-        if !isForced {
-            actions.append(optionalAction)
-            actionTitles.append(config.optionalButton ?? "")
-        }
-
-        actions.append(forcedAction)
-        actionTitles.append(config.forcedButton ?? "")
-
-
-        self.ShowAlert(title: config.title ?? "",
-                       message: config.message ?? "",
-                       alertStyle: .alert,
-                       actionTitles: actionTitles,
-                       actionStyles: [.default, .default],
-                       actions: actions)
-    }*/
 }
 
