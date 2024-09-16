@@ -55,7 +55,7 @@ struct DownloadedImage: View {
         //Console log
         taskRef.observe(.progress) { snapshot in
             guard let pctThere = snapshot.progress?.fractionCompleted else { return }
-            print("You are \(pctThere) complete")
+            //print("You are \(pctThere) complete")
         }
     }
 }

@@ -12,6 +12,7 @@ struct Rewards: View {
     @Binding var showRewardOnboarding: Bool
     
     var body: some View {
+        
         VStack {
             HStack {
                 HStack {

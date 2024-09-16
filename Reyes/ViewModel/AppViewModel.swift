@@ -10,6 +10,8 @@ class AppViewModel: ObservableObject {
     @Published var rewardsInstructions: [RewardInstruction] = []
     @Published var updates: [Update] = []
     @Published var staff: [StaffMember] = []
+    @Published var versionUpdateManager = VersionUpdateManager()
+    @Published var updateNeeded: Bool = false
     
     //Try to fetch all the data to optimize db calls
     func loadAllData() async {
@@ -22,6 +24,10 @@ class AppViewModel: ObservableObject {
             rewardsInstructions = try await getData(collection: "Reward_Instructions", as: RewardInstruction.self)
             updates = try await getData(collection: "Updates", as: Update.self)
             staff = try await getData(collection: "Staff", as: StaffMember.self)
+            
+            //Print the actual app version
+            versionUpdateManager.setDefaultsConfigValues()
+            versionUpdateManager.fetchRemoteConfigValues()
         } catch {
             print("Failed to load data: \(error)")
         }

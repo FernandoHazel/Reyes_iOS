@@ -12,7 +12,11 @@ struct TopBar: View {
                 .padding()
                 .foregroundColor(.white)
                 .onTapGesture {
-                    showingProfile.toggle()
+                    //showingProfile.toggle()
+                    
+                    // Remove this on prod
+                    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+                    print ("App Version: " + appVersion)
                 }
 
             Spacer()

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>ios_version_update</key>
+  <string>{"forcedVersion":"20240912.1","optionalVersion":"20240912.1","forcedTitle":"Hay una nueva actualización","forcedMessage":"Debes instalarla ahora para aprovechar las nuevas funciones","optionalTitle":"Hay una nueva actualización","optionalMessage":"Descárgala y sigue utilizando tu app sin problemas","forcedButton":"Actualizar","optionalButton":"Recuérdame más tarde"}</string>
+</dict>
+</plist>
