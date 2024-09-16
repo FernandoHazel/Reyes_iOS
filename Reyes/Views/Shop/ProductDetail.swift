@@ -4,6 +4,8 @@ struct ProductDetail: View {
     var product: Product
     
     @State private var showAlert = false
+    @State private var selectedSize: String? = nil
+    @State private var quantitySelected: Int = 1
     
     var body: some View {
         
@@ -23,17 +25,76 @@ struct ProductDetail: View {
                     Text("$"+String(product.price - product.price * product.discount/100))
                         .font(.title)
                 }
-                .padding()
-                /*
-                Text("Talla: " + product.size)
-                    .font(.subheadline)
-                 */
+                HStack{
+                    Text("Recompensa")
+                        .font(.title2)
+                        .foregroundColor(.green)
+                    
+                    Spacer()
+                    
+                    Text("\(Int(product.reward))")
+                        .font(.title2)
+                        .foregroundColor(.green)
+                    Image(systemName: "crown.fill")
+                        .foregroundColor(.yellow)
+                    
+                }
+                
                 Divider()
-                Text("Acerca de este producto")
-                    .font(.title2)
-                    .bold()
-                Text(product.description)
-                    .padding(.top)
+                
+                VStack{
+                    // Only choose size if apply
+                    if let firstKey = product.availability.keys.first, firstKey != "standard" {
+                        Text("Elige la talla")
+                            .font(.title2)
+                            .bold()
+                        
+                        HStack {
+                            // for each size create a size button
+                            ForEach(product.availability.sorted(by: >), id: \.key) { talla, cantidad in
+                                VStack {
+                                    Button(action: {
+                                        selectedSize = talla
+                                    }, label: {
+                                        Text("\(talla)")
+                                            .frame(minWidth: 50, minHeight: 50)
+                                            .background(selectedSize == talla ? Color.blue : Color.clear)
+                                            .foregroundColor(selectedSize == talla ? .white : .blue)
+                                            .cornerRadius(10)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(Color.blue, lineWidth: 2)
+                                            )
+                                    })
+                                }
+                            }
+                        }
+                        
+                        // Display a warning if we have few items left
+                        if(selectedSize != nil){
+                            var itemAvailability = product.availability[selectedSize!]
+                            if (itemAvailability ?? 1 <= 5){
+                                Text("Ya solo quedan \(itemAvailability!) unidades")
+                                    .padding()
+                                    .foregroundColor(.red)
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color.red, lineWidth: 2)
+                                    )
+                            }
+                        }
+                    }
+                    
+                    // select the quantity of items
+                    Text("Elige la cantidad")
+                        .font(.title2)
+                        .bold()
+                        .padding()
+                    
+                    // Do not let to buy more than the available
+                    
+                }
             }
             
             Spacer()
@@ -41,12 +102,12 @@ struct ProductDetail: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    //Comprar
+                    // Add to cart
                     //..
                     showAlert = true
                     
                 }, label: {
-                    Text("Comprar")
+                    Text("Añadir al carrito")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -89,10 +150,12 @@ struct ProductDetail_Previews: PreviewProvider {
             id: 1,
             name: "Gorra Azul",
             price: 250,
-            size: "L",
             description: "Esta es una descripción de prueba de este artículo",
             imgNames: ["Merch/Gorra_Azul.png"],
-            discount: 20
+            discount: 20,
+            //availability: ["standard": 10],
+            availability: ["S": 3,"M": 7,"L": 13,"XL": 5,"XXL": 12],
+            reward: 10
         )
 
         var body: some View {

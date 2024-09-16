@@ -68,10 +68,11 @@ struct ProductRow_Previews: PreviewProvider {
             id: 1,
             name: "Gorra Azul",
             price: 250,
-            size: "L",
             description: "Esta es una descripción de prueba de este artículo",
             imgNames: ["Merch/Gorra_Azul.png"],
-            discount: 20
+            discount: 20,
+            availability: ["standard": 10],
+            reward: 10
         )
 
         var body: some View {

@@ -52,10 +52,10 @@ class VersionUpdateManager {
                     print("Remote config values were changed")
                 }
                 
-                self.debugRetrievedData()
+                //self.debugRetrievedData()
 
                 // Prompt update if needed
-                print("is update needed? \(self.isUpdateNeeded().0) because \(self.currentVersion) vs \(self.forcedVersion)")
+                //print("is update needed? \(self.isUpdateNeeded().0) because \(self.currentVersion) vs \(self.forcedVersion)")
             }
           } else {
             print("Config not fetched")
