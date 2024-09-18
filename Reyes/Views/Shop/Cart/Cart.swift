@@ -23,11 +23,13 @@ struct Cart: View {
                 VStack {
                     List {
                         ForEach(cartProducts) { cartProduct in
-                            Text(cartProduct.name ?? "")
+                            CartProductRow(cartProduct: cartProduct)
                         }
                         .onDelete(perform: deleteCartProduct)
                     }.navigationTitle("Mi carrito")
+                    CartSummary()
                     CheckoutButton()
+                    Spacer()
                 }
             }
         } else {
@@ -50,17 +52,9 @@ struct Cart: View {
     }
 }
 
-import SwiftUI
-
-//This view was used to upload json local data to the db
 struct CheckoutButton: View {
     var body: some View {
-        Button(action: {
-            
-            // Checkout
-            //.. Navigation link to shipping adress view
-            
-        }, label: {
+        NavigationLink(destination: UserInfo()) {
             Text("Checkout")
                 .font(.headline)
                 .fontWeight(.semibold)
@@ -73,7 +67,7 @@ struct CheckoutButton: View {
                         .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                         .frame(width: 300)
                 )
-        })
+        }
     }
 }
 

@@ -165,8 +165,7 @@ struct ProductDetail: View {
                 itemAvailability = product.availability["standard"] ?? 1
             }
         }
-        .padding()
-        Spacer()
+
             .navigationTitle(product.name)
             .navigationBarTitleDisplayMode(.inline)
     }
