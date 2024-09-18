@@ -25,11 +25,13 @@ struct Main: View {
                                 VStack {
                                     HomeView()
                                 }
-                                case .newspaper:
+                                case .book:
                                 VStack {
-                                    NewsList()
+                                    //NewsList()
+                                    // Change to academy view
+                                    Text("Aquí añadiremos la vista de la academia")
                                 }
-                                case .storefront:
+                                case .bag:
                                 VStack {
                                     ProductsList()
                                 }

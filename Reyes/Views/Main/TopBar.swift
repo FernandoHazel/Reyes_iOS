@@ -6,34 +6,34 @@ struct TopBar: View {
     @Binding var showCart: Bool
     
     var body: some View {
-        HStack {
-            Image(systemName: "person.circle")
-                .resizable()
-                .frame(width: 30, height: 30)
-                .padding()
-                .foregroundColor(.white)
-                .onTapGesture {
-                    //showingProfile.toggle()
-                }
-            Image(systemName: "cart.circle")
-                .resizable()
-                .frame(width: 30, height: 30)
-                .padding()
-                .foregroundColor(.white)
-                .onTapGesture {
-                    showCart.toggle()
-                }
-
-            Spacer()
+        VStack {
             DownloadedImage(imagePath: reyesLogo)
-                .frame(width: 60, height: 60)
-                .offset(x: -30)
+                .frame(width: 30, height: 30)
+            HStack {
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        //showingProfile.toggle()
+                    }
+                Image(systemName: "cart.circle")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        showCart.toggle()
+                    }
 
-            Spacer()
+                Spacer()
+            }
+            .padding(.horizontal)
+            
         }
         .padding(.bottom)
         //.background(Color(hex: 014791))
         .background(Color(red: 0.0, green: 0.30, blue: 0.90))
+        
     }
 }
 

@@ -14,7 +14,6 @@ struct NewsList: View {
                             .cornerRadius(10)
                     }
                 }
-                .navigationTitle("Noticias")
                 .listStyle(.inset)
             }
         } else {

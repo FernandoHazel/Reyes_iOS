@@ -45,7 +45,7 @@ struct Rewards: View {
                         Color.white
                             .cornerRadius(10)
                             .shadow(radius: 1)
-                            .frame(width: 300)
+                            .frame(width: 370)
                     )
         })
             

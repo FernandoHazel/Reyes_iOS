@@ -16,6 +16,7 @@ struct NewCaption: View {
     let new: Noticia
     
     var body: some View {
+
         VStack{
             VStack{
                 Text(new.title)

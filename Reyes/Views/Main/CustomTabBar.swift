@@ -3,11 +3,13 @@ import SwiftUI
 // Here I have my tab bar cases (should be the same name as the SF Symbols)
 enum Tab: String, CaseIterable {
     case house
-    case newspaper
-    case storefront
+    case book
+    case bag
     case calendar
     case person
 }
+
+//Add this icon for the academy = figure.american.football
 
 struct CustomTabBar: View {
     @Binding var selectedTab: Tab

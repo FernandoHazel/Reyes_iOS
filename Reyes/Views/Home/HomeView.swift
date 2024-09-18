@@ -8,24 +8,39 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                NextGameView()
-                Rewards(showRewardOnboarding: $showRewardOnboarding)
-                    .sheet(isPresented: $showRewardOnboarding){
-                        RewardsOnboarding()
+                ScrollView {
+                    NextGameView()
+                    Rewards(showRewardOnboarding: $showRewardOnboarding)
+                        .sheet(isPresented: $showRewardOnboarding){
+                            RewardsOnboarding()
+                        }
+                        .padding(.vertical)
+                    //NewsList()
+                    //
+                    if !vm.noticias.isEmpty {
+                        ScrollView {
+                            ForEach(vm.noticias) { noticia in
+                                NavigationLink(destination: NewDetail(new: noticia)) {
+                                    NewRow(new: noticia)
+                                        .cornerRadius(10)
+                                        .padding(.horizontal)
+                                }
+                            }
+                        }
+                        .listStyle(.inset)
+                    } else {
+                        FetchingView()
                     }
-                Updates()
-                    .padding(.horizontal)
-            }
-            .alert(isPresented: $vm.updateNeeded, content: {
-                Alert(
-                    title: Text(vm.versionUpdateAlertConfig.title ?? ""),
-                    message: Text(vm.versionUpdateAlertConfig.message ?? ""),
-                    primaryButton: .default(Text(vm.versionUpdateAlertConfig.forcedButton ?? "")) {
-                                            openAppStore() // Open app store"
-                    },
-                    secondaryButton: .destructive(Text(vm.versionUpdateAlertConfig.optionalButton ?? ""))
-                )
+                }
+                .alert(isPresented: $vm.updateNeeded, content: {
+                    Alert(
+                        title: Text(vm.versionUpdateAlertConfig.title ?? ""),
+                        message: Text(vm.versionUpdateAlertConfig.message ?? ""),
+                        primaryButton: .default(Text(vm.versionUpdateAlertConfig.forcedButton ?? "")) {
+                                                openAppStore() // Open app store"
+                        },
+                        secondaryButton: .destructive(Text(vm.versionUpdateAlertConfig.optionalButton ?? ""))
+                    )
             })
         }
     }
@@ -37,6 +52,21 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        // Contenedor para el preview
+        PreviewWrapper()
+    }
+
+    struct PreviewWrapper: View {
+        @StateObject var vm = AppViewModel()
+
+        var body: some View {
+            HomeView()
+                .environmentObject(vm)
+                .task {
+                    await vm.loadAllData()
+                }
+        }
+    }
 }
