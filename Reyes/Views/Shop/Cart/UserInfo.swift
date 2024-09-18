@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct UserInfo: View {
+    
+    // Get a reference to the managed object context from the environment.
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    // I have "users" but is supposed to exist only one
+    @FetchRequest(sortDescriptors: [])
+    private var users: FetchedResults<UserData>
+    
     @State private var firstName: String = ""
     @State private var firstNameError: Bool = false
     @State private var lastName: String = ""
@@ -161,7 +169,7 @@ struct UserInfo: View {
                 }
             }
             Spacer()
-        }
+        }.onAppear(perform: fillForm)
     }
     
     func validateForm(){
@@ -219,6 +227,7 @@ struct UserInfo: View {
             infoVerified = false
         } else {
             infoVerified = true
+            saveUserData()
         }
     }
         
@@ -241,6 +250,65 @@ struct UserInfo: View {
         return NSPredicate(format: "SELF MATCHES %@", postalCodeRegex).evaluate(with: postalCode)
     }
 
+    // Data functions
+    private func fillForm(){
+        users.forEach { user in
+            firstName = user.firstName ?? ""
+            lastName = user.lastName ?? ""
+            email = user.email ?? ""
+            phone = user.phone ?? ""
+            adress1 = user.adress1 ?? ""
+            adress2 = user.adress2 ?? ""
+            selectedCountry = user.selectedCountry ?? ""
+            postalCode = user.postalCode ?? ""
+            city = user.city ?? ""
+            province = user.province ?? ""
+        }
+    }
+    
+    private func saveUserData() {
+        
+        // Check if user already exist
+        if let existingUser = users.first {
+            // Update existing user
+            existingUser.firstName = firstName
+            existingUser.lastName = lastName
+            existingUser.email = email
+            existingUser.phone = phone
+            existingUser.adress1 = adress1
+            existingUser.adress2 = adress2
+            existingUser.selectedCountry = selectedCountry
+            existingUser.postalCode = postalCode
+            existingUser.city = city
+            existingUser.province = province
+        } else {
+            // Create a new user
+            let newUser = UserData(context: viewContext)
+            newUser.firstName = firstName
+            newUser.lastName = lastName
+            newUser.email = email
+            newUser.phone = phone
+            newUser.adress1 = adress1
+            newUser.adress2 = adress2
+            newUser.selectedCountry = selectedCountry
+            newUser.postalCode = postalCode
+            newUser.city = city
+            newUser.province = province
+        }
+        
+        // Save changes
+        saveContext()
+    }
+
+    
+    private func saveContext(){
+        do{
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Could't save context while adding user data: \(error.localizedDescription)")
+        }
+    }
 }
 
 struct OrderSumaryButton: View {

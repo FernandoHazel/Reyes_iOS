@@ -16,7 +16,7 @@ class CoreDataStack: ObservableObject {
     lazy var persistentContainer: NSPersistentContainer = {
         
         // Pass the data model filename to the container’s initializer.
-        let container = NSPersistentContainer(name: "CartProductList")
+        let container = NSPersistentContainer(name: "Model")
         
         // Load any persistent stores, which creates a store if none exists.
         container.loadPersistentStores { _, error in
