@@ -17,43 +17,23 @@ struct Cart: View {
     private var cartProducts: FetchedResults<CartProduct>
     
     var body: some View {
-        if (!cartProducts.isEmpty){
-            
+        
+        if !cartProducts.isEmpty{
             NavigationView {
-                ForEach(cartProducts) { cartProduct in
-                    Text(cartProduct.name ?? "")
-                }.onDelete(perform: deleteCartProduct)
-                
-                HStack{
-                    Spacer()
-                    Button(action: {
-                        
-                        // Checkout
-                        //.. Navigation link to shipping adress view
-                        
-                    }, label: {
-                        Text("Checkout")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .padding()
-                            .lineLimit(1)
-                            .background(
-                                Color.yellow
-                                    .cornerRadius(10)
-                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                    .frame(width: 300)
-                            )
-                })
-                    Spacer()
+                VStack {
+                    List {
+                        ForEach(cartProducts) { cartProduct in
+                            Text(cartProduct.name ?? "")
+                        }
+                        .onDelete(perform: deleteCartProduct)
+                    }.navigationTitle("Mi carrito")
+                    CheckoutButton()
                 }
             }
         } else {
             Text("Aún no has añadido ningún producto")
         }
-        
     }
-        
     
     private func deleteCartProduct(offsets: IndexSet){
         withAnimation {
@@ -70,6 +50,33 @@ struct Cart: View {
     }
 }
 
+import SwiftUI
+
+//This view was used to upload json local data to the db
+struct CheckoutButton: View {
+    var body: some View {
+        Button(action: {
+            
+            // Checkout
+            //.. Navigation link to shipping adress view
+            
+        }, label: {
+            Text("Checkout")
+                .font(.headline)
+                .fontWeight(.semibold)
+                .foregroundColor(.white)
+                .padding()
+                .lineLimit(1)
+                .background(
+                    Color.yellow
+                        .cornerRadius(10)
+                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                        .frame(width: 300)
+                )
+        })
+    }
+}
+
 struct Cart_Previews: PreviewProvider {
     static var previews: some View {
         // Contenedor para el preview
@@ -83,3 +90,4 @@ struct Cart_Previews: PreviewProvider {
         }
     }
 }
+

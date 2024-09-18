@@ -22,7 +22,7 @@ struct ProductDetail: View {
             ScrollView {
                 Carousel(photosNames: product.imgNames)
                     .frame(maxHeight: .infinity)
-                    .frame(height: UIScreen.main.bounds.height / 3)
+                    .frame(height: UIScreen.main.bounds.height / 4)
                     .background(Color.gray.opacity(0.3))
                 
                 HStack {
@@ -216,8 +216,8 @@ struct ProductDetail_Previews: PreviewProvider {
             description: "Esta es una descripción de prueba de este artículo",
             imgNames: ["Merch/Gorra_Azul.png"],
             discount: 20,
-            availability: ["standard": 10],
-            //availability: ["S": 3,"M": 7,"L": 13,"XL": 5,"XXL": 12],
+            //availability: ["standard": 10],
+            availability: ["S": 3,"M": 7,"L": 13,"XL": 5,"XXL": 12],
             reward: 10
         )
 
