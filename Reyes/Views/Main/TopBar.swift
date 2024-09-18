@@ -3,6 +3,7 @@ import SwiftUI
 struct TopBar: View {
     var reyesLogo: String = "TeamLogos/Reyes_icon.png"
     @Binding var showingProfile: Bool
+    @Binding var showCart: Bool
     
     var body: some View {
         HStack {
@@ -13,10 +14,14 @@ struct TopBar: View {
                 .foregroundColor(.white)
                 .onTapGesture {
                     //showingProfile.toggle()
-                    
-                    // Remove this on prod
-                    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-                    print ("App Version: " + appVersion)
+                }
+            Image(systemName: "cart.circle")
+                .resizable()
+                .frame(width: 30, height: 30)
+                .padding()
+                .foregroundColor(.white)
+                .onTapGesture {
+                    showCart.toggle()
                 }
 
             Spacer()
@@ -39,9 +44,10 @@ struct TopBar_Preview: PreviewProvider {
     
     struct PreviewWrapper: View {
         @State var showingProfile = false
+        @State var showCart = false
         
         var body: some View {
-            TopBar(showingProfile: $showingProfile)
+            TopBar(showingProfile: $showingProfile, showCart: $showCart)
         }
     }
 }

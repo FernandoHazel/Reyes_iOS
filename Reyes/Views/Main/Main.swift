@@ -3,6 +3,7 @@ import SwiftUI
 struct Main: View {
     @State private var selectedTab: Tab = .house
     @State private var showingProfile = false
+    @State private var showCart = false
     
     init() {
         // This is to eliminate an extra space wich is automatically created
@@ -12,7 +13,7 @@ struct Main: View {
     var body: some View {
         
         VStack {
-            TopBar(showingProfile: $showingProfile)
+            TopBar(showingProfile: $showingProfile, showCart: $showCart)
         
         ZStack {
                 // TabView is going to control the views from the tab
@@ -47,6 +48,9 @@ struct Main: View {
                         .tag(tab)
                         .sheet(isPresented: $showingProfile) {
                             //SingIn()
+                        }
+                        .sheet(isPresented: $showCart) {
+                            Cart()
                         }
                         
                     }

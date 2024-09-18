@@ -1,12 +1,20 @@
 import SwiftUI
+import CoreData
 
 struct ProductDetail: View {
+    // Get a reference to the managed object context from the environment.
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(sortDescriptors: [])
+    private var cartProducts: FetchedResults<CartProduct>
+    
     var product: Product
     
     @State private var showAlert = false
     @State private var selectedSize: String? = nil
     @State private var quantitySelected: Int = 0
     @State private var itemAvailability: Int = 1
+    @State private var showCart: Bool = false
     
     var body: some View {
         
@@ -107,14 +115,21 @@ struct ProductDetail: View {
             HStack {
                 Spacer()
                 Button(action: {
+                    
                     // if the user hasn't choosed a size and quantity for a sized item display an alert
                     if product.availability.keys.first != "standard" && selectedSize == nil || quantitySelected <= 0 {
                         showAlert = true
                         return
                     }
                     
-                    // Add to cart
-                    //..
+                    //1. Add the product
+                    addProduct(product: product)
+                    
+                    //.2 Save in the memory
+                    saveContext()
+                    
+                    //3. Show the car view
+                    showCartView()
                     
                 }, label: {
                     Text("Añadir al carrito")
@@ -140,6 +155,9 @@ struct ProductDetail: View {
                 Spacer()
             }
         }
+        .sheet(isPresented: $showCart) {
+            Cart()
+        }
         .onAppear {
             
             // If this is a standard product take the availability
@@ -151,6 +169,34 @@ struct ProductDetail: View {
         Spacer()
             .navigationTitle(product.name)
             .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private func addProduct(product: Product){
+        withAnimation {
+            let newCartProduct = CartProduct(context: viewContext)
+            newCartProduct.desc = product.description
+            newCartProduct.discount = product.discount
+            newCartProduct.imageName = product.imgNames[0]
+            newCartProduct.name = product.name
+            newCartProduct.price = product.price
+            newCartProduct.reward = product.reward
+            newCartProduct.quantitySelected = Int64(quantitySelected)
+            newCartProduct.selectedSize = selectedSize
+        }
+        
+    }
+    
+    private func saveContext(){
+        do{
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Could't save context while adding cart product: \(error.localizedDescription)")
+        }
+    }
+    
+    private func showCartView(){
+        showCart = true
     }
 }
 

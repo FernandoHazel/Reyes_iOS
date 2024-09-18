@@ -14,12 +14,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct ReyesApp: App {
     //Register the app delegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    // Create observable instances for Core Data stack and ViewModel
+    @StateObject private var coreDataStack = CoreDataStack.shared
     @StateObject private var vm = AppViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(vm)
+                // Inject the persistent container's managed object context into the environment.
+                .environment(\.managedObjectContext, coreDataStack.persistentContainer.viewContext)
                 .task {
                     await vm.loadAllData()
                 }
