@@ -1,13 +1,17 @@
 import SwiftUI
 
 struct NewRow: View {
+    @State private var alreadyDownloaded = false
     var new: Noticia
     
     var body: some View {
         
         VStack{
-            DownloadedImage(imagePath: new.mainImageName)
-            NewCaption(new: new)
+            ArticleImage(imagePath: new.mainImageName, alreadyDownloaded: $alreadyDownloaded)
+            if(alreadyDownloaded){
+                NewCaption(new: new)
+            }
+            
         }
     }
 }

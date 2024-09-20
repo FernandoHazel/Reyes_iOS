@@ -1,12 +1,19 @@
+//
+//  ArticleView.swift
+//  Reyes
+//
+//  Created by Fernando Hazel Ascencio Baumgarten on 20/09/24.
+// This view is used to notify an external view that the image already loaded
+
 import SwiftUI
 import FirebaseStorage
 
-struct DownloadedImage: View {
+struct ArticleImage: View {
     var imagePath: String
     @State private var image: UIImage? = nil
     @State private var isLoading = false
     @State private var progress: Float = 0.0
-    @State private var alreadyDownloaded: Bool = false
+    @Binding var alreadyDownloaded: Bool // This is the only difference in this view from downloadedImage
     
     var body: some View {
         
@@ -61,7 +68,7 @@ struct DownloadedImage: View {
 }
 
 
-struct DownloadedImage_Previews: PreviewProvider {
+struct ArticleImage_Previews: PreviewProvider {
     static var previews: some View {
         // Contenedor para el preview
         PreviewWrapper()
@@ -69,10 +76,12 @@ struct DownloadedImage_Previews: PreviewProvider {
 
     struct PreviewWrapper: View {
         private var imagePath: String = "Players/02.png"
+        @State private var alreadyDownloaded = false
         
 
         var body: some View {
-            DownloadedImage(imagePath: imagePath)
+            ArticleImage(imagePath: imagePath, alreadyDownloaded: $alreadyDownloaded)
         }
     }
 }
+

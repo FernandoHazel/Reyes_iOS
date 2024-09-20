@@ -2,12 +2,16 @@ import SwiftUI
 
 struct ProductRow: View {
     var product: Product
+    @State private var alreadyDownloaded = false
     
     var body: some View {
         
         VStack {
-            DownloadedImage(imagePath: product.imgNames[0])
-            Caption(text: product.name, price: product.price, discount: product.discount)
+            ArticleImage(imagePath: product.imgNames[0], alreadyDownloaded: $alreadyDownloaded)
+            if(alreadyDownloaded){
+                Caption(text: product.name, price: product.price, discount: product.discount)
+            }
+            
         }
     }
 }

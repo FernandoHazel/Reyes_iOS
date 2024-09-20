@@ -4,6 +4,7 @@ struct GameView: View {
     var reyesLogo: String = "TeamLogos/Reyes_icon.png"
     @State private var teamImage: String = ""
     var game: Game
+    @State private var alreadyDownloaded = false
     
     var body: some View {
         VStack {
