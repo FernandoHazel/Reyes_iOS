@@ -17,26 +17,18 @@ struct UserInfo: View {
     private var users: FetchedResults<UserData>
     
     @State private var firstName: String = ""
-    @State private var firstNameError: Bool = false
     @State private var lastName: String = ""
-    @State private var lastNameError: Bool = false
     @State private var email: String = ""
-    @State private var emailError: Bool = false
     @State private var phone: String = "" // Add country code
-    @State private var phoneError: Bool = false
     @State private var adress1: String = ""
-    @State private var adress1Error: Bool = false
     @State private var adress2: String = ""
     @State private var selectedCountry = "México"
         let countries = ["México", "Estados Unidos"]
     @State private var postalCode: String = ""
-    @State private var postalCodeError: Bool = false
     @State private var city: String = ""
-    @State private var cityError: Bool = false
     @State private var province: String = ""
-    @State private var provinceError: Bool = false
     
-    @State private var infoVerified: Bool = false
+
     
     var body: some View {
         VStack{
@@ -47,7 +39,7 @@ struct UserInfo: View {
                         VStack{
                             TextField("Nombre*", text: $firstName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                            if(firstNameError){
+                            if(!isAlphabetic(firstName)){
                                 Text("Por favor escribe tu nombre")
                                     .foregroundColor(.red)
                                     .font(.caption)
@@ -59,7 +51,7 @@ struct UserInfo: View {
                         VStack{
                             TextField("Apellido*", text: $lastName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                            if(lastNameError){
+                            if(!isAlphabetic(lastName)){
                                 Text("Por favor escribe tu apellido")
                                     .foregroundColor(.red)
                                     .font(.caption)
@@ -74,7 +66,7 @@ struct UserInfo: View {
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(emailError){
+                        if(!isValidEmail(email)){
                             Text("Por favor escribe un correo válido")
                                 .foregroundColor(.red)
                                 .font(.caption)
@@ -85,7 +77,7 @@ struct UserInfo: View {
                             .keyboardType(.phonePad)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(phoneError){
+                        if(!isValidPhoneNumber(phone)){
                             Text("Por favor escribe un teléfono válido")
                                 .foregroundColor(.red)
                                 .font(.caption)
@@ -95,7 +87,7 @@ struct UserInfo: View {
                         TextField("Dirección1*", text: $adress1)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(adress1Error){
+                        if(adress1.isEmpty){
                             Text("Por favor escribe una dirección válida")
                                 .foregroundColor(.red)
                                 .font(.caption)
@@ -117,7 +109,7 @@ struct UserInfo: View {
                         TextField("Código Postal", text: $postalCode)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(postalCodeError){
+                        if(!isValidPostalCode(postalCode)){
                             Text("Por favor escribe una código postal válido")
                                 .foregroundColor(.red)
                                 .font(.caption)
@@ -127,7 +119,7 @@ struct UserInfo: View {
                         TextField("Ciudad*", text: $city)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(cityError){
+                        if(!isAlphabetic(city)){
                             Text("Por favor escribe una ciudad válida")
                                 .foregroundColor(.red)
                                 .font(.caption)
@@ -138,7 +130,7 @@ struct UserInfo: View {
                         TextField("Estado / Provincia / Territorio", text: $province)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(provinceError){
+                        if(!isAlphabetic(province)){
                             Text("Por favor escribe un territorio válido")
                                 .foregroundColor(.red)
                                 .font(.caption)
@@ -148,104 +140,45 @@ struct UserInfo: View {
             }
             Spacer()
             
-            if (infoVerified){
-                OrderSumaryButton()
-            } else {
+            if (isAlphabetic(firstName) && isAlphabetic(lastName) && isValidEmail(email) && isValidPhoneNumber(phone) && !adress1.isEmpty && isValidPostalCode(postalCode) && isAlphabetic(city) && isAlphabetic(province)
+            ){
                 Button {
-                    validateForm()
+                    saveUserData()
                 } label: {
-                    Text("Revisar formulario")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .padding()
-                        .lineLimit(1)
-                        .background(
-                            Color.yellow
-                                .cornerRadius(10)
-                                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                .frame(width: 300)
-                        )
+                    OrderSumaryButton()
                 }
             }
+            
             Spacer()
         }.onAppear(perform: fillForm)
     }
-    
-    func validateForm(){
-
-        //Not empty and alphabetic
-        if(!firstName.isEmpty && isAlphabetic(firstName)){
-            firstNameError = false
-        } else {
-            firstNameError = true
-        }
-        if(!lastName.isEmpty && isAlphabetic(lastName)){
-            lastNameError = false
-        } else {
-            lastNameError = true
-        }
-        
-        if(isValidEmail(email)){
-            emailError = false
-        } else {
-            emailError = true
-        }
-        
-        if(!phone.isEmpty && isValidPhoneNumber(phone)){
-            phoneError = false
-        } else {
-            phoneError = true
-        }
-        
-        if(!adress1.isEmpty){
-            adress1Error = false
-        } else {
-            adress1Error = true
-        }
-        
-        if(isValidPostalCode(postalCode)){
-            postalCodeError = false
-        } else {
-            postalCodeError = true
-        }
-        
-        if(!city.isEmpty && isAlphabetic(city)){
-            cityError = false
-        } else {
-            cityError = true
-        }
-        
-        if(!province.isEmpty && isAlphabetic(province)){
-            provinceError = false
-        } else {
-            provinceError = true
-        }
-        
-        // If we get any single error of any field the info of the form is not verified
-        if (firstNameError || lastNameError || emailError || phoneError || adress1Error || postalCodeError || cityError || provinceError){
-            infoVerified = false
-        } else {
-            infoVerified = true
-            saveUserData()
-        }
-    }
-        
     // Validate is text only has letters
-    func isAlphabetic(_ text: String) -> Bool {
+    private func isAlphabetic(_ text: String) -> Bool {
+        if(text.isEmpty){
+            return false
+        }
         let alphabeticRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$"
         return text.range(of: alphabeticRegex, options: .regularExpression) != nil
     }
     // Validate a valid email
-    func isValidEmail(_ email: String) -> Bool {
+    private func isValidEmail(_ email: String) -> Bool {
+        if(email.isEmpty){
+            return false
+        }
         let emailRegex = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+    private func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+        if(phoneNumber.isEmpty){
+            return false
+        }
         let phoneRegex = "^[0-9+\\-()\\s]{7,15}$"
         return NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: phoneNumber)
     }
-    func isValidPostalCode(_ postalCode: String) -> Bool {
+    private func isValidPostalCode(_ postalCode: String) -> Bool {
+        if(postalCode.isEmpty){
+            return false
+        }
         let postalCodeRegex = "^[0-9]{5}$" // only numbers and only 5 digits
         return NSPredicate(format: "SELF MATCHES %@", postalCodeRegex).evaluate(with: postalCode)
     }
@@ -313,7 +246,7 @@ struct UserInfo: View {
 
 struct OrderSumaryButton: View {
     var body: some View {
-        NavigationLink(destination: Text("Resumen de la compra")) {
+        NavigationLink(destination: OrderSummary()) {
             Text("Resumen de compra")
                 .font(.headline)
                 .fontWeight(.semibold)

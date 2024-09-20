@@ -47,6 +47,16 @@ struct CartProductRow: View {
                     .bold()
                     .font(.system(size: 14))
                     .frame(maxWidth: .infinity, alignment: .leading)
+                HStack{
+                    Text("Coronas: \(String(format: "%.2f", cartProduct.reward * Double(cartProduct.quantitySelected)))")
+                        .bold()
+                        .font(.system(size: 14))
+                        .foregroundColor(.green)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Image(systemName: "crown.fill")
+                        .foregroundColor(.yellow)
+                }
+                
             
             }
             Spacer()

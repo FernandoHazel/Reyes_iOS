@@ -9,6 +9,16 @@ import SwiftUI
 
 struct Rewards: View {
     
+    // Get a reference to the managed object context from the environment.
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    // I have "users" but is supposed to exist only one
+    @FetchRequest(sortDescriptors: [])
+    private var users: FetchedResults<UserData>
+    
+    @FetchRequest(sortDescriptors: [])
+    private var cartProducts: FetchedResults<CartProduct>
+    
     @Binding var showRewardOnboarding: Bool
     
     var body: some View {
@@ -17,12 +27,14 @@ struct Rewards: View {
             HStack {
                 HStack {
                     Text("Tu Progreso: ")
-                    Text("Fernando") //Esto dependerá del usuario logueado
+                    Text(users.first?.firstName ?? "") //Esto dependerá del usuario logueado
                         .bold()
                 }
                 Spacer()
                 HStack {
-                    Text("0")
+                    Text("\(String(format: "%.0f", users.first?.rewards ?? 0))")
+                        .bold()
+                        .foregroundColor(.green)
                     Image(systemName: "crown.fill")
                         .foregroundColor(.yellow)
                 }

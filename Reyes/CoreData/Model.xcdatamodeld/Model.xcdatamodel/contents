@@ -20,6 +20,7 @@
         <attribute name="phone" optional="YES" attributeType="String"/>
         <attribute name="postalCode" optional="YES" attributeType="String"/>
         <attribute name="province" optional="YES" attributeType="String"/>
+        <attribute name="rewards" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="selectedCountry" optional="YES" attributeType="String"/>
     </entity>
 </model>
