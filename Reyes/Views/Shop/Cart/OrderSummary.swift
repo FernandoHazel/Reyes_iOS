@@ -132,7 +132,6 @@ struct OrderSummary: View {
                     }
                 }
             }
-            //..
         }
     }
     
@@ -243,15 +242,7 @@ struct CreditCardForm: View {
             
             if (isValidCard(cardNumber) && isValidCreditCardExpiry(mmyy) && isValidCVV(cvv)){
                 Button {
-                    //Colocar la orden
-                    //..
-                    showPurchaseAlert = true
-                    
-                    //Añadimos las coronas aquí temporalmente
-                    //En realidad esto ocurre hasta que se confirma la compra en el backend
-                    if let userRewards = users.first?.rewards{
-                        users.first!.rewards += calculateRewards()
-                    }
+                    purchase()
                 } label: {
                     Text("Pagar")
                         .font(.headline)
@@ -274,6 +265,36 @@ struct CreditCardForm: View {
                 message: Text("La función de compra sigue en desarrollo, pulsa OK para continuar."),
                 dismissButton: .default(Text("OK"))
             )
+        }
+    }
+    
+    private func purchase(){
+        //1. Generate the order (verify if the payment method does not do this for us)
+        
+        //2. Erase the cart products
+        cartProducts.forEach { cartProduct in
+            viewContext.delete(cartProduct)
+        }
+        
+        //3. Update the remote inventory
+        
+        //4. Add rewards
+        users.first!.rewards += calculateRewards()
+
+        
+        //5. Show alert (delete in production)
+        showPurchaseAlert = true
+        
+        //6. Save context
+        saveContext()
+    }
+    
+    private func saveContext(){
+        do {
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Could't save context while adding cart product: \(error.localizedDescription)")
         }
     }
 

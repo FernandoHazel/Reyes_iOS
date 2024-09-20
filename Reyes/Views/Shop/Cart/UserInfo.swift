@@ -28,7 +28,7 @@ struct UserInfo: View {
     @State private var city: String = ""
     @State private var province: String = ""
     
-
+    @State private var isShowingOrderSummary = false
     
     var body: some View {
         VStack{
@@ -142,16 +142,36 @@ struct UserInfo: View {
             
             if (isAlphabetic(firstName) && isAlphabetic(lastName) && isValidEmail(email) && isValidPhoneNumber(phone) && !adress1.isEmpty && isValidPostalCode(postalCode) && isAlphabetic(city) && isAlphabetic(province)
             ){
-                Button {
-                    saveUserData()
-                } label: {
-                    OrderSumaryButton()
+                VStack {
+                    Button(action: {
+                        saveUserData()
+                        isShowingOrderSummary = true
+                    }) {
+                        Text("Resumen de compra")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .padding()
+                            .lineLimit(1)
+                            .background(
+                                Color.green
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10)
+                                    .frame(width: 300)
+                            )
+                    }
+
+                    // Navegación manual
+                    NavigationLink(destination: OrderSummary(), isActive: $isShowingOrderSummary) {
+                        EmptyView()
+                    }
                 }
             }
             
             Spacer()
         }.onAppear(perform: fillForm)
     }
+    
     // Validate is text only has letters
     private func isAlphabetic(_ text: String) -> Bool {
         if(text.isEmpty){
@@ -185,21 +205,23 @@ struct UserInfo: View {
 
     // Data functions
     private func fillForm(){
-        users.forEach { user in
-            firstName = user.firstName ?? ""
-            lastName = user.lastName ?? ""
-            email = user.email ?? ""
-            phone = user.phone ?? ""
-            adress1 = user.adress1 ?? ""
-            adress2 = user.adress2 ?? ""
-            selectedCountry = user.selectedCountry ?? ""
-            postalCode = user.postalCode ?? ""
-            city = user.city ?? ""
-            province = user.province ?? ""
+        if (users.first != nil) {
+            // Update existing user
+            firstName = users.first?.firstName ?? ""
+            lastName = users.first?.lastName ?? ""
+            email = users.first?.email ?? ""
+            phone = users.first?.phone ?? ""
+            adress1 = users.first?.adress1 ?? ""
+            adress2 = users.first?.adress2 ?? ""
+            selectedCountry = users.first?.selectedCountry ?? ""
+            postalCode = users.first?.postalCode ?? ""
+            city = users.first?.city ?? ""
+            province = users.first?.province ?? ""
         }
     }
     
     private func saveUserData() {
+        print("Saving user data")
         
         // Check if user already exist
         if let existingUser = users.first {
@@ -227,12 +249,12 @@ struct UserInfo: View {
             newUser.postalCode = postalCode
             newUser.city = city
             newUser.province = province
+            newUser.rewards = 0
         }
         
         // Save changes
         saveContext()
     }
-
     
     private func saveContext(){
         do{
@@ -244,24 +266,43 @@ struct UserInfo: View {
     }
 }
 
-struct OrderSumaryButton: View {
+struct OrderSummaryButton: View {
+    @State private var isShowingOrderSummary = false
+
     var body: some View {
-        NavigationLink(destination: OrderSummary()) {
-            Text("Resumen de compra")
-                .font(.headline)
-                .fontWeight(.semibold)
-                .foregroundColor(.white)
-                .padding()
-                .lineLimit(1)
-                .background(
-                    Color.green
-                        .cornerRadius(10)
-                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                        .frame(width: 300)
-                )
+        VStack {
+            Button(action: {
+                // Ejecutar método aquí
+                showOrderSummary()
+            }) {
+                Text("Resumen de compra")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding()
+                    .lineLimit(1)
+                    .background(
+                        Color.green
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                            .frame(width: 300)
+                    )
+            }
+
+            // Navegación manual
+            NavigationLink(destination: OrderSummary(), isActive: $isShowingOrderSummary) {
+                EmptyView()
+            }
         }
     }
+
+    // Método a ejecutar al presionar el botón
+    func showOrderSummary() {
+        // Ejecutar lógica adicional aquí
+        isShowingOrderSummary = true
+    }
 }
+
 
 struct UserInfo_Previews: PreviewProvider {
     static var previews: some View {
