@@ -221,8 +221,7 @@ struct UserInfo: View {
     }
     
     private func saveUserData() {
-        print("Saving user data")
-        
+
         // Check if user already exist
         if let existingUser = users.first {
             // Update existing user

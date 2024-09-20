@@ -7,12 +7,7 @@ struct ProductRow: View {
         
         VStack {
             DownloadedImage(imagePath: product.imgNames[0])
-                .frame(width: 250, height: 250)
-                .cornerRadius(10)
-                .padding()
-            
             Caption(text: product.name, price: product.price, discount: product.discount)
-                .frame(width: 250, height: 100)
         }
     }
 }
@@ -35,23 +30,26 @@ struct Caption: View {
                     Text("Regular: $"+String(price))
                         .font(.caption)
                         .strikethrough(true)
+                        .foregroundColor(.white)
                 } else {
                     Text("$"+String(price))
                         .font(.title)
                         .fontWeight(.bold)
+                        .foregroundColor(.white)
                 }
                 
             }
-            Spacer()
             Text(text)
+                .bold()
                 .font(.subheadline)
-            Spacer()
-
+                .foregroundColor(.white)
         }
-        .padding(0)
-        
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(
+            Color(.lightGray)
             
-
+        )
     }
 }
 
