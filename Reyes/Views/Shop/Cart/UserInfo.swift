@@ -157,7 +157,7 @@ struct UserInfo: View {
                                 Color.green
                                     .cornerRadius(10)
                                     .shadow(radius: 10)
-                                    .frame(width: 300)
+                                    .frame(maxWidth: .infinity)
                             )
                     }
 

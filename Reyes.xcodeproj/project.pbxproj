@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05099E502C9B33AF00BF00EF /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05099E4F2C9B33AF00BF00EF /* UserInfo.swift */; };
+		05099E522C9B417800BF00EF /* CartProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05099E512C9B417800BF00EF /* CartProductRow.swift */; };
+		05099E542C9B48CC00BF00EF /* CartSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05099E532C9B48CC00BF00EF /* CartSummary.swift */; };
+		05281D672C9A372F00FCFC5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05281D652C9A372F00FCFC5E /* Model.xcdatamodeld */; };
+		05281D6B2C9A3C5D00FCFC5E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05281D6A2C9A3C5D00FCFC5E /* CoreDataStack.swift */; };
+		05281D702C9A41A900FCFC5E /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05281D6F2C9A41A900FCFC5E /* Cart.swift */; };
 		0531F1002C5C0BDC00E11C1C /* ReyesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F0FF2C5C0BDC00E11C1C /* ReyesApp.swift */; };
 		0531F1022C5C0BDC00E11C1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1012C5C0BDC00E11C1C /* ContentView.swift */; };
 		0531F1042C5C0BDE00E11C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1032C5C0BDE00E11C1C /* Assets.xcassets */; };
@@ -50,13 +56,31 @@
 		0531F18E2C5C6E5200E11C1C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1732C5C6E5200E11C1C /* GameView.swift */; };
 		0531F18F2C5C6E5200E11C1C /* NewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1752C5C6E5200E11C1C /* NewDetail.swift */; };
 		0531F1902C5C6E5200E11C1C /* NewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1762C5C6E5200E11C1C /* NewRow.swift */; };
-		0531F1912C5C6E5200E11C1C /* NewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1772C5C6E5200E11C1C /* NewsList.swift */; };
+		0554D1492C925D4A00BE33C3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0554D1482C925D4A00BE33C3 /* FirebaseAnalytics */; };
+		0554D14B2C925D5600BE33C3 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0554D14A2C925D5600BE33C3 /* FirebaseCrashlytics */; };
+		058039BF2C93696000EE6E36 /* VersionUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058039BE2C93696000EE6E36 /* VersionUpdateManager.swift */; };
+		058039C12C93698300EE6E36 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 058039C02C93698300EE6E36 /* FirebaseRemoteConfig */; };
+		058039C42C9369DC00EE6E36 /* VersionUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058039C32C9369DC00EE6E36 /* VersionUpdate.swift */; };
 		058508052C7ED3B300478E26 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058508042C7ED3B300478E26 /* Colors.swift */; };
 		059E77712C7B894D00C11C00 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 059E77702C7B894D00C11C00 /* FirebaseFirestore */; };
 		059E77752C7BABF500C11C00 /* UploadButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E77742C7BABF500C11C00 /* UploadButtons.swift */; };
 		059E77782C7BC08E00C11C00 /* FetchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E77772C7BC08E00C11C00 /* FetchingView.swift */; };
 		059E777B2C7BC5B000C11C00 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E777A2C7BC5B000C11C00 /* AppViewModel.swift */; };
 		059F24A32C5D2C3500B0EC85 /* DownloadedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059F24A22C5D2C3500B0EC85 /* DownloadedImage.swift */; };
+		05A55F572C9E014C008044C5 /* ArticleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A55F562C9E014C008044C5 /* ArticleImage.swift */; };
+		05A55F5A2C9E06C8008044C5 /* Academy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A55F592C9E06C8008044C5 /* Academy.swift */; };
+		05A85AC12C979A9100C87ADE /* remote_config_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05A85AC02C979A9100C87ADE /* remote_config_defaults.plist */; };
+		05A85AC42C97DCD200C87ADE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A85AC32C97DCD200C87ADE /* String+Extension.swift */; };
+		05AD06982CB1A408008D1CB4 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD06972CB1A408008D1CB4 /* PaymentView.swift */; };
+		05AD069B2CB1C25C008D1CB4 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD069A2CB1C25C008D1CB4 /* Stripe */; };
+		05AD069D2CB1C25C008D1CB4 /* StripeApplePay in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD069C2CB1C25C008D1CB4 /* StripeApplePay */; };
+		05AD069F2CB1C25C008D1CB4 /* StripeCardScan in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD069E2CB1C25C008D1CB4 /* StripeCardScan */; };
+		05AD06A12CB1C25C008D1CB4 /* StripeFinancialConnections in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD06A02CB1C25C008D1CB4 /* StripeFinancialConnections */; };
+		05AD06A32CB1C25C008D1CB4 /* StripeIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD06A22CB1C25C008D1CB4 /* StripeIdentity */; };
+		05AD06A52CB1C25C008D1CB4 /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD06A42CB1C25C008D1CB4 /* StripePaymentSheet */; };
+		05AD06A72CB1C25C008D1CB4 /* StripePayments in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD06A62CB1C25C008D1CB4 /* StripePayments */; };
+		05AD06A92CB1C25C008D1CB4 /* StripePaymentsUI in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD06A82CB1C25C008D1CB4 /* StripePaymentsUI */; };
+		05C019B22C9CAFD1002E5A86 /* OrderSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C019B12C9CAFD1002E5A86 /* OrderSummary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +101,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05099E4F2C9B33AF00BF00EF /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		05099E512C9B417800BF00EF /* CartProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProductRow.swift; sourceTree = "<group>"; };
+		05099E532C9B48CC00BF00EF /* CartSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSummary.swift; sourceTree = "<group>"; };
+		05281D662C9A372F00FCFC5E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		05281D6A2C9A3C5D00FCFC5E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		05281D6F2C9A41A900FCFC5E /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		0531F0FC2C5C0BDC00E11C1C /* Reyes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reyes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0531F0FF2C5C0BDC00E11C1C /* ReyesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReyesApp.swift; sourceTree = "<group>"; };
 		0531F1012C5C0BDC00E11C1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,12 +152,20 @@
 		0531F1732C5C6E5200E11C1C /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		0531F1752C5C6E5200E11C1C /* NewDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDetail.swift; sourceTree = "<group>"; };
 		0531F1762C5C6E5200E11C1C /* NewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRow.swift; sourceTree = "<group>"; };
-		0531F1772C5C6E5200E11C1C /* NewsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsList.swift; sourceTree = "<group>"; };
+		058039BE2C93696000EE6E36 /* VersionUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateManager.swift; sourceTree = "<group>"; };
+		058039C32C9369DC00EE6E36 /* VersionUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdate.swift; sourceTree = "<group>"; };
 		058508042C7ED3B300478E26 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		059E77742C7BABF500C11C00 /* UploadButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtons.swift; sourceTree = "<group>"; };
 		059E77772C7BC08E00C11C00 /* FetchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingView.swift; sourceTree = "<group>"; };
 		059E777A2C7BC5B000C11C00 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		059F24A22C5D2C3500B0EC85 /* DownloadedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedImage.swift; sourceTree = "<group>"; };
+		05A55F562C9E014C008044C5 /* ArticleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleImage.swift; sourceTree = "<group>"; };
+		05A55F592C9E06C8008044C5 /* Academy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Academy.swift; sourceTree = "<group>"; };
+		05A55F5B2C9E1169008044C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		05A85AC02C979A9100C87ADE /* remote_config_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = remote_config_defaults.plist; sourceTree = "<group>"; };
+		05A85AC32C97DCD200C87ADE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		05AD06972CB1A408008D1CB4 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		05C019B12C9CAFD1002E5A86 /* OrderSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +174,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0531F12E2C5C0ED500E11C1C /* FirebaseStorage in Frameworks */,
+				0554D14B2C925D5600BE33C3 /* FirebaseCrashlytics in Frameworks */,
 				059E77712C7B894D00C11C00 /* FirebaseFirestore in Frameworks */,
+				0554D1492C925D4A00BE33C3 /* FirebaseAnalytics in Frameworks */,
+				05AD06A12CB1C25C008D1CB4 /* StripeFinancialConnections in Frameworks */,
+				05AD069F2CB1C25C008D1CB4 /* StripeCardScan in Frameworks */,
+				05AD06A72CB1C25C008D1CB4 /* StripePayments in Frameworks */,
+				058039C12C93698300EE6E36 /* FirebaseRemoteConfig in Frameworks */,
+				05AD06A32CB1C25C008D1CB4 /* StripeIdentity in Frameworks */,
+				05AD069B2CB1C25C008D1CB4 /* Stripe in Frameworks */,
+				05AD06A52CB1C25C008D1CB4 /* StripePaymentSheet in Frameworks */,
+				05AD06A92CB1C25C008D1CB4 /* StripePaymentsUI in Frameworks */,
+				05AD069D2CB1C25C008D1CB4 /* StripeApplePay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +206,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05281D642C9A370D00FCFC5E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				05281D652C9A372F00FCFC5E /* Model.xcdatamodeld */,
+				05281D6A2C9A3C5D00FCFC5E /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		05281D6C2C9A417E00FCFC5E /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				05281D6F2C9A41A900FCFC5E /* Cart.swift */,
+				05099E4F2C9B33AF00BF00EF /* UserInfo.swift */,
+				05099E512C9B417800BF00EF /* CartProductRow.swift */,
+				05099E532C9B48CC00BF00EF /* CartSummary.swift */,
+				05C019B12C9CAFD1002E5A86 /* OrderSummary.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 		0531F0F32C5C0BDC00E11C1C = {
 			isa = PBXGroup;
 			children = (
@@ -181,11 +251,16 @@
 		0531F0FE2C5C0BDC00E11C1C /* Reyes */ = {
 			isa = PBXGroup;
 			children = (
+				05A55F5B2C9E1169008044C5 /* Info.plist */,
+				05281D642C9A370D00FCFC5E /* CoreData */,
+				05A85AC22C97DCA200C87ADE /* Extensions */,
+				058039BD2C93693600EE6E36 /* Managers */,
 				059E77792C7BC59F00C11C00 /* ViewModel */,
 				0531F14F2C5C6E3A00E11C1C /* Model */,
 				0531F13B2C5C6E2500E11C1C /* Resources */,
 				0531F12F2C5C6B7800E11C1C /* Views */,
 				0531F1292C5C0C2500E11C1C /* GoogleService-Info.plist */,
+				05A85AC02C979A9100C87ADE /* remote_config_defaults.plist */,
 				0531F0FF2C5C0BDC00E11C1C /* ReyesApp.swift */,
 				0531F1012C5C0BDC00E11C1C /* ContentView.swift */,
 				0531F1032C5C0BDE00E11C1C /* Assets.xcassets */,
@@ -229,6 +304,7 @@
 		0531F12F2C5C6B7800E11C1C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				05A55F582C9E06B9008044C5 /* Academy */,
 				059E77762C7BC07500C11C00 /* Errors */,
 				0531F1742C5C6E5200E11C1C /* Calendar */,
 				0531F15E2C5C6E5100E11C1C /* Home */,
@@ -261,6 +337,7 @@
 				0531F14C2C5C6E3A00E11C1C /* RewardInstruction.swift */,
 				0531F14D2C5C6E3A00E11C1C /* StaffMember.swift */,
 				0531F14E2C5C6E3A00E11C1C /* Update.swift */,
+				058039C32C9369DC00EE6E36 /* VersionUpdate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +373,7 @@
 				0531F1652C5C6E5200E11C1C /* VideoView.swift */,
 				059F24A22C5D2C3500B0EC85 /* DownloadedImage.swift */,
 				058508042C7ED3B300478E26 /* Colors.swift */,
+				05A55F562C9E014C008044C5 /* ArticleImage.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -315,6 +393,8 @@
 		0531F1702C5C6E5200E11C1C /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				05AD06962CB1A3F4008D1CB4 /* Payment */,
+				05281D6C2C9A417E00FCFC5E /* Cart */,
 				0531F16D2C5C6E5200E11C1C /* ProductDetail.swift */,
 				0531F16E2C5C6E5200E11C1C /* ProductRow.swift */,
 				0531F16F2C5C6E5200E11C1C /* ProductsList.swift */,
@@ -337,9 +417,16 @@
 			children = (
 				0531F1752C5C6E5200E11C1C /* NewDetail.swift */,
 				0531F1762C5C6E5200E11C1C /* NewRow.swift */,
-				0531F1772C5C6E5200E11C1C /* NewsList.swift */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		058039BD2C93693600EE6E36 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				058039BE2C93696000EE6E36 /* VersionUpdateManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		059E77762C7BC07500C11C00 /* Errors */ = {
@@ -358,6 +445,30 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		05A55F582C9E06B9008044C5 /* Academy */ = {
+			isa = PBXGroup;
+			children = (
+				05A55F592C9E06C8008044C5 /* Academy.swift */,
+			);
+			path = Academy;
+			sourceTree = "<group>";
+		};
+		05A85AC22C97DCA200C87ADE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				05A85AC32C97DCD200C87ADE /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		05AD06962CB1A3F4008D1CB4 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				05AD06972CB1A408008D1CB4 /* PaymentView.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -368,6 +479,7 @@
 				0531F0F82C5C0BDC00E11C1C /* Sources */,
 				0531F0F92C5C0BDC00E11C1C /* Frameworks */,
 				0531F0FA2C5C0BDC00E11C1C /* Resources */,
+				0554D14C2C925FCA00BE33C3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -377,6 +489,17 @@
 			packageProductDependencies = (
 				0531F12D2C5C0ED500E11C1C /* FirebaseStorage */,
 				059E77702C7B894D00C11C00 /* FirebaseFirestore */,
+				0554D1482C925D4A00BE33C3 /* FirebaseAnalytics */,
+				0554D14A2C925D5600BE33C3 /* FirebaseCrashlytics */,
+				058039C02C93698300EE6E36 /* FirebaseRemoteConfig */,
+				05AD069A2CB1C25C008D1CB4 /* Stripe */,
+				05AD069C2CB1C25C008D1CB4 /* StripeApplePay */,
+				05AD069E2CB1C25C008D1CB4 /* StripeCardScan */,
+				05AD06A02CB1C25C008D1CB4 /* StripeFinancialConnections */,
+				05AD06A22CB1C25C008D1CB4 /* StripeIdentity */,
+				05AD06A42CB1C25C008D1CB4 /* StripePaymentSheet */,
+				05AD06A62CB1C25C008D1CB4 /* StripePayments */,
+				05AD06A82CB1C25C008D1CB4 /* StripePaymentsUI */,
 			);
 			productName = Reyes;
 			productReference = 0531F0FC2C5C0BDC00E11C1C /* Reyes.app */;
@@ -452,6 +575,7 @@
 			mainGroup = 0531F0F32C5C0BDC00E11C1C;
 			packageReferences = (
 				0531F12B2C5C0DF200E11C1C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
 			);
 			productRefGroup = 0531F0FD2C5C0BDC00E11C1C /* Products */;
 			projectDirPath = "";
@@ -471,6 +595,7 @@
 			files = (
 				0531F1072C5C0BDE00E11C1C /* Preview Assets.xcassets in Resources */,
 				0531F1042C5C0BDE00E11C1C /* Assets.xcassets in Resources */,
+				05A85AC12C979A9100C87ADE /* remote_config_defaults.plist in Resources */,
 				0531F12A2C5C0C2500E11C1C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +616,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0554D14C2C925FCA00BE33C3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"$(SRCROOT)/${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"$(SRCROOT)/${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(SRCROOT)/$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(SRCROOT)/$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0531F0F82C5C0BDC00E11C1C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -502,14 +652,21 @@
 				0531F17E2C5C6E5200E11C1C /* CustomTabBar.swift in Sources */,
 				059E77752C7BABF500C11C00 /* UploadButtons.swift in Sources */,
 				0531F1862C5C6E5200E11C1C /* RosterRow.swift in Sources */,
+				05281D672C9A372F00FCFC5E /* Model.xcdatamodeld in Sources */,
+				05C019B22C9CAFD1002E5A86 /* OrderSummary.swift in Sources */,
 				0531F17C2C5C6E5200E11C1C /* RewardsOnboarding.swift in Sources */,
 				0531F1792C5C6E5200E11C1C /* HomeView.swift in Sources */,
 				0531F1512C5C6E3A00E11C1C /* Game.swift in Sources */,
 				0531F18D2C5C6E5200E11C1C /* GameDetail.swift in Sources */,
 				0531F1022C5C0BDC00E11C1C /* ContentView.swift in Sources */,
+				058039C42C9369DC00EE6E36 /* VersionUpdate.swift in Sources */,
+				058039BF2C93696000EE6E36 /* VersionUpdateManager.swift in Sources */,
+				05099E522C9B417800BF00EF /* CartProductRow.swift in Sources */,
 				0531F1822C5C6E5200E11C1C /* CircleImage.swift in Sources */,
 				0531F1872C5C6E5200E11C1C /* StaffMemberDetail.swift in Sources */,
 				0531F1812C5C6E5200E11C1C /* Carousel.swift in Sources */,
+				05AD06982CB1A408008D1CB4 /* PaymentView.swift in Sources */,
+				05A55F572C9E014C008044C5 /* ArticleImage.swift in Sources */,
 				0531F1802C5C6E5200E11C1C /* TopBar.swift in Sources */,
 				0531F1002C5C0BDC00E11C1C /* ReyesApp.swift in Sources */,
 				0531F18F2C5C6E5200E11C1C /* NewDetail.swift in Sources */,
@@ -519,9 +676,10 @@
 				0531F1852C5C6E5200E11C1C /* RosterList.swift in Sources */,
 				0531F1312C5C6B9F00E11C1C /* FetchImagesTest.swift in Sources */,
 				0531F17F2C5C6E5200E11C1C /* Main.swift in Sources */,
+				05099E502C9B33AF00BF00EF /* UserInfo.swift in Sources */,
 				059F24A32C5D2C3500B0EC85 /* DownloadedImage.swift in Sources */,
-				0531F1912C5C6E5200E11C1C /* NewsList.swift in Sources */,
 				0531F18A2C5C6E5200E11C1C /* ProductRow.swift in Sources */,
+				05A85AC42C97DCD200C87ADE /* String+Extension.swift in Sources */,
 				0531F18C2C5C6E5200E11C1C /* Calendar.swift in Sources */,
 				0531F1522C5C6E3A00E11C1C /* ModelData.swift in Sources */,
 				059E777B2C7BC5B000C11C00 /* AppViewModel.swift in Sources */,
@@ -530,11 +688,15 @@
 				058508052C7ED3B300478E26 /* Colors.swift in Sources */,
 				0531F1552C5C6E3A00E11C1C /* Product.swift in Sources */,
 				059E77782C7BC08E00C11C00 /* FetchingView.swift in Sources */,
+				05281D6B2C9A3C5D00FCFC5E /* CoreDataStack.swift in Sources */,
+				05099E542C9B48CC00BF00EF /* CartSummary.swift in Sources */,
+				05281D702C9A41A900FCFC5E /* Cart.swift in Sources */,
 				0531F1542C5C6E3A00E11C1C /* Player.swift in Sources */,
 				0531F17D2C5C6E5200E11C1C /* Updates.swift in Sources */,
 				0531F1892C5C6E5200E11C1C /* ProductDetail.swift in Sources */,
 				0531F1562C5C6E3A00E11C1C /* RewardInstruction.swift in Sources */,
 				0531F18B2C5C6E5200E11C1C /* ProductsList.swift in Sources */,
+				05A55F5A2C9E06C8008044C5 /* Academy.swift in Sources */,
 				0531F17A2C5C6E5200E11C1C /* NextGameView.swift in Sources */,
 				0531F1532C5C6E3A00E11C1C /* Noticia.swift in Sources */,
 				0531F18E2C5C6E5200E11C1C /* GameView.swift in Sources */,
@@ -702,11 +864,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Reyes/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9AGHP648CH;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Reyes/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -718,7 +883,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 20240920.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Fhazel.Reyes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -746,7 +911,9 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9AGHP648CH;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Reyes/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -758,7 +925,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 20240920.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Fhazel.Reyes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -899,6 +1066,14 @@
 				minimumVersion = 11.0.0;
 			};
 		};
+		05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.31.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -907,12 +1082,80 @@
 			package = 0531F12B2C5C0DF200E11C1C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
+		0554D1482C925D4A00BE33C3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0531F12B2C5C0DF200E11C1C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		0554D14A2C925D5600BE33C3 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0531F12B2C5C0DF200E11C1C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		058039C02C93698300EE6E36 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0531F12B2C5C0DF200E11C1C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
 		059E77702C7B894D00C11C00 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0531F12B2C5C0DF200E11C1C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
+		05AD069A2CB1C25C008D1CB4 /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = Stripe;
+		};
+		05AD069C2CB1C25C008D1CB4 /* StripeApplePay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeApplePay;
+		};
+		05AD069E2CB1C25C008D1CB4 /* StripeCardScan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeCardScan;
+		};
+		05AD06A02CB1C25C008D1CB4 /* StripeFinancialConnections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeFinancialConnections;
+		};
+		05AD06A22CB1C25C008D1CB4 /* StripeIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripeIdentity;
+		};
+		05AD06A42CB1C25C008D1CB4 /* StripePaymentSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePaymentSheet;
+		};
+		05AD06A62CB1C25C008D1CB4 /* StripePayments */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePayments;
+		};
+		05AD06A82CB1C25C008D1CB4 /* StripePaymentsUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05AD06992CB1C25C008D1CB4 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = StripePaymentsUI;
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		05281D652C9A372F00FCFC5E /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				05281D662C9A372F00FCFC5E /* Model.xcdatamodel */,
+			);
+			currentVersion = 05281D662C9A372F00FCFC5E /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0531F0F42C5C0BDC00E11C1C /* Project object */;
 }

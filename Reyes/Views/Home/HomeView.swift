@@ -15,8 +15,6 @@ struct HomeView: View {
                             RewardsOnboarding()
                         }
                         .padding(.vertical)
-                    //NewsList()
-                    //
                     if !vm.noticias.isEmpty {
                         ScrollView {
                             ForEach(vm.noticias) { noticia in

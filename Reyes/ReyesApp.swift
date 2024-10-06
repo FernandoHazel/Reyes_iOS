@@ -1,5 +1,12 @@
 import SwiftUI
 import FirebaseCore
+import Stripe
+
+// Test Backend URL: https://moored-shimmer-atlasaurus.glitch.me
+// Can find the project in https://glitch.com/edit/#!/moored-shimmer-atlasaurus?path=README.md%3A1%3A0
+
+// This URL will be different in production
+let BaseBackendURL = "http://127.0.0.1:1234"
 
 //App delegate used to initialize firebase
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -18,6 +25,28 @@ struct ReyesApp: App {
     // Create observable instances for Core Data stack and ViewModel
     @StateObject private var coreDataStack = CoreDataStack.shared
     @StateObject private var vm = AppViewModel()
+    
+    
+    init(){
+        //Get the publishable kay from the server
+        let configUrl = URL(string: BaseBackendURL + "/config")
+        var request = URLRequest(url: configUrl!)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
+            guard let response = response as? HTTPURLResponse,
+                  response.statusCode == 200,
+                  let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                  let publishableKey = json["publishableKey"] as? String else {
+                print("failed to retrieve publishable key from server...")
+                return
+            }
+            print("Publishable Key: \(publishableKey)")
+            StripeAPI.defaultPublishableKey = publishableKey
+        })
+        task.resume()
+    }
     
     var body: some Scene {
         WindowGroup {

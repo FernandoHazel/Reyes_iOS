@@ -27,9 +27,7 @@ struct Main: View {
                                 }
                                 case .book:
                                 VStack {
-                                    //NewsList()
-                                    // Change to academy view
-                                    Text("Aquí añadiremos la vista de la academia")
+                                    Academy()
                                 }
                                 case .bag:
                                 VStack {

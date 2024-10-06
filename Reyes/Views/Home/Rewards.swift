@@ -47,18 +47,22 @@ struct Rewards: View {
             Button(action: {
                 showRewardOnboarding.toggle()
             }, label: {
-                Text("Detalles de recompensas")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.black)
-                    .padding()
-                    .lineLimit(1)
-                    .background(
-                        Color.white
-                            .cornerRadius(10)
-                            .shadow(radius: 1)
-                            .frame(width: 370)
-                    )
+                HStack{
+                    Spacer()
+                    Text("Detalles de recompensas")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
+                        .padding()
+                        .lineLimit(1)
+                    Spacer()
+                        
+                }.background(
+                    Color.white
+                        .cornerRadius(10)
+                        .shadow(radius: 1)
+                )
+                
         })
             
             

@@ -20,20 +20,44 @@ struct CartSummary: View {
             Text("Total del carrito")
                 .bold()
                 .font(.system(size: 20))
+                .foregroundColor(Color(red: 0.0, green: 0.30, blue: 0.90))
                 .padding()
             //Summary of all products
             Text("$\(String(format: "%.2f", cartSum()))")
                 .bold()
                 .padding()
                 .font(.system(size: 20))
+                .foregroundColor(Color(red: 0.0, green: 0.30, blue: 0.90))
         }
-        .foregroundColor(.white)
         .background(
-            Color(red: 0.0, green: 0.30, blue: 0.90)
+            Color(.white)
                 .cornerRadius(10)
+                .shadow(color: Color(red: 0.0, green: 0.30, blue: 0.90), radius: 1)
                 .frame(width: 300)
         )
         .padding(.horizontal)
+        HStack{
+            Text("Recompensas: ")
+                .bold()
+                .font(.system(size: 20))
+                .foregroundColor(.green)
+                .padding()
+            //Summary of all products
+            Text("\(String(format: "%.0f", rewardSum()))")
+                .bold()
+                .padding()
+                .font(.system(size: 20))
+                .foregroundColor(.green)
+            Image(systemName: "crown.fill")
+                .foregroundColor(.yellow)
+        }
+            .background(
+                Color(.white)
+                    .cornerRadius(10)
+                    .shadow(color: .green, radius: 1)
+                    .frame(width: 300)
+            )
+            .padding(.horizontal)
     }
     
     private func cartSum() -> Double{
@@ -42,6 +66,14 @@ struct CartSummary: View {
             let priceWithDiscount = cartProduct.price - cartProduct.price * cartProduct.discount / 100
             let productTotal = priceWithDiscount * Double(cartProduct.quantitySelected)
             sum += productTotal
+        }
+        return sum
+    }
+    
+    private func rewardSum() -> Double{
+        var sum: Double = 0
+        cartProducts.forEach { cartProduct in
+            sum += cartProduct.reward * Double(cartProduct.quantitySelected)
         }
         return sum
     }
