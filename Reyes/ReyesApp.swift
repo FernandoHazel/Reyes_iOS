@@ -6,7 +6,8 @@ import Stripe
 // Can find the project in https://glitch.com/edit/#!/moored-shimmer-atlasaurus?path=README.md%3A1%3A0
 
 // This URL will be different in production
-let BaseBackendURL = "http://127.0.0.1:1234"
+let BaseBackendURL = "http://127.0.0.1:1234/"
+var stripeInitialized = false
 
 //App delegate used to initialize firebase
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -29,7 +30,7 @@ struct ReyesApp: App {
     
     init(){
         //Get the publishable kay from the server
-        let configUrl = URL(string: BaseBackendURL + "/config")
+        let configUrl = URL(string: BaseBackendURL + "config")
         var request = URLRequest(url: configUrl!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -40,10 +41,12 @@ struct ReyesApp: App {
                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                   let publishableKey = json["publishableKey"] as? String else {
                 print("failed to retrieve publishable key from server...")
+                stripeInitialized = false
                 return
             }
             print("Publishable Key: \(publishableKey)")
             StripeAPI.defaultPublishableKey = publishableKey
+            stripeInitialized = true
         })
         task.resume()
     }

@@ -271,7 +271,6 @@ struct OrderSummaryButton: View {
     var body: some View {
         VStack {
             Button(action: {
-                // Ejecutar método aquí
                 showOrderSummary()
             }) {
                 Text("Resumen de compra")

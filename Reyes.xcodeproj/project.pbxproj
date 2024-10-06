@@ -13,6 +13,7 @@
 		05281D672C9A372F00FCFC5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05281D652C9A372F00FCFC5E /* Model.xcdatamodeld */; };
 		05281D6B2C9A3C5D00FCFC5E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05281D6A2C9A3C5D00FCFC5E /* CoreDataStack.swift */; };
 		05281D702C9A41A900FCFC5E /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05281D6F2C9A41A900FCFC5E /* Cart.swift */; };
+		0529FDDF2CB3010B00AE971D /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0529FDDE2CB3010B00AE971D /* PaymentModel.swift */; };
 		0531F1002C5C0BDC00E11C1C /* ReyesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F0FF2C5C0BDC00E11C1C /* ReyesApp.swift */; };
 		0531F1022C5C0BDC00E11C1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0531F1012C5C0BDC00E11C1C /* ContentView.swift */; };
 		0531F1042C5C0BDE00E11C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0531F1032C5C0BDE00E11C1C /* Assets.xcassets */; };
@@ -107,6 +108,7 @@
 		05281D662C9A372F00FCFC5E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		05281D6A2C9A3C5D00FCFC5E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		05281D6F2C9A41A900FCFC5E /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		0529FDDE2CB3010B00AE971D /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		0531F0FC2C5C0BDC00E11C1C /* Reyes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reyes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0531F0FF2C5C0BDC00E11C1C /* ReyesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReyesApp.swift; sourceTree = "<group>"; };
 		0531F1012C5C0BDC00E11C1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				0531F14D2C5C6E3A00E11C1C /* StaffMember.swift */,
 				0531F14E2C5C6E3A00E11C1C /* Update.swift */,
 				058039C32C9369DC00EE6E36 /* VersionUpdate.swift */,
+				0529FDDE2CB3010B00AE971D /* PaymentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				059F24A32C5D2C3500B0EC85 /* DownloadedImage.swift in Sources */,
 				0531F18A2C5C6E5200E11C1C /* ProductRow.swift in Sources */,
 				05A85AC42C97DCD200C87ADE /* String+Extension.swift in Sources */,
+				0529FDDF2CB3010B00AE971D /* PaymentModel.swift in Sources */,
 				0531F18C2C5C6E5200E11C1C /* Calendar.swift in Sources */,
 				0531F1522C5C6E3A00E11C1C /* ModelData.swift in Sources */,
 				059E777B2C7BC5B000C11C00 /* AppViewModel.swift in Sources */,
