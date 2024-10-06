@@ -11,6 +11,7 @@ struct PaymentView: View {
     @ObservedObject var model = PaymentModel()
     @State var loading = false
     @State var paymentMethodParams: STPPaymentMethodParams?
+    @State var orderCompleted = false
     
     var body: some View {
         VStack{
@@ -37,17 +38,28 @@ struct PaymentView: View {
             } else {
                 Text("Procesando...")
             }
+            
+            //Navigate when the status of the payment is .succeded
+            NavigationLink(destination: CongratsView(), isActive: $orderCompleted) {
+                        EmptyView()
+                    }
         }.onAppear(){
             // Create the intent when the view appears
             model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn")
         }
+        .onChange(of: model.paymentStatus) { paymentStatus in
+                if paymentStatus == .succeeded {
+                    // Navigate when the order was succesfull
+                    orderCompleted = true
+                }
+            }
         
         if let paymentStatus = model.paymentStatus {
             HStack {
                 switch paymentStatus {
                 case .succeeded:
-                    // Go to the congrats view and add the rewards to the user
-                    Text("Payment complete!")
+                    Text("Orden completada!")
+                        .foregroundColor(.green)
                 case .canceled:
                     Text("Pago cancelado!")
                         .foregroundColor(.red)
