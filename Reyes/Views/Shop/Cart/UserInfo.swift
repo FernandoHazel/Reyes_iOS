@@ -19,11 +19,43 @@ struct UserInfo: View {
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var email: String = ""
-    @State private var phone: String = "" // Add country code
+    @State private var phone: String = ""
     @State private var adress1: String = ""
     @State private var adress2: String = ""
-    @State private var selectedCountry = "México"
-        let countries = ["México", "Estados Unidos"]
+    @State private var selectedState = "Jalisco"
+        let states = [
+            "Aguascalientes",
+            "Baja California",
+            "Baja California Sur",
+            "Campeche",
+            "Chiapas",
+            "Chihuahua",
+            "Ciudad de México",
+            "Coahuila",
+            "Colima",
+            "Durango",
+            "Guanajuato",
+            "Guerrero",
+            "Hidalgo",
+            "Jalisco",
+            "Estado de México",
+            "Michoacán",
+            "Morelos",
+            "Nayarit",
+            "Nuevo León",
+            "Oaxaca",
+            "Puebla",
+            "Querétaro",
+            "Quintana Roo",
+            "San Luis Potosí",
+            "Sinaloa",
+            "Sonora",
+            "Tabasco",
+            "Tamaulipas",
+            "Tlaxcala",
+            "Veracruz",
+            "Yucatán",
+            "Zacatecas"]
     @State private var postalCode: String = ""
     @State private var city: String = ""
     @State private var province: String = ""
@@ -98,9 +130,9 @@ struct UserInfo: View {
                         .autocapitalization(.none)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                    Picker("País", selection: $selectedCountry) {
-                        ForEach(countries, id: \.self) { country in
-                            Text(country)
+                    Picker("Estado", selection: $selectedState) {
+                        ForEach(states, id: \.self) { state in
+                            Text(state)
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
@@ -213,7 +245,7 @@ struct UserInfo: View {
             phone = users.first?.phone ?? ""
             adress1 = users.first?.adress1 ?? ""
             adress2 = users.first?.adress2 ?? ""
-            selectedCountry = users.first?.selectedCountry ?? ""
+            selectedState = users.first?.selectedState ?? ""
             postalCode = users.first?.postalCode ?? ""
             city = users.first?.city ?? ""
             province = users.first?.province ?? ""
@@ -231,7 +263,7 @@ struct UserInfo: View {
             existingUser.phone = phone
             existingUser.adress1 = adress1
             existingUser.adress2 = adress2
-            existingUser.selectedCountry = selectedCountry
+            existingUser.selectedState = selectedState
             existingUser.postalCode = postalCode
             existingUser.city = city
             existingUser.province = province
@@ -244,7 +276,7 @@ struct UserInfo: View {
             newUser.phone = phone
             newUser.adress1 = adress1
             newUser.adress2 = adress2
-            newUser.selectedCountry = selectedCountry
+            newUser.selectedState = selectedState
             newUser.postalCode = postalCode
             newUser.city = city
             newUser.province = province

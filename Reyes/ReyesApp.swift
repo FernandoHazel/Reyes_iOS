@@ -29,22 +29,25 @@ struct ReyesApp: App {
     
     
     init(){
+        print("\n - - - - - - - - - - PUBLISHABLE KEY - - - - - - - - - - \n")
+        
         //Get the publishable kay from the server
         let configUrl = URL(string: BaseBackendURL + "config")
         var request = URLRequest(url: configUrl!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
+            defer { print("\n - - - - - - - - - -  END - - - - - - - - - - \n") }
             guard let response = response as? HTTPURLResponse,
                   response.statusCode == 200,
                   let data = data,
                   let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                   let publishableKey = json["publishableKey"] as? String else {
-                print("failed to retrieve publishable key from server...")
+                print("FAILED TO RETRIEVE PUBLISHABLE KEY FORM SERVER...")
                 stripeInitialized = false
                 return
             }
-            print("Publishable Key: \(publishableKey)")
+            print("PUBLISHABLE KEY: \(publishableKey)")
             StripeAPI.defaultPublishableKey = publishableKey
             stripeInitialized = true
         })

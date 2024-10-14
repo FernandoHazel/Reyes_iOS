@@ -27,7 +27,7 @@ struct Rewards: View {
             HStack {
                 HStack {
                     Text("Tu Progreso: ")
-                    Text(users.first?.firstName ?? "") //Esto dependerá del usuario logueado
+                    Text(users.first?.firstName ?? "")
                         .bold()
                 }
                 Spacer()

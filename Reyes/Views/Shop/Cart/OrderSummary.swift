@@ -18,81 +18,88 @@ struct OrderSummary: View {
     
     @FetchRequest(sortDescriptors: [])
     private var cartProducts: FetchedResults<CartProduct>
+    
+    @State var purchaseCompleted = false
 
     var body: some View {
-        Form {
-            Section(header: Text("Información de envío")){
-                VStack{
-                    Text("\(users.first?.firstName ?? "") \(users.first?.lastName ?? "")")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("\(users.first?.adress1 ?? "")")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("\(users.first?.city ?? ""), \(users.first?.province ?? ""), \(users.first?.postalCode ?? ""), \(users.first?.selectedCountry ?? "")")
-                        .frame(maxWidth: .infinity, alignment: .leading)
+        if (!purchaseCompleted){
+            Form {
+                Section(header: Text("Información de envío")){
+                    VStack{
+                        Text("\(users.first?.firstName ?? "") \(users.first?.lastName ?? "")")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("\(users.first?.adress1 ?? "")")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("\(users.first?.city ?? ""), \(users.first?.province ?? ""), \(users.first?.postalCode ?? ""), \(users.first?.selectedState ?? "")")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    VStack{
+                        Text("Fecha estimada de entrega")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(.green)
+                        Text("De 7 a 14 días") // Calculate somehow (can be something generic like 7-14 days)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundColor(.green)
+                    }
+                    
                 }
-                VStack{
-                    Text("Fecha estimada de entrega")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(.green)
-                    Text("De 7 a 14 días") // Calculate somehow (can be something generic like 7-14 days)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(.green)
-                }
-                
-            }
-            Section(header: Text("Artículos")){
-                VStack {
-                    List {
-                        ForEach(cartProducts) { cartProduct in
-                            CartProductRow(cartProduct: cartProduct)
+                Section(header: Text("Artículos")){
+                    VStack {
+                        List {
+                            ForEach(cartProducts) { cartProduct in
+                                CartProductRow(cartProduct: cartProduct)
+                            }
                         }
                     }
                 }
-            }
-            Section(header: Text("Resumen del pedido")){
-                VStack{
-                    HStack{
-                        Text("Total de artículos")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Spacer()
-                        Text("$\(String(format: "%.2f", cartSum()))")
+                Section(header: Text("Resumen del pedido")){
+                    VStack{
+                        HStack{
+                            Text("Total de artículos")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Spacer()
+                            Text("$\(String(format: "%.2f", cartSum()))")
+                        }
+                        HStack{
+                            Text("Envío")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Spacer()
+                            Text("$\(String(format: "%.2f", calcularCostoEnvio()))")
+                        }
+                        Divider()
+                        HStack{
+                            Text("Total")
+                                .bold()
+                                .font(.title)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Spacer()
+                            Text("$\(String(format: "%.2f", cartSum() + calcularCostoEnvio()))")
+                                .font(.title)
+                                .bold()
+                        }
+                        HStack{
+                            Text("Coronas obtenidas:")
+                                .foregroundColor(.green)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Spacer()
+                            Text("\(String(format: "%.2f", calculateRewards()))")
+                                .bold()
+                                .foregroundColor(.green)
+                            Image(systemName: "crown.fill")
+                                .foregroundColor(.yellow)
+                        }
                     }
-                    HStack{
-                        Text("Envío")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Spacer()
-                        Text("$\(String(format: "%.2f", calcularCostoEnvio()))")
-                    }
-                    Divider()
-                    HStack{
-                        Text("Total")
-                            .bold()
-                            .font(.title)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Spacer()
-                        Text("$\(String(format: "%.2f", cartSum() + calcularCostoEnvio()))")
-                            .font(.title)
-                            .bold()
-                    }
-                    HStack{
-                        Text("Coronas obtenidas:")
-                            .foregroundColor(.green)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Spacer()
-                        Text("\(String(format: "%.2f", calculateRewards()))")
-                            .bold()
-                            .foregroundColor(.green)
-                        Image(systemName: "crown.fill")
-                            .foregroundColor(.yellow)
+                }
+                Section(header: Text("Método de pago")){
+                    VStack{
+                        PaymentView(purchaseCompleted: $purchaseCompleted)
                     }
                 }
             }
-            Section(header: Text("Método de pago")){
-                VStack{
-                    PaymentView()
-                }
-            }
+        } else {
+            CongratsView()
         }
+        
     }
     
     private func cartSum() -> Double{
@@ -109,7 +116,78 @@ struct OrderSummary: View {
     private func calcularCostoEnvio() -> Double {
         
         //La tarifa debe ser parametrizable en base al estado a dónde hay que enviar
-        let costoTotal = 200.0
+        var costoTotal = 0.0
+        
+        switch users.first?.selectedState{
+        case "Aguascalientes":
+            costoTotal = 200
+        case "Baja California":
+            costoTotal = 500
+        case "Baja California Sur":
+            costoTotal = 300
+        case "Campeche":
+            costoTotal = 300
+        case "Chiapas":
+            costoTotal = 300
+        case "Chihuahua":
+            costoTotal = 400
+        case "Ciudad de México":
+            costoTotal = 200
+        case "Coahuila":
+            costoTotal = 400
+        case "Colima":
+            costoTotal = 200
+        case "Durango":
+            costoTotal = 400
+        case "Guanajuato":
+            costoTotal = 600
+        case "Guerrero":
+            costoTotal = 200
+        case "Hidalgo":
+            costoTotal = 200
+        case "Jalisco":
+            costoTotal = 200
+        case "Estado de México":
+            costoTotal = 200
+        case "Michoacán":
+            costoTotal = 200
+        case "Morelos":
+            costoTotal = 200
+        case "Nayarit":
+            costoTotal = 300
+        case "Nuevo León":
+            costoTotal = 200
+        case "Oaxaca":
+            costoTotal = 200
+        case "Puebla":
+            costoTotal = 200
+        case "Querétaro":
+            costoTotal = 200
+        case "Quintana Roo":
+            costoTotal = 300
+        case "San Luis Potosí":
+            costoTotal = 155
+        case "Sinaloa":
+            costoTotal = 250
+        case "Sonora":
+            costoTotal = 700
+        case "Tabasco":
+            costoTotal = 750
+        case "Tamaulipas":
+            costoTotal = 300
+        case "Tlaxcala":
+            costoTotal = 300
+        case "Veracruz":
+            costoTotal = 200
+        case "Yucatán":
+            costoTotal = 300
+        case "Zacatecas":
+            costoTotal = 400
+        case .none:
+            costoTotal = 200
+        case .some(_):
+            costoTotal = 200
+        }
         
         return costoTotal
     }
@@ -121,38 +199,9 @@ struct OrderSummary: View {
         }
         return sum
     }
-    private func purchase(){
-        //1. Generate the order (verify if the payment method does not do this for us)
-        
-        //2. Erase the cart products
-        cartProducts.forEach { cartProduct in
-            viewContext.delete(cartProduct)
-        }
-        
-        //3. Update the remote inventory
-        
-        //4. Add rewards
-        users.first!.rewards += calculateRewards()
-
-        
-        //5. Show alert (delete in production)
-        //showPurchaseAlert = true
-        
-        //6. Save context
-        saveContext()
-    }
-    
-    private func saveContext(){
-        do {
-            try viewContext.save()
-        } catch {
-            let error = error as NSError
-            fatalError("Could't save context while adding cart product: \(error.localizedDescription)")
-        }
-    }
 
 }
 
 #Preview {
-    OrderSummary()
+    OrderSummary(purchaseCompleted: false)
 }
