@@ -22,83 +22,83 @@ struct OrderSummary: View {
     @State var purchaseCompleted = false
 
     var body: some View {
-        if (!purchaseCompleted){
-            Form {
-                Section(header: Text("Información de envío")){
-                    VStack{
-                        Text("\(users.first?.firstName ?? "") \(users.first?.lastName ?? "")")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("\(users.first?.adress1 ?? "")")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("\(users.first?.city ?? ""), \(users.first?.province ?? ""), \(users.first?.postalCode ?? ""), \(users.first?.selectedState ?? "")")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    VStack{
-                        Text("Fecha estimada de entrega")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.green)
-                        Text("De 7 a 14 días") // Calculate somehow (can be something generic like 7-14 days)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(.green)
-                    }
-                    
+
+        Form {
+            Section(header: Text("Información de envío")){
+                VStack{
+                    Text("\(users.first?.firstName ?? "") \(users.first?.lastName ?? "")")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(users.first?.adress1 ?? "")")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(users.first?.city ?? ""), \(users.first?.province ?? ""), \(users.first?.postalCode ?? ""), \(users.first?.selectedState ?? "")")
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                Section(header: Text("Artículos")){
-                    VStack {
-                        List {
-                            ForEach(cartProducts) { cartProduct in
-                                CartProductRow(cartProduct: cartProduct)
-                            }
-                        }
-                    }
+                VStack{
+                    Text("Fecha estimada de entrega")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.green)
+                    Text("De 7 a 14 días") // Calculate somehow (can be something generic like 7-14 days)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.green)
                 }
-                Section(header: Text("Resumen del pedido")){
-                    VStack{
-                        HStack{
-                            Text("Total de artículos")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Spacer()
-                            Text("$\(String(format: "%.2f", cartSum()))")
+                
+            }
+            Section(header: Text("Artículos")){
+                VStack {
+                    List {
+                        ForEach(cartProducts) { cartProduct in
+                            CartProductRow(cartProduct: cartProduct)
                         }
-                        HStack{
-                            Text("Envío")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Spacer()
-                            Text("$\(String(format: "%.2f", calcularCostoEnvio()))")
-                        }
-                        Divider()
-                        HStack{
-                            Text("Total")
-                                .bold()
-                                .font(.title)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Spacer()
-                            Text("$\(String(format: "%.2f", cartSum() + calcularCostoEnvio()))")
-                                .font(.title)
-                                .bold()
-                        }
-                        HStack{
-                            Text("Coronas obtenidas:")
-                                .foregroundColor(.green)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Spacer()
-                            Text("\(String(format: "%.2f", calculateRewards()))")
-                                .bold()
-                                .foregroundColor(.green)
-                            Image(systemName: "crown.fill")
-                                .foregroundColor(.yellow)
-                        }
-                    }
-                }
-                Section(header: Text("Método de pago")){
-                    VStack{
-                        PaymentView(purchaseCompleted: $purchaseCompleted)
                     }
                 }
             }
-        } else {
+            Section(header: Text("Resumen del pedido")){
+                VStack{
+                    HStack{
+                        Text("Total de artículos")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        Text("$\(String(format: "%.2f", cartSum()))")
+                    }
+                    HStack{
+                        Text("Envío")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        Text("$\(String(format: "%.2f", calcularCostoEnvio()))")
+                    }
+                    Divider()
+                    HStack{
+                        Text("Total")
+                            .bold()
+                            .font(.title)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        Text("$\(String(format: "%.2f", cartSum() + calcularCostoEnvio()))")
+                            .font(.title)
+                            .bold()
+                    }
+                    HStack{
+                        Text("Coronas obtenidas:")
+                            .foregroundColor(.green)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        Text("\(String(format: "%.2f", calculateRewards()))")
+                            .bold()
+                            .foregroundColor(.green)
+                        Image(systemName: "crown.fill")
+                            .foregroundColor(.yellow)
+                    }
+                }
+            }
+            Section(header: Text("Método de pago")){
+                VStack{
+                    PaymentView(purchaseCompleted: $purchaseCompleted)
+                }
+            }
+        }.sheet(isPresented: $purchaseCompleted) {
             CongratsView()
         }
+        
         
     }
     
@@ -142,7 +142,7 @@ struct OrderSummary: View {
         case "Guanajuato":
             costoTotal = 600
         case "Guerrero":
-            costoTotal = 200
+            costoTotal = 700
         case "Hidalgo":
             costoTotal = 200
         case "Jalisco":

@@ -4,8 +4,6 @@
 //
 //  Created by Fernando Hazel Ascencio Baumgarten on 06/10/24.
 
-// Remember to prevent user to buy if stripeInitialized = false
-
 import Foundation
 import Stripe
 
@@ -15,17 +13,38 @@ class PaymentModel: ObservableObject {
     @Published var lastPaymentError: NSError?
     var paymentMethodType: String?
     var currency: String?
+    var email: String?
+    var fullName: String?
+    var shippingAdress: [String: Any]?
+    var phone: String?
+    var items: [[String: Any]]?
+    var metadata: [String: Any]?
     
-    func preparePaymentIntent(paymentMethodType: String, currency: String){
+    
+    func preparePaymentIntent(paymentMethodType: String, currency: String, email: String, fullName: String, shippingAdress: [String: Any], phone: String, items: [[String: Any]], metadata: [String: Any]){
         self.paymentMethodType = paymentMethodType
         self.currency = currency
+        self.email = email
+        self.fullName = fullName
+        self.shippingAdress = shippingAdress
+        self.phone = phone
+        self.items = items
+        self.metadata = metadata
         
         //Get the publishable kay from the server
         let url = URL(string: BaseBackendURL + "create-payment-intent")
         var request = URLRequest(url: url!)
         let json: [String: Any] = [
             "paymentMethodType": paymentMethodType,
-            "currency": currency
+            "currency": currency,
+            "email": email,
+            "fullName": fullName,
+            "shipping": [
+                "address": shippingAdress,
+                "name": fullName,
+                "phone": phone
+            ],
+            "items": items
         ]
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -40,7 +59,7 @@ class PaymentModel: ObservableObject {
                 print(message)
                 return
             }
-            print("Created payment intent")
+            print("Created payment intent with client secret \(clientSecret)")
             DispatchQueue.main.async {
                 self.paymentIntentParams = STPPaymentIntentParams(clientSecret: clientSecret)
             }
@@ -54,7 +73,7 @@ class PaymentModel: ObservableObject {
         
         if status == .succeeded {
             self.paymentIntentParams = nil
-            preparePaymentIntent(paymentMethodType: self.paymentMethodType!, currency: self.currency!)
+            preparePaymentIntent(paymentMethodType: self.paymentMethodType!, currency: self.currency!, email: self.email!, fullName: self.fullName!, shippingAdress: shippingAdress!, phone: self.phone!, items: self.items!, metadata: self.metadata!)
         }
     }
 }

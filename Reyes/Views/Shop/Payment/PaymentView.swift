@@ -51,7 +51,20 @@ struct PaymentView: View {
             }
         }.onAppear(){
             // Create the intent when the view appears
-            model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn")
+            let email = users.first?.email ?? ""
+            let fullName = "\(users.first?.firstName ?? "") \(users.first?.lastName ?? "")"
+            let shippingAdress = [
+                "line1": users.first?.adress1 ?? "",
+                "city": users.first?.city ?? "",
+                "state": users.first?.selectedState ?? "",
+                "postal_code": users.first?.postalCode ?? "",
+                "country": "MX"
+            ]
+            let phone = users.first?.phone ?? ""
+            let items = items()
+            let metadata = productNames()
+            
+            model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn", email: email, fullName: fullName, shippingAdress: shippingAdress, phone: phone, items: items, metadata: metadata)
             purchaseCompleted = false
         }
         .onChange(of: model.paymentStatus) { paymentStatus in
@@ -80,7 +93,7 @@ struct PaymentView: View {
         }
     }
     
-    private func calculateRewards() -> Double{
+    private func calculateRewards() -> Double {
         var sum: Double = 0
         cartProducts.forEach { cartProduct in
             sum += cartProduct.reward * Double(cartProduct.quantitySelected)
@@ -88,22 +101,19 @@ struct PaymentView: View {
         return sum
     }
     private func purchase(){
-        //1. Generate the order in firebase (also in stripe)
         
-        //2. Erase the cart products
+        //1. Erase the cart products
         cartProducts.forEach { cartProduct in
             viewContext.delete(cartProduct)
         }
         
-        //3. Update the remote inventory
-        
-        //4. Add rewards
+        //2. Add rewards
         users.first!.rewards += calculateRewards()
         
-        //6. Save context
+        //3. Save context
         saveContext()
         
-        //7. Navigate to congrats view
+        //4. Navigate to congrats view
         purchaseCompleted = true
         
         print("\n - - - - - - - - - - PURCHASE - - - - - - - - - - \n")
@@ -119,6 +129,24 @@ struct PaymentView: View {
             let error = error as NSError
             fatalError("Could't save context while adding cart product: \(error.localizedDescription)")
         }
+    }
+    
+    private func items() -> [[String: Any]]{
+        return cartProducts.map { $0.toDictionary() }
+    }
+    
+    private func productNames() -> [String: Any] {
+        var productDict: [String: Any] = [:]
+        var keyCount = 1
+        
+        cartProducts.forEach { cartProduct in
+            if let productName = cartProduct.name {
+                productDict["item\(keyCount)"] = productName
+                keyCount += 1
+            }
+        }
+        
+        return productDict
     }
 }
 
