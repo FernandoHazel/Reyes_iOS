@@ -12,11 +12,10 @@ struct TopBar: View {
     @Binding var showCart: Bool
     @State var cartIcon: String = "cart.circle"
     
-    //cart.fill.badge.plus
-    
     var body: some View {
         VStack {
-            DownloadedImage(imagePath: reyesLogo)
+            Image("Reyes_logo")
+                .resizable()
                 .frame(width: 30, height: 30)
             HStack {
                 Image(systemName: "person.circle")
@@ -24,7 +23,7 @@ struct TopBar: View {
                     .frame(width: 30, height: 30)
                     .foregroundColor(.white)
                     .onTapGesture {
-                        //showingProfile.toggle()
+                        showingProfile.toggle()
                     }
                 
                 Image(systemName: cartIcon)
@@ -41,7 +40,6 @@ struct TopBar: View {
             
         }
         .padding(.bottom)
-        //.background(Color(hex: 014791))
         .background(Color(red: 0.0, green: 0.30, blue: 0.90))
         .onAppear(){
             // Change cart icon if we have products on the cart to comunicate the user that he has product to buy yet

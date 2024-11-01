@@ -58,7 +58,7 @@ struct UserInfo: View {
             "Zacatecas"]
     @State private var postalCode: String = ""
     @State private var city: String = ""
-    @State private var province: String = ""
+    //@State private var province: String = ""
     
     @State private var isShowingOrderSummary = false
     
@@ -158,7 +158,7 @@ struct UserInfo: View {
                         }
                     }
                     
-                    VStack{
+                    /*VStack{
                         TextField("Estado / Provincia / Territorio", text: $province)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -167,12 +167,12 @@ struct UserInfo: View {
                                 .foregroundColor(.red)
                                 .font(.caption)
                         }
-                    }
+                    }*/
                 }
             }
             Spacer()
             
-            if (isAlphabetic(firstName) && isAlphabetic(lastName) && isValidEmail(email) && isValidPhoneNumber(phone) && !adress1.isEmpty && isValidPostalCode(postalCode) && isAlphabetic(city) && isAlphabetic(province)
+            if (isAlphabetic(firstName) && isAlphabetic(lastName) && isValidEmail(email) && isValidPhoneNumber(phone) && !adress1.isEmpty && isValidPostalCode(postalCode) && isAlphabetic(city) //&& isAlphabetic(province)
             ){
                 VStack {
                     Button(action: {
@@ -248,7 +248,7 @@ struct UserInfo: View {
             selectedState = users.first?.selectedState ?? ""
             postalCode = users.first?.postalCode ?? ""
             city = users.first?.city ?? ""
-            province = users.first?.province ?? ""
+            //province = users.first?.province ?? ""
         }
     }
     
@@ -266,7 +266,7 @@ struct UserInfo: View {
             existingUser.selectedState = selectedState
             existingUser.postalCode = postalCode
             existingUser.city = city
-            existingUser.province = province
+            //existingUser.province = province
         } else {
             // Create a new user
             let newUser = UserData(context: viewContext)
@@ -279,7 +279,7 @@ struct UserInfo: View {
             newUser.selectedState = selectedState
             newUser.postalCode = postalCode
             newUser.city = city
-            newUser.province = province
+            //newUser.province = province
             newUser.rewards = 0
         }
         

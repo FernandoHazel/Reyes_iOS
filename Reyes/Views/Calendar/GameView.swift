@@ -12,8 +12,9 @@ struct GameView: View {
                 .bold()
             HStack {
                 VStack {
-                    DownloadedImage(imagePath: reyesLogo)
-                        .frame(width: 80, height: 80)
+                    Image("Reyes_logo")
+                      .resizable()
+                      .frame(width: 80, height: 80)
                     Text(String(game.qrt_4_reyes))
                 }
                 Spacer()

@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct Main: View {
-    @State private var selectedTab: Tab = .house
+    @StateObject private var viewModel = AuthenticationViewModel()
     @State private var showingProfile = false
+    @State private var selectedTab: Tab = .house
     @State private var showCart = false
     
     init() {
@@ -47,7 +48,8 @@ struct Main: View {
                         }
                         .tag(tab)
                         .sheet(isPresented: $showingProfile) {
-                            //SingIn()
+                            AuthenticationView()
+                                .environmentObject(viewModel)
                         }
                         .sheet(isPresented: $showCart) {
                             Cart()
@@ -60,6 +62,7 @@ struct Main: View {
             
             VStack {
                 CustomTabBar(selectedTab: $selectedTab)
+                    .environmentObject(viewModel)
             }
         }
     }

@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseCore
+import FirebaseAuth
 import Stripe
 
 // Test Backend URL: https://moored-shimmer-atlasaurus.glitch.me
@@ -14,6 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     FirebaseApp.configure()
+      
     return true
   }
 }

@@ -22,7 +22,6 @@ struct Rewards: View {
     @Binding var showRewardOnboarding: Bool
     
     var body: some View {
-        
         VStack {
             HStack {
                 HStack {
@@ -41,15 +40,33 @@ struct Rewards: View {
             }
             .padding()
             
-            //Add the progress bar here
-            //..
+            //PROGRESS BAR
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    // Fondo de la barra de progreso
+                    Rectangle()
+                        .frame(height: 5)
+                        .foregroundColor(Color.gray)
+                        .cornerRadius(10)
+
+                    // Barra de progreso que se llena
+                    Rectangle()
+                        .frame(width: progressBarWidth(totalWidth: geometry.size.width), height: 10)
+                        .foregroundColor(Color.green)
+                        .cornerRadius(10)
+                        .animation(.easeInOut, value: users.first?.rewards ?? 0)
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 10)
+            }
+            .frame(height: 20)
             
             Button(action: {
                 showRewardOnboarding.toggle()
             }, label: {
                 HStack{
                     Spacer()
-                    Text("Detalles de recompensas")
+                    Text("¿Cómo funcionan las recompensas?")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .foregroundColor(.black)
@@ -62,11 +79,17 @@ struct Rewards: View {
                         .cornerRadius(10)
                         .shadow(radius: 1)
                 )
+                .padding(.horizontal)
                 
-        })
-            
-            
+            })
         }
+    }
+    
+    private func progressBarWidth(totalWidth: CGFloat) -> CGFloat {
+        let rewards = users.first?.rewards ?? 0
+        
+        // Hay un problema al llegar a 100 que hace que la barra verde salga de la pantalla, por eso dejo el límite en 95, seguramente es por el padding horizontal de la barra gris
+        return rewards >= 95 ? (95 / 100) * totalWidth : (rewards / 100) * totalWidth
     }
 }
 

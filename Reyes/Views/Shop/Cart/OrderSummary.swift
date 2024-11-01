@@ -30,7 +30,7 @@ struct OrderSummary: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text("\(users.first?.adress1 ?? "")")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("\(users.first?.city ?? ""), \(users.first?.province ?? ""), \(users.first?.postalCode ?? ""), \(users.first?.selectedState ?? "")")
+                    Text("\(users.first?.city ?? ""), \(users.first?.selectedState ?? ""), \(users.first?.postalCode ?? "")")
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 VStack{

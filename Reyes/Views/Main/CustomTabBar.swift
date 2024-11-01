@@ -12,6 +12,7 @@ enum Tab: String, CaseIterable {
 //Add this icon for the academy = figure.american.football
 
 struct CustomTabBar: View {
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     @Binding var selectedTab: Tab
     private var fillImage: String {
         
@@ -42,10 +43,13 @@ struct CustomTabBar: View {
                     Spacer()
                 }
             }
-            //.background(Color(hex: 014791))
-            .background(Color(red: 0.0, green: 0.30, blue: 0.90))
-
+            
+            
+            // Invitación a darse de alta
+            AuthenticatedView()
+                .environmentObject(viewModel)
         }
+        .background(Color(red: 0.0, green: 0.30, blue: 0.90))
     }
 }
 
