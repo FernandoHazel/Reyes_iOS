@@ -12,18 +12,56 @@ struct UserProfileView: View {
   @EnvironmentObject var viewModel: AuthenticationViewModel
   @Environment(\.dismiss) var dismiss
   @State var presentingConfirmationDialog = false
+    
+    // Get a reference to the managed object context from the environment.
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    // I have "users" but is supposed to exist only one
+    @FetchRequest(sortDescriptors: [])
+    private var users: FetchedResults<UserData>
 
   private func deleteAccount() {
     Task {
       if await viewModel.deleteAccount() == true {
+          deleteUserData()
         dismiss()
       }
     }
   }
 
   private func signOut() {
+      deleteUserData()
     viewModel.signOut()
   }
+    
+    private func deleteUserData() {
+
+        // Check if user already exist
+        if let existingUser = users.first {
+            // Update existing user
+            existingUser.firstName = ""
+            existingUser.lastName = ""
+            existingUser.email = ""
+            existingUser.phone = ""
+            existingUser.adress1 = ""
+            existingUser.adress2 = ""
+            existingUser.selectedState = ""
+            existingUser.postalCode = ""
+            existingUser.city = ""
+            existingUser.rewards = 0
+        }
+        // Save changes
+        saveContext()
+    }
+    
+    private func saveContext(){
+        do{
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Could't save context while adding user data: \(error.localizedDescription)")
+        }
+    }
 
   var body: some View {
     Form {

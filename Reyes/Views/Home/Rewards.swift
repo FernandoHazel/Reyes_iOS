@@ -23,6 +23,11 @@ struct Rewards: View {
     
     var body: some View {
         VStack {
+            if (users.first?.rewards ?? 0 >= 100){
+                Text("ERES SOCIO REY!")
+                    .foregroundColor(.green)
+                    .fontWeight(.bold)
+            }
             HStack {
                 HStack {
                     Text("Tu Progreso: ")
