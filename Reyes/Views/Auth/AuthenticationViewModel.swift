@@ -85,7 +85,6 @@ class AuthenticationViewModel: ObservableObject {
 // MARK: - Email and Password Authentication
 
 extension AuthenticationViewModel {
-    
     func anonymousSingIn() {
       if Auth.auth().currentUser == nil {
         print("Nobody is signed in. Trying to sign in anonymously.")
@@ -108,19 +107,31 @@ extension AuthenticationViewModel {
       }
     }
     
-  func signInWithEmailPassword() async -> Bool {
-    authenticationState = .authenticating
-    do {
-      try await Auth.auth().signIn(withEmail: self.email, password: self.password)
-      return true
+    func singUpOrLinkAccount() async -> Bool {
+        return await user != nil ? linkWithEmailPassword() : signUpWithEmailPassword()
     }
-    catch  {
-      print(error)
-      errorMessage = error.localizedDescription
-      authenticationState = .unauthenticated
-      return false
+    
+    func linkWithEmailPassword() async -> Bool {
+      authenticationState = .authenticating
+      do {
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        if let user {
+          let result = try await user.link(with: credential)
+          self.user = result.user
+          authenticationState = .authenticated
+          return true
+        }
+        else {
+          fatalError("No user was signed in. This should not happen.")
+        }
+      }
+      catch  {
+        print(error)
+        errorMessage = error.localizedDescription
+        authenticationState = .unauthenticated
+        return false
+      }
     }
-  }
 
   func signUpWithEmailPassword() async -> Bool {
     authenticationState = .authenticating
@@ -135,6 +146,20 @@ extension AuthenticationViewModel {
       return false
     }
   }
+    
+    func signInWithEmailPassword() async -> Bool {
+      authenticationState = .authenticating
+      do {
+        try await Auth.auth().signIn(withEmail: self.email, password: self.password)
+        return true
+      }
+      catch  {
+        print(error)
+        errorMessage = error.localizedDescription
+        authenticationState = .unauthenticated
+        return false
+      }
+    }
 
   func signOut() {
     do {

@@ -12,6 +12,7 @@ struct UserProfileView: View {
   @EnvironmentObject var viewModel: AuthenticationViewModel
   @Environment(\.dismiss) var dismiss
   @State var presentingConfirmationDialog = false
+    @State var addPassword = false
     
     // Get a reference to the managed object context from the environment.
     @Environment(\.managedObjectContext) private var viewContext
@@ -119,15 +120,22 @@ struct UserProfileView: View {
             Spacer()
           }
         }
-      }
-      Section {
-        Button(role: .destructive, action: { presentingConfirmationDialog.toggle() }) {
-          HStack {
-            Spacer()
-            Text("Borrar Cuenta")
-            Spacer()
+          if (viewModel.user?.providerData.first?.providerID == nil){
+              Button(role: .none, action: { addPassword.toggle() }) {
+                HStack {
+                  Spacer()
+                  Text("Añadir una contraseña")
+                  Spacer()
+                }
+              }
           }
-        }
+          Button(role: .destructive, action: { presentingConfirmationDialog.toggle() }) {
+            HStack {
+              Spacer()
+              Text("Borrar Cuenta")
+              Spacer()
+            }
+          }
       }
     }
     .navigationTitle("Perfil")
@@ -137,6 +145,11 @@ struct UserProfileView: View {
                         isPresented: $presentingConfirmationDialog, titleVisibility: .visible) {
       Button("Borrar cuenta", role: .destructive, action: deleteAccount)
       Button("Cancelar", role: .cancel, action: { })
+    }
+    .sheet(isPresented: $addPassword) {
+        ScrollView{
+            SignupView()
+        }
     }
   }
 }
