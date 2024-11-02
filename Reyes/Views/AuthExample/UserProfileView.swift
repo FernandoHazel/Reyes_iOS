@@ -41,20 +41,21 @@ struct UserProfileView: View {
               .overlay(Circle().stroke(Color.accentColor, lineWidth: 2))
             Spacer()
           }
+            /*
           Button(action: {}) {
             Text("edit")
-          }
+          }*/
         }
       }
       .listRowBackground(Color(UIColor.systemGroupedBackground))
-      Section("Email") {
+      Section("Correo") {
         Text(viewModel.displayName)
       }
       Section {
         Button(role: .cancel, action: signOut) {
           HStack {
             Spacer()
-            Text("Sign out")
+            Text("Cerrar Sesión")
             Spacer()
           }
         }
@@ -63,19 +64,19 @@ struct UserProfileView: View {
         Button(role: .destructive, action: { presentingConfirmationDialog.toggle() }) {
           HStack {
             Spacer()
-            Text("Delete Account")
+            Text("Borrar Cuenta")
             Spacer()
           }
         }
       }
     }
-    .navigationTitle("Profile")
+    .navigationTitle("Perfil")
     .navigationBarTitleDisplayMode(.inline)
     .analyticsScreen(name: "\(Self.self)")
-    .confirmationDialog("Deleting your account is permanent. Do you want to delete your account?",
+    .confirmationDialog("Borrar tu cuenta es permanente y perderás las recompensas obtenidas ¿Estás segur@?",
                         isPresented: $presentingConfirmationDialog, titleVisibility: .visible) {
-      Button("Delete Account", role: .destructive, action: deleteAccount)
-      Button("Cancel", role: .cancel, action: { })
+      Button("Borrar cuenta", role: .destructive, action: deleteAccount)
+      Button("Cancelar", role: .cancel, action: { })
     }
   }
 }
