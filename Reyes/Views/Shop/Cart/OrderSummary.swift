@@ -9,13 +9,8 @@ import SwiftUI
 import Foundation
 
 struct OrderSummary: View {
-    // Get a reference to the managed object context from the environment.
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     @Environment(\.managedObjectContext) private var viewContext
-    
-    // I have "users" but is supposed to exist only one
-    @FetchRequest(sortDescriptors: [])
-    private var users: FetchedResults<UserData>
-    
     @FetchRequest(sortDescriptors: [])
     private var cartProducts: FetchedResults<CartProduct>
     
@@ -26,11 +21,11 @@ struct OrderSummary: View {
         Form {
             Section(header: Text("Información de envío")){
                 VStack{
-                    Text("\(users.first?.firstName ?? "") \(users.first?.lastName ?? "")")
+                    Text("\(authViewModel.firstName) \(authViewModel.lastName)")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("\(users.first?.adress1 ?? "")")
+                    Text("\(authViewModel.adress1)")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("\(users.first?.city ?? ""), \(users.first?.selectedState ?? ""), \(users.first?.postalCode ?? "")")
+                    Text("\(authViewModel.city), \(authViewModel.selectedState), \(authViewModel.postalCode)")
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 VStack{
@@ -118,7 +113,7 @@ struct OrderSummary: View {
         //La tarifa debe ser parametrizable en base al estado a dónde hay que enviar
         var costoTotal = 0.0
         
-        switch users.first?.selectedState{
+        switch authViewModel.selectedState{
         case "Aguascalientes":
             costoTotal = 200
         case "Baja California":
@@ -183,12 +178,9 @@ struct OrderSummary: View {
             costoTotal = 300
         case "Zacatecas":
             costoTotal = 400
-        case .none:
-            costoTotal = 200
-        case .some(_):
+        default:
             costoTotal = 200
         }
-        
         return costoTotal
     }
 
@@ -199,7 +191,6 @@ struct OrderSummary: View {
         }
         return sum
     }
-
 }
 
 #Preview {

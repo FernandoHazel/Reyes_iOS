@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAnalytics
 
 struct UserProfileView: View {
-  @EnvironmentObject var viewModel: AuthenticationViewModel
+  @EnvironmentObject var authViewModel: AuthenticationViewModel
   @Environment(\.dismiss) var dismiss
   @State var presentingConfirmationDialog = false
     @State var addPassword = false
@@ -23,7 +23,7 @@ struct UserProfileView: View {
 
   private func deleteAccount() {
     Task {
-      if await viewModel.deleteAccount() == true {
+      if await authViewModel.deleteAccount() == true {
           deleteUserData()
         dismiss()
       }
@@ -32,7 +32,7 @@ struct UserProfileView: View {
 
   private func signOut() {
       deleteUserData()
-    viewModel.signOut()
+      authViewModel.signOut()
   }
     
     private func deleteUserData() {
@@ -92,35 +92,37 @@ struct UserProfileView: View {
             VStack(alignment: .leading) {
                 Text("Nombre")
                     .font(.caption)
-                Text("\(users.first?.firstName ?? "") \(users.first?.lastName ?? "")")
+                Text("\(authViewModel.firstName) \(authViewModel.lastName)")
             }
             VStack(alignment: .leading) {
                 Text("Correo")
                     .font(.caption)
-                Text(viewModel.displayName)
+                Text(authViewModel.email)
             }
             VStack(alignment: .leading) {
                 Text("Dirección de envío")
                     .font(.caption)
-                Text("\(users.first?.adress1 ?? ""), \(users.first?.city ?? ""), \(users.first?.selectedState ?? ""), \(users.first?.postalCode ?? "")")
+                Text("\(authViewModel.adress1), \(authViewModel.city), \(authViewModel.selectedState), \(authViewModel.postalCode)")
             }
             VStack(alignment: .leading) {
                 Text("Proveedor")
                     .font(.caption)
-                Text(viewModel.user?.providerData.first?.providerID ?? "(Desconocido)")
+                Text(authViewModel.user?.providerData.first?.providerID ?? "(Desconocido)")
             }
         }
-
         
       Section {
-        Button(role: .cancel, action: signOut) {
-          HStack {
-            Spacer()
-            Text("Cerrar Sesión")
-            Spacer()
+          // Don't let the user close session if the account is anonymous because he can loose the rewards
+          if (authViewModel.user?.providerData.first?.providerID != nil){
+              Button(role: .cancel, action: signOut) {
+                HStack {
+                  Spacer()
+                  Text("Cerrar Sesión")
+                  Spacer()
+                }
+              }
           }
-        }
-          if (viewModel.user?.providerData.first?.providerID == nil){
+          if (authViewModel.user?.providerData.first?.providerID == nil){
               Button(role: .none, action: { addPassword.toggle() }) {
                 HStack {
                   Spacer()

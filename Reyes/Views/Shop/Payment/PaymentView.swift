@@ -8,12 +8,8 @@ import SwiftUI
 import Stripe
 
 struct PaymentView: View {
-    // Get a reference to the managed object context from the environment.
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     @Environment(\.managedObjectContext) private var viewContext
-    
-    // I have "users" but is supposed to exist only one
-    @FetchRequest(sortDescriptors: [])
-    private var users: FetchedResults<UserData>
     
     @FetchRequest(sortDescriptors: [])
     private var cartProducts: FetchedResults<CartProduct>
@@ -51,16 +47,16 @@ struct PaymentView: View {
             }
         }.onAppear(){
             // Create the intent when the view appears
-            let email = users.first?.email ?? ""
-            let fullName = "\(users.first?.firstName ?? "") \(users.first?.lastName ?? "")"
+            let email = authViewModel.email
+            let fullName = "\(authViewModel.firstName) \(authViewModel.lastName)"
             let shippingAdress = [
-                "line1": users.first?.adress1 ?? "",
-                "city": users.first?.city ?? "",
-                "state": users.first?.selectedState ?? "",
-                "postal_code": users.first?.postalCode ?? "",
+                "line1": authViewModel.adress1,
+                "city": authViewModel.city,
+                "state": authViewModel.selectedState,
+                "postal_code": authViewModel.postalCode,
                 "country": "MX"
             ]
-            let phone = users.first?.phone ?? ""
+            let phone = authViewModel.phone
             let items = items()
             let metadata = productNames()
             
@@ -108,13 +104,16 @@ struct PaymentView: View {
         }
         
         //2. Add rewards
-        users.first!.rewards += calculateRewards()
+        authViewModel.rewards += calculateRewards()
         
         //3. Save context
         saveContext()
         
         //4. Navigate to congrats view
         purchaseCompleted = true
+        
+        //5. Update the member info
+        authViewModel.saveMember()
         
         print("\n - - - - - - - - - - PURCHASE - - - - - - - - - - \n")
         print("PURCHASE SUCCEDED")

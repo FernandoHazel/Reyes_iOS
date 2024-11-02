@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct Rewards: View {
-    
-    // Get a reference to the managed object context from the environment.
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     @Environment(\.managedObjectContext) private var viewContext
-    
-    // I have "users" but is supposed to exist only one
-    @FetchRequest(sortDescriptors: [])
-    private var users: FetchedResults<UserData>
     
     @FetchRequest(sortDescriptors: [])
     private var cartProducts: FetchedResults<CartProduct>
@@ -23,7 +18,7 @@ struct Rewards: View {
     
     var body: some View {
         VStack {
-            if (users.first?.rewards ?? 0 >= 100){
+            if (authViewModel.rewards >= 100){
                 Text("ERES SOCIO REY!")
                     .foregroundColor(.green)
                     .fontWeight(.bold)
@@ -31,12 +26,12 @@ struct Rewards: View {
             HStack {
                 HStack {
                     Text("Tu Progreso: ")
-                    Text(users.first?.firstName ?? "")
+                    Text(authViewModel.firstName)
                         .bold()
                 }
                 Spacer()
                 HStack {
-                    Text("\(String(format: "%.0f", users.first?.rewards ?? 0))")
+                    Text("\(String(format: "%.0f", authViewModel.rewards))")
                         .bold()
                         .foregroundColor(.green)
                     Image(systemName: "crown.fill")
@@ -59,7 +54,7 @@ struct Rewards: View {
                         .frame(width: progressBarWidth(totalWidth: geometry.size.width), height: 10)
                         .foregroundColor(Color.green)
                         .cornerRadius(10)
-                        .animation(.easeInOut, value: users.first?.rewards ?? 0)
+                        .animation(.easeInOut, value: authViewModel.rewards)
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 10)
@@ -87,11 +82,13 @@ struct Rewards: View {
                 .padding(.horizontal)
                 
             })
+        }.onAppear(){
+            authViewModel.fetchMember()
         }
     }
     
     private func progressBarWidth(totalWidth: CGFloat) -> CGFloat {
-        let rewards = users.first?.rewards ?? 0
+        let rewards = authViewModel.rewards
         
         // Hay un problema al llegar a 100 que hace que la barra verde salga de la pantalla, por eso dejo el límite en 95, seguramente es por el padding horizontal de la barra gris
         return rewards >= 95 ? (95 / 100) * totalWidth : (rewards / 100) * totalWidth

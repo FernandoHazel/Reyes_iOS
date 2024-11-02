@@ -15,14 +15,14 @@ private enum FocusableField: Hashable {
 }
 
 struct LoginView: View {
-  @EnvironmentObject var viewModel: AuthenticationViewModel
+  @EnvironmentObject var authViewModel: AuthenticationViewModel
   @Environment(\.dismiss) var dismiss
 
   @FocusState private var focus: FocusableField?
 
   private func signInWithEmailPassword() {
     Task {
-      if await viewModel.signInWithEmailPassword() == true {
+      if await authViewModel.signInWithEmailPassword() == true {
         dismiss()
       }
     }
@@ -41,7 +41,7 @@ struct LoginView: View {
 
       HStack {
         Image(systemName: "at")
-        TextField("Email", text: $viewModel.email)
+        TextField("Email", text: $authViewModel.email)
           .textInputAutocapitalization(.never)
           .disableAutocorrection(true)
           .focused($focus, equals: .email)
@@ -56,7 +56,7 @@ struct LoginView: View {
 
       HStack {
         Image(systemName: "lock")
-        SecureField("Contraseña", text: $viewModel.password)
+        SecureField("Contraseña", text: $authViewModel.password)
           .focused($focus, equals: .password)
           .submitLabel(.go)
           .onSubmit {
@@ -67,15 +67,15 @@ struct LoginView: View {
       .background(Divider(), alignment: .bottom)
       .padding(.bottom, 8)
 
-      if !viewModel.errorMessage.isEmpty {
+      if !authViewModel.errorMessage.isEmpty {
         VStack {
-          Text(viewModel.errorMessage)
+          Text(authViewModel.errorMessage)
             .foregroundColor(Color(UIColor.systemRed))
         }
       }
 
       Button(action: signInWithEmailPassword) {
-        if viewModel.authenticationState != .authenticating {
+        if authViewModel.authenticationState != .authenticating {
           Text("Ingresar")
             .padding(.vertical, 8)
             .frame(maxWidth: .infinity)
@@ -87,13 +87,13 @@ struct LoginView: View {
             .frame(maxWidth: .infinity)
         }
       }
-      .disabled(!viewModel.isValid)
+      .disabled(!authViewModel.isValid)
       .frame(maxWidth: .infinity)
       .buttonStyle(.borderedProminent)
 
       HStack {
         Text("¿Aún no tienes una cuenta?")
-        Button(action: { viewModel.switchFlow() }) {
+        Button(action: { authViewModel.switchFlow() }) {
           Text("Registrate")
             .fontWeight(.semibold)
             .foregroundColor(.blue)

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Main: View {
-    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     @State private var showingAuthView = false
     @State private var selectedTab: Tab = .house
     @State private var showCart = false
@@ -47,13 +47,13 @@ struct Main: View {
                         }
                         .tag(tab)
                         .sheet(isPresented: $showingAuthView) {
-                            if(viewModel.authenticationState == .authenticated){
+                            if(authViewModel.authenticationState == .authenticated){
                                 UserProfileView()
-                                  .environmentObject(viewModel)
+                                  .environmentObject(authViewModel)
                             } else {
                                 ScrollView{
                                     AuthenticationView()
-                                        .environmentObject(viewModel)
+                                        .environmentObject(authViewModel)
                                 }
                             }
                             
@@ -67,7 +67,7 @@ struct Main: View {
             
             VStack {
                 CustomTabBar(selectedTab: $selectedTab)
-                    .environmentObject(viewModel)
+                    .environmentObject(authViewModel)
             }
         }
     }

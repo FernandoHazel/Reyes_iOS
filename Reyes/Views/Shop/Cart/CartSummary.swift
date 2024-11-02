@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct CartSummary: View {
-    
-    // Get a reference to the managed object context from the environment.
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(sortDescriptors: [])

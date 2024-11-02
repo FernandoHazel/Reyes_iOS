@@ -9,60 +9,8 @@ import SwiftUI
 
 struct UserInfo: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    
-    // Get a reference to the managed object context from the environment.
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    // I have "users" but is supposed to exist only one
-    @FetchRequest(sortDescriptors: [])
-    private var users: FetchedResults<UserData>
-    
-    @State private var firstName: String = ""
-    @State private var lastName: String = ""
-    @State private var email: String = ""
-    @State private var phone: String = ""
-    @State private var adress1: String = ""
-    @State private var adress2: String = ""
-    @State private var selectedState = "Jalisco"
-        let states = [
-            "Aguascalientes",
-            "Baja California",
-            "Baja California Sur",
-            "Campeche",
-            "Chiapas",
-            "Chihuahua",
-            "Ciudad de México",
-            "Coahuila",
-            "Colima",
-            "Durango",
-            "Guanajuato",
-            "Guerrero",
-            "Hidalgo",
-            "Jalisco",
-            "Estado de México",
-            "Michoacán",
-            "Morelos",
-            "Nayarit",
-            "Nuevo León",
-            "Oaxaca",
-            "Puebla",
-            "Querétaro",
-            "Quintana Roo",
-            "San Luis Potosí",
-            "Sinaloa",
-            "Sonora",
-            "Tabasco",
-            "Tamaulipas",
-            "Tlaxcala",
-            "Veracruz",
-            "Yucatán",
-            "Zacatecas"]
-    @State private var postalCode: String = ""
-    @State private var city: String = ""
-    
     @State private var isShowingOrderSummary = false
     
-    // Validate is text only has letters
     private func isAlphabetic(_ text: String) -> Bool {
         if(text.isEmpty){
             return false
@@ -70,7 +18,6 @@ struct UserInfo: View {
         let alphabeticRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$"
         return text.range(of: alphabeticRegex, options: .regularExpression) != nil
     }
-    // Validate a valid email
     private func isValidEmail(_ email: String) -> Bool {
         if(email.isEmpty){
             return false
@@ -95,60 +42,7 @@ struct UserInfo: View {
 
     // Data functions
     private func fillForm(){
-        if (users.first != nil) {
-            // Update existing user
-            firstName = users.first?.firstName ?? ""
-            lastName = users.first?.lastName ?? ""
-            email = users.first?.email ?? ""
-            phone = users.first?.phone ?? ""
-            adress1 = users.first?.adress1 ?? ""
-            adress2 = users.first?.adress2 ?? ""
-            selectedState = users.first?.selectedState ?? ""
-            postalCode = users.first?.postalCode ?? ""
-            city = users.first?.city ?? ""
-        }
-    }
-    
-    private func saveUserData() {
-
-        // Check if user already exist
-        if let existingUser = users.first {
-            // Update existing user
-            existingUser.firstName = firstName
-            existingUser.lastName = lastName
-            existingUser.email = email
-            existingUser.phone = phone
-            existingUser.adress1 = adress1
-            existingUser.adress2 = adress2
-            existingUser.selectedState = selectedState
-            existingUser.postalCode = postalCode
-            existingUser.city = city
-        } else {
-            // Create a new user
-            let newUser = UserData(context: viewContext)
-            newUser.firstName = firstName
-            newUser.lastName = lastName
-            newUser.email = email
-            newUser.phone = phone
-            newUser.adress1 = adress1
-            newUser.adress2 = adress2
-            newUser.selectedState = selectedState
-            newUser.postalCode = postalCode
-            newUser.city = city
-            newUser.rewards = 0
-        }
-        
-        // Save changes
-        saveContext()
-    }
-    
-    private func saveContext(){
-        do{
-            try viewContext.save()
-        } catch {
-            let error = error as NSError
-            fatalError("Could't save context while adding user data: \(error.localizedDescription)")
-        }
+        authViewModel.fetchMember()
     }
     
     private func anonymousSingIn() {
@@ -162,9 +56,9 @@ struct UserInfo: View {
                 Section(header: Text("Información de envío")){
                     HStack{
                         VStack{
-                            TextField("Nombre*", text: $firstName)
+                            TextField("Nombre*", text: $authViewModel.firstName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                            if(!isAlphabetic(firstName)){
+                            if(!isAlphabetic(authViewModel.firstName)){
                                 Text("Por favor escribe tu nombre")
                                     .foregroundColor(.red)
                                     .font(.caption)
@@ -174,9 +68,9 @@ struct UserInfo: View {
                         }
                         
                         VStack{
-                            TextField("Apellido*", text: $lastName)
+                            TextField("Apellido*", text: $authViewModel.lastName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                            if(!isAlphabetic(lastName)){
+                            if(!isAlphabetic(authViewModel.lastName)){
                                 Text("Por favor escribe tu apellido")
                                     .foregroundColor(.red)
                                     .font(.caption)
@@ -187,64 +81,64 @@ struct UserInfo: View {
                         
                     }
                     VStack{
-                        TextField("Correo Electrónico*", text: $email)
+                        TextField("Correo Electrónico*", text: $authViewModel.email)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(!isValidEmail(email)){
+                        if(!isValidEmail(authViewModel.email)){
                             Text("Por favor escribe un correo válido")
                                 .foregroundColor(.red)
                                 .font(.caption)
                         }
                     }
                     VStack{
-                        TextField("Teléfono*", text: $phone)
+                        TextField("Teléfono*", text: $authViewModel.phone)
                             .keyboardType(.phonePad)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(!isValidPhoneNumber(phone)){
+                        if(!isValidPhoneNumber(authViewModel.phone)){
                             Text("Por favor escribe un teléfono válido")
                                 .foregroundColor(.red)
                                 .font(.caption)
                         }
                     }
                     VStack{
-                        TextField("Dirección1*", text: $adress1)
+                        TextField("Dirección1*", text: $authViewModel.adress1)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(adress1.isEmpty){
+                        if(authViewModel.adress1.isEmpty){
                             Text("Por favor escribe una dirección válida")
                                 .foregroundColor(.red)
                                 .font(.caption)
                         }
                     }
                     
-                    TextField("Dirección2 (opcional)", text: $adress2)
+                    TextField("Dirección2 (opcional)", text: $authViewModel.adress2)
                         .autocapitalization(.none)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                    Picker("Estado", selection: $selectedState) {
-                        ForEach(states, id: \.self) { state in
+                    Picker("Estado", selection: $authViewModel.selectedState) {
+                        ForEach(authViewModel.states, id: \.self) { state in
                             Text(state)
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
                     
                     VStack{
-                        TextField("Código Postal", text: $postalCode)
+                        TextField("Código Postal", text: $authViewModel.postalCode)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(!isValidPostalCode(postalCode)){
+                        if(!isValidPostalCode(authViewModel.postalCode)){
                             Text("Por favor escribe una código postal válido")
                                 .foregroundColor(.red)
                                 .font(.caption)
                         }
                     }
                     VStack{
-                        TextField("Ciudad*", text: $city)
+                        TextField("Ciudad*", text: $authViewModel.city)
                             .autocapitalization(.none)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        if(!isAlphabetic(city)){
+                        if(!isAlphabetic(authViewModel.city)){
                             Text("Por favor escribe una ciudad válida")
                                 .foregroundColor(.red)
                                 .font(.caption)
@@ -254,11 +148,10 @@ struct UserInfo: View {
             }
             Spacer()
             
-            if (isAlphabetic(firstName) && isAlphabetic(lastName) && isValidEmail(email) && isValidPhoneNumber(phone) && !adress1.isEmpty && isValidPostalCode(postalCode) && isAlphabetic(city)
+            if (isAlphabetic(authViewModel.firstName) && isAlphabetic(authViewModel.lastName) && isValidEmail(authViewModel.email) && isValidPhoneNumber(authViewModel.phone) && !authViewModel.adress1.isEmpty && isValidPostalCode(authViewModel.postalCode) && isAlphabetic(authViewModel.city)
             ){
                 VStack {
                     Button(action: {
-                        saveUserData()
                         anonymousSingIn()
                         isShowingOrderSummary = true
                     }) {
@@ -323,7 +216,6 @@ struct OrderSummaryButton: View {
         isShowingOrderSummary = true
     }
 }
-
 
 struct UserInfo_Previews: PreviewProvider {
     static var previews: some View {

@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 enum AuthenticationState {
   case unauthenticated
@@ -21,7 +22,6 @@ enum AuthenticationFlow {
 
 @MainActor
 class AuthenticationViewModel: ObservableObject {
-  @Published var email = ""
   @Published var password = ""
   @Published var confirmPassword = ""
 
@@ -32,9 +32,63 @@ class AuthenticationViewModel: ObservableObject {
   @Published var errorMessage = ""
   @Published var user: User?
   @Published var displayName = ""
+    
+    @Published var member = Member.empty
+    private var db = Firestore.firestore()
+    
+    //Member fields
+    @Published var userId = ""
+    @Published var firstName = ""
+    @Published var lastName = ""
+    @Published var email = ""
+    @Published var phone = ""
+    @Published var adress1 = ""
+    @Published var adress2 = ""
+    @Published var postalCode = ""
+    @Published var city = ""
+    @Published var rewards = 0.0
+    @Published var selectedState = "Jalisco"
+        let states = [
+            "Aguascalientes",
+            "Baja California",
+            "Baja California Sur",
+            "Campeche",
+            "Chiapas",
+            "Chihuahua",
+            "Ciudad de México",
+            "Coahuila",
+            "Colima",
+            "Durango",
+            "Guanajuato",
+            "Guerrero",
+            "Hidalgo",
+            "Jalisco",
+            "Estado de México",
+            "Michoacán",
+            "Morelos",
+            "Nayarit",
+            "Nuevo León",
+            "Oaxaca",
+            "Puebla",
+            "Querétaro",
+            "Quintana Roo",
+            "San Luis Potosí",
+            "Sinaloa",
+            "Sonora",
+            "Tabasco",
+            "Tamaulipas",
+            "Tlaxcala",
+            "Veracruz",
+            "Yucatán",
+            "Zacatecas"]
 
   init() {
     registerAuthStateHandler()
+      
+      if let user = Auth.auth().currentUser {
+              self.user = user
+              fetchMember()
+          }
 
     $flow
       .combineLatest($email, $password, $confirmPassword)
@@ -44,6 +98,7 @@ class AuthenticationViewModel: ObservableObject {
           : !(email.isEmpty || password.isEmpty || confirmPassword.isEmpty || password != confirmPassword)
       }
       .assign(to: &$isValid)
+    
   }
 
   private var authStateHandler: AuthStateDidChangeListenerHandle?
@@ -54,6 +109,13 @@ class AuthenticationViewModel: ObservableObject {
         self.user = user
         self.authenticationState = user == nil ? .unauthenticated : .authenticated
         self.displayName = user?.email ?? ""
+          
+          // Llamamos a fetchMember si hay un usuario autenticado.
+          if user != nil {
+              self.fetchMember()
+          } else {
+              self.closeOrDeleteAccount()
+          }
       }
     }
   }
@@ -92,6 +154,7 @@ extension AuthenticationViewModel {
               do {
                 try await Auth.auth().signInAnonymously()
                 errorMessage = ""
+                  saveMember()
               }
           catch {
             print("Error while signing in anonymously: "+error.localizedDescription)
@@ -137,6 +200,7 @@ extension AuthenticationViewModel {
     authenticationState = .authenticating
     do  {
       try await Auth.auth().createUser(withEmail: email, password: password)
+        saveMember()
       return true
     }
     catch {
@@ -151,6 +215,7 @@ extension AuthenticationViewModel {
       authenticationState = .authenticating
       do {
         try await Auth.auth().signIn(withEmail: self.email, password: self.password)
+          fetchMember()
         return true
       }
       catch  {
@@ -164,6 +229,7 @@ extension AuthenticationViewModel {
   func signOut() {
     do {
       try Auth.auth().signOut()
+        closeOrDeleteAccount()
     }
     catch {
       print(error)
@@ -174,6 +240,10 @@ extension AuthenticationViewModel {
   func deleteAccount() async -> Bool {
     do {
       try await user?.delete()
+        closeOrDeleteAccount()
+        // ONLY DELETE MEMBER IN DELET ACCOUNT CASE
+        // member is the db document of the user
+        deleteMember()
       return true
     }
     catch {
@@ -181,4 +251,120 @@ extension AuthenticationViewModel {
       return false
     }
   }
+    
+    func subscribeMember() {
+      guard let uid = user?.uid else { return }
+
+      db.collection("Members")
+        .whereField("userId", isEqualTo: uid)
+        .limit(to: 1)
+        .addSnapshotListener { querySnapshot, error in
+        do {
+          if let member = try querySnapshot?.documents.first?.data(as: Member.self) {
+              print("Assigning Member data to: \(member.firstName) \(member.lastName)")
+              self.member = member
+          }
+        }
+        catch {
+          print(error.localizedDescription)
+        }
+      }
+    }
+
+    func fetchMember() {
+      guard let uid = user?.uid else { return }
+
+      Task {
+        do {
+          let querySnapshot = try await db.collection("Members").whereField("userId", isEqualTo: uid).limit(to: 1).getDocuments()
+          if !querySnapshot.isEmpty {
+            if let member = try querySnapshot.documents.first?.data(as: Member.self) {
+              await MainActor.run {
+                  print("Assigning Member data to: \(member.firstName) \(member.lastName)")
+                  self.member = member
+                  updateLocalData()
+              }
+            }
+          }
+        }
+        catch {
+          print(error.localizedDescription)
+        }
+      }
+    }
+
+    func saveMember() {
+        UpdateDBData()
+      do {
+          if let documentId = member.id {
+              try db.collection("Members").document(documentId).setData(from: member)
+        }
+        else {
+          let documentReference = try db.collection("Members").addDocument(from: member)
+          print("Member created in db \(member)")
+          member.id = documentReference.documentID
+        }
+      }
+      catch {
+        print(error.localizedDescription)
+      }
+    }
+    
+    func deleteMember() {
+        if let documentId = member.id {
+            db.collection("Members").document(documentId).delete { error in
+                if let error = error {
+                    print("Error deleting member: \(error.localizedDescription)")
+                } else {
+                    print("Member deleted from db: \(self.member)")
+                }
+            }
+        } else {
+            print("Couldn't delete member: \(member)")
+        }
+    }
+
+    
+    // use the local data to fill the member instance before uptading in the db
+    func UpdateDBData() {
+        member.userId = user?.uid ?? ""
+        member.firstName = firstName
+        member.lastName = lastName
+        member.email = email
+        member.phone = phone
+        member.adress1 = adress1
+        member.adress2 = adress2
+        member.postalCode = postalCode
+        member.city = city
+        member.rewards = rewards
+        member.selectedState = selectedState
+    }
+    
+    func updateLocalData() {
+         userId = member.userId
+         firstName = member.firstName
+         lastName = member.lastName
+         email = member.email
+         phone = member.phone
+         adress1 = member.adress1
+         adress2 = member.adress2
+         postalCode = member.postalCode
+         city = member.city
+         rewards = member.rewards
+        selectedState = member.selectedState
+    }
+    
+    func closeOrDeleteAccount() {
+         userId = ""
+         firstName = ""
+         lastName = ""
+         email = ""
+         phone = ""
+         adress1 = ""
+         adress2 = ""
+         postalCode = ""
+         city = ""
+        rewards = 0.0
+        selectedState = ""
+    }
 }
