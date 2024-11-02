@@ -85,6 +85,29 @@ class AuthenticationViewModel: ObservableObject {
 // MARK: - Email and Password Authentication
 
 extension AuthenticationViewModel {
+    
+    func anonymousSingIn() {
+      if Auth.auth().currentUser == nil {
+        print("Nobody is signed in. Trying to sign in anonymously.")
+        Task {
+              do {
+                try await Auth.auth().signInAnonymously()
+                errorMessage = ""
+              }
+          catch {
+            print("Error while signing in anonymously: "+error.localizedDescription)
+            errorMessage = error.localizedDescription
+          }
+        }
+      }
+      else {
+        print("Someone is signed in")
+        if let user = Auth.auth().currentUser {
+          print(user.uid)
+        }
+      }
+    }
+    
   func signInWithEmailPassword() async -> Bool {
     authenticationState = .authenticating
     do {

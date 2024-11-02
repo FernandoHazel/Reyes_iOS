@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Main: View {
-    @StateObject private var viewModel = AuthenticationViewModel()
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     @State private var showingAuthView = false
     @State private var selectedTab: Tab = .house
     @State private var showCart = false

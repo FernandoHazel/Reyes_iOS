@@ -86,9 +86,31 @@ struct UserProfileView: View {
         }
       }
       .listRowBackground(Color(UIColor.systemGroupedBackground))
-      Section("Correo") {
-        Text(viewModel.displayName)
-      }
+        
+        Section(header: Text("Usuario")) {
+            VStack(alignment: .leading) {
+                Text("Nombre")
+                    .font(.caption)
+                Text("\(users.first?.firstName ?? "") \(users.first?.lastName ?? "")")
+            }
+            VStack(alignment: .leading) {
+                Text("Correo")
+                    .font(.caption)
+                Text(viewModel.displayName)
+            }
+            VStack(alignment: .leading) {
+                Text("Dirección de envío")
+                    .font(.caption)
+                Text("\(users.first?.adress1 ?? ""), \(users.first?.city ?? ""), \(users.first?.selectedState ?? ""), \(users.first?.postalCode ?? "")")
+            }
+            VStack(alignment: .leading) {
+                Text("Proveedor")
+                    .font(.caption)
+                Text(viewModel.user?.providerData.first?.providerID ?? "(Desconocido)")
+            }
+        }
+
+        
       Section {
         Button(role: .cancel, action: signOut) {
           HStack {

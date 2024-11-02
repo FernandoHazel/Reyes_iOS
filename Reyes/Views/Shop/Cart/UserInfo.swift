@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UserInfo: View {
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     // Get a reference to the managed object context from the environment.
     @Environment(\.managedObjectContext) private var viewContext
@@ -60,6 +61,99 @@ struct UserInfo: View {
     @State private var city: String = ""
     
     @State private var isShowingOrderSummary = false
+    
+    // Validate is text only has letters
+    private func isAlphabetic(_ text: String) -> Bool {
+        if(text.isEmpty){
+            return false
+        }
+        let alphabeticRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$"
+        return text.range(of: alphabeticRegex, options: .regularExpression) != nil
+    }
+    // Validate a valid email
+    private func isValidEmail(_ email: String) -> Bool {
+        if(email.isEmpty){
+            return false
+        }
+        let emailRegex = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+    }
+    private func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
+        if(phoneNumber.isEmpty){
+            return false
+        }
+        let phoneRegex = "^[0-9+\\-()\\s]{7,15}$"
+        return NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: phoneNumber)
+    }
+    private func isValidPostalCode(_ postalCode: String) -> Bool {
+        if(postalCode.isEmpty){
+            return false
+        }
+        let postalCodeRegex = "^[0-9]{5}$" // only numbers and only 5 digits
+        return NSPredicate(format: "SELF MATCHES %@", postalCodeRegex).evaluate(with: postalCode)
+    }
+
+    // Data functions
+    private func fillForm(){
+        if (users.first != nil) {
+            // Update existing user
+            firstName = users.first?.firstName ?? ""
+            lastName = users.first?.lastName ?? ""
+            email = users.first?.email ?? ""
+            phone = users.first?.phone ?? ""
+            adress1 = users.first?.adress1 ?? ""
+            adress2 = users.first?.adress2 ?? ""
+            selectedState = users.first?.selectedState ?? ""
+            postalCode = users.first?.postalCode ?? ""
+            city = users.first?.city ?? ""
+        }
+    }
+    
+    private func saveUserData() {
+
+        // Check if user already exist
+        if let existingUser = users.first {
+            // Update existing user
+            existingUser.firstName = firstName
+            existingUser.lastName = lastName
+            existingUser.email = email
+            existingUser.phone = phone
+            existingUser.adress1 = adress1
+            existingUser.adress2 = adress2
+            existingUser.selectedState = selectedState
+            existingUser.postalCode = postalCode
+            existingUser.city = city
+        } else {
+            // Create a new user
+            let newUser = UserData(context: viewContext)
+            newUser.firstName = firstName
+            newUser.lastName = lastName
+            newUser.email = email
+            newUser.phone = phone
+            newUser.adress1 = adress1
+            newUser.adress2 = adress2
+            newUser.selectedState = selectedState
+            newUser.postalCode = postalCode
+            newUser.city = city
+            newUser.rewards = 0
+        }
+        
+        // Save changes
+        saveContext()
+    }
+    
+    private func saveContext(){
+        do{
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Could't save context while adding user data: \(error.localizedDescription)")
+        }
+    }
+    
+    private func anonymousSingIn() {
+        authViewModel.anonymousSingIn()
+    }
     
     var body: some View {
         VStack{
@@ -165,6 +259,7 @@ struct UserInfo: View {
                 VStack {
                     Button(action: {
                         saveUserData()
+                        anonymousSingIn()
                         isShowingOrderSummary = true
                     }) {
                         Text("Resumen de compra")
@@ -190,95 +285,6 @@ struct UserInfo: View {
             
             Spacer()
         }.onAppear(perform: fillForm)
-    }
-    
-    // Validate is text only has letters
-    private func isAlphabetic(_ text: String) -> Bool {
-        if(text.isEmpty){
-            return false
-        }
-        let alphabeticRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$"
-        return text.range(of: alphabeticRegex, options: .regularExpression) != nil
-    }
-    // Validate a valid email
-    private func isValidEmail(_ email: String) -> Bool {
-        if(email.isEmpty){
-            return false
-        }
-        let emailRegex = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
-    }
-    private func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        if(phoneNumber.isEmpty){
-            return false
-        }
-        let phoneRegex = "^[0-9+\\-()\\s]{7,15}$"
-        return NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: phoneNumber)
-    }
-    private func isValidPostalCode(_ postalCode: String) -> Bool {
-        if(postalCode.isEmpty){
-            return false
-        }
-        let postalCodeRegex = "^[0-9]{5}$" // only numbers and only 5 digits
-        return NSPredicate(format: "SELF MATCHES %@", postalCodeRegex).evaluate(with: postalCode)
-    }
-
-    // Data functions
-    private func fillForm(){
-        if (users.first != nil) {
-            // Update existing user
-            firstName = users.first?.firstName ?? ""
-            lastName = users.first?.lastName ?? ""
-            email = users.first?.email ?? ""
-            phone = users.first?.phone ?? ""
-            adress1 = users.first?.adress1 ?? ""
-            adress2 = users.first?.adress2 ?? ""
-            selectedState = users.first?.selectedState ?? ""
-            postalCode = users.first?.postalCode ?? ""
-            city = users.first?.city ?? ""
-        }
-    }
-    
-    private func saveUserData() {
-
-        // Check if user already exist
-        if let existingUser = users.first {
-            // Update existing user
-            existingUser.firstName = firstName
-            existingUser.lastName = lastName
-            existingUser.email = email
-            existingUser.phone = phone
-            existingUser.adress1 = adress1
-            existingUser.adress2 = adress2
-            existingUser.selectedState = selectedState
-            existingUser.postalCode = postalCode
-            existingUser.city = city
-        } else {
-            // Create a new user
-            let newUser = UserData(context: viewContext)
-            newUser.firstName = firstName
-            newUser.lastName = lastName
-            newUser.email = email
-            newUser.phone = phone
-            newUser.adress1 = adress1
-            newUser.adress2 = adress2
-            newUser.selectedState = selectedState
-            newUser.postalCode = postalCode
-            newUser.city = city
-            newUser.rewards = 0
-        }
-        
-        // Save changes
-        saveContext()
-    }
-    
-    private func saveContext(){
-        do{
-            try viewContext.save()
-        } catch {
-            let error = error as NSError
-            fatalError("Could't save context while adding user data: \(error.localizedDescription)")
-        }
     }
 }
 

@@ -12,11 +12,12 @@ class AppViewModel: ObservableObject {
     @Published var staff: [StaffMember] = []
     @Published var versionUpdateManager = VersionUpdateManager()
     @Published var updateNeeded: Bool = false
-    @Published var versionUpdateAlertConfig: VersionUpdateAlertConfig = VersionUpdateAlertConfig(title: "title",
-                                                                                                 message: "message",
-                                                                                                 forcedButton: "versionModel?.forcedButton",
-                                                                                                 optionalButton: "versionModel?.optionalButton",
-                                                                                                 type: .forced)
+    @Published var versionUpdateAlertConfig: VersionUpdateAlertConfig = VersionUpdateAlertConfig(
+            title: "title",
+             message: "message",
+             forcedButton: "versionModel?.forcedButton",
+             optionalButton: "versionModel?.optionalButton",
+             type: .forced)
     
     //Try to fetch all the data to optimize db calls
     func loadAllData() async {
