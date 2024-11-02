@@ -1,4 +1,11 @@
 // see https://michael-ginn.medium.com/creating-optional-viewbuilder-parameters-in-swiftui-views-a0d4e3e1a0ae
+//
+//  UserInfo.swift
+//  Reyes
+//
+//  Created by Fernando Hazel Ascencio Baumgarten on 31/10/24.
+//
+
 import SwiftUI
 
 struct AuthenticatedView: View {
@@ -12,32 +19,23 @@ struct AuthenticatedView: View {
       VStack {
           HStack{
               Text("inicia sesión y obtén recompensas.")
-                  .foregroundColor(.black)
+                  .foregroundColor(.yellow)
               Button("Ingresar") {
-                viewModel.reset()
-                presentingLoginScreen.toggle()
-              }.foregroundColor(.white)
+                  viewModel.reset()
+                  presentingLoginScreen.toggle()
+              }
+              .foregroundColor(.white)
           }
-          
-        
+          .padding(.bottom)
       }
       .sheet(isPresented: $presentingLoginScreen) {
-        AuthenticationView()
-          .environmentObject(viewModel)
+          ScrollView{
+              AuthenticationView()
+                .environmentObject(viewModel)
+          }
       }
     case .authenticated:
-      VStack {
-        Text("Estas registrado como \(viewModel.displayName).")
-        Button("Presiona aquí para ver tu perfil") {
-          presentingProfileScreen.toggle()
-        }
-      }
-      .sheet(isPresented: $presentingProfileScreen) {
-        NavigationView {
-          UserProfileView()
-            .environmentObject(viewModel)
-        }
-      }
+        EmptyView()
     }
   }
 }

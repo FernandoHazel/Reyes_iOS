@@ -1,13 +1,13 @@
 //
-//  UserInfo.swift
+//  UserInfoSingUp.swift
 //  Reyes
 //
-//  Created by Fernando Hazel Ascencio Baumgarten on 18/09/24.
+//  Created by Fernando Hazel Ascencio Baumgarten on 01/11/24.
 //
 
 import SwiftUI
 
-struct UserInfo: View {
+struct UserInfoSingUp: View {
     
     // Get a reference to the managed object context from the environment.
     @Environment(\.managedObjectContext) private var viewContext
@@ -58,8 +58,6 @@ struct UserInfo: View {
             "Zacatecas"]
     @State private var postalCode: String = ""
     @State private var city: String = ""
-    
-    @State private var isShowingOrderSummary = false
     
     var body: some View {
         VStack{
@@ -162,30 +160,8 @@ struct UserInfo: View {
             
             if (isAlphabetic(firstName) && isAlphabetic(lastName) && isValidEmail(email) && isValidPhoneNumber(phone) && !adress1.isEmpty && isValidPostalCode(postalCode) && isAlphabetic(city)
             ){
-                VStack {
-                    Button(action: {
-                        saveUserData()
-                        isShowingOrderSummary = true
-                    }) {
-                        Text("Resumen de compra")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .padding()
-                            .lineLimit(1)
-                            .background(
-                                Color.green
-                                    .cornerRadius(10)
-                                    .shadow(radius: 10)
-                                    .frame(maxWidth: .infinity)
-                            )
-                    }
-
-                    // Navegación manual
-                    NavigationLink(destination: OrderSummary(), isActive: $isShowingOrderSummary) {
-                        EmptyView()
-                    }
-                }
+                // Allow user to SingUp
+                //...
             }
             
             Spacer()
@@ -282,44 +258,7 @@ struct UserInfo: View {
     }
 }
 
-struct OrderSummaryButton: View {
-    @State private var isShowingOrderSummary = false
-
-    var body: some View {
-        VStack {
-            Button(action: {
-                showOrderSummary()
-            }) {
-                Text("Resumen de compra")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .padding()
-                    .lineLimit(1)
-                    .background(
-                        Color.green
-                            .cornerRadius(10)
-                            .shadow(radius: 10)
-                            .frame(width: 300)
-                    )
-            }
-
-            // Navegación manual
-            NavigationLink(destination: OrderSummary(), isActive: $isShowingOrderSummary) {
-                EmptyView()
-            }
-        }
-    }
-
-    // Método a ejecutar al presionar el botón
-    func showOrderSummary() {
-        // Ejecutar lógica adicional aquí
-        isShowingOrderSummary = true
-    }
-}
-
-
-struct UserInfo_Previews: PreviewProvider {
+struct UserInfoSingUp_Previews: PreviewProvider {
     static var previews: some View {
         // Contenedor para el preview
         PreviewWrapper()
@@ -328,7 +267,8 @@ struct UserInfo_Previews: PreviewProvider {
     struct PreviewWrapper: View {
 
         var body: some View {
-            UserInfo()
+            UserInfoSingUp()
         }
     }
 }
+

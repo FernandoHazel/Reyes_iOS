@@ -8,7 +8,7 @@ struct TopBar: View {
     private var cartProducts: FetchedResults<CartProduct>
     
     var reyesLogo: String = "TeamLogos/Reyes_icon.png"
-    @Binding var showingProfile: Bool
+    @Binding var showingAuthView: Bool
     @Binding var showCart: Bool
     @State var cartIcon: String = "cart.circle"
     
@@ -23,7 +23,7 @@ struct TopBar: View {
                     .frame(width: 30, height: 30)
                     .foregroundColor(.white)
                     .onTapGesture {
-                        showingProfile.toggle()
+                        showingAuthView.toggle()
                     }
                 
                 Image(systemName: cartIcon)
@@ -59,11 +59,11 @@ struct TopBar_Preview: PreviewProvider {
     }
     
     struct PreviewWrapper: View {
-        @State var showingProfile = false
+        @State var showingAuthView = false
         @State var showCart = false
         
         var body: some View {
-            TopBar(showingProfile: $showingProfile, showCart: $showCart)
+            TopBar(showingAuthView: $showingAuthView, showCart: $showCart)
         }
     }
 }

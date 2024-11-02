@@ -2,9 +2,10 @@ import SwiftUI
 
 struct Main: View {
     @StateObject private var viewModel = AuthenticationViewModel()
-    @State private var showingProfile = false
+    @State private var showingAuthView = false
     @State private var selectedTab: Tab = .house
     @State private var showCart = false
+    @State private var presentingProfileScreen = false
     
     init() {
         // This is to eliminate an extra space wich is automatically created
@@ -14,7 +15,7 @@ struct Main: View {
     var body: some View {
         
         VStack {
-            TopBar(showingProfile: $showingProfile, showCart: $showCart)
+            TopBar(showingAuthView: $showingAuthView, showCart: $showCart)
         
         ZStack {
                 // TabView is going to control the views from the tab
@@ -43,20 +44,24 @@ struct Main: View {
                                     RosterList()
                                 }
                             }
-                            
-                            
                         }
                         .tag(tab)
-                        .sheet(isPresented: $showingProfile) {
-                            AuthenticationView()
-                                .environmentObject(viewModel)
+                        .sheet(isPresented: $showingAuthView) {
+                            if(viewModel.authenticationState == .authenticated){
+                                UserProfileView()
+                                  .environmentObject(viewModel)
+                            } else {
+                                ScrollView{
+                                    AuthenticationView()
+                                        .environmentObject(viewModel)
+                                }
+                            }
+                            
                         }
                         .sheet(isPresented: $showCart) {
                             Cart()
                         }
-                        
                     }
-                    
                 }
             }
             
@@ -70,7 +75,6 @@ struct Main: View {
 
 struct Main_Previews: PreviewProvider {
     static var previews: some View {
-        // Contenedor para el preview
         PreviewWrapper()
     }
 

@@ -1,21 +1,9 @@
 //
-// LoginView.swift
-// Favourites
+//  UserInfo.swift
+//  Reyes
 //
-// Created by Peter Friese on 08.07.2022
-// Copyright © 2022 Google LLC.
+//  Created by Fernando Hazel Ascencio Baumgarten on 31/10/24.
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
 import SwiftUI
 import Combine
@@ -45,7 +33,7 @@ struct LoginView: View {
       Image("Reyes_logo")
         .resizable()
         .aspectRatio(contentMode: .fit)
-        .frame(minHeight: 300, maxHeight: 400)
+        .frame(minHeight: 200, maxHeight: 300)
       Text("Ingresar")
         .font(.largeTitle)
         .fontWeight(.bold)
@@ -88,7 +76,7 @@ struct LoginView: View {
 
       Button(action: signInWithEmailPassword) {
         if viewModel.authenticationState != .authenticating {
-          Text("Login")
+          Text("Ingresar")
             .padding(.vertical, 8)
             .frame(maxWidth: .infinity)
         }
