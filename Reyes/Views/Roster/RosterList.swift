@@ -13,7 +13,7 @@ struct RosterList: View {
                     Text("Staff").tag("Staff")
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding()
+                .padding(.horizontal)
                 
                 List {
                     if selection == "Jugadores" {
@@ -47,6 +47,7 @@ struct RosterList: View {
                 }
                 .listStyle(.inset)
             }
+            .navigationBarHidden(true)
         }
     }
 }

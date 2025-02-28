@@ -30,17 +30,18 @@ struct HomeView: View {
                         FetchingView()
                     }
                 }
+                .navigationBarHidden(true)
                 .alert(isPresented: $vm.updateNeeded, content: {
                     Alert(
                         title: Text(vm.versionUpdateAlertConfig.title ?? ""),
                         message: Text(vm.versionUpdateAlertConfig.message ?? ""),
                         primaryButton: .default(Text(vm.versionUpdateAlertConfig.forcedButton ?? "")) {
-                                                openAppStore() // Open app store"
+                                                openAppStore()
                         },
                         secondaryButton: .destructive(Text(vm.versionUpdateAlertConfig.optionalButton ?? ""))
                     )
             })
-        }
+        }.navigationBarHidden(true)
     }
     
     func openAppStore() {

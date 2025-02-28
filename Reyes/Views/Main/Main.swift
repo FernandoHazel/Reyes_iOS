@@ -40,9 +40,7 @@ struct Main: View {
                                     Calendar()
                                 }
                                 case .person:
-                                VStack {
                                     RosterList()
-                                }
                             }
                         }
                         .tag(tab)
