@@ -42,8 +42,8 @@ class AuthenticationViewModel: ObservableObject {
     @Published var lastName = ""
     @Published var email = ""
     @Published var phone = ""
-    @Published var adress1 = ""
-    @Published var adress2 = ""
+    @Published var address1 = ""
+    @Published var address2 = ""
     @Published var postalCode = ""
     @Published var city = ""
     @Published var rewards = 0.0
@@ -332,8 +332,8 @@ extension AuthenticationViewModel {
         member.lastName = lastName
         member.email = email
         member.phone = phone
-        member.adress1 = adress1
-        member.adress2 = adress2
+        member.address1 = address1
+        member.address2 = address2
         member.postalCode = postalCode
         member.city = city
         member.rewards = rewards
@@ -346,8 +346,8 @@ extension AuthenticationViewModel {
          lastName = member.lastName
          email = member.email
          phone = member.phone
-         adress1 = member.adress1
-         adress2 = member.adress2
+         address1 = member.address1
+         address2 = member.address2
          postalCode = member.postalCode
          city = member.city
          rewards = member.rewards
@@ -360,8 +360,8 @@ extension AuthenticationViewModel {
          lastName = ""
          email = ""
          phone = ""
-         adress1 = ""
-         adress2 = ""
+         address1 = ""
+         address2 = ""
          postalCode = ""
          city = ""
         rewards = 0.0

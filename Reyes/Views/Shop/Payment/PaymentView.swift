@@ -49,8 +49,8 @@ struct PaymentView: View {
             // Create the intent when the view appears
             let email = authViewModel.email
             let fullName = "\(authViewModel.firstName) \(authViewModel.lastName)"
-            let shippingAdress = [
-                "line1": authViewModel.adress1,
+            let shippingAddress = [
+                "line1": authViewModel.address1,
                 "city": authViewModel.city,
                 "state": authViewModel.selectedState,
                 "postal_code": authViewModel.postalCode,
@@ -60,7 +60,7 @@ struct PaymentView: View {
             let items = items()
             let metadata = productNames()
             
-            model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn", email: email, fullName: fullName, shippingAdress: shippingAdress, phone: phone, items: items, metadata: metadata)
+            model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn", email: email, fullName: fullName, shippingAddress: shippingAddress, phone: phone, items: items, metadata: metadata)
             purchaseCompleted = false
         }
         .onChange(of: model.paymentStatus) { paymentStatus in

@@ -34,4 +34,3 @@ enum GroupTeam: String, CaseIterable {
     case Defensiva
     case Especialista
 }
-

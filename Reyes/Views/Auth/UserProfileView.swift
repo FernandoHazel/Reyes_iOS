@@ -44,8 +44,8 @@ struct UserProfileView: View {
             existingUser.lastName = ""
             existingUser.email = ""
             existingUser.phone = ""
-            existingUser.adress1 = ""
-            existingUser.adress2 = ""
+            existingUser.address1 = ""
+            existingUser.address2 = ""
             existingUser.selectedState = ""
             existingUser.postalCode = ""
             existingUser.city = ""
@@ -102,7 +102,7 @@ struct UserProfileView: View {
             VStack(alignment: .leading) {
                 Text("Dirección de envío")
                     .font(.caption)
-                Text("\(authViewModel.adress1), \(authViewModel.city), \(authViewModel.selectedState), \(authViewModel.postalCode)")
+                Text("\(authViewModel.address1), \(authViewModel.city), \(authViewModel.selectedState), \(authViewModel.postalCode)")
             }
             VStack(alignment: .leading) {
                 Text("Proveedor")

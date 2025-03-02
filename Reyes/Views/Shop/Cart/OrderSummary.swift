@@ -23,7 +23,7 @@ struct OrderSummary: View {
                 VStack{
                     Text("\(authViewModel.firstName) \(authViewModel.lastName)")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("\(authViewModel.adress1)")
+                    Text("\(authViewModel.address1)")
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text("\(authViewModel.city), \(authViewModel.selectedState), \(authViewModel.postalCode)")
                         .frame(maxWidth: .infinity, alignment: .leading)

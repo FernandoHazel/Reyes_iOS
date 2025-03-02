@@ -15,8 +15,8 @@ struct Member: Codable, Identifiable {
     var lastName: String
     var email: String
     var phone: String
-    var adress1: String
-    var adress2: String
+    var address1: String
+    var address2: String
     var selectedState: String
     var postalCode: String
     var city: String
@@ -32,8 +32,8 @@ extension Member {
         lastName: "",
         email: "",
         phone: "",
-        adress1: "",
-        adress2: "",
+        address1: "",
+        address2: "",
         selectedState: "",
         postalCode: "",
         city: "",

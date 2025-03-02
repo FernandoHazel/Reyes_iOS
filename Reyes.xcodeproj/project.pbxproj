@@ -71,7 +71,7 @@
 		058039C12C93698300EE6E36 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 058039C02C93698300EE6E36 /* FirebaseRemoteConfig */; };
 		058039C42C9369DC00EE6E36 /* VersionUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058039C32C9369DC00EE6E36 /* VersionUpdate.swift */; };
 		058508052C7ED3B300478E26 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058508042C7ED3B300478E26 /* Colors.swift */; };
-		05995F9D2CC465E800CC200A /* Adress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05995F9C2CC465E800CC200A /* Adress.swift */; };
+		05995F9D2CC465E800CC200A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05995F9C2CC465E800CC200A /* Address.swift */; };
 		05995F9F2CC4700C00CC200A /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05995F9E2CC4700C00CC200A /* CartProduct.swift */; };
 		059E77712C7B894D00C11C00 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 059E77702C7B894D00C11C00 /* FirebaseFirestore */; };
 		059E77752C7BABF500C11C00 /* UploadButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059E77742C7BABF500C11C00 /* UploadButtons.swift */; };
@@ -174,7 +174,7 @@
 		058039BE2C93696000EE6E36 /* VersionUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdateManager.swift; sourceTree = "<group>"; };
 		058039C32C9369DC00EE6E36 /* VersionUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdate.swift; sourceTree = "<group>"; };
 		058508042C7ED3B300478E26 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		05995F9C2CC465E800CC200A /* Adress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adress.swift; sourceTree = "<group>"; };
+		05995F9C2CC465E800CC200A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		05995F9E2CC4700C00CC200A /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
 		059E77742C7BABF500C11C00 /* UploadButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtons.swift; sourceTree = "<group>"; };
 		059E77772C7BC08E00C11C00 /* FetchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingView.swift; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 				0531F14E2C5C6E3A00E11C1C /* Update.swift */,
 				058039C32C9369DC00EE6E36 /* VersionUpdate.swift */,
 				0529FDDE2CB3010B00AE971D /* PaymentModel.swift */,
-				05995F9C2CC465E800CC200A /* Adress.swift */,
+				05995F9C2CC465E800CC200A /* Address.swift */,
 				05995F9E2CC4700C00CC200A /* CartProduct.swift */,
 				05E9DACA2CD6A97F001A9722 /* Member.swift */,
 			);
@@ -689,7 +689,7 @@
 			files = (
 				0531F17B2C5C6E5200E11C1C /* Rewards.swift in Sources */,
 				0531F1502C5C6E3A00E11C1C /* ActualGame.swift in Sources */,
-				05995F9D2CC465E800CC200A /* Adress.swift in Sources */,
+				05995F9D2CC465E800CC200A /* Address.swift in Sources */,
 				0531F1882C5C6E5200E11C1C /* StaffMemberRow.swift in Sources */,
 				0531F17E2C5C6E5200E11C1C /* CustomTabBar.swift in Sources */,
 				059E77752C7BABF500C11C00 /* UploadButtons.swift in Sources */,
@@ -915,7 +915,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Reyes/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -937,11 +937,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 20241102.1;
+				MARKETING_VERSION = 20250227.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Fhazel.Reyes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = reyes_provision;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Reyes_Provision_bradesMac;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -960,7 +960,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Reyes/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9AGHP648CH;
@@ -981,11 +981,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 20241102.1;
+				MARKETING_VERSION = 20250227.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Fhazel.Reyes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = reyes_provision;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Reyes_Provision_bradesMac;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

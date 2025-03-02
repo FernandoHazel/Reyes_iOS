@@ -78,17 +78,17 @@ struct SignupView: View {
             }
         }
         VStack{
-            TextField("Dirección1*", text: $authViewModel.adress1)
+            TextField("Dirección1*", text: $authViewModel.address1)
                 .autocapitalization(.none)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-            if(authViewModel.adress1.isEmpty){
+            if(authViewModel.address1.isEmpty){
                 Text("Por favor escribe una dirección válida")
                     .foregroundColor(.red)
                     .font(.caption)
             }
         }
         
-        TextField("Dirección2 (opcional)", text: $authViewModel.adress2)
+        TextField("Dirección2 (opcional)", text: $authViewModel.address2)
             .autocapitalization(.none)
             .textFieldStyle(RoundedBorderTextFieldStyle())
         
@@ -231,7 +231,7 @@ struct SignupView: View {
     }
     
     func allFieldsCorrect() -> Bool {
-        return isAlphabetic(authViewModel.firstName) && isAlphabetic(authViewModel.lastName) && isValidEmail(authViewModel.email) && isValidPhoneNumber(authViewModel.phone) && !authViewModel.adress1.isEmpty && isValidPostalCode(authViewModel.postalCode) && isAlphabetic(authViewModel.city)
+        return isAlphabetic(authViewModel.firstName) && isAlphabetic(authViewModel.lastName) && isValidEmail(authViewModel.email) && isValidPhoneNumber(authViewModel.phone) && !authViewModel.address1.isEmpty && isValidPostalCode(authViewModel.postalCode) && isAlphabetic(authViewModel.city)
     }
 }
 

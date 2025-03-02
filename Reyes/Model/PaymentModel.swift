@@ -15,18 +15,18 @@ class PaymentModel: ObservableObject {
     var currency: String?
     var email: String?
     var fullName: String?
-    var shippingAdress: [String: Any]?
+    var shippingAddress: [String: Any]?
     var phone: String?
     var items: [[String: Any]]?
     var metadata: [String: Any]?
     
     
-    func preparePaymentIntent(paymentMethodType: String, currency: String, email: String, fullName: String, shippingAdress: [String: Any], phone: String, items: [[String: Any]], metadata: [String: Any]){
+    func preparePaymentIntent(paymentMethodType: String, currency: String, email: String, fullName: String, shippingAddress: [String: Any], phone: String, items: [[String: Any]], metadata: [String: Any]){
         self.paymentMethodType = paymentMethodType
         self.currency = currency
         self.email = email
         self.fullName = fullName
-        self.shippingAdress = shippingAdress
+        self.shippingAddress = shippingAddress
         self.phone = phone
         self.items = items
         self.metadata = metadata
@@ -40,7 +40,7 @@ class PaymentModel: ObservableObject {
             "email": email,
             "fullName": fullName,
             "shipping": [
-                "address": shippingAdress,
+                "address": shippingAddress,
                 "name": fullName,
                 "phone": phone
             ],
@@ -73,7 +73,7 @@ class PaymentModel: ObservableObject {
         
         if status == .succeeded {
             self.paymentIntentParams = nil
-            preparePaymentIntent(paymentMethodType: self.paymentMethodType!, currency: self.currency!, email: self.email!, fullName: self.fullName!, shippingAdress: shippingAdress!, phone: self.phone!, items: self.items!, metadata: self.metadata!)
+            preparePaymentIntent(paymentMethodType: self.paymentMethodType!, currency: self.currency!, email: self.email!, fullName: self.fullName!, shippingAddress: shippingAddress!, phone: self.phone!, items: self.items!, metadata: self.metadata!)
         }
     }
 }

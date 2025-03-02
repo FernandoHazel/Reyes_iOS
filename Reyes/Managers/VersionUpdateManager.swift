@@ -55,7 +55,7 @@ class VersionUpdateManager {
                 //self.debugRetrievedData()
 
                 // Prompt update if needed
-                //print("is update needed? \(self.isUpdateNeeded().0) because \(self.currentVersion) vs \(self.forcedVersion)")
+                print("is update needed? \(self.isUpdateNeeded().0) because \(self.currentVersion) vs forced:\(self.forcedVersion) optional:\(self.optionalVersion)")
             }
           } else {
             print("Config not fetched")
