@@ -21,7 +21,7 @@ struct DownloadedImage: View {
                     .resizable()
                     .scaledToFit()
             } else {
-                Image("defaultImage")
+                Image("Reyes_logo")
                     .resizable()
                     .scaledToFit()
             }
