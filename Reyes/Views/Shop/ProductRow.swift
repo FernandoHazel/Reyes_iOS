@@ -6,10 +6,14 @@ struct ProductRow: View {
     
     var body: some View {
         
-        VStack {
+        ZStack {
             ArticleImage(imagePath: product.imgNames[0], alreadyDownloaded: $alreadyDownloaded)
             if(alreadyDownloaded){
-                Caption(text: product.name, price: product.price, discount: product.discount)
+                VStack{
+                    Spacer()
+                    Caption(text: product.name, price: product.price, discount: product.discount)
+                }
+                
             }
             
         }
@@ -30,7 +34,7 @@ struct Caption: View {
                     Text("$"+String(price - price * discount/100))
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(.red)
+                        .foregroundColor(.yellow)
                     Text("Regular: $"+String(price))
                         .font(.caption)
                         .strikethrough(true)
@@ -51,7 +55,8 @@ struct Caption: View {
         .padding()
         .frame(maxWidth: .infinity)
         .background(
-            Color(.lightGray)
+            Color(.blue)
+                .opacity(0.5)
             
         )
     }

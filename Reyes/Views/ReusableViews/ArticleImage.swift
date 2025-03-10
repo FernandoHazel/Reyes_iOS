@@ -26,6 +26,7 @@ struct ArticleImage: View {
             } else if let image = image {
                 Image(uiImage: image)
                     .resizable()
+                    .frame(maxHeight: 1500)
                     .scaledToFit()
             } else {
                 Image("defaultImage")
