@@ -95,7 +95,7 @@ struct BuyTicketsButton: View {
                 Spacer()
                     
             }.background(
-                Color.blue
+                Color(red: 0.0, green: 0.30, blue: 0.90)
                     .cornerRadius(10)
                     .shadow(radius: 1)
             )

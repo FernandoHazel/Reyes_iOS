@@ -6,12 +6,15 @@ struct NewRow: View {
     
     var body: some View {
         
-        VStack{
+        ZStack{
             ArticleImage(imagePath: new.mainImageName, alreadyDownloaded: $alreadyDownloaded)
             if(alreadyDownloaded){
-                NewCaption(new: new)
+                VStack{
+                    Spacer()
+                    NewCaption(new: new)
+                }
+                
             }
-            
         }
     }
 }
@@ -34,6 +37,7 @@ struct NewCaption: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             Color(red: 0.0, green: 0.30, blue: 0.90)
+                .opacity(0.5)
             
         )
     }
