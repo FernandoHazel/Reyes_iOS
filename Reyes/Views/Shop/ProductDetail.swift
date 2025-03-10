@@ -12,7 +12,7 @@ struct ProductDetail: View {
     @State private var showAlert = false
     @State private var selectedSize: String? = nil
     @State private var quantitySelected: Int = 0
-    @State private var itemAvailability: Int = 1
+    @State private var itemAvailability: Int = 0
     @State private var showCart: Bool = false
     
     var body: some View {
@@ -94,6 +94,19 @@ struct ProductDetail: View {
                                             .stroke(Color.red, lineWidth: 2)
                                     )
                             }
+                        }
+                        
+                    } else {
+                        // Display a warning if there are no items available
+                        if (itemAvailability <= 0){
+                            Text("Lo sentimos, por el momento el artículo no está disponible en el inventario.")
+                                .padding()
+                                .foregroundColor(.red)
+                                .cornerRadius(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.red, lineWidth: 2)
+                                )
                         }
                     }
                     

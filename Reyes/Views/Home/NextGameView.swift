@@ -88,7 +88,7 @@ struct BuyTicketsButton: View {
                 Spacer()
                 Text("COMPRAR BOLETOS")
                     .font(.headline)
-                    .fontWeight(.semibold)
+                    .fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding()
                     .lineLimit(1)
