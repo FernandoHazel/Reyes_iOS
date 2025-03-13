@@ -7,7 +7,7 @@ struct NewRow: View {
     var body: some View {
         
         ZStack{
-            ArticleImage(imagePath: new.mainImageName, alreadyDownloaded: $alreadyDownloaded)
+            ArticleImage(imagePath: new.mainImageName ?? "", alreadyDownloaded: $alreadyDownloaded)
             if(alreadyDownloaded){
                 VStack{
                     Spacer()
@@ -26,7 +26,7 @@ struct NewCaption: View {
 
         VStack{
             VStack{
-                Text(new.title)
+                Text(new.title ?? "")
                     .font(.title)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
@@ -53,12 +53,11 @@ struct NewRow_Previews: PreviewProvider {
         @StateObject var vm = AppViewModel()
         
         let noticia = Noticia(
-            id: 1, title: "Hola título",
-            subTitle: "Hola subtítulo",
+            id: 1,
+            title: "Hola título",
             mainImageName: "News/Dinos_Reyes.png",
-            by: "Fhazel",
-            date: "29 de Abril 2024",
-            paragraphs: ["Hola", "mundo"])
+            postLink: ""
+        )
 
         var body: some View {
             NewRow(new: noticia)

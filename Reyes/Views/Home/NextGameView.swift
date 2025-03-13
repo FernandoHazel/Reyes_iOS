@@ -18,13 +18,12 @@ struct NextGameView: View {
                 .padding(.horizontal)
             
             //If tikets are available show button
-            if (currentGame.ticketsLink?.isEmpty == false){
-                BuyTicketsButton()
+            if let ticketsURL = currentGame.ticketsLink, !ticketsURL.isEmpty {
+                BuyTicketsButton(currentGame: currentGame)
             }
-            
-            //If game video link available show button
-            if (currentGame.gameLink?.isEmpty == false){
-                WatchGameButton()
+
+            if let gameURL = currentGame.gameLink, !gameURL.isEmpty {
+                WatchGameButton(currentGame: currentGame)
             }
             
         } else {
@@ -78,11 +77,14 @@ struct CurrentGameView: View {
 }
 
 struct BuyTicketsButton: View {
+    var currentGame: ActualGame
+    @State private var showTicketsView = false
+    
     
     var body: some View {
         Button(action: {
             // Navigate to buy tickets page
-            // ...
+            showTicketsView = true
         }, label: {
             HStack{
                 Spacer()
@@ -102,15 +104,21 @@ struct BuyTicketsButton: View {
             .padding(.horizontal)
             
         })
+        .sheet(isPresented: $showTicketsView){
+            SafariViewWrapper(url: URL(string: currentGame.ticketsLink ?? "https://lfa.mx/reyes/")!)
+        }
     }
 }
 
+
 struct WatchGameButton: View {
+    var currentGame: ActualGame
+    @State private var showWatchGameView = false
     
     var body: some View {
         Button(action: {
             // Navigate to youtube game
-            // ...
+            showWatchGameView = true
         }, label: {
             Text("Ver partido")
                 .font(.headline)
@@ -124,7 +132,11 @@ struct WatchGameButton: View {
                         .stroke(Color.gray, lineWidth: 1)
                         .shadow(radius: 1)
                 )
-        }).padding(.horizontal)
+        })
+        .padding(.horizontal)
+        .sheet(isPresented: $showWatchGameView ){
+            SafariViewWrapper(url: URL(string: currentGame.gameLink ?? "https://lfa.mx/reyes/")!)
+        }
     }
 }
 

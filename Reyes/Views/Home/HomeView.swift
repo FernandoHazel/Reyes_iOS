@@ -4,6 +4,9 @@ import UIKit
 struct HomeView: View {
     @EnvironmentObject var vm: AppViewModel
     @State private var showRewardOnboarding = false
+    @State private var showNew = false
+    @State private var newURL = ""
+
     let appStoreURL = URL(string: "https://apps.apple.com/app/id6667093876")! // App store URL
     
     var body: some View {
@@ -18,14 +21,24 @@ struct HomeView: View {
                     if !vm.noticias.isEmpty {
                         ScrollView {
                             ForEach(vm.noticias) { noticia in
-                                NavigationLink(destination: NewDetail(new: noticia)) {
-                                    NewRow(new: noticia)
-                                        .cornerRadius(10)
-                                        .padding(.horizontal)
+                                
+                                if (noticia.postLink != ""){
+                                    Button {
+                                        showNew = true
+                                        newURL = noticia.postLink ?? ""
+                                    } label: {
+                                        NewRow(new: noticia)
+                                            .cornerRadius(10)
+                                            .padding(.horizontal)
+                                    }
+                                    .sheet(isPresented: $showNew){
+                                        SafariViewWrapper(url: URL(string: noticia.postLink ?? "https://lfa.mx/reyes/")!)
+                                    }
                                 }
                             }
                         }
                         .listStyle(.inset)
+                        
                     } else {
                         FetchingView()
                     }
