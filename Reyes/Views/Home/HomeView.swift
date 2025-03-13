@@ -29,7 +29,7 @@ struct HomeView: View {
                                     } label: {
                                         NewRow(new: noticia)
                                             .cornerRadius(10)
-                                            .padding(.horizontal)
+                                            .padding(5)
                                     }
                                     .sheet(isPresented: $showNew){
                                         SafariViewWrapper(url: URL(string: noticia.postLink ?? "https://lfa.mx/reyes/")!)
