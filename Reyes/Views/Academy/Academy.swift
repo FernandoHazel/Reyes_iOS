@@ -8,38 +8,43 @@
 import SwiftUI
 
 struct Academy: View {
+    @EnvironmentObject var vm: AppViewModel
     let phoneNumber = "3340028670"
     @State private var alreadyDownloaded = false
     
     var body: some View {
         VStack{
-            ArticleImage(imagePath: "Updates/Academia.png", alreadyDownloaded: $alreadyDownloaded)
-            if(alreadyDownloaded){
-                Spacer()
-                
-                Button(action: {
-                        makePhoneCall()
-                }) {
-                    HStack{
-                        Image(systemName: "phone.fill")
-                            .foregroundColor(.black)
-                        
-                        Text("Inscríbete!")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-                            .lineLimit(1)
-                    }
-                    .padding()
-                    .background(
-                        Color.white
-                            .cornerRadius(10)
-                            .shadow(radius: 1)
-                    )
-                    
-                }
-                Spacer()
+            if(!vm.updates.isEmpty){
+                let academy = vm.updates[0]
+                ArticleImage(imagePath: academy.image, alreadyDownloaded: $alreadyDownloaded)
             }
+            
+            
+            Spacer()
+            
+            Button(action: {
+                    makePhoneCall()
+            }) {
+                HStack{
+                    Image(systemName: "phone.fill")
+                        .foregroundColor(.black)
+                    
+                    Text("Inscríbete a la Academia!")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
+                        .lineLimit(1)
+                }
+                .padding()
+                .background(
+                    Color.white
+                        .cornerRadius(10)
+                        .shadow(radius: 1)
+                )
+                
+            }
+            Spacer()
+            
             
         }
     }
@@ -53,5 +58,6 @@ struct Academy: View {
 }
 
 #Preview {
+    let academy = Update(id: 0, image: "")
     Academy()
 }
