@@ -24,15 +24,18 @@ struct HomeView: View {
                                 
                                 if (noticia.postLink != ""){
                                     Button {
-                                        showNew = true
                                         newURL = noticia.postLink ?? ""
+                                        showNew = true
                                     } label: {
                                         NewRow(new: noticia)
                                             .cornerRadius(10)
                                             .padding(5)
                                     }
                                     .sheet(isPresented: $showNew){
-                                        SafariViewWrapper(url: URL(string: noticia.postLink ?? "https://lfa.mx/reyes/")!)
+                                        if (newURL != ""){
+                                            SafariViewWrapper(url: URL(string: newURL)!)
+                                        }
+                                        
                                     }
                                 }
                             }
