@@ -29,17 +29,35 @@ struct CustomTabBar: View {
             HStack{
                 ForEach(Tab.allCases, id: \.rawValue) { tab in
                     Spacer()
-                    Image(systemName: tab == selectedTab ? fillImage : tab.rawValue)
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .padding()
-                        .foregroundColor(.white)
-                        .scaleEffect(tab == selectedTab ? 1.25 : 1.0)
-                        .onTapGesture {
-                            withAnimation(.easeIn(duration: 0.1)) {
-                                selectedTab = tab
+                    VStack {
+                        Image(systemName: tab == selectedTab ? fillImage : tab.rawValue)
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .padding(.horizontal)
+                            .padding(.top)
+                            .foregroundColor(.white)
+                            .scaleEffect(tab == selectedTab ? 1.25 : 1.0)
+                            .onTapGesture {
+                                withAnimation(.easeIn(duration: 0.1)) {
+                                    selectedTab = tab
+                                }
                             }
-                        }
+                        let iconText: String = {
+                            switch tab.rawValue {
+                            case "house": return "Inicio"
+                            case "book": return "Academia"
+                            case "bag": return "Tienda"
+                            case "calendar": return "Calendario"
+                            case "person": return "Roster"
+                            default: return ""
+                            }
+                        }()
+                        
+                        Text(iconText)
+                            .font(.system(size: 10))
+                            .foregroundColor(.white)
+                    }
+                    
                     Spacer()
                 }
             }
@@ -52,8 +70,6 @@ struct CustomTabBar: View {
         .background(Color(red: 0.0, green: 0.30, blue: 0.90))
     }
 }
-
-
 
 #Preview {
     CustomTabBar(selectedTab: .constant(.house))
