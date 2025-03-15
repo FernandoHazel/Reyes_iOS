@@ -8,10 +8,12 @@ struct ProductRow: View {
         
         ZStack {
             ArticleImage(imagePath: product.imgNames[0], alreadyDownloaded: $alreadyDownloaded)
+                .cornerRadius(10)
             if(alreadyDownloaded){
                 VStack{
                     Spacer()
                     Caption(text: product.name, price: product.price, discount: product.discount)
+                        .cornerRadius(10)
                 }
                 
             }

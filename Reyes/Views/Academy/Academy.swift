@@ -19,7 +19,6 @@ struct Academy: View {
                 ArticleImage(imagePath: academy.image, alreadyDownloaded: $alreadyDownloaded)
             }
             
-            
             Spacer()
             
             Button(action: {
@@ -44,7 +43,6 @@ struct Academy: View {
                 
             }
             Spacer()
-            
             
         }
     }
