@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct Player: Hashable, Codable, Identifiable {
+struct Player: Hashable, Codable, Identifiable, Comparable {
     let id: Int
     let number: Int
     let profileImageName: String
@@ -19,6 +19,10 @@ struct Player: Hashable, Codable, Identifiable {
     
     var images: [Image] {
         imgNames.map{Image($0)}
+    }
+    
+    static func < (lhs: Player, rhs: Player) -> Bool {
+        return lhs.id < rhs.id
     }
 }
 

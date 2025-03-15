@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 @MainActor
 class AppViewModel: ObservableObject {
@@ -44,4 +45,16 @@ class AppViewModel: ObservableObject {
             print("Failed to load data: \(error)")
         }
     }
+    
+    func openAppStore(url: String) {
+        if UIApplication.shared.canOpenURL(URL(string: url)!) {
+            UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+        }
+    }
+    
+    func orderList<T: Identifiable & Comparable>(list: [T]) -> [T] where T.ID: Comparable {
+        return list.sorted { $0.id < $1.id }
+    }
+
+    
 }

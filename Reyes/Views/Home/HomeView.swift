@@ -5,65 +5,61 @@ struct HomeView: View {
     @EnvironmentObject var vm: AppViewModel
     @State private var showRewardOnboarding = false
     @State private var showNew = false
-    @State private var newURL = ""
-
-    let appStoreURL = URL(string: "https://apps.apple.com/app/id6667093876")! // App store URL
+    
+    let appStoreURL = "https://apps.apple.com/app/id6667093876" // App store URL
     
     var body: some View {
         NavigationView {
-                ScrollView {
-                    NextGameView()
-                    Rewards(showRewardOnboarding: $showRewardOnboarding)
-                        .sheet(isPresented: $showRewardOnboarding){
-                            RewardsOnboarding()
-                        }
-                        .padding(.vertical)
-                    if !vm.noticias.isEmpty {
-                        ScrollView {
-                            ForEach(vm.noticias) { noticia in
-                                
-                                if (noticia.postLink != ""){
-                                    Button {
-                                        newURL = noticia.postLink ?? ""
-                                        showNew = true
-                                    } label: {
-                                        NewRow(new: noticia)
-                                            .cornerRadius(10)
-                                            .padding(5)
+            ScrollView {
+                NextGameView()
+                Rewards(showRewardOnboarding: $showRewardOnboarding)
+                    .sheet(isPresented: $showRewardOnboarding){
+                        RewardsOnboarding()
+                    }
+                    .padding(.vertical)
+                if !vm.noticias.isEmpty {
+                    var newURL = ""
+                    let orderdedList = vm.orderList(list: vm.noticias)
+                    
+                    ScrollView {
+                        ForEach(orderdedList.reversed()) { noticia in
+                            
+                            if (noticia.postLink != ""){
+                                Button {
+                                    newURL = noticia.postLink ?? ""
+                                    showNew = true
+                                } label: {
+                                    NewRow(new: noticia)
+                                        .cornerRadius(10)
+                                        .padding(5)
+                                }
+                                .sheet(isPresented: $showNew){
+                                    if (newURL != ""){
+                                        SafariViewWrapper(url: URL(string: newURL)!)
                                     }
-                                    .sheet(isPresented: $showNew){
-                                        if (newURL != ""){
-                                            SafariViewWrapper(url: URL(string: newURL)!)
-                                        }
-                                        
-                                    }
+                                    
                                 }
                             }
                         }
-                        .listStyle(.inset)
-                        
-                    } else {
-                        FetchingView()
                     }
+                    .listStyle(.inset)
+                    
+                } else {
+                    FetchingView()
                 }
-                .navigationBarHidden(true)
-                .alert(isPresented: $vm.updateNeeded, content: {
-                    Alert(
-                        title: Text(vm.versionUpdateAlertConfig.title ?? ""),
-                        message: Text(vm.versionUpdateAlertConfig.message ?? ""),
-                        primaryButton: .default(Text(vm.versionUpdateAlertConfig.forcedButton ?? "")) {
-                                                openAppStore()
-                        },
-                        secondaryButton: .destructive(Text(vm.versionUpdateAlertConfig.optionalButton ?? ""))
-                    )
+            }
+            .navigationBarHidden(true)
+            .alert(isPresented: $vm.updateNeeded, content: {
+                Alert(
+                    title: Text(vm.versionUpdateAlertConfig.title ?? ""),
+                    message: Text(vm.versionUpdateAlertConfig.message ?? ""),
+                    primaryButton: .default(Text(vm.versionUpdateAlertConfig.forcedButton ?? "")) {
+                        vm.openAppStore(url: appStoreURL)
+                    },
+                    secondaryButton: .destructive(Text(vm.versionUpdateAlertConfig.optionalButton ?? ""))
+                )
             })
         }.navigationBarHidden(true)
-    }
-    
-    func openAppStore() {
-        if UIApplication.shared.canOpenURL(appStoreURL) {
-            UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
-        }
     }
 }
 

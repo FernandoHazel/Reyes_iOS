@@ -18,7 +18,9 @@ struct RosterList: View {
                 List {
                     if selection == "Jugadores" {
                         if(!vm.players.isEmpty){
-                            ForEach(vm.players) { player in
+                            let orderedPlayerList = vm.orderList(list: vm.players)
+                            
+                            ForEach(orderedPlayerList) { player in
                                 NavigationLink {
                                     RosterDetail(player: player)
                                 } label: {
