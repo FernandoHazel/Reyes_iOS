@@ -21,11 +21,19 @@ struct NextGameView: View {
             if let ticketsURL = currentGame.ticketsLink, !ticketsURL.isEmpty {
                 BuyTicketsButton(currentGame: currentGame)
             }
-
-            if let gameURL = currentGame.gameLink, !gameURL.isEmpty {
-                WatchGameButton(currentGame: currentGame)
-            }
             
+            //If live video stream is available show video view
+            if let gameURL = currentGame.gameLink, !gameURL.isEmpty {
+                VStack {
+                    Text("Ver partido en vivo")
+                        .bold()
+                        .font(.title)
+                        .padding(.top)
+                        .padding(.horizontal)
+                    VideoView(videoURL: URL(string: currentGame.gameLink!)!)
+                        .frame(width: 350, height: 250)
+                }
+            }
         } else {
             FetchingView()
         }
