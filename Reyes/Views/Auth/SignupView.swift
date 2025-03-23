@@ -31,7 +31,7 @@ struct SignupView: View {
         
         HStack{
             VStack{
-                TextField("Nombre*", text: $authViewModel.firstName)
+                TextField("Nombre(s)*", text: $authViewModel.firstName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 if(!isAlphabetic(authViewModel.firstName)){
                     Text("Por favor escribe tu nombre")
@@ -43,10 +43,10 @@ struct SignupView: View {
             }
             
             VStack{
-                TextField("Apellido*", text: $authViewModel.lastName)
+                TextField("Apellidos*", text: $authViewModel.lastName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 if(!isAlphabetic(authViewModel.lastName)){
-                    Text("Por favor escribe tu apellido")
+                    Text("Por favor escribe tus apellidos")
                         .foregroundColor(.red)
                         .font(.caption)
                         .lineLimit(nil)
@@ -92,12 +92,23 @@ struct SignupView: View {
             .autocapitalization(.none)
             .textFieldStyle(RoundedBorderTextFieldStyle())
         
-        Picker("Estado", selection: $authViewModel.selectedState) {
-            ForEach(authViewModel.states, id: \.self) { state in
-                Text(state)
+        VStack {
+            Picker("Estado", selection: $authViewModel.selectedState) {
+                Text("Selecciona un estado").tag(nil as String?) // Placeholder
+                ForEach(authViewModel.states, id: \.self) { state in
+                    Text(state)
+                }
+            }
+            .pickerStyle(MenuPickerStyle())
+            
+            if(!isValidSelectedState(authViewModel.selectedState)){
+                Text("Por favor selecciona un estado")
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
-        .pickerStyle(MenuPickerStyle())
         
         VStack{
             TextField("Código Postal", text: $authViewModel.postalCode)
@@ -145,6 +156,13 @@ struct SignupView: View {
       .padding(.vertical, 6)
       .background(Divider(), alignment: .bottom)
       .padding(.bottom, 8)
+        
+        if authViewModel.password != authViewModel.confirmPassword {
+      VStack {
+        Text("Las contraseñas no coinciden")
+          .foregroundColor(Color(UIColor.systemRed))
+      }
+    }
 
       if !authViewModel.errorMessage.isEmpty {
         VStack {
@@ -193,7 +211,7 @@ struct SignupView: View {
         if(text.isEmpty){
             return false
         }
-        let alphabeticRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$"
+        let alphabeticRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"
         return text.range(of: alphabeticRegex, options: .regularExpression) != nil
     }
     private func isValidEmail(_ email: String) -> Bool {
@@ -217,6 +235,9 @@ struct SignupView: View {
         let postalCodeRegex = "^[0-9]{5}$" // only numbers and only 5 digits
         return NSPredicate(format: "SELF MATCHES %@", postalCodeRegex).evaluate(with: postalCode)
     }
+    private func isValidSelectedState(_ selectedState: String) -> Bool {
+        return !selectedState.isEmpty
+    }
 
     private func fillForm(){
         authViewModel.fetchMember()
@@ -231,7 +252,7 @@ struct SignupView: View {
     }
     
     func allFieldsCorrect() -> Bool {
-        return isAlphabetic(authViewModel.firstName) && isAlphabetic(authViewModel.lastName) && isValidEmail(authViewModel.email) && isValidPhoneNumber(authViewModel.phone) && !authViewModel.address1.isEmpty && isValidPostalCode(authViewModel.postalCode) && isAlphabetic(authViewModel.city)
+        return isAlphabetic(authViewModel.firstName) && isAlphabetic(authViewModel.lastName) && isValidEmail(authViewModel.email) && isValidSelectedState(authViewModel.selectedState) && isValidPhoneNumber(authViewModel.phone) && !authViewModel.address1.isEmpty && isValidPostalCode(authViewModel.postalCode) && isAlphabetic(authViewModel.city)
     }
 }
 

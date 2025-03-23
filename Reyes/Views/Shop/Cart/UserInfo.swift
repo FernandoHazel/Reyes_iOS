@@ -15,7 +15,7 @@ struct UserInfo: View {
         if(text.isEmpty){
             return false
         }
-        let alphabeticRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$"
+        let alphabeticRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$"
         return text.range(of: alphabeticRegex, options: .regularExpression) != nil
     }
     private func isValidEmail(_ email: String) -> Bool {
@@ -56,7 +56,7 @@ struct UserInfo: View {
                 Section(header: Text("Información de envío")){
                     HStack{
                         VStack{
-                            TextField("Nombre*", text: $authViewModel.firstName)
+                            TextField("Nombre(s)*", text: $authViewModel.firstName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                             if(!isAlphabetic(authViewModel.firstName)){
                                 Text("Por favor escribe tu nombre")
@@ -68,7 +68,7 @@ struct UserInfo: View {
                         }
                         
                         VStack{
-                            TextField("Apellido*", text: $authViewModel.lastName)
+                            TextField("Apellidos*", text: $authViewModel.lastName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                             if(!isAlphabetic(authViewModel.lastName)){
                                 Text("Por favor escribe tu apellido")
