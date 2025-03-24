@@ -323,6 +323,21 @@ extension AuthenticationViewModel {
             print("Couldn't delete member: \(member)")
         }
     }
+    
+    func sendPasswordReset(completion: @escaping (String) -> Void) {
+        guard !email.isEmpty else {
+            completion("Escribe un correo")
+            return
+        }
+
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                completion("Error: \(error.localizedDescription)")
+            } else {
+                completion("Se envió un enlace de recuperación a \(self.email).")
+            }
+        }
+    }
 
     
     // use the local data to fill the member instance before uptading in the db

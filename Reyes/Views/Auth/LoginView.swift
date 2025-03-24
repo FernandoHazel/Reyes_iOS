@@ -19,6 +19,9 @@ struct LoginView: View {
   @Environment(\.dismiss) var dismiss
 
   @FocusState private var focus: FocusableField?
+    
+    @State private var message: String = ""
+    @State private var showingToast: Bool = false
 
   private func signInWithEmailPassword() {
     Task {
@@ -73,6 +76,19 @@ struct LoginView: View {
             .foregroundColor(Color(UIColor.systemRed))
         }
       }
+        
+        Button(action: {
+            authViewModel.sendPasswordReset() { result in
+                message = result
+                showingToast = true
+            }
+        }) {
+            Text("¿Olvidaste tu contraseña?")
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
+                .foregroundColor(Color(red: 0.0, green: 0.30, blue: 0.90))
+        }
+        .padding()
 
       Button(action: signInWithEmailPassword) {
         if authViewModel.authenticationState != .authenticating {
@@ -105,6 +121,10 @@ struct LoginView: View {
     .listStyle(.plain)
     .padding()
     .analyticsScreen(name: "\(Self.self)")
+    .alert(isPresented: $showingToast) {
+        Alert(title: Text("Aviso"), message: Text(message), dismissButton: .default(Text("OK")))
+    }
+
   }
 }
 
