@@ -11,6 +11,7 @@ class AppViewModel: ObservableObject {
     @Published var rewardsInstructions: [RewardInstruction] = []
     @Published var updates: [Update] = []
     @Published var staff: [StaffMember] = []
+    @Published var priceRules: [PriceRule] = []
     @Published var versionUpdateManager = VersionUpdateManager()
     @Published var updateNeeded: Bool = false
     @Published var versionUpdateAlertConfig: VersionUpdateAlertConfig = VersionUpdateAlertConfig(
@@ -31,12 +32,13 @@ class AppViewModel: ObservableObject {
             rewardsInstructions = try await getData(collection: "Reward_Instructions", as: RewardInstruction.self)
             updates = try await getData(collection: "Updates", as: Update.self)
             staff = try await getData(collection: "Staff", as: StaffMember.self)
+            priceRules = try await getData(collection: "PriceRules", as: PriceRule.self)
             
             //Print the actual app version
             versionUpdateManager.setDefaultsConfigValues()
             versionUpdateManager.fetchRemoteConfigValues()
             
-            // If update is needed change the defaoult alert config
+            // If update is needed change the default alert config
             if(versionUpdateManager.isUpdateNeeded().0){
                 updateNeeded = true
                 versionUpdateAlertConfig = versionUpdateManager.isUpdateNeeded().1!

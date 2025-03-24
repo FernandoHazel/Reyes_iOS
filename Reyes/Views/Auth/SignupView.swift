@@ -17,6 +17,7 @@ private enum FocusableField: Hashable {
 
 struct SignupView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var appVm: AppViewModel
   @Environment(\.dismiss) var dismiss
 
   @FocusState private var focus: FocusableField?
@@ -93,15 +94,18 @@ struct SignupView: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
         
         VStack {
+            let dictionary = appVm.priceRules.first?.states
+            let states = dictionary?.compactMap { $0.key }
+            
             Picker("Estado", selection: $authViewModel.selectedState) {
-                Text("Selecciona un estado").tag(nil as String?) // Placeholder
-                ForEach(authViewModel.states, id: \.self) { state in
+                Text("Selecciona un estado").tag("")
+                ForEach(states ?? [""], id: \.self) { state in
                     Text(state)
                 }
             }
             .pickerStyle(MenuPickerStyle())
             
-            if(!isValidSelectedState(authViewModel.selectedState)){
+            if(!isValidSelectedState(authViewModel.selectedState)) {
                 Text("Por favor selecciona un estado")
                     .foregroundColor(.red)
                     .font(.caption)
