@@ -8,10 +8,31 @@
 import SwiftUI
 
 struct CartSummary: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    let cartProducts: [Product]
+    let selectedProducts: [String : Int]
     
-    @FetchRequest(sortDescriptors: [])
-    private var cartProducts: FetchedResults<CartProduct>
+    private var cartSum: Double {
+        selectedProducts.reduce(0.0) { sum, entry in
+            let (idAndSize, quantity) = entry
+            let parts = idAndSize.split(separator: "-")
+            guard let id = Int(parts[0]), parts.count > 1,
+                  let product = cartProducts.first(where: { $0.id == id }) else { return sum }
+            
+            let productTotal = product.price * (1 - product.discount / 100.0) * Double(quantity)
+            return sum + productTotal
+        }
+    }
+    
+    private var rewardSum: Double {
+        selectedProducts.reduce(0.0) { sum, entry in
+            let (idAndSize, quantity) = entry
+            let parts = idAndSize.split(separator: "-")
+            guard let id = Int(parts[0]), parts.count > 1,
+                  let product = cartProducts.first(where: { $0.id == id }) else { return sum }
+            
+            return sum + (product.reward * Double(quantity))
+        }
+    }
     
     var body: some View {
         HStack{
@@ -21,7 +42,7 @@ struct CartSummary: View {
                 .foregroundColor(Color(red: 0.0, green: 0.30, blue: 0.90))
                 .padding()
             //Summary of all products
-            Text("$\(String(format: "%.2f", cartSum()))")
+            Text("$\(String(format: "%.2f", cartSum))")
                 .bold()
                 .padding()
                 .font(.system(size: 20))
@@ -41,7 +62,7 @@ struct CartSummary: View {
                 .foregroundColor(.green)
                 .padding()
             //Summary of all products
-            Text("\(String(format: "%.0f", rewardSum()))")
+            Text("\(String(format: "%.0f", rewardSum))")
                 .bold()
                 .padding()
                 .font(.system(size: 20))
@@ -56,23 +77,5 @@ struct CartSummary: View {
                     .frame(width: 300)
             )
             .padding(.horizontal)
-    }
-    
-    private func cartSum() -> Double{
-        var sum: Double = 0
-        cartProducts.forEach { cartProduct in
-            let priceWithDiscount = cartProduct.price - cartProduct.price * cartProduct.discount / 100
-            let productTotal = priceWithDiscount * Double(cartProduct.quantitySelected)
-            sum += productTotal
-        }
-        return sum
-    }
-    
-    private func rewardSum() -> Double{
-        var sum: Double = 0
-        cartProducts.forEach { cartProduct in
-            sum += cartProduct.reward * Double(cartProduct.quantitySelected)
-        }
-        return sum
     }
 }

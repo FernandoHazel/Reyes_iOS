@@ -306,6 +306,103 @@ extension AuthenticationViewModel {
             }
         }
     }
+    
+    func addSelectedProduct(
+        productId: String,
+        size: String,
+        quantity: Int
+    ){
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("Error obteniendo el usuario al agregar un producto")
+            return
+        }
+        
+        db.collection("Members")
+            .whereField("userId", isEqualTo: userId)
+            .getDocuments { snapshot, error in
+                
+                if let error = error {
+                    print("Error buscando al usuario \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let documents = snapshot?.documents else {
+                    print("No se encontraron documentos para el usuario")
+                    return
+                }
+                
+                for document in documents {
+                    
+                    let userRef = self.db.collection("Members").document(document.documentID)
+                    
+                    // Create idAndSize key
+                    let key = "\(productId)-\(size)"
+                    
+                    // Create a copy of the dictionary to update the data
+                    var updatedSelectedProducts = self.selectedProducts
+                    updatedSelectedProducts[key] = (updatedSelectedProducts[key] ?? 0) + quantity
+                    
+                    // Update in firestore
+                    userRef.updateData([
+                        "selectedProducts.\(key)": updatedSelectedProducts[key] ?? 0
+                    ]) { [weak self] error in
+                        guard let self = self else { return }
+                        
+                        if let error = error {
+                            print("Error al añadir producto: \(error.localizedDescription)")
+                        } else {
+                            // Actualizar UI State
+                            self.selectedProducts = updatedSelectedProducts
+                            print("Producto añadido con talla")
+                        }
+                    }
+                }
+            }
+    }
+    
+    func deleteSelectedProduct(idAndSize: String) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("Error: No se pudo obtener el userId")
+            return
+        }
+
+        db.collection("Members")
+            .whereField("userId", isEqualTo: userId)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("Error al buscar usuario: \(error.localizedDescription)")
+                    return
+                }
+
+                guard let documents = snapshot?.documents else {
+                    print("No se encontraron documentos para el usuario")
+                    return
+                }
+
+                for document in documents {
+                    let userRef = self.db.collection("Members").document(document.documentID)
+
+                    // Crear una copia sin el producto eliminado
+                    var updatedSelectedProducts = self.selectedProducts
+                    updatedSelectedProducts.removeValue(forKey: idAndSize)
+
+                    // Eliminar de Firestore
+                    userRef.updateData([
+                        "selectedProducts.\(idAndSize)": FieldValue.delete()
+                    ]) { [weak self] error in
+                        guard let self = self else { return }
+                        
+                        if let error = error {
+                            print("Error al eliminar producto: \(error.localizedDescription)")
+                        } else {
+                            // Actualizar el estado UI
+                            self.selectedProducts = updatedSelectedProducts
+                            print("Producto eliminado correctamente")
+                        }
+                    }
+                }
+            }
+    }
 
     // use the local data to fill the member instance before uptading in the db
     func UpdateDBData() {

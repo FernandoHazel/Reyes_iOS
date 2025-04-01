@@ -2,10 +2,7 @@ import SwiftUI
 import CoreData
 
 struct ProductDetail: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: [])
-    private var cartProducts: FetchedResults<CartProduct>
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     var product: Product
     
@@ -14,6 +11,7 @@ struct ProductDetail: View {
     @State private var quantitySelected: Int = 0
     @State private var itemAvailability: Int = 0
     @State private var showCart: Bool = false
+    @State private var mustAuthenticate: Bool = false
     
     var body: some View {
         
@@ -45,7 +43,6 @@ struct ProductDetail: View {
                         .foregroundColor(.green)
                     Image(systemName: "crown.fill")
                         .foregroundColor(.yellow)
-                    
                 }
                 
                 Divider()
@@ -134,13 +131,20 @@ struct ProductDetail: View {
                         return
                     }
                     
-                    //1. Add the product
-                    addProduct(product: product)
+                    // if the user is not authenticated display auth view
+                    if authViewModel.authenticationState != AuthenticationState.authenticated {
+                        mustAuthenticate = true
+                        return
+                    }
                     
-                    //.2 Save in the memory
-                    saveContext()
+                    let productId = String(product.id)
+                    let size = selectedSize ?? "standard"
+                    let quantity = quantitySelected
                     
-                    //3. Show the car view
+                    // Add the product
+                    authViewModel.addSelectedProduct(productId: productId, size: size, quantity: quantity)
+                    
+                    // Show the car view
                     showCartView()
                     
                 }, label: {
@@ -170,77 +174,19 @@ struct ProductDetail: View {
         .sheet(isPresented: $showCart) {
             Cart()
         }
+        .sheet(isPresented: $mustAuthenticate) {
+            AuthenticationView()
+        }
         .onAppear {
-            
             // If this is a standard product take the availability
             if product.availability.keys.first == "standard" {
                 itemAvailability = product.availability["standard"] ?? 1
             }
         }
-
-            .navigationTitle(product.name)
-            .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(product.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
-    
-    private func addProduct(product: Product) {
-        // Añadir el producto al usuario
-        
-        // El usuario debe actualizar el core data, no el carrito
-        withAnimation {
-            let newCartProduct = CartProduct(context: viewContext)
-            newCartProduct.desc = product.description
-            newCartProduct.discount = product.discount
-            newCartProduct.imageName = product.imgNames[0]
-            newCartProduct.name = product.name
-            newCartProduct.price = product.price
-            newCartProduct.reward = product.reward
-            newCartProduct.quantitySelected = Int64(quantitySelected)
-            newCartProduct.selectedSize = selectedSize
-        }
-        
-    }
-    
-    private func saveContext(){
-        do{
-            try viewContext.save()
-        } catch {
-            let error = error as NSError
-            fatalError("Could't save context while adding cart product: \(error.localizedDescription)")
-        }
-    }
-    
     private func showCartView(){
         showCart = true
-    }
-}
-
-struct ProductDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        // Contenedor para el preview
-        PreviewWrapper()
-    }
-
-    struct PreviewWrapper: View {
-        @StateObject var vm = AppViewModel()
-        
-        let product = Product(
-            id: 1,
-            name: "Gorra Azul",
-            price: 250,
-            description: "Esta es una descripción de prueba de este artículo",
-            imgNames: ["Merch/Gorra_Azul.png"],
-            discount: 20,
-            //availability: ["standard": 10],
-            availability: ["S": 3,"M": 7,"L": 13,"XL": 5,"XXL": 12],
-            reward: 10
-        )
-
-        var body: some View {
-            ProductDetail(product: product)
-                .environmentObject(vm)
-                .task {
-                    await vm.loadAllData()
-                }
-        }
     }
 }

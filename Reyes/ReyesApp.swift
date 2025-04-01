@@ -7,6 +7,8 @@ import Stripe
 // Can find the project in https://glitch.com/edit/#!/moored-shimmer-atlasaurus?path=README.md%3A1%3A0
 
 // This URL will be different in production
+// HAY QUE MOVER ESTO A UNA VARIABLE DE ENTORNO
+// HAY QUE TENER UNO PARA DEBUG Y OTRO PARA PROD
 let BaseBackendURL = "http://127.0.0.1:1234/"
 var stripeInitialized = false
 
@@ -32,6 +34,7 @@ struct ReyesApp: App {
     
     
     init(){
+        // Mover esto a un manejador especial de stripe
         print("\n - - - - - - - - - - PUBLISHABLE KEY - - - - - - - - - - \n")
         
         //Get the publishable kay from the server

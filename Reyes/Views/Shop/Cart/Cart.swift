@@ -11,9 +11,6 @@ import Foundation
 struct Cart: View {
     @EnvironmentObject var vm: AppViewModel
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    //@Environment(\.managedObjectContext) private var viewContext
-    //@FetchRequest(sortDescriptors: [])
-    //private var cartProducts: FetchedResults<CartProduct>
     
     var body: some View {
         
@@ -36,10 +33,14 @@ struct Cart: View {
                                 }
                             }
                         }
-
-                        .onDelete(perform: deleteCartProduct)
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                let keyToDelete = selectedProducts.keys.sorted()[index]
+                                deleteCartProduct(idAndSize: keyToDelete)
+                            }
+                        }
                     }.navigationTitle("Mi carrito")
-                    CartSummary()
+                    CartSummary(cartProducts: products, selectedProducts: selectedProducts)
                     CheckoutButton()
                     Spacer()
                 }
@@ -49,18 +50,10 @@ struct Cart: View {
         }
     }
     
-    private func deleteCartProduct(offsets: IndexSet){
+    private func deleteCartProduct(idAndSize: String){
         withAnimation {
-            /*
-            offsets.map { cartProducts[$0] }.forEach(viewContext.delete)
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let error = error as NSError
-                fatalError("Could't save context while adding cart product: \(error.localizedDescription)")
-            }*/
-            
+            // Delete product from user
+            authViewModel.deleteSelectedProduct(idAndSize: idAndSize)
         }
     }
 }

@@ -49,6 +49,10 @@ struct CartProductRow: View {
                     .bold()
                     .font(.system(size: 14))
                     .frame(maxWidth: .infinity, alignment: .leading)
+                Text("Talla: \(size)")
+                    .bold()
+                    .font(.system(size: 14))
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 HStack{
                     Text("Coronas: \(String(format: "%.2f", cartProduct.reward * Double(quantity)))")
                         .bold()
