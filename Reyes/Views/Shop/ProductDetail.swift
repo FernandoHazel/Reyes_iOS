@@ -182,7 +182,10 @@ struct ProductDetail: View {
             .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func addProduct(product: Product){
+    private func addProduct(product: Product) {
+        // Añadir el producto al usuario
+        
+        // El usuario debe actualizar el core data, no el carrito
         withAnimation {
             let newCartProduct = CartProduct(context: viewContext)
             newCartProduct.desc = product.description

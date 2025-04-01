@@ -42,7 +42,7 @@ struct OrderSummary: View {
                 VStack {
                     List {
                         ForEach(cartProducts) { cartProduct in
-                            CartProductRow(cartProduct: cartProduct)
+                            //CartProductRow(cartProduct: cartProduct)
                         }
                     }
                 }

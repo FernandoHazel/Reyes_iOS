@@ -21,6 +21,7 @@ struct Member: Codable, Identifiable {
     var postalCode: String
     var city: String
     var rewards: Double
+    var selectedProducts: [String: Int] = [:]
 }
 
 extension Member {
@@ -37,7 +38,12 @@ extension Member {
         selectedState: "",
         postalCode: "",
         city: "",
-        rewards: 0.0
+        rewards: 0.0,
+        selectedProducts: [
+            "8-L" : 2,
+            "8-M" : 2
+            
+        ]
     )
   }
 }

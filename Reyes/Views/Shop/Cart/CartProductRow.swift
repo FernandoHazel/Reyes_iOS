@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct CartProductRow: View {
-    var cartProduct: CartProduct
+    var cartProduct: Product
+    let quantity: Int
+    let size: String
     
     var body: some View {
         HStack {
-            DownloadedImage(imagePath: cartProduct.imageName ?? "")
+            DownloadedImage(imagePath: cartProduct.imgNames[0])
                 .frame(width: 100, height: 100)
                 .cornerRadius(10)
             
             Spacer()
             
             VStack {
-                Text(cartProduct.name ?? "")
+                Text(cartProduct.name)
                     .bold()
                     .font(.system(size: 20))
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -43,12 +45,12 @@ struct CartProductRow: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
-                Text("Cantidad: \(cartProduct.quantitySelected)")
+                Text("Cantidad: \(quantity)")
                     .bold()
                     .font(.system(size: 14))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 HStack{
-                    Text("Coronas: \(String(format: "%.2f", cartProduct.reward * Double(cartProduct.quantitySelected)))")
+                    Text("Coronas: \(String(format: "%.2f", cartProduct.reward * Double(quantity)))")
                         .bold()
                         .font(.system(size: 14))
                         .foregroundColor(.green)

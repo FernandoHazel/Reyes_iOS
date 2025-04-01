@@ -9,20 +9,34 @@ import SwiftUI
 import Foundation
 
 struct Cart: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: [])
-    private var cartProducts: FetchedResults<CartProduct>
+    @EnvironmentObject var vm: AppViewModel
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    //@Environment(\.managedObjectContext) private var viewContext
+    //@FetchRequest(sortDescriptors: [])
+    //private var cartProducts: FetchedResults<CartProduct>
     
     var body: some View {
         
-        if !cartProducts.isEmpty{
+        let products = vm.products
+        let selectedProducts = authViewModel.selectedProducts
+        
+        if !selectedProducts.isEmpty && !products.isEmpty{
             NavigationView {
                 VStack {
                     List {
-                        ForEach(cartProducts) { cartProduct in
-                            CartProductRow(cartProduct: cartProduct)
+                        ForEach(selectedProducts.keys.sorted(), id: \.self) { idAndSize in
+                            if let quantity = selectedProducts[idAndSize] {
+                                let parts = idAndSize.split(separator: "-")
+                                if let id = Int(parts[0]), parts.count > 1 {
+                                    let size = String(parts[1])
+                                    
+                                    if let product = products.first(where: { $0.id == id }) {
+                                        CartProductRow(cartProduct: product, quantity: quantity, size: size)
+                                    }
+                                }
+                            }
                         }
+
                         .onDelete(perform: deleteCartProduct)
                     }.navigationTitle("Mi carrito")
                     CartSummary()
@@ -37,6 +51,7 @@ struct Cart: View {
     
     private func deleteCartProduct(offsets: IndexSet){
         withAnimation {
+            /*
             offsets.map { cartProducts[$0] }.forEach(viewContext.delete)
             
             do {
@@ -44,7 +59,7 @@ struct Cart: View {
             } catch {
                 let error = error as NSError
                 fatalError("Could't save context while adding cart product: \(error.localizedDescription)")
-            }
+            }*/
             
         }
     }

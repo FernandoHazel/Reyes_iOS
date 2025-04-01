@@ -48,7 +48,7 @@ class AuthenticationViewModel: ObservableObject {
     @Published var city = ""
     @Published var rewards = 0.0
     @Published var selectedState = "Jalisco"
-        //let states = [""]
+    @Published var selectedProducts: [String: Int] = [:]
 
   init() {
     registerAuthStateHandler()
@@ -307,7 +307,6 @@ extension AuthenticationViewModel {
         }
     }
 
-    
     // use the local data to fill the member instance before uptading in the db
     func UpdateDBData() {
         member.userId = user?.uid ?? ""
@@ -321,6 +320,7 @@ extension AuthenticationViewModel {
         member.city = city
         member.rewards = rewards
         member.selectedState = selectedState
+        member.selectedProducts = selectedProducts
     }
     
     func updateLocalData() {
@@ -335,6 +335,7 @@ extension AuthenticationViewModel {
          city = member.city
          rewards = member.rewards
         selectedState = member.selectedState
+        selectedProducts = member.selectedProducts
     }
     
     func closeOrDeleteAccount() {
