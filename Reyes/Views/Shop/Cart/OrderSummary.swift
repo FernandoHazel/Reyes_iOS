@@ -10,13 +10,29 @@ import Foundation
 
 struct OrderSummary: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: [])
-    private var cartProducts: FetchedResults<CartProduct>
-    
-    @State var purchaseCompleted = false
+    @EnvironmentObject var vm: AppViewModel
 
     var body: some View {
+        
+        let products = vm.products
+        let selectedProducts = authViewModel.selectedProducts
+        
+        var cartSum: Double {
+            selectedProducts.reduce(0.0) { sum, entry in
+                let (idAndSize, quantity) = entry
+                let parts = idAndSize.split(separator: "-")
+                guard let id = Int(parts[0]), parts.count > 1,
+                      let product = products.first(where: { $0.id == id }) else { return sum }
+                
+                let productTotal = product.price * (1 - product.discount / 100.0) * Double(quantity)
+                return sum + productTotal
+            }
+        }
+        
+        var rewardSum: Double {
+            // Floor rewards to the lowest number
+            return floor(( cartSum + calcularCostoEnvio() ) / 10)
+        }
 
         Form {
             Section(header: Text("Información de envío")){
@@ -32,7 +48,7 @@ struct OrderSummary: View {
                     Text("Fecha estimada de entrega")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.green)
-                    Text("De 7 a 14 días") // Calculate somehow (can be something generic like 7-14 days)
+                    Text("De 7 a 14 días")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.green)
                 }
@@ -41,8 +57,17 @@ struct OrderSummary: View {
             Section(header: Text("Artículos")){
                 VStack {
                     List {
-                        ForEach(cartProducts) { cartProduct in
-                            //CartProductRow(cartProduct: cartProduct)
+                        ForEach(selectedProducts.keys.sorted(), id: \.self) { idAndSize in
+                            if let quantity = selectedProducts[idAndSize] {
+                                let parts = idAndSize.split(separator: "-")
+                                if let id = Int(parts[0]), parts.count > 1 {
+                                    let size = String(parts[1])
+                                    
+                                    if let product = products.first(where: { $0.id == id }) {
+                                        CartProductRow(cartProduct: product, quantity: quantity, size: size)
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -53,7 +78,7 @@ struct OrderSummary: View {
                         Text("Total de artículos")
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
-                        Text("$\(String(format: "%.2f", cartSum()))")
+                        Text("$\(String(format: "%.2f", cartSum))")
                     }
                     HStack{
                         Text("Envío")
@@ -68,7 +93,7 @@ struct OrderSummary: View {
                             .font(.title)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
-                        Text("$\(String(format: "%.2f", cartSum() + calcularCostoEnvio()))")
+                        Text("$\(String(format: "%.2f", cartSum + calcularCostoEnvio()))")
                             .font(.title)
                             .bold()
                     }
@@ -77,7 +102,7 @@ struct OrderSummary: View {
                             .foregroundColor(.green)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
-                        Text("\(String(format: "%.2f", calculateRewards()))")
+                        Text("\(String(format: "%.2f", rewardSum))")
                             .bold()
                             .foregroundColor(.green)
                         Image(systemName: "crown.fill")
@@ -87,112 +112,20 @@ struct OrderSummary: View {
             }
             Section(header: Text("Método de pago")){
                 VStack{
-                    PaymentView(purchaseCompleted: $purchaseCompleted)
+                    PaymentView()
                 }
             }
-        }.sheet(isPresented: $purchaseCompleted) {
-            CongratsView()
         }
-        
-        
     }
     
-    private func cartSum() -> Double{
-        var sum: Double = 0
-        cartProducts.forEach { cartProduct in
-            let priceWithDiscount = cartProduct.price - cartProduct.price * cartProduct.discount / 100
-            let productTotal = priceWithDiscount * Double(cartProduct.quantitySelected)
-            sum += productTotal
-        }
-        return sum
-    }
-    
-    // Esta es una función de ejemplo pero hay que definirla bien hablando con una empresa dedicada a esto
     private func calcularCostoEnvio() -> Double {
         
-        //La tarifa debe ser parametrizable en base al estado a dónde hay que enviar
-        var costoTotal = 0.0
-        
-        switch authViewModel.selectedState{
-        case "Aguascalientes":
-            costoTotal = 200
-        case "Baja California":
-            costoTotal = 500
-        case "Baja California Sur":
-            costoTotal = 300
-        case "Campeche":
-            costoTotal = 300
-        case "Chiapas":
-            costoTotal = 300
-        case "Chihuahua":
-            costoTotal = 400
-        case "Ciudad de México":
-            costoTotal = 200
-        case "Coahuila":
-            costoTotal = 400
-        case "Colima":
-            costoTotal = 200
-        case "Durango":
-            costoTotal = 400
-        case "Guanajuato":
-            costoTotal = 600
-        case "Guerrero":
-            costoTotal = 700
-        case "Hidalgo":
-            costoTotal = 200
-        case "Jalisco":
-            costoTotal = 200
-        case "Estado de México":
-            costoTotal = 200
-        case "Michoacán":
-            costoTotal = 200
-        case "Morelos":
-            costoTotal = 200
-        case "Nayarit":
-            costoTotal = 300
-        case "Nuevo León":
-            costoTotal = 200
-        case "Oaxaca":
-            costoTotal = 200
-        case "Puebla":
-            costoTotal = 200
-        case "Querétaro":
-            costoTotal = 200
-        case "Quintana Roo":
-            costoTotal = 300
-        case "San Luis Potosí":
-            costoTotal = 155
-        case "Sinaloa":
-            costoTotal = 250
-        case "Sonora":
-            costoTotal = 700
-        case "Tabasco":
-            costoTotal = 750
-        case "Tamaulipas":
-            costoTotal = 300
-        case "Tlaxcala":
-            costoTotal = 300
-        case "Veracruz":
-            costoTotal = 200
-        case "Yucatán":
-            costoTotal = 300
-        case "Zacatecas":
-            costoTotal = 400
-        default:
-            costoTotal = 200
-        }
-        return costoTotal
-    }
-
-    private func calculateRewards() -> Double{
-        var sum: Double = 0
-        cartProducts.forEach { cartProduct in
-            sum += cartProduct.reward * Double(cartProduct.quantitySelected)
-        }
-        return sum
+        // Hacer una petición al back y calcular en base a las reglas de negocio
+        // ..
+        return 222.0
     }
 }
 
 #Preview {
-    OrderSummary(purchaseCompleted: false)
+    OrderSummary()
 }

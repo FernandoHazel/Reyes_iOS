@@ -10,13 +10,13 @@ import SwiftUI
 struct UserInfo: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var appVm: AppViewModel
-    @State private var isShowingOrderSummary = false
+    @Binding var showEditView: Bool
     
     var body: some View {
         VStack{
             
             Form {
-                Section(header: Text("Información de envío")){
+                Section(header: Text("Edita los datos de tu cuenta")){
                     HStack{
                         VStack{
                             TextField("Nombre(s)*", text: $authViewModel.firstName)
@@ -127,10 +127,10 @@ struct UserInfo: View {
             ){
                 VStack {
                     Button(action: {
-                        anonymousSingIn()
-                        isShowingOrderSummary = true
+                        authViewModel.editAccount()
+                        showEditView = false
                     }) {
-                        Text("Resumen de compra")
+                        Text("Listo")
                             .font(.headline)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
@@ -142,11 +142,6 @@ struct UserInfo: View {
                                     .shadow(radius: 10)
                                     .frame(maxWidth: .infinity)
                             )
-                    }
-
-                    // Navegación manual
-                    NavigationLink(destination: OrderSummary(), isActive: $isShowingOrderSummary) {
-                        EmptyView()
                     }
                 }
             }
@@ -190,59 +185,5 @@ struct UserInfo: View {
     // Data functions
     private func fillForm(){
         authViewModel.fetchMember()
-    }
-    
-    private func anonymousSingIn() {
-        authViewModel.anonymousSingIn()
-    }
-}
-
-struct OrderSummaryButton: View {
-    @State private var isShowingOrderSummary = false
-
-    var body: some View {
-        VStack {
-            Button(action: {
-                showOrderSummary()
-            }) {
-                Text("Resumen de compra")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .padding()
-                    .lineLimit(1)
-                    .background(
-                        Color.green
-                            .cornerRadius(10)
-                            .shadow(radius: 10)
-                            .frame(width: 300)
-                    )
-            }
-
-            // Navegación manual
-            NavigationLink(destination: OrderSummary(), isActive: $isShowingOrderSummary) {
-                EmptyView()
-            }
-        }
-    }
-
-    // Método a ejecutar al presionar el botón
-    func showOrderSummary() {
-        // Ejecutar lógica adicional aquí
-        isShowingOrderSummary = true
-    }
-}
-
-struct UserInfo_Previews: PreviewProvider {
-    static var previews: some View {
-        // Contenedor para el preview
-        PreviewWrapper()
-    }
-
-    struct PreviewWrapper: View {
-
-        var body: some View {
-            UserInfo()
-        }
     }
 }

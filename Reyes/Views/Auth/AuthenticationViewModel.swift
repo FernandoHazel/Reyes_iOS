@@ -115,27 +115,13 @@ class AuthenticationViewModel: ObservableObject {
 // MARK: - Email and Password Authentication
 
 extension AuthenticationViewModel {
-    func anonymousSingIn() {
-      if Auth.auth().currentUser == nil {
-        print("Nobody is signed in. Trying to sign in anonymously.")
-        Task {
-              do {
-                try await Auth.auth().signInAnonymously()
-                errorMessage = ""
-                  saveMember()
-              }
-          catch {
-            print("Error while signing in anonymously: "+error.localizedDescription)
-            errorMessage = error.localizedDescription
-          }
-        }
-      }
-      else {
-        print("Someone is signed in")
+    
+    func editAccount() {
         if let user = Auth.auth().currentUser {
-          print(user.uid)
+            print("Someone is signed in")
+            saveMember()
+            print(user.uid)
         }
-      }
     }
     
     func singUpOrLinkAccount() async -> Bool {
@@ -447,5 +433,6 @@ extension AuthenticationViewModel {
          city = ""
         rewards = 0.0
         selectedState = ""
+        selectedProducts = [:]
     }
 }

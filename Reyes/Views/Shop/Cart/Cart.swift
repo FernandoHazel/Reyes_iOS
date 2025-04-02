@@ -40,7 +40,7 @@ struct Cart: View {
                             }
                         }
                     }.navigationTitle("Mi carrito")
-                    CartSummary(cartProducts: products, selectedProducts: selectedProducts)
+                    CartSummary(products: products, selectedProducts: selectedProducts)
                     CheckoutButton()
                     Spacer()
                 }
@@ -60,7 +60,7 @@ struct Cart: View {
 
 struct CheckoutButton: View {
     var body: some View {
-        NavigationLink(destination: UserInfo()) {
+        NavigationLink(destination: OrderSummary()) {
             Text("Checkout")
                 .font(.headline)
                 .fontWeight(.semibold)

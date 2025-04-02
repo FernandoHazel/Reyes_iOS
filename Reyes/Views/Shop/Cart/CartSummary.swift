@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CartSummary: View {
-    let cartProducts: [Product]
+    let products: [Product]
     let selectedProducts: [String : Int]
     
     private var cartSum: Double {
@@ -16,7 +16,7 @@ struct CartSummary: View {
             let (idAndSize, quantity) = entry
             let parts = idAndSize.split(separator: "-")
             guard let id = Int(parts[0]), parts.count > 1,
-                  let product = cartProducts.first(where: { $0.id == id }) else { return sum }
+                  let product = products.first(where: { $0.id == id }) else { return sum }
             
             let productTotal = product.price * (1 - product.discount / 100.0) * Double(quantity)
             return sum + productTotal
@@ -28,7 +28,7 @@ struct CartSummary: View {
             let (idAndSize, quantity) = entry
             let parts = idAndSize.split(separator: "-")
             guard let id = Int(parts[0]), parts.count > 1,
-                  let product = cartProducts.first(where: { $0.id == id }) else { return sum }
+                  let product = products.first(where: { $0.id == id }) else { return sum }
             
             return sum + (product.reward * Double(quantity))
         }

@@ -12,7 +12,7 @@ struct UserProfileView: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
   @Environment(\.dismiss) var dismiss
   @State var presentingConfirmationDialog = false
-    @State var addPassword = false
+    @State var showEditView = false
     
     // Get a reference to the managed object context from the environment.
     @Environment(\.managedObjectContext) private var viewContext
@@ -80,10 +80,6 @@ struct UserProfileView: View {
               .overlay(Circle().stroke(Color.accentColor, lineWidth: 2))
             Spacer()
           }
-            /*
-          Button(action: {}) {
-            Text("edit")
-          }*/
         }
       }
       .listRowBackground(Color(UIColor.systemGroupedBackground))
@@ -121,22 +117,20 @@ struct UserProfileView: View {
                   Spacer()
                 }
               }
-          }
-          if (authViewModel.user?.providerData.first?.providerID == nil){
-              Button(role: .none, action: { addPassword.toggle() }) {
+              Button(role: .cancel, action: {showEditView = true} ) {
                 HStack {
                   Spacer()
-                  Text("Añadir una contraseña")
+                  Text("Editar cuenta")
                   Spacer()
                 }
               }
-          }
-          Button(role: .destructive, action: { presentingConfirmationDialog.toggle() }) {
-            HStack {
-              Spacer()
-              Text("Borrar Cuenta")
-              Spacer()
-            }
+              Button(role: .destructive, action: { presentingConfirmationDialog.toggle() }) {
+                HStack {
+                  Spacer()
+                  Text("Borrar Cuenta")
+                  Spacer()
+                }
+              }
           }
       }
     }
@@ -148,10 +142,8 @@ struct UserProfileView: View {
       Button("Borrar cuenta", role: .destructive, action: deleteAccount)
       Button("Cancelar", role: .cancel, action: { })
     }
-    .sheet(isPresented: $addPassword) {
-        ScrollView{
-            SignupView()
-        }
+    .sheet(isPresented: $showEditView){
+        UserInfo(showEditView: $showEditView)
     }
   }
 }

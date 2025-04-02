@@ -17,7 +17,6 @@ struct PaymentView: View {
     @ObservedObject var model = PaymentModel()
     @State var loading = false
     @State var paymentMethodParams: STPPaymentMethodParams?
-    @Binding var purchaseCompleted: Bool
     
     var body: some View {
         VStack{
@@ -61,7 +60,6 @@ struct PaymentView: View {
             let metadata = productNames()
             
             model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn", email: email, fullName: fullName, shippingAddress: shippingAddress, phone: phone, items: items, metadata: metadata)
-            purchaseCompleted = false
         }
         .onChange(of: model.paymentStatus) { paymentStatus in
                 if paymentStatus == .succeeded {
@@ -109,11 +107,12 @@ struct PaymentView: View {
         //3. Save context
         saveContext()
         
-        //4. Navigate to congrats view
-        purchaseCompleted = true
         
         //5. Update the member info
         authViewModel.saveMember()
+        
+        // Display a congrats alert
+        // ...
         
         print("\n - - - - - - - - - - PURCHASE - - - - - - - - - - \n")
         print("PURCHASE SUCCEDED")
@@ -158,7 +157,7 @@ struct PaymentView_Previews: PreviewProvider {
         @State private var purchaseComplete = false
         
         var body: some View {
-            PaymentView(purchaseCompleted: $purchaseComplete)
+            PaymentView()
         }
     }
 }
