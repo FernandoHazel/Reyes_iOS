@@ -89,7 +89,6 @@
 		05AD06A52CB1C25C008D1CB4 /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD06A42CB1C25C008D1CB4 /* StripePaymentSheet */; };
 		05AD06A72CB1C25C008D1CB4 /* StripePayments in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD06A62CB1C25C008D1CB4 /* StripePayments */; };
 		05AD06A92CB1C25C008D1CB4 /* StripePaymentsUI in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD06A82CB1C25C008D1CB4 /* StripePaymentsUI */; };
-		05BC2B7A2DA05E1C00C215DA /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BC2B792DA05E1C00C215DA /* PaymentViewModel.swift */; };
 		05C019B22C9CAFD1002E5A86 /* OrderSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C019B12C9CAFD1002E5A86 /* OrderSummary.swift */; };
 		05E9DACB2CD6A97F001A9722 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E9DACA2CD6A97F001A9722 /* Member.swift */; };
 		05F8076C2D8277AD00E81E4E /* SFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F8076B2D8277AD00E81E4E /* SFSafariViewController.swift */; };
@@ -186,7 +185,6 @@
 		05A85AC02C979A9100C87ADE /* remote_config_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = remote_config_defaults.plist; sourceTree = "<group>"; };
 		05A85AC32C97DCD200C87ADE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		05AD06972CB1A408008D1CB4 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
-		05BC2B792DA05E1C00C215DA /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		05C019B12C9CAFD1002E5A86 /* OrderSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummary.swift; sourceTree = "<group>"; };
 		05E9DACA2CD6A97F001A9722 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		05F8076B2D8277AD00E81E4E /* SFSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewController.swift; sourceTree = "<group>"; };
@@ -489,7 +487,6 @@
 			isa = PBXGroup;
 			children = (
 				059E777A2C7BC5B000C11C00 /* AppViewModel.swift */,
-				05BC2B792DA05E1C00C215DA /* PaymentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -741,7 +738,6 @@
 				056309412CD3E583005056C0 /* AuthenticationViewModel.swift in Sources */,
 				056309422CD3E583005056C0 /* LoginView.swift in Sources */,
 				056309432CD3E583005056C0 /* UserProfileView.swift in Sources */,
-				05BC2B7A2DA05E1C00C215DA /* PaymentViewModel.swift in Sources */,
 				056309442CD3E583005056C0 /* SignupView.swift in Sources */,
 				056309452CD3E583005056C0 /* AuthenticationView.swift in Sources */,
 				056309462CD3E583005056C0 /* AuthenticatedView.swift in Sources */,

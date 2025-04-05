@@ -389,6 +389,54 @@ extension AuthenticationViewModel {
                 }
             }
     }
+    
+    func deleteAllSelectedProducts() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("Error: No se pudo obtener el userId")
+            return
+        }
+
+        db.collection("Members")
+            .whereField("userId", isEqualTo: userId)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("Error al buscar usuario: \(error.localizedDescription)")
+                    return
+                }
+
+                guard let documents = snapshot?.documents else {
+                    print("No se encontraron documentos para el usuario")
+                    return
+                }
+
+                for document in documents {
+                    let userRef = self.db.collection("Members").document(document.documentID)
+                    let data = document.data()
+                    
+                    if let selectedProducts = data["selectedProducts"] as? [String: Int] {
+                        var updates: [String: Any] = [:]
+
+                        for key in selectedProducts.keys {
+                            updates["selectedProducts.\(key)"] = FieldValue.delete()
+                        }
+
+                        userRef.updateData(updates) { [weak self] error in
+                            guard let self = self else { return }
+                            
+                            if let error = error {
+                                print("Error al eliminar productos: \(error.localizedDescription)")
+                            } else {
+                                self.selectedProducts = [:] // Asumiendo que este es tu @Published
+                                print("Todos los productos seleccionados fueron eliminados")
+                            }
+                        }
+                    } else {
+                        print("No hay productos seleccionados para eliminar")
+                    }
+                }
+            }
+    }
+
 
     // use the local data to fill the member instance before uptading in the db
     func UpdateDBData() {

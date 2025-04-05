@@ -23,11 +23,6 @@ struct ReyesApp: App {
     @StateObject private var appViewModel = AppViewModel()
     @StateObject private var authViewModel = AuthenticationViewModel()
     
-    
-    init(){
-        getStripeKey()
-    }
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
