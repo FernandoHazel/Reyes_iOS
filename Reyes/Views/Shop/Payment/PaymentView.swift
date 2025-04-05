@@ -14,6 +14,7 @@ struct PaymentView: View {
     @State var loading = false
     @State var paymentMethodParams: STPPaymentMethodParams?
     @State private var showThankYouAlert = false
+    @State private var showKeyErrorAlert = false
     
     var body: some View {
         VStack{
@@ -61,15 +62,20 @@ struct PaymentView: View {
                         model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn", email: email, fullName: fullName, shippingAddress: shippingAddress, phone: phone, items: items, metadata: metadata)
                     } else {
                         print("No se pudo obtener la clave de Stripe")
-                        // Podrías mostrar una alerta o manejar el error de forma visual
+                        showKeyErrorAlert = true
                     }
                 }
         }
         .alert("Gracias por tu compra", isPresented: $showThankYouAlert) {
-                    Button("OK", role: .cancel) { }
-                } message: {
-                    Text("En breve recibirás un correo con los detalles del pedido.")
-                }
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("En breve recibirás un correo con los detalles del pedido.")
+        }
+        .alert("Error al preparar el pedido", isPresented: $showKeyErrorAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("No fué posible preparar el pedido en este momento, intentalo más tarde.")
+        }
         .onChange(of: model.paymentStatus) { paymentStatus in
                 if paymentStatus == .succeeded {
                     purchase()
