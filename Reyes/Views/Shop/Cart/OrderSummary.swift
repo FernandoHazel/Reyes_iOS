@@ -168,18 +168,40 @@ struct OrderSummary: View {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
-                // Also show an alert
+            guard let httpResponse = response as? HTTPURLResponse else {
                 showErrorAlert = true
-                errorMessage = "Respuesta inválida del servidor"
-                print("Respuesta inválida del servidor")
+                errorMessage = "Respuesta inválida del servidor."
+                print("No se pudo obtener una respuesta del servidor")
+                return false
+            }
+
+            // This error appears when a product of the cart is not available any more
+            if httpResponse.statusCode == 405 {
+                let decoded = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                showErrorAlert = true
+                errorMessage = decoded.error
+                print(decoded.error)
+                // Delete the cart so the user can try to fill again
+                authViewModel.deleteAllSelectedProducts()
+                return false
+            }
+
+            guard (200...299).contains(httpResponse.statusCode) else {
+                do {
+                    let decoded = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                    showErrorAlert = true
+                    errorMessage = decoded.error
+                    print(decoded.error)
+                } catch {
+                    showErrorAlert = true
+                    errorMessage = "Ocurrió un error inesperado: \(error.localizedDescription)"
+                    print("Decoding error: \(error.localizedDescription)")
+                }
                 return false
             }
 
             let decoded = try JSONDecoder().decode(OrderResponse.self, from: data)
             
-            // Ya puedes usar decoded.orderTotal, decoded.totalReward, etc.
             print("Total productos:", decoded.productsTotal)
             print("Envío:", decoded.shipmentWithFees)
             print("Total orden:", decoded.orderTotal)
@@ -208,6 +230,10 @@ struct OrderResponse: Codable {
     let shipmentWithFees: Double
     let orderTotal: Double
     let totalReward: Double
+}
+
+struct ErrorResponse: Codable {
+    let error: String
 }
 
 #Preview {

@@ -426,7 +426,7 @@ extension AuthenticationViewModel {
                             if let error = error {
                                 print("Error al eliminar productos: \(error.localizedDescription)")
                             } else {
-                                self.selectedProducts = [:] // Asumiendo que este es tu @Published
+                                self.selectedProducts = [:]
                                 print("Todos los productos seleccionados fueron eliminados")
                             }
                         }
@@ -436,7 +436,6 @@ extension AuthenticationViewModel {
                 }
             }
     }
-
 
     // use the local data to fill the member instance before uptading in the db
     func UpdateDBData() {
