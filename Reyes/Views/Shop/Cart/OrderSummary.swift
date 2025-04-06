@@ -121,7 +121,7 @@ struct OrderSummary: View {
             Section(header: Text("Método de pago")){
                 VStack{
                     if (showPaymentView){
-                        PaymentView()
+                        PaymentView(totalReward: totalReward)
                     }
                 }
             }
@@ -158,8 +158,8 @@ struct OrderSummary: View {
         var request = URLRequest(url: url)
         let json: [String: Any] = [
             "selectedState": authViewModel.selectedState,
-            "items": ["1-L": 1]
-        ] // authViewModel.selectedProducts
+            "items": authViewModel.selectedProducts
+        ]
         
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

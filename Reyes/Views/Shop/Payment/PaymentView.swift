@@ -9,11 +9,12 @@ import Stripe
 
 struct PaymentView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
-    
     @ObservedObject var model = PaymentModel()
     @State var loading = false
     @State var paymentMethodParams: STPPaymentMethodParams?
     @State private var showThankYouAlert = false
+    
+    let totalReward: Double
     
     
     var body: some View {
@@ -93,20 +94,13 @@ struct PaymentView: View {
         }
     }
     
-    // Get from the service
-    private func calculateRewards() -> Double {
-        var sum: Double = 0
-        // The total payment amount / 10
-        return sum
-    }
-    
     private func purchase(){
         
         //1. Erase the cart products
         authViewModel.deleteAllSelectedProducts()
         
         //2. Add rewards
-        authViewModel.rewards += calculateRewards()
+        authViewModel.rewards += totalReward
         
         //3. Update the member info
         authViewModel.saveMember()
@@ -124,18 +118,9 @@ struct PaymentView: View {
         return authViewModel.selectedProducts
     }
     
+    // This is used for metadata but is empty at the moment
     private func productNames() -> [String: Any] {
-        var productDict: [String: Any] = [:]
-        var keyCount = 1
-        
-        /*
-        cartProducts.forEach { cartProduct in
-            if let productName = cartProduct.name {
-                productDict["item\(keyCount)"] = productName
-                keyCount += 1
-            }
-        }*/
-        
+        let productDict: [String: Any] = [:]
         return productDict
     }
 }
@@ -149,7 +134,7 @@ struct PaymentView_Previews: PreviewProvider {
         @State private var purchaseComplete = false
         
         var body: some View {
-            PaymentView()
+            PaymentView(totalReward: 10.0)
         }
     }
 }
