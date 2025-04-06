@@ -11,28 +11,20 @@ import Foundation
 struct OrderSummary: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var vm: AppViewModel
+    @State var showErrorAlert = false
+    @State private var showKeyErrorAlert = false
+    @State var showPaymentView = false
+    @State var errorMessage = ""
+    @State var productsTotal = 0.0
+    @State var shipmentWithFees = 0.0
+    @State var orderTotal = 0.0
+    @State var totalReward = 0.0
+    @ObservedObject var model = PaymentModel()
 
     var body: some View {
         
         let products = vm.products
         let selectedProducts = authViewModel.selectedProducts
-        
-        var cartSum: Double {
-            selectedProducts.reduce(0.0) { sum, entry in
-                let (idAndSize, quantity) = entry
-                let parts = idAndSize.split(separator: "-")
-                guard let id = Int(parts[0]), parts.count > 1,
-                      let product = products.first(where: { $0.id == id }) else { return sum }
-                
-                let productTotal = product.price * (1 - product.discount / 100.0) * Double(quantity)
-                return sum + productTotal
-            }
-        }
-        
-        var rewardSum: Double {
-            // Floor rewards to the lowest number
-            return floor(( cartSum + calcularCostoEnvio() ) / 10)
-        }
 
         Form {
             Section(header: Text("Información de envío")){
@@ -78,13 +70,21 @@ struct OrderSummary: View {
                         Text("Total de artículos")
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
-                        Text("$\(String(format: "%.2f", cartSum))")
+                        if productsTotal == 0.0 {
+                            ProgressView()
+                        } else {
+                            Text("$\(String(format: "%.2f", productsTotal))")
+                        }
                     }
                     HStack{
                         Text("Envío")
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
-                        Text("$\(String(format: "%.2f", calcularCostoEnvio()))")
+                        if shipmentWithFees == 0.0 {
+                            ProgressView()
+                        } else {
+                            Text("$\(String(format: "%.2f", shipmentWithFees))")
+                        }
                     }
                     Divider()
                     HStack{
@@ -93,37 +93,121 @@ struct OrderSummary: View {
                             .font(.title)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
-                        Text("$\(String(format: "%.2f", cartSum + calcularCostoEnvio()))")
-                            .font(.title)
-                            .bold()
+                        if orderTotal == 0.0 {
+                            ProgressView()
+                        } else {
+                            Text("$\(String(format: "%.2f", orderTotal))")
+                                .font(.title)
+                                .bold()
+                        }
                     }
                     HStack{
                         Text("Coronas obtenidas:")
                             .foregroundColor(.green)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
-                        Text("\(String(format: "%.2f", rewardSum))")
-                            .bold()
-                            .foregroundColor(.green)
-                        Image(systemName: "crown.fill")
-                            .foregroundColor(.yellow)
+                        if totalReward == 0.0 {
+                            ProgressView()
+                        } else {
+                            Text("\(String(format: "%.2f", totalReward))")
+                                .bold()
+                                .foregroundColor(.green)
+                            Image(systemName: "crown.fill")
+                                .foregroundColor(.yellow)
+                        }
                     }
                 }
             }
             Section(header: Text("Método de pago")){
                 VStack{
-                    PaymentView()
+                    if (showPaymentView){
+                        PaymentView()
+                    }
                 }
             }
         }
+        .alert(isPresented: $showErrorAlert) {
+            Alert(title: Text("Ocurrió un error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+        }
+        .alert("Error al preparar el pedido", isPresented: $showKeyErrorAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("No fué posible preparar el pedido en este momento, intentalo más tarde.")
+        }
+        .onAppear(){
+            Task {
+                // Get the API Key
+                let success = await model.getStripeKey()
+                    if success {
+                        // Calculate Order
+                        let orderCalculated = await calculateOrder()
+                        if orderCalculated {
+                            showPaymentView = true
+                        }
+                    } else {
+                        print("No se pudo obtener la clave de Stripe")
+                        showKeyErrorAlert = true
+                    }
+                }
+        }
     }
     
-    private func calcularCostoEnvio() -> Double {
+    private func calculateOrder() async -> Bool {
+        guard let url = URL(string: BaseBackendURL + "calculateOrder") else { return false }
         
-        // Hacer una petición al back y calcular en base a las reglas de negocio
-        // ..
-        return 222.0
+        var request = URLRequest(url: url)
+        let json: [String: Any] = [
+            "selectedState": authViewModel.selectedState,
+            "items": ["1-L": 1]
+        ] // authViewModel.selectedProducts
+        
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: json)
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                // Also show an alert
+                showErrorAlert = true
+                errorMessage = "Respuesta inválida del servidor"
+                print("Respuesta inválida del servidor")
+                return false
+            }
+
+            let decoded = try JSONDecoder().decode(OrderResponse.self, from: data)
+            
+            // Ya puedes usar decoded.orderTotal, decoded.totalReward, etc.
+            print("Total productos:", decoded.productsTotal)
+            print("Envío:", decoded.shipmentWithFees)
+            print("Total orden:", decoded.orderTotal)
+            print("Recompensas:", decoded.totalReward)
+            
+            // Update UI with the data
+            productsTotal = decoded.productsTotal
+            shipmentWithFees = decoded.shipmentWithFees
+            orderTotal = decoded.orderTotal
+            totalReward = decoded.totalReward
+            
+            return true
+            
+        } catch {
+            showErrorAlert = true
+            errorMessage = "Error al obtener o parsear la respuesta: \(error)"
+            print("Error al obtener o parsear la respuesta:", error)
+            return false
+        }
     }
+
+}
+
+struct OrderResponse: Codable {
+    let productsTotal: Double
+    let shipmentWithFees: Double
+    let orderTotal: Double
+    let totalReward: Double
 }
 
 #Preview {

@@ -14,7 +14,7 @@ struct PaymentView: View {
     @State var loading = false
     @State var paymentMethodParams: STPPaymentMethodParams?
     @State private var showThankYouAlert = false
-    @State private var showKeyErrorAlert = false
+    
     
     var body: some View {
         VStack{
@@ -44,38 +44,29 @@ struct PaymentView: View {
             }
         }.onAppear() {
             Task {
-                let success = await model.getStripeKey()
-                    if success {
-                        let email = authViewModel.email
-                        let fullName = "\(authViewModel.firstName) \(authViewModel.lastName)"
-                        let shippingAddress = [
-                            "line1": authViewModel.address1,
-                            "city": authViewModel.city,
-                            "state": authViewModel.selectedState,
-                            "postal_code": authViewModel.postalCode,
-                            "country": "MX"
-                        ]
-                        let phone = authViewModel.phone
-                        let items = items()
-                        let metadata = productNames()
-                        
-                        model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn", email: email, fullName: fullName, shippingAddress: shippingAddress, phone: phone, items: items, metadata: metadata)
-                    } else {
-                        print("No se pudo obtener la clave de Stripe")
-                        showKeyErrorAlert = true
-                    }
-                }
+                let email = authViewModel.email
+                let fullName = "\(authViewModel.firstName) \(authViewModel.lastName)"
+                let shippingAddress = [
+                    "line1": authViewModel.address1,
+                    "city": authViewModel.city,
+                    "state": authViewModel.selectedState,
+                    "postal_code": authViewModel.postalCode,
+                    "country": "MX"
+                ]
+                let phone = authViewModel.phone
+                let items = items()
+                let selectedState = authViewModel.selectedState
+                let metadata = productNames()
+                
+                model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn", email: email, fullName: fullName, shippingAddress: shippingAddress, phone: phone, items: items, selectedState: selectedState, metadata: metadata)
+            }
         }
         .alert("Gracias por tu compra", isPresented: $showThankYouAlert) {
             Button("OK", role: .cancel) { }
         } message: {
             Text("En breve recibirás un correo con los detalles del pedido.")
         }
-        .alert("Error al preparar el pedido", isPresented: $showKeyErrorAlert) {
-            Button("OK", role: .cancel) { }
-        } message: {
-            Text("No fué posible preparar el pedido en este momento, intentalo más tarde.")
-        }
+        
         .onChange(of: model.paymentStatus) { paymentStatus in
                 if paymentStatus == .succeeded {
                     purchase()
@@ -102,11 +93,13 @@ struct PaymentView: View {
         }
     }
     
+    // Get from the service
     private func calculateRewards() -> Double {
         var sum: Double = 0
         // The total payment amount / 10
         return sum
     }
+    
     private func purchase(){
         
         //1. Erase the cart products

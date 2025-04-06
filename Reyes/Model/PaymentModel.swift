@@ -26,6 +26,7 @@ class PaymentModel: ObservableObject {
     var shippingAddress: [String: Any]?
     var phone: String?
     var items: [String: Int] = [:]
+    var selectedState: String = ""
     var metadata: [String: Any]?
     
     func getStripeKey() async -> Bool {
@@ -63,7 +64,7 @@ class PaymentModel: ObservableObject {
         }
     }
     
-    func preparePaymentIntent(paymentMethodType: String, currency: String, email: String, fullName: String, shippingAddress: [String: Any], phone: String, items: [String: Int], metadata: [String: Any]){
+    func preparePaymentIntent(paymentMethodType: String, currency: String, email: String, fullName: String, shippingAddress: [String: Any], phone: String, items: [String: Int], selectedState: String, metadata: [String: Any]){
         self.paymentMethodType = paymentMethodType
         self.currency = currency
         self.email = email
@@ -71,6 +72,7 @@ class PaymentModel: ObservableObject {
         self.shippingAddress = shippingAddress
         self.phone = phone
         self.items = items
+        self.selectedState = selectedState
         self.metadata = metadata
         
         //Get the publishable kay from the server
@@ -86,7 +88,8 @@ class PaymentModel: ObservableObject {
                 "name": fullName,
                 "phone": phone
             ],
-            "items": items
+            "items": items,
+            "selectedState": selectedState
         ]
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -115,7 +118,7 @@ class PaymentModel: ObservableObject {
         
         if status == .succeeded {
             self.paymentIntentParams = nil
-            preparePaymentIntent(paymentMethodType: self.paymentMethodType!, currency: self.currency!, email: self.email!, fullName: self.fullName!, shippingAddress: shippingAddress!, phone: self.phone!, items: self.items, metadata: self.metadata!)
+            preparePaymentIntent(paymentMethodType: self.paymentMethodType!, currency: self.currency!, email: self.email!, fullName: self.fullName!, shippingAddress: shippingAddress!, phone: self.phone!, items: self.items, selectedState: self.selectedState, metadata: self.metadata!)
         }
     }
 }
