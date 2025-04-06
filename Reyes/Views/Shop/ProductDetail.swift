@@ -31,7 +31,8 @@ struct ProductDetail: View {
                     Text("$"+String(product.price - product.price * product.discount/100))
                         .font(.title)
                 }
-                HStack{
+                .padding(.horizontal)
+                HStack {
                     Text("Recompensa")
                         .font(.title2)
                         .foregroundColor(.green)
@@ -44,6 +45,7 @@ struct ProductDetail: View {
                     Image(systemName: "crown.fill")
                         .foregroundColor(.yellow)
                 }
+                .padding(.horizontal)
                 
                 Divider()
                 
@@ -104,6 +106,7 @@ struct ProductDetail: View {
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.red, lineWidth: 2)
                                 )
+                                .padding(.horizontal)
                         }
                     }
                     

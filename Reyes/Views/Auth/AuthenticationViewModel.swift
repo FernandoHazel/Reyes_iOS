@@ -390,6 +390,32 @@ extension AuthenticationViewModel {
             }
     }
     
+    func updateProductAvailability(id: Int, size: String, quantity: Int) {
+        
+        db.collection("Products")
+            .whereField("id", isEqualTo: id)
+            .getDocuments { snapshot, error in
+                guard let document = snapshot?.documents.first, error == nil else {
+                    print("❌ Producto con ID \(id) no encontrado.")
+                    return
+                }
+                
+                let docRef = self.db.collection("Products").document(document.documentID)
+                let availability = document.data()["availability"] as? [String: Int] ?? [:]
+                let current = availability[size] ?? 0
+                let newValue = max(current - quantity, 0) // evita valores negativos
+                
+                let updateKey = "availability.\(size)"
+                docRef.updateData([updateKey: newValue]) { error in
+                    if let error = error {
+                        print("❌ Error al actualizar disponibilidad: \(error.localizedDescription)")
+                    } else {
+                        print("✅ Actualizada talla \(size) de \(current) a \(newValue)")
+                    }
+                }
+            }
+    }
+    
     func deleteAllSelectedProducts() {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("Error: No se pudo obtener el userId")

@@ -9,6 +9,7 @@ import Stripe
 
 struct PaymentView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var vm: AppViewModel
     @ObservedObject var model = PaymentModel()
     @State var loading = false
     @State var paymentMethodParams: STPPaymentMethodParams?
@@ -67,10 +68,11 @@ struct PaymentView: View {
         } message: {
             Text("En breve recibirás un correo con los detalles del pedido.")
         }
-        
         .onChange(of: model.paymentStatus) { paymentStatus in
                 if paymentStatus == .succeeded {
-                    purchase()
+                    Task {
+                        await purchase()
+                    }
                 }
             }
         
@@ -94,7 +96,7 @@ struct PaymentView: View {
         }
     }
     
-    private func purchase(){
+    private func purchase() async {
         
         //1. Erase the cart products
         authViewModel.deleteAllSelectedProducts()
@@ -105,8 +107,11 @@ struct PaymentView: View {
         //3. Update the member info
         authViewModel.saveMember()
         
-        // Display a congrats alert
+        //4. Display a congrats alert
         showThankYouAlert = true
+        
+        //5. Update availability in firestore
+        await updateProductsAvailability()
         
         print("\n - - - - - - - - - - PURCHASE - - - - - - - - - - \n")
         print("PURCHASE SUCCEDED")
@@ -116,6 +121,26 @@ struct PaymentView: View {
     
     private func items() -> [String: Int]{
         return authViewModel.selectedProducts
+    }
+    
+    private func updateProductsAvailability() async {
+        let products = vm.products
+        
+        for (key, quantity) in authViewModel.selectedProducts {
+            let components = key.split(separator: "-")
+            guard components.count == 2,
+                  let id = Int(components[0]),
+                  let size = components.last else {
+                continue
+            }
+            
+            if let product = products.first(where: { $0.id == id }) {
+                authViewModel.updateProductAvailability(id: id, size: String(size), quantity: quantity)
+            } else {
+                print("Producto con ID \(id) no encontrado")
+            }
+        }
+        //await vm.loadProducts() I tried to update the products after a purchase in the front
     }
     
     // This is used for metadata but is empty at the moment

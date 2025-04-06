@@ -48,6 +48,15 @@ class AppViewModel: ObservableObject {
         }
     }
     
+    // Used after a purchase
+    func loadProducts() async {
+        do {
+            products = try await getData(collection: "Products", as: Product.self)
+        } catch {
+            print("Failed to load products data: \(error)")
+        }
+    }
+    
     func openAppStore(url: String) {
         if UIApplication.shared.canOpenURL(URL(string: url)!) {
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
