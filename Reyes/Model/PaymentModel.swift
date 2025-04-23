@@ -12,7 +12,8 @@ import Stripe
 // This URL will be different in production
 // HAY QUE MOVER ESTO A UNA VARIABLE DE ENTORNO
 // HAY QUE TENER UNO PARA DEBUG Y OTRO PARA PROD
-let BaseBackendURL = "http://127.0.0.1:1234/"
+//let BaseBackendURL = "https://reyesbackend-893214018781.northamerica-south1.run.app/"
+let BaseBackendURL = "http://localhost:8080/"
 var stripeInitialized = false
 
 class PaymentModel: ObservableObject {
@@ -27,6 +28,7 @@ class PaymentModel: ObservableObject {
     var phone: String?
     var items: [String: Int] = [:]
     var selectedState: String = ""
+    var needsShipment: Bool = true
     var metadata: [String: Any]?
     
     func getStripeKey() async -> Bool {
@@ -64,7 +66,7 @@ class PaymentModel: ObservableObject {
         }
     }
     
-    func preparePaymentIntent(paymentMethodType: String, currency: String, email: String, fullName: String, shippingAddress: [String: Any], phone: String, items: [String: Int], selectedState: String, metadata: [String: Any]){
+    func preparePaymentIntent(paymentMethodType: String, currency: String, email: String, fullName: String, shippingAddress: [String: Any], phone: String, items: [String: Int], selectedState: String, needsShipment: Bool, metadata: [String: Any]){
         self.paymentMethodType = paymentMethodType
         self.currency = currency
         self.email = email
@@ -89,7 +91,8 @@ class PaymentModel: ObservableObject {
                 "phone": phone
             ],
             "items": items,
-            "selectedState": selectedState
+            "selectedState": selectedState,
+            "needsShipment": needsShipment
         ]
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -118,7 +121,7 @@ class PaymentModel: ObservableObject {
         
         if status == .succeeded {
             self.paymentIntentParams = nil
-            preparePaymentIntent(paymentMethodType: self.paymentMethodType!, currency: self.currency!, email: self.email!, fullName: self.fullName!, shippingAddress: shippingAddress!, phone: self.phone!, items: self.items, selectedState: self.selectedState, metadata: self.metadata!)
+            preparePaymentIntent(paymentMethodType: self.paymentMethodType!, currency: self.currency!, email: self.email!, fullName: self.fullName!, shippingAddress: shippingAddress!, phone: self.phone!, items: self.items, selectedState: self.selectedState, needsShipment: self.needsShipment, metadata: self.metadata!)
         }
     }
 }

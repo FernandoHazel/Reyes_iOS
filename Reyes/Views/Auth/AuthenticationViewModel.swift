@@ -391,7 +391,6 @@ extension AuthenticationViewModel {
     }
     
     func updateProductAvailability(id: Int, size: String, quantity: Int) {
-        
         db.collection("Products")
             .whereField("id", isEqualTo: id)
             .getDocuments { snapshot, error in

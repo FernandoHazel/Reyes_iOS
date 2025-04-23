@@ -16,6 +16,7 @@ struct PaymentView: View {
     @State private var showThankYouAlert = false
     
     let totalReward: Double
+    @Binding var needsShipment: Bool
     
     
     var body: some View {
@@ -60,7 +61,7 @@ struct PaymentView: View {
                 let selectedState = authViewModel.selectedState
                 let metadata = productNames()
                 
-                model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn", email: email, fullName: fullName, shippingAddress: shippingAddress, phone: phone, items: items, selectedState: selectedState, metadata: metadata)
+                model.preparePaymentIntent(paymentMethodType: "card", currency: "mxn", email: email, fullName: fullName, shippingAddress: shippingAddress, phone: phone, items: items, selectedState: selectedState, needsShipment: needsShipment, metadata: metadata)
             }
         }
         .alert("Gracias por tu compra", isPresented: $showThankYouAlert) {
@@ -147,19 +148,5 @@ struct PaymentView: View {
     private func productNames() -> [String: Any] {
         let productDict: [String: Any] = [:]
         return productDict
-    }
-}
-
-struct PaymentView_Previews: PreviewProvider {
-    static var previews: some View {
-        PreviewWrapper()
-    }
-    
-    struct PreviewWrapper: View {
-        @State private var purchaseComplete = false
-        
-        var body: some View {
-            PaymentView(totalReward: 10.0)
-        }
     }
 }

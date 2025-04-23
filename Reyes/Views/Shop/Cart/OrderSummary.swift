@@ -16,10 +16,12 @@ struct OrderSummary: View {
     @State var showPaymentView = false
     @State var errorMessage = ""
     @State var productsTotal = 0.0
-    @State var shipmentWithFees = 0.0
+    @State var shipment = -1.0
+    @State var fees = 0.0
     @State var orderTotal = 0.0
     @State var totalReward = 0.0
     @ObservedObject var model = PaymentModel()
+    @State var needsShipment = true
 
     var body: some View {
         
@@ -64,6 +66,50 @@ struct OrderSummary: View {
                     }
                 }
             }
+            Section(header: Text("¿Requiere envío?")){
+                if (showPaymentView) {
+                    VStack(spacing: 0) {
+                        shippingOptionView(
+                            title: "Envío",
+                            iconName: "truck.box",
+                            isSelected: needsShipment == true,
+                            action: {
+                                Task {
+                                    needsShipment = true
+                                    showPaymentView = false
+                                    let orderCalculated = await calculateOrder(needShipment: needsShipment)
+                                    if orderCalculated {
+                                        showPaymentView = true
+                                    }
+                                }
+                            }
+                        )
+
+                        shippingOptionView(
+                            title: "Retiro en tienda",
+                            iconName: "bag",
+                            isSelected: needsShipment == false,
+                            action: {
+                                Task {
+                                    needsShipment = false
+                                    showPaymentView = false
+                                    let orderCalculated = await calculateOrder(needShipment: needsShipment)
+                                    if orderCalculated {
+                                        showPaymentView = true
+                                    }
+                                }
+                            }
+                        )
+                    }
+                    .background(Color(.systemGroupedBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                    )
+                }
+            }
+            .listRowBackground(Color.clear)
             Section(header: Text("Resumen del pedido")){
                 VStack{
                     HStack{
@@ -80,10 +126,20 @@ struct OrderSummary: View {
                         Text("Envío")
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
-                        if shipmentWithFees == 0.0 {
+                        if shipment == -1.0 {
                             ProgressView()
                         } else {
-                            Text("$\(String(format: "%.2f", shipmentWithFees))")
+                            Text("$\(String(format: "%.2f", shipment))")
+                        }
+                    }
+                    HStack{
+                        Text("Comisiones e impuestos")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        if fees == 0.0 {
+                            ProgressView()
+                        } else {
+                            Text("$\(String(format: "%.2f", fees))")
                         }
                     }
                     Divider()
@@ -121,7 +177,7 @@ struct OrderSummary: View {
             Section(header: Text("Método de pago")){
                 VStack{
                     if (showPaymentView){
-                        PaymentView(totalReward: totalReward)
+                        PaymentView(totalReward: totalReward, needsShipment: $needsShipment)
                     }
                 }
             }
@@ -140,7 +196,7 @@ struct OrderSummary: View {
                 let success = await model.getStripeKey()
                     if success {
                         // Calculate Order
-                        let orderCalculated = await calculateOrder()
+                        let orderCalculated = await calculateOrder(needShipment: needsShipment)
                         if orderCalculated {
                             showPaymentView = true
                         }
@@ -152,13 +208,14 @@ struct OrderSummary: View {
         }
     }
     
-    private func calculateOrder() async -> Bool {
+    private func calculateOrder(needShipment: Bool) async -> Bool {
         guard let url = URL(string: BaseBackendURL + "calculateOrder") else { return false }
         
         var request = URLRequest(url: url)
         let json: [String: Any] = [
             "selectedState": authViewModel.selectedState,
-            "items": authViewModel.selectedProducts
+            "items": authViewModel.selectedProducts,
+            "needsShipment": needsShipment
         ]
         
         request.httpMethod = "POST"
@@ -203,13 +260,15 @@ struct OrderSummary: View {
             let decoded = try JSONDecoder().decode(OrderResponse.self, from: data)
             
             print("Total productos:", decoded.productsTotal)
-            print("Envío:", decoded.shipmentWithFees)
+            print("Envío:", decoded.shipmentCost)
+            print("Comisiones:", decoded.fees)
             print("Total orden:", decoded.orderTotal)
             print("Recompensas:", decoded.totalReward)
             
             // Update UI with the data
             productsTotal = decoded.productsTotal
-            shipmentWithFees = decoded.shipmentWithFees
+            shipment = decoded.shipmentCost
+            fees = decoded.fees
             orderTotal = decoded.orderTotal
             totalReward = decoded.totalReward
             
@@ -222,12 +281,34 @@ struct OrderSummary: View {
             return false
         }
     }
+    
+    func shippingOptionView(title: String, iconName: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
+            Button(action: action) {
+                HStack {
+                    Image(systemName: isSelected ? "largecircle.fill.circle" : "circle")
+                        .foregroundColor(isSelected ? .blue : .gray)
+
+                    Text(title)
+                        .foregroundColor(.primary)
+                        .padding(.leading, 4)
+
+                    Spacer()
+
+                    Image(systemName: iconName)
+                        .foregroundColor(isSelected ? .blue : .gray)
+                }
+                .padding()
+                .background(isSelected ? Color.blue.opacity(0.1) : Color.clear)
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
 
 }
 
 struct OrderResponse: Codable {
     let productsTotal: Double
-    let shipmentWithFees: Double
+    let shipmentCost: Double
+    let fees: Double
     let orderTotal: Double
     let totalReward: Double
 }
