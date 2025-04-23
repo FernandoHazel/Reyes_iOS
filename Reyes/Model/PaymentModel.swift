@@ -12,8 +12,8 @@ import Stripe
 // This URL will be different in production
 // HAY QUE MOVER ESTO A UNA VARIABLE DE ENTORNO
 // HAY QUE TENER UNO PARA DEBUG Y OTRO PARA PROD
-//let BaseBackendURL = "https://reyesbackend-893214018781.northamerica-south1.run.app/"
-let BaseBackendURL = "http://localhost:8080/"
+let BaseBackendURL = "https://reyesbackend-893214018781.northamerica-south1.run.app/"
+//let BaseBackendURL = "http://localhost:8080/"
 var stripeInitialized = false
 
 class PaymentModel: ObservableObject {
