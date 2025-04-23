@@ -86,7 +86,7 @@ struct OrderSummary: View {
                         )
 
                         shippingOptionView(
-                            title: "Retiro en tienda",
+                            title: "Retiro en el estadio",
                             iconName: "bag",
                             isSelected: needsShipment == false,
                             action: {
