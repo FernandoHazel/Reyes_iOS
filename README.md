@@ -7,7 +7,6 @@ This is the iOS version of the Reyes Official App. The app is developed entirely
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Others](#Others)
 - [Licence](#Licence)
 
 ## Requirements
